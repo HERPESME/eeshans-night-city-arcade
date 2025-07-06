@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 interface LoadingScreenProps {
@@ -45,12 +44,18 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       {/* Loading Animation */}
       <div className="text-center z-10 space-y-8">
         {/* Pixel Character Walking */}
-        <div className="relative h-16 w-full overflow-hidden mb-8">
-          <div 
-            className="absolute top-0 h-16 w-16 bg-cyber-pink pixel-perfect animate-pixel-walk"
+        <div className="relative h-24 w-full overflow-visible mb-0">
+          {/* Walking man GIF moves with loading bar, appears to walk on the loading bar */}
+          <img
+            src="/lovable-uploads/qaFq+R.gif"
+            alt="Walking Man"
+            className="absolute"
             style={{
-              clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-              animationDuration: '3s'
+              left: `calc(${progress}% - 3.5rem)`,
+              bottom: '-1.2rem',
+              height: '5rem',
+              width: '5rem',
+              zIndex: 2
             }}
           />
         </div>

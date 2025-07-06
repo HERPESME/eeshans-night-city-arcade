@@ -130,7 +130,7 @@ const ContactSection = () => {
                 {contacts.map((contact, index) => (
                   <div 
                     key={contact.name}
-                    className="flex items-center justify-between p-4 border border-gray-600 hover:border-current transition-colors group"
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 border border-gray-600 hover:border-current transition-colors group"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex items-center space-x-4">
@@ -139,15 +139,15 @@ const ContactSection = () => {
                         <div className={`font-bold ${contact.color}`}>
                           {contact.name}
                         </div>
-                        <div className="text-sm text-gray-400">
+                        <div className="text-sm text-gray-400 break-all truncate max-w-[12rem]">
                           {contact.handle}
                         </div>
                       </div>
                     </div>
-                    
                     <PixelButton 
                       variant="primary" 
                       size="sm"
+                      className="w-32"
                       onClick={() => executeCommand(contact.command, contact.handle, contact.url)}
                     >
                       CONNECT
