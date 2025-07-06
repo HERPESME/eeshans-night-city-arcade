@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
@@ -10,6 +9,7 @@ interface CyberpunkNavProps {
 
 const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'PLAY', icon: '▶' },
@@ -17,6 +17,11 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
     { id: 'projects', label: 'PROJECTS', icon: '※' },
     { id: 'contact', label: 'TERMINAL', icon: '◊' }
   ];
+
+  const handleMobileNav = (id: string) => {
+    onSectionChange(id);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-dark-bg/90 backdrop-blur-sm border-b border-cyber-purple">
@@ -57,11 +62,26 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <PixelButton variant="primary" size="sm">
+            <PixelButton variant="primary" size="sm" onClick={() => setMobileMenuOpen((v) => !v)}>
               ≡
             </PixelButton>
           </div>
         </div>
+        {/* Mobile Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute left-0 right-0 mt-4 bg-dark-bg border-2 border-cyber-purple rounded-lg shadow-lg z-50 flex flex-col items-stretch px-4 py-2 space-y-2 pixel-perfect">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                className={`text-left px-4 py-3 font-pixel text-lg border-b border-cyber-purple last:border-b-0 flex items-center space-x-2 ${activeSection === item.id ? 'text-cyber-pink' : 'text-cyber-blue'}`}
+                onClick={() => handleMobileNav(item.id)}
+              >
+                <span>{item.icon}</span>
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );

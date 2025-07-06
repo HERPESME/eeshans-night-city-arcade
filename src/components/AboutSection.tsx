@@ -24,11 +24,11 @@ const AboutSection = () => {
           <div className="text-cyber-blue text-lg">ACCESSING PERSONAL DATA...</div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:gap-12">
           {/* Left Column - Profile */}
-          <div className="space-y-8 h-full flex flex-col justify-between">
+          <div className="space-y-8 w-full max-w-screen-sm mx-auto md:h-full md:flex md:flex-col md:justify-between">
             {/* Profile Card */}
-            <div className="pixel-button border-cyber-purple text-white p-8 relative">
+            <div className="pixel-button border-cyber-purple text-white p-8 px-2 md:px-8 relative w-full">
               {/* Profile Avatar */}
               <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-cyber-pink to-cyber-blue pixel-perfect relative">
                 <div className="absolute inset-2 bg-dark-bg flex items-center justify-center text-4xl">
@@ -71,7 +71,7 @@ const AboutSection = () => {
             </div>
 
             {/* LeetCode Stats */}
-            <div className="pixel-button border-cyber-orange text-white p-6 relative">
+            <div className="pixel-button border-cyber-orange text-white p-6 px-2 md:px-6 relative w-full">
               <GlitchText className="text-lg text-cyber-orange mb-4">
                 LEETCODE.STATS
               </GlitchText>
@@ -150,8 +150,8 @@ const AboutSection = () => {
           </div>
 
           {/* Skills Panel */}
-          <div className="space-y-6 h-full flex flex-col justify-between">
-            <div className="pixel-button border-cyber-blue text-cyber-blue p-6">
+          <div className="space-y-6 w-full max-w-screen-sm mx-auto md:h-full md:flex md:flex-col md:justify-between">
+            <div className="pixel-button border-cyber-blue text-cyber-blue p-6 px-2 md:px-6 w-full">
               <GlitchText className="text-xl mb-4">SKILL MATRIX</GlitchText>
               
               <div className="space-y-4">
@@ -176,7 +176,7 @@ const AboutSection = () => {
             </div>
 
             {/* Bio Text */}
-            <div className="pixel-button border-cyber-green text-white p-6">
+            <div className="pixel-button border-cyber-green text-white p-6 px-2 md:px-6 w-full">
               <GlitchText className="text-lg text-cyber-green mb-4">
                 ABOUT.TXT
               </GlitchText>
