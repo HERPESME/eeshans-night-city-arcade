@@ -92,17 +92,9 @@ const AboutSection = () => {
             {/* LeetCode Stats */}
             <div className="pixel-button border-cyber-orange text-white p-6 px-2 md:px-6 relative w-full">
               <div className="flex justify-between items-center mb-4">
-                <GlitchText className="text-lg text-cyber-orange">
+                <GlitchText className="text-lg text-cyber-orange text-center w-full">
                   LEETCODE.STATS
                 </GlitchText>
-                <button
-                  onClick={refresh}
-                  disabled={loading}
-                  className="text-xs text-cyber-orange hover:text-cyber-orange/80 transition-colors disabled:opacity-50"
-                  title="Refresh stats"
-                >
-                  {loading ? '⏳' : '🔄'}
-                </button>
               </div>
               
               {error && (
@@ -196,24 +188,6 @@ const AboutSection = () => {
                       />
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              {/* Achievement Badge */}
-              <div className="absolute top-2 right-2 w-6 h-6 bg-cyber-orange animate-pulse rounded-full flex items-center justify-center text-xs">
-                🏆
-              </div>
-              
-              {/* Additional Badges */}
-              <div className="absolute top-10 right-2 space-y-1">
-                <div className="w-5 h-5 bg-cyber-green animate-ping opacity-75 pixel-perfect flex items-center justify-center text-xs">
-                  ⚡
-                </div>
-                <div className="w-5 h-5 bg-cyber-blue opacity-80 pixel-perfect flex items-center justify-center text-xs animate-pulse">
-                  🧠
-                </div>
-                <div className="w-5 h-5 bg-cyber-pink opacity-70 pixel-perfect flex items-center justify-center text-xs">
-                  🎯
                 </div>
               </div>
             </div>
