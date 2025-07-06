@@ -108,11 +108,11 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
         {/* Quick Stats */}
         <div className="flex justify-center space-x-8 text-xs">
           <div className="text-center flex flex-col items-center">
-            <div className="text-cyber-blue text-lg">50+</div>
+            <div className="text-cyber-blue text-lg">15+</div>
             <div className="text-gray-400">PROJECTS</div>
           </div>
           <div className="text-center flex flex-col items-center relative">
-            <div className="text-cyber-green text-lg">5+</div>
+            <div className="text-cyber-green text-lg">2+</div>
             <div className="text-gray-400">YEARS</div>
             {/* Pixelated Oval Green PLAY Button */}
             <button
