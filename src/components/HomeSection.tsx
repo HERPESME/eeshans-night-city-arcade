@@ -5,9 +5,11 @@ import { useState, useRef } from 'react';
 
 interface HomeSectionProps {
   onSectionChange: (section: string) => void;
+  pauseBackgroundMusic: () => void;
+  resumeBackgroundMusic: () => void;
 }
 
-const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
+const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMusic }: HomeSectionProps) => {
   const [open, setOpen] = useState(false);
   const [showGif, setShowGif] = useState(false);
   const [playHover, setPlayHover] = useState(false);
@@ -15,6 +17,8 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
 
   const handlePlayClick = () => {
     setShowGif(true);
+    // Pause background music when video starts
+    pauseBackgroundMusic();
     setTimeout(() => {
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
@@ -29,6 +33,8 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
+    // Resume background music when video ends
+    resumeBackgroundMusic();
   };
 
   return (

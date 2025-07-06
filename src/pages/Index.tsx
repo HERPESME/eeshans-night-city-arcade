@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import CyberpunkNav from '@/components/CyberpunkNav';
@@ -7,7 +6,12 @@ import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 
-const Index = () => {
+interface IndexProps {
+  pauseBackgroundMusic: () => void;
+  resumeBackgroundMusic: () => void;
+}
+
+const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -27,7 +31,11 @@ const Index = () => {
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'home':
-        return <HomeSection onSectionChange={setActiveSection} />;
+        return <HomeSection 
+          onSectionChange={setActiveSection} 
+          pauseBackgroundMusic={pauseBackgroundMusic}
+          resumeBackgroundMusic={resumeBackgroundMusic}
+        />;
       case 'about':
         return <AboutSection />;
       case 'projects':
@@ -35,7 +43,11 @@ const Index = () => {
       case 'contact':
         return <ContactSection />;
       default:
-        return <HomeSection onSectionChange={setActiveSection} />;
+        return <HomeSection 
+          onSectionChange={setActiveSection} 
+          pauseBackgroundMusic={pauseBackgroundMusic}
+          resumeBackgroundMusic={resumeBackgroundMusic}
+        />;
     }
   };
 

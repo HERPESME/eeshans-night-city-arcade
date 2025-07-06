@@ -3,9 +3,9 @@ import GlitchText from './GlitchText';
 
 const AboutSection = () => {
   const skills = [
-    { name: 'C++', level: 40, color: 'bg-cyber-purple' },
+    { name: 'C++/Python', level: 40, color: 'bg-cyber-purple' },
     { name: 'React/Next.js', level: 40, color: 'bg-cyber-blue' },
-    { name: 'Node.js/Python', level: 37, color: 'bg-cyber-green' },
+    { name: 'Node.js/Express.js', level: 37, color: 'bg-cyber-green' },
     { name: 'AI/ML', level: 20, color: 'bg-cyber-pink' },
     { name: 'Database', level: 70, color: 'bg-cyber-orange' },
     { name: 'Cloud/DevOps', level: 10, color: 'bg-cyber-purple' }
