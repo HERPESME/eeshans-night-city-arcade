@@ -1,7 +1,10 @@
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
+import { useLeetCodeStats } from '@/hooks/useLeetCodeStats';
 
 const AboutSection = () => {
+  const { stats, loading, error, lastUpdated, refresh } = useLeetCodeStats();
+  
   const skills = [
     { name: 'C++/Python', level: 40, color: 'bg-cyber-purple' },
     { name: 'React/Next.js', level: 40, color: 'bg-cyber-blue' },
@@ -10,6 +13,22 @@ const AboutSection = () => {
     { name: 'Database', level: 70, color: 'bg-cyber-orange' },
     { name: 'Cloud/DevOps', level: 10, color: 'bg-cyber-purple' }
   ];
+
+  const formatLastUpdated = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+    
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes}m ago`;
+    } else if (diffInMinutes < 1440) {
+      const hours = Math.floor(diffInMinutes / 60);
+      return `${hours}h ago`;
+    } else {
+      const days = Math.floor(diffInMinutes / 1440);
+      return `${days}d ago`;
+    }
+  };
 
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-dark-bg to-cyber-dark relative overflow-hidden">
@@ -72,28 +91,58 @@ const AboutSection = () => {
 
             {/* LeetCode Stats */}
             <div className="pixel-button border-cyber-orange text-white p-6 px-2 md:px-6 relative w-full">
-              <GlitchText className="text-lg text-cyber-orange mb-4">
-                LEETCODE.STATS
-              </GlitchText>
+              <div className="flex justify-between items-center mb-4">
+                <GlitchText className="text-lg text-cyber-orange">
+                  LEETCODE.STATS
+                </GlitchText>
+                <button
+                  onClick={refresh}
+                  disabled={loading}
+                  className="text-xs text-cyber-orange hover:text-cyber-orange/80 transition-colors disabled:opacity-50"
+                  title="Refresh stats"
+                >
+                  {loading ? '⏳' : '🔄'}
+                </button>
+              </div>
+              
+              {error && (
+                <div className="text-red-400 text-xs mb-4 text-center">
+                  ⚠️ {error}
+                </div>
+              )}
+              
+              {lastUpdated && (
+                <div className="text-cyber-orange/70 text-xs mb-4 text-center">
+                  Last updated: {formatLastUpdated(lastUpdated)}
+                </div>
+              )}
               
               <div className="space-y-4">
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div className="bg-cyber-dark p-3 border border-gray-600">
-                    <div className="text-2xl text-cyber-green font-bold">150+</div>
+                    <div className="text-2xl text-cyber-green font-bold">
+                      {loading ? '...' : `${stats?.totalSolved || 0}+`}
+                    </div>
                     <div className="text-xs text-gray-400">SOLVED</div>
                   </div>
                   <div className="bg-cyber-dark p-3 border border-gray-600">
-                    <div className="text-2xl text-cyber-blue font-bold">85%</div>
+                    <div className="text-2xl text-cyber-blue font-bold">
+                      {loading ? '...' : `${stats?.accuracy || 0}%`}
+                    </div>
                     <div className="text-xs text-gray-400">ACCURACY</div>
                   </div>
                   <div className="bg-cyber-dark p-3 border border-gray-600">
-                    <div className="text-2xl text-cyber-pink font-bold">1850</div>
+                    <div className="text-2xl text-cyber-pink font-bold">
+                      {loading ? '...' : stats?.rating || 0}
+                    </div>
                     <div className="text-xs text-gray-400">RATING</div>
                   </div>
                   <div className="bg-cyber-dark p-3 border border-gray-600">
-                    <div className="text-2xl text-cyber-orange font-bold">TOP 5%</div>
-                    <div className="text-xs text-gray-400">RANK</div>
+                    <div className="text-2xl text-cyber-orange font-bold">
+                      {loading ? '...' : (stats?.rank?.replace('CONTESTS: ', '') || 'N/A')}
+                    </div>
+                    <div className="text-xs text-gray-400">CONTESTS</div>
                   </div>
                 </div>
 
@@ -102,28 +151,49 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="text-cyber-green">EASY</span>
-                      <span className="text-gray-400">120/150</span>
+                      <span className="text-gray-400">
+                        {loading ? '...' : `${stats?.easySolved || 0}/${stats?.easyTotal || 150}`}
+                      </span>
                     </div>
                     <div className="h-2 bg-cyber-dark border border-gray-600">
-                      <div className="h-full bg-cyber-green" style={{ width: '80%' }} />
+                      <div 
+                        className="h-full bg-cyber-green transition-all duration-1000 ease-out"
+                        style={{ 
+                          width: loading ? '0%' : `${((stats?.easySolved || 0) / (stats?.easyTotal || 150)) * 100}%`
+                        }}
+                      />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="text-cyber-orange">MEDIUM</span>
-                      <span className="text-gray-400">85/120</span>
+                      <span className="text-gray-400">
+                        {loading ? '...' : `${stats?.mediumSolved || 0}/${stats?.mediumTotal || 120}`}
+                      </span>
                     </div>
                     <div className="h-2 bg-cyber-dark border border-gray-600">
-                      <div className="h-full bg-cyber-orange" style={{ width: '70%' }} />
+                      <div 
+                        className="h-full bg-cyber-orange transition-all duration-1000 ease-out"
+                        style={{ 
+                          width: loading ? '0%' : `${((stats?.mediumSolved || 0) / (stats?.mediumTotal || 120)) * 100}%`
+                        }}
+                      />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="text-cyber-pink">HARD</span>
-                      <span className="text-gray-400">45/80</span>
+                      <span className="text-gray-400">
+                        {loading ? '...' : `${stats?.hardSolved || 0}/${stats?.hardTotal || 80}`}
+                      </span>
                     </div>
                     <div className="h-2 bg-cyber-dark border border-gray-600">
-                      <div className="h-full bg-cyber-pink" style={{ width: '56%' }} />
+                      <div 
+                        className="h-full bg-cyber-pink transition-all duration-1000 ease-out"
+                        style={{ 
+                          width: loading ? '0%' : `${((stats?.hardSolved || 0) / (stats?.hardTotal || 80)) * 100}%`
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
