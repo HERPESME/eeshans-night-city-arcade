@@ -2,7 +2,7 @@
 
 ## Project Info
 
-A cyberpunk-themed portfolio for Eeshan, Full-Stack Developer & AI/ML Enthusiast.
+A Cyberpunk-themed Portfolio For Myself, Full-Stack Developer & AI/ML Enthusiast.
 
 ## Getting Started
 
