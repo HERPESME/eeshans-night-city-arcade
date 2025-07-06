@@ -47,7 +47,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         <div className="relative h-24 w-full overflow-visible mb-0">
           {/* Walking man GIF moves with loading bar, appears to walk on the loading bar */}
           <img
-            src="/lovable-uploads/qaFq+R.gif"
+            src="/media/qaFq+R.gif"
             alt="Walking Man"
             className="absolute"
             style={{

@@ -35,7 +35,7 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
     <section 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
-        backgroundImage: `url('/lovable-uploads/pixel-jeff-clipa-s.gif')`,
+        backgroundImage: `url('/media/pixel-jeff-clipa-s.gif')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -207,7 +207,7 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
               ×
             </button>
             <img
-              src="/lovable-uploads/6fbb634a2a22545d2fe04cd21b3077ba.gif"
+              src="/media/6fbb634a2a22545d2fe04cd21b3077ba.gif"
               alt="Retro Video"
               style={{
                 display: 'block',
@@ -221,7 +221,7 @@ const HomeSection = ({ onSectionChange }: HomeSectionProps) => {
             {/* Hidden audio element for Edgerunner dub */}
             <audio
               ref={audioRef}
-              src="/lovable-uploads/Cyberpunk Edgerunners Ep 4 I LL TAKE YOU TO THE MOON I PROMISE Dub.mp3"
+              src="/media/Cyberpunk Edgerunners Ep 4 I LL TAKE YOU TO THE MOON I PROMISE Dub.mp3"
               autoPlay
               style={{ display: 'none' }}
               onEnded={handleCloseModal}

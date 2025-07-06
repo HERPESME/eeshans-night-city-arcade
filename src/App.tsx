@@ -43,7 +43,7 @@ const App = () => {
         <Sonner />
         <audio
           ref={audioRef}
-          src={"/lovable-uploads/05. I Really Want to Stay at Your House.mp3"}
+          src={"/media/05. I Really Want to Stay at Your House.mp3"}
           autoPlay={musicStarted}
           loop
           muted={muted || !musicStarted}
