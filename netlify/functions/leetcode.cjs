@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
   const username = event.queryStringParameters.username;
@@ -43,6 +43,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ query, variables: { username } }),
     });
     const data = await response.json();
+    console.log('LeetCode API response:', JSON.stringify(data));
     return {
       statusCode: 200,
       body: JSON.stringify(data),
@@ -52,6 +53,7 @@ exports.handler = async function(event, context) {
       },
     };
   } catch (err) {
+    console.error('LeetCode proxy error:', err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to fetch from LeetCode', details: err.message })
