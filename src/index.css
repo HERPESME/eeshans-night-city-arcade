@@ -1,0 +1,212 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Design System */
+@layer base {
+  :root {
+    --background: 15 10 26; /* Dark purple background */
+    --foreground: 255 255 255;
+
+    --card: 26 11 46;
+    --card-foreground: 255 255 255;
+
+    --popover: 26 11 46;
+    --popover-foreground: 255 255 255;
+
+    --primary: 139 92 246; /* cyber-purple */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 26 11 46;
+    --secondary-foreground: 255 255 255;
+
+    --muted: 26 11 46;
+    --muted-foreground: 168 85 247;
+
+    --accent: 236 72 153; /* cyber-pink */
+    --accent-foreground: 255 255 255;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --border: 139 92 246;
+    --input: 26 11 46;
+    --ring: 168 85 247;
+
+    --radius: 0px; /* Sharp pixel edges */
+
+    --sidebar-background: 15 10 26;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 139 92 246;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 26 11 46;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 139 92 246;
+    --sidebar-ring: 168 85 247;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-dark-bg text-foreground font-pixel;
+    font-size: 12px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  /* CRT Scanlines Effect */
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 255, 0, 0.03) 51%,
+      transparent 52%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Enhanced Pixel Button Styles */
+  .pixel-button {
+    @apply relative overflow-hidden border-2 border-current transition-all duration-300;
+    image-rendering: pixelated;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
+  .pixel-button:hover {
+    transform: scale(1.05);
+  }
+
+  .pixel-button:active {
+    transform: scale(0.95);
+  }
+
+  /* Individual Letter Glitch Animation */
+  @keyframes glitch-letter {
+    0%, 100% { 
+      transform: translate(0);
+      opacity: 1;
+    }
+    10% { 
+      transform: translate(-2px, 2px);
+      opacity: 0.8;
+    }
+    20% { 
+      transform: translate(2px, -2px);
+      opacity: 0.9;
+    }
+    30% { 
+      transform: translate(-1px, -1px);
+      opacity: 0.7;
+    }
+    40% { 
+      transform: translate(1px, 1px);
+      opacity: 1;
+    }
+    50% { 
+      transform: translate(-2px, 0);
+      opacity: 0.8;
+    }
+    60% { 
+      transform: translate(2px, 0);
+      opacity: 0.9;
+    }
+    70% { 
+      transform: translate(0, -2px);
+      opacity: 0.85;
+    }
+    80% { 
+      transform: translate(0, 2px);
+      opacity: 0.95;
+    }
+    90% { 
+      transform: translate(-1px, 0);
+      opacity: 0.9;
+    }
+  }
+
+  .animate-glitch-letter {
+    animation: glitch-letter 0.3s ease-in-out;
+  }
+
+  /* Terminal Cursor */
+  .terminal-cursor::after {
+    content: '█';
+    animation: flicker 1s ease-in-out infinite;
+  }
+
+  @keyframes flicker {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1A0B2E;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8B5CF6;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A855F7;
+  }
+}
+
+/* Pixel Art Scaling */
+@layer utilities {
+  .pixel-perfect {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  .retro-shadow {
+    filter: drop-shadow(4px 4px 0px currentColor);
+  }
+
+  /* Improved text shadow utilities for better readability */
+  .text-shadow-sm {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 4px currentColor;
+  }
+
+  .text-shadow-md {
+    text-shadow: 
+      0 0 3px currentColor,
+      0 0 6px currentColor,
+      0 0 9px currentColor;
+  }
+
+  .text-shadow-lg {
+    text-shadow: 
+      0 0 4px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor,
+      0 0 16px currentColor;
+  }
+
+  /* Legacy neon-glow for compatibility */
+  .neon-glow {
+    @apply text-shadow-md;
+  }
+}
