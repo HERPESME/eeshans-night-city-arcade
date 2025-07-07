@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -208,5 +207,9 @@
   /* Legacy neon-glow for compatibility */
   .neon-glow {
     @apply text-shadow-md;
+  }
+
+  .neon-glow-sm {
+    @apply text-shadow-sm;
   }
 }

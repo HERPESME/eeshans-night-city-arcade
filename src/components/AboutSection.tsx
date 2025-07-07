@@ -196,7 +196,7 @@ const AboutSection = () => {
           {/* Skills Panel */}
           <div className="space-y-6 w-full max-w-screen-sm mx-auto md:h-full md:flex md:flex-col md:justify-between">
             <div className="pixel-button border-cyber-blue text-cyber-blue p-6 px-2 md:px-6 w-full">
-              <GlitchText className="text-xl mb-4">SKILL MATRIX</GlitchText>
+              <GlitchText className="text-xl mb-4" intensity="low">SKILL MATRIX</GlitchText>
               
               <div className="space-y-4">
                 {skills.map((skill, index) => (

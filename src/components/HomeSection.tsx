@@ -60,7 +60,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
           <GlitchText className="text-4xl md:text-6xl text-cyber-pink" intensity="high">
             EESHAN
           </GlitchText>
-          <div className="text-lg md:text-xl text-cyber-blue neon-glow">
+          <div className="text-lg md:text-xl text-cyber-blue neon-glow-sm">
             FULL-STACK DEVELOPER
           </div>
           <div className="text-sm md:text-base text-cyber-green">
