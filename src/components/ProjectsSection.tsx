@@ -23,12 +23,14 @@ const ProjectsSection = () => {
     },
     {
       id: 3,
-      title: 'DATA VISUALIZATION',
-      type: 'FRONTEND',
+      title: 'QuantTrader',
+      type: 'AI/ML',
       status: 'BETA',
-      description: 'Interactive dashboard for complex data analysis',
-      tech: ['React', 'D3.js', 'Python', 'PostgreSQL'],
-      color: 'border-cyber-pink'
+      description: 'Deep RL agent for autonomous stock trading with real-time and historical data. Modular, Gym-compatible, and Docker-ready.',
+      tech: ['Python', 'PyTorch', 'Ray RLlib', 'OpenAI Gym', 'Yahoo Finance', 'Pandas', 'NumPy'],
+      color: 'border-cyber-pink',
+      image: '/media/6fbb634a2a22545d2fe04cd21b3077ba.gif',
+      codeUrl: 'https://github.com/HERPESME/QuantTrader_Project.git',
     },
     {
       id: 4,
@@ -92,17 +94,26 @@ const ProjectsSection = () => {
               <div className="w-full h-32 mb-4 bg-gradient-to-br from-cyber-dark to-black border border-gray-600 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyber-purple/20 to-cyber-blue/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-4xl opacity-60">
-                    {project.type === 'AI/ML' && '🤖'}
-                    {project.type === 'FULL-STACK' && '⚡'}
-                    {project.type === 'FRONTEND' && '📊'}
-                    {project.type === 'WEB3' && '🔗'}
-                  </div>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title + ' pixel art'}
+                      className="h-20 object-contain pixel-perfect"
+                      style={{ imageRendering: 'pixelated' }}
+                    />
+                  ) : (
+                    <div className="text-4xl opacity-60">
+                      {project.type === 'AI/ML' && '🤖'}
+                      {project.type === 'FULL-STACK' && '⚡'}
+                      {project.type === 'FRONTEND' && '📊'}
+                      {project.type === 'WEB3' && '🔗'}
+                    </div>
+                  )}
                 </div>
                 {/* Pixelated overlay effect */}
                 <div className="absolute inset-0 opacity-20 pixel-perfect"
                      style={{
-                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23${project.color.includes('blue') ? '06B6D4' : project.color.includes('green') ? '10B981' : project.color.includes('pink') ? 'EC4899' : project.color.includes('orange') ? 'F97316' : '8B5CF6'}'%3E%3Cpath d='M0 0h2v2H0V0zm2 2h2v2H2V2z'/%3E%3C/g%3E%3C/svg%3E")`,
+                       backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23${project.color.includes('blue') ? '06B6D4' : project.color.includes('green') ? '10B981' : project.color.includes('pink') ? 'EC4899' : project.color.includes('orange') ? 'F97316' : '8B5CF6'}'%3E%3Cpath d='M0 0h2v2H0V0zm2 2h2v2H2V2z'/%3E%3C/g%3E%3C/svg%3E\")`,
                        backgroundSize: '8px 8px'
                      }}
                 />
@@ -147,9 +158,16 @@ const ProjectsSection = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-2 mt-6">
-                <PixelButton variant="primary" size="sm" className="flex-1">
-                  VIEW CODE
-                </PixelButton>
+                <a
+                  href={project.codeUrl || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <PixelButton variant="primary" size="sm" className="w-full">
+                    VIEW CODE
+                  </PixelButton>
+                </a>
                 <PixelButton variant="accent" size="sm" className="flex-1">
                   DEMO
                 </PixelButton>
