@@ -240,7 +240,8 @@ const AboutSection = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-4">
-              <a href="/files/Res-3.pdf" download target="_blank" rel="noopener noreferrer">
+              {/* Ensure the file exists at public/files/Res-3.pdf. If not downloading on Netlify, redeploy and check the file path/case. */}
+              <a href="/files/Res-3.pdf" download="Eeshan_Singh_CV.pdf" target="_blank" rel="noopener noreferrer">
                 <PixelButton variant="accent" size="md">
                   DOWNLOAD CV
                 </PixelButton>
