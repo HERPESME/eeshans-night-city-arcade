@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
 
 const ContactSection = () => {
   const [terminalText, setTerminalText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [terminalHistory, setTerminalHistory] = useState<string[]>([]);
+  const [terminalInput, setTerminalInput] = useState('');
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   const contacts = [
     { 
@@ -41,6 +44,8 @@ const ContactSection = () => {
     }
   ];
 
+  const availableCommands = contacts.map((c) => c.command);
+
   const executeCommand = (command: string, handle: string, url?: string) => {
     setIsTyping(true);
     setTerminalText(`> ${command}\nConnecting to ${handle}...\nConnection established!\n`);
@@ -53,6 +58,47 @@ const ContactSection = () => {
     setTimeout(() => {
       setIsTyping(false);
     }, 2000);
+  };
+
+  const handleTerminalInput = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isTyping) return;
+    const input = terminalInput.trim();
+    if (!input) return;
+    setTerminalInput('');
+    setIsTyping(true);
+
+    const matchedContact = contacts.find(c => c.command === input);
+
+    if (matchedContact) {
+      setTerminalHistory((prev) => [
+        ...prev,
+        `> ${input}`,
+        `Connecting to ${matchedContact.handle}...`,
+        'Connection established!'
+      ]);
+      setTimeout(() => {
+        if (matchedContact.url) {
+          window.open(matchedContact.url, '_blank');
+        }
+        setIsTyping(false);
+      }, 1200);
+    } else if (input === 'help') {
+      setTerminalHistory((prev) => [
+        ...prev,
+        'Available commands:',
+        ...availableCommands
+      ]);
+      setIsTyping(false);
+    } else {
+      setTerminalHistory((prev) => [
+        ...prev,
+        `> ${input}`,
+        'connecting...',
+        "Command not recognized. Type 'help' for available commands."
+      ]);
+      setIsTyping(false);
+    }
   };
 
   return (
@@ -83,24 +129,36 @@ const ContactSection = () => {
             </div>
 
             {/* Terminal Output */}
-            <div className="h-64 overflow-y-auto font-mono text-sm mb-4">
+            <div className="h-64 overflow-y-auto font-mono text-sm mb-4" ref={terminalRef}>
               <div className="text-cyber-green mb-2">
                 Welcome to Eeshan's Neural Interface
               </div>
               <div className="text-gray-400 mb-4">
                 Type 'help' for available commands
               </div>
-              
+              {terminalHistory.map((line, idx) => (
+                <div key={idx} className="whitespace-pre-line text-cyber-blue mb-1">{line}</div>
+              ))}
               {terminalText && (
                 <div className="text-cyber-blue whitespace-pre-line mb-2">
                   {terminalText}
                 </div>
               )}
-              
-              <div className="flex items-center text-cyber-green">
+              <form onSubmit={handleTerminalInput} className="flex items-center text-cyber-green mt-2">
                 <span className="mr-2">root@nightcity:~$</span>
-                <span className="terminal-cursor"></span>
-              </div>
+                <input
+                  type="text"
+                  className="bg-transparent border-none outline-none text-cyber-green font-mono w-full"
+                  value={terminalInput}
+                  onChange={e => setTerminalInput(e.target.value)}
+                  disabled={isTyping}
+                  autoFocus
+                  spellCheck={false}
+                  autoComplete="off"
+                  style={{caretColor: '#00FF41'}}
+                />
+                <span className="terminal-cursor-block ml-1">&nbsp;</span>
+              </form>
             </div>
 
             {/* Terminal Commands */}
@@ -211,3 +269,18 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+
+/* Add this to the bottom of the file or in your CSS:
+.terminal-cursor-block {
+  display: inline-block;
+  width: 1ch;
+  height: 1.2em;
+  background: #00FF41;
+  animation: blink-cursor 1s steps(1) infinite;
+  vertical-align: bottom;
+}
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+*/
