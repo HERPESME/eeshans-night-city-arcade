@@ -16,6 +16,8 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [backgroundMusicPaused, setBackgroundMusicPaused] = useState(false);
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const [marqueeDuration, setMarqueeDuration] = useState(12); // seconds
 
   const playlist = [
     {
@@ -25,6 +27,14 @@ const App = () => {
     {
       src: "/media/03. Who's Ready for Tomorrow.mp3", 
       title: "Who's Ready for Tomorrow"
+    },
+    {
+      src: "/media/47. Let You Down.mp3",
+      title: "Let You Down"
+    },
+    {
+      src: "/media/17. Little Stranger.mp3",
+      title: "Little Stranger"
     }
   ];
 
@@ -111,6 +121,16 @@ const App = () => {
     }
   }, [currentSongIndex, musicStarted]);
 
+  useEffect(() => {
+    // Dynamically set marquee duration based on text width
+    if (marqueeRef.current) {
+      const marqueeWidth = marqueeRef.current.scrollWidth;
+      // 80px/sec is a good speed; adjust as needed
+      const duration = Math.max(6, marqueeWidth / 80);
+      setMarqueeDuration(duration);
+    }
+  }, [currentSongIndex, playlist[currentSongIndex].title, musicStarted]);
+
   const pauseBackgroundMusic = () => {
     if (audioRef.current && !muted && musicStarted) {
       audioRef.current.pause();
@@ -187,11 +207,12 @@ const App = () => {
             }}
           >
             <div
+              ref={marqueeRef}
               style={{
                 display: 'flex',
                 whiteSpace: 'nowrap',
                 minWidth: 'max-content',
-                animation: 'marquee 12s linear infinite',
+                animation: `marquee ${marqueeDuration}s linear infinite`,
               }}
             >
               <span style={{ paddingRight: '2rem' }}>
