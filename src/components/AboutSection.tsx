@@ -240,9 +240,11 @@ const AboutSection = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-4">
-              <PixelButton variant="accent" size="md">
-                DOWNLOAD CV
-              </PixelButton>
+              <a href="/files/Res-3.pdf" download target="_blank" rel="noopener noreferrer">
+                <PixelButton variant="accent" size="md">
+                  DOWNLOAD CV
+                </PixelButton>
+              </a>
               <PixelButton variant="success" size="md">
                 CONTACT
               </PixelButton>
