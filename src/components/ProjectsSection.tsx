@@ -5,12 +5,14 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: 'AI CHAT SYSTEM',
-      type: 'AI/ML',
+      title: 'CareerBoostAI',
+      type: 'FULL-STACK',
       status: 'ACTIVE',
-      description: 'Advanced conversational AI with neural network processing',
-      tech: ['Python', 'TensorFlow', 'React', 'Node.js'],
-      color: 'border-cyber-blue'
+      description: 'AI-powered career platform for resume building, cover letter generation, and interview prep. Modern UI, OpenAI integration, and Supabase backend.',
+      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'OpenAI GPT-4', 'Radix UI', 'Vite'],
+      color: 'border-cyber-blue',
+      codeUrl: 'https://github.com/HERPESME/prompt-career-boost.git',
+      demoUrl: 'https://careerboostaiweb.netlify.app/#',
     },
     {
       id: 2,
@@ -168,9 +170,16 @@ const ProjectsSection = () => {
                     VIEW CODE
                   </PixelButton>
                 </a>
-                <PixelButton variant="accent" size="sm" className="flex-1">
-                  DEMO
-                </PixelButton>
+                <a
+                  href={project.demoUrl || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <PixelButton variant="accent" size="sm" className="w-full">
+                    DEMO
+                  </PixelButton>
+                </a>
               </div>
 
               {/* Hover Effects */}
