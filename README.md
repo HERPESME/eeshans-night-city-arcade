@@ -39,3 +39,5 @@ The output will be in the `dist` folder.
 ---
 
 For any questions or contributions, feel free to open an issue or pull request.
+
+Regards Eeshan
