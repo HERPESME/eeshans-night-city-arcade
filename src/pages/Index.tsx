@@ -37,7 +37,7 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
           resumeBackgroundMusic={resumeBackgroundMusic}
         />;
       case 'about':
-        return <AboutSection />;
+        return <AboutSection onSectionChange={setActiveSection} />;
       case 'projects':
         return <ProjectsSection />;
       case 'contact':

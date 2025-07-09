@@ -2,7 +2,11 @@ import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
 import { useLeetCodeStats } from '@/hooks/useLeetCodeStats';
 
-const AboutSection = () => {
+interface AboutSectionProps {
+  onSectionChange?: (section: string) => void;
+}
+
+const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
   const { stats, loading, error, lastUpdated, refresh } = useLeetCodeStats();
   
   const skills = [
@@ -246,7 +250,9 @@ const AboutSection = () => {
                   DOWNLOAD CV
                 </PixelButton>
               </a>
-              <PixelButton variant="success" size="md">
+              <PixelButton variant="success" size="md" onClick={() => {
+                if (onSectionChange) onSectionChange('contact');
+              }}>
                 CONTACT
               </PixelButton>
             </div>
