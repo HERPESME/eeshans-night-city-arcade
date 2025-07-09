@@ -7,13 +7,23 @@ interface LoadingScreenProps {
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('LOADING');
+  const [crash, setCrash] = useState(false);
+  const [flash, setFlash] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(onComplete, 500);
+          setFlash(true);
+          setTimeout(() => {
+            setFlash(false);
+            setCrash(true);
+            setTimeout(() => {
+              setCrash(false);
+              onComplete();
+            }, 1000);
+          }, 120); // Flash duration
           return 100;
         }
         return prev + 2;
@@ -33,6 +43,80 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
 
   return (
     <div className="fixed inset-0 bg-dark-bg flex flex-col items-center justify-center scanlines z-50">
+      {/* White/Red Flash */}
+      {flash && (
+        <div className="absolute inset-0 z-50 bg-white bg-opacity-90 animate-flash" />
+      )}
+      {/* Crash Effect Overlay */}
+      {crash && (
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-95 animate-crash-glitch overflow-hidden">
+          {/* Static/Scanline Overlay */}
+          <div className="absolute inset-0 pointer-events-none opacity-30 animate-static-glitch" style={{background: 'repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 4px)'}} />
+          <span className="relative text-5xl md:text-7xl font-pixel text-red-600 animate-crash-flicker select-none crash-glitch-text" style={{textShadow: '0 0 16px #fff, 0 0 32px #f00, 2px 0 #0ff, -2px 0 #f0f'}}>
+            SYSTEM FAILURE
+          </span>
+          <span className="relative mt-6 text-lg md:text-2xl font-mono text-gray-200 animate-crash-flicker2 select-none" style={{textShadow: '0 0 8px #f00, 0 0 16px #fff'}}>
+            {'>'} TERMINAL CORE DUMPED
+          </span>
+          <style>{`
+            @keyframes crash-glitch {
+              0% { filter: none; }
+              10% { filter: blur(2px) contrast(2); }
+              20% { filter: none; }
+              30% { filter: blur(1px) contrast(1.5); }
+              40% { filter: none; }
+              50% { filter: blur(2px) contrast(2); }
+              60% { filter: none; }
+              70% { filter: blur(1px) contrast(1.5); }
+              80% { filter: none; }
+              90% { filter: blur(2px) contrast(2); }
+              100% { filter: none; }
+            }
+            .animate-crash-glitch { animation: crash-glitch 1s linear; }
+            @keyframes crash-flicker {
+              0%, 100% { opacity: 1; }
+              10%, 30%, 50%, 70%, 90% { opacity: 0.5; }
+              20%, 40%, 60%, 80% { opacity: 1; }
+            }
+            .animate-crash-flicker { animation: crash-flicker 1s linear; }
+            @keyframes crash-flicker2 {
+              0%, 100% { opacity: 1; }
+              15%, 35%, 55%, 75%, 95% { opacity: 0.3; }
+              25%, 45%, 65%, 85% { opacity: 1; }
+            }
+            .animate-crash-flicker2 { animation: crash-flicker2 1s linear; }
+            @keyframes static-glitch {
+              0% { opacity: 0.3; }
+              10% { opacity: 0.5; }
+              20% { opacity: 0.2; }
+              30% { opacity: 0.4; }
+              40% { opacity: 0.3; }
+              50% { opacity: 0.6; }
+              60% { opacity: 0.2; }
+              70% { opacity: 0.5; }
+              80% { opacity: 0.3; }
+              90% { opacity: 0.4; }
+              100% { opacity: 0.3; }
+            }
+            .animate-static-glitch { animation: static-glitch 1s steps(10) infinite; }
+            .crash-glitch-text {
+              animation: crash-text-shake 1s cubic-bezier(.36,.07,.19,.97) both;
+            }
+            @keyframes crash-text-shake {
+              10%, 90% { transform: translateX(-1px); }
+              20%, 80% { transform: translateX(2px); }
+              30%, 50%, 70% { transform: translateX(-4px); }
+              40%, 60% { transform: translateX(4px); }
+              100% { transform: none; }
+            }
+            .animate-flash { animation: flash 0.12s linear; }
+            @keyframes flash {
+              0% { opacity: 1; background: #fff; }
+              100% { opacity: 0; background: transparent; }
+            }
+          `}</style>
+        </div>
+      )}
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
