@@ -18,6 +18,7 @@ const App = () => {
   const [backgroundMusicPaused, setBackgroundMusicPaused] = useState(false);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [marqueeDuration, setMarqueeDuration] = useState(12); // seconds
+  const [showSongList, setShowSongList] = useState(false);
 
   const playlist = [
     {
@@ -191,10 +192,47 @@ const App = () => {
           muted={muted || !musicStarted}
           onEnded={handleSongEnd}
         />
+        {/* Song Selection Panel */}
+        {musicStarted && !muted && showSongList && (
+          <div
+            className="fixed bottom-20 left-1/2 z-50 transform -translate-x-1/2 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex flex-col items-center sm:w-[320px] w-[90vw] max-w-md"
+            style={{ borderRadius: 0, imageRendering: 'pixelated' }}
+          >
+            <div className="mb-2 text-cyber-pink text-lg">Select a Song</div>
+            <ul className="w-full">
+              {playlist.map((song, idx) => (
+                <li key={song.title}>
+                  <button
+                    className={`w-full text-left px-2 py-2 rounded transition-colors ${idx === currentSongIndex ? 'bg-cyber-blue/20 text-cyber-pink' : 'hover:bg-cyber-blue/10 text-cyber-blue'}`}
+                    onClick={() => {
+                      setCurrentSongIndex(idx);
+                      setShowSongList(false);
+                      if (audioRef.current) {
+                        audioRef.current.src = playlist[idx].src;
+                        audioRef.current.currentTime = 0;
+                        if (!muted && musicStarted) {
+                          audioRef.current.play();
+                        }
+                      }
+                    }}
+                  >
+                    {song.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              className="mt-2 text-xs text-cyber-orange hover:underline"
+              onClick={() => setShowSongList(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
         {/* Now Playing Marquee Banner (laptop/desktop only) */}
         {musicStarted && !muted && (
           <div
-            className="fixed bottom-6 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex items-center hidden sm:flex"
+            className="fixed bottom-6 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex items-center hidden sm:flex cursor-pointer"
             style={{
               right: '96px',
               minWidth: 180,
@@ -205,6 +243,8 @@ const App = () => {
               borderRadius: 0,
               imageRendering: 'pixelated',
             }}
+            onClick={() => setShowSongList((v) => !v)}
+            title="Click to select a song"
           >
             <div
               ref={marqueeRef}
