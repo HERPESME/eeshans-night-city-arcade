@@ -195,8 +195,8 @@ const App = () => {
         {/* Song Selection Panel */}
         {musicStarted && !muted && showSongList && (
           <div
-            className="fixed bottom-20 left-1/2 z-50 transform -translate-x-1/2 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex flex-col items-center sm:w-[320px] w-[90vw] max-w-md"
-            style={{ borderRadius: 0, imageRendering: 'pixelated' }}
+            className="fixed bottom-20 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex flex-col items-center sm:w-[320px] w-[90vw] max-w-md"
+            style={{ left: '50%', transform: 'translateX(-50%)', borderRadius: 0, imageRendering: 'pixelated' }}
           >
             <div className="mb-2 text-cyber-pink text-lg">Select a Song</div>
             <ul className="w-full">
