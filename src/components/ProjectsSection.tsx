@@ -13,6 +13,7 @@ const ProjectsSection = () => {
       color: 'border-cyber-blue',
       codeUrl: 'https://github.com/HERPESME/prompt-career-boost.git',
       demoUrl: 'https://careerboostaiweb.netlify.app/#',
+      image: '/media/Screenshot 2025-07-15 at 6.08.41 PM.png',
     },
     {
       id: 2,
@@ -99,9 +100,9 @@ const ProjectsSection = () => {
                   {project.image ? (
                     <img
                       src={project.image}
-                      alt={project.title + ' pixel art'}
-                      className="h-20 object-contain pixel-perfect"
-                      style={{ imageRendering: 'pixelated' }}
+                      alt={project.title + ' screenshot'}
+                      className="w-full h-full object-cover"
+                      style={{ opacity: 1 }}
                     />
                   ) : (
                     <div className="text-4xl opacity-60">
