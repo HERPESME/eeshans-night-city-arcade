@@ -82,11 +82,11 @@ export const fetchLeetCodeStats = async (): Promise<LeetCodeStats> => {
       rating: Math.round(rating),
       rank: contestsAttended,
       easySolved: easyStats.count,
-      easyTotal: 150, // You can update these to the current LeetCode totals if you want
+      easyTotal: 892, // You can update these to the current LeetCode totals if you want
       mediumSolved: mediumStats.count,
-      mediumTotal: 120,
+      mediumTotal: 1907,
       hardSolved: hardStats.count,
-      hardTotal: 80,
+      hardTotal: 863,
       lastUpdated: new Date().toISOString(),
     };
   } catch (error) {
