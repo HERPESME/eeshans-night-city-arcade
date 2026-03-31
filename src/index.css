@@ -146,6 +146,15 @@
     animation: flicker 1s ease-in-out infinite;
   }
 
+  .terminal-cursor-block {
+    display: inline-block;
+    width: 1ch;
+    height: 1.2em;
+    background: #00FF41;
+    animation: flicker 1s steps(1) infinite;
+    vertical-align: bottom;
+  }
+
   @keyframes flicker {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
@@ -211,5 +220,20 @@
 
   .neon-glow-sm {
     @apply text-shadow-sm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scanlines::before {
+    display: none;
   }
 }

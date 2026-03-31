@@ -1,12 +1,44 @@
-import { useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
+import { sendContactMessage } from '@/lib/contact';
+
+type ContactStatus = {
+  type: 'success' | 'error';
+  text: string;
+};
+
+type Achievement = {
+  id: string;
+  title: string;
+  command: string;
+  reward: string;
+};
+
+const ACHIEVEMENTS_STORAGE_KEY = 'night-city-achievements';
+
+const TERMINAL_ACHIEVEMENTS: Achievement[] = [
+  { id: 'moon_promise', title: 'MOON PROMISE', command: 'unlock.david()', reward: 'Unlocked Edgerunner memory shard.' },
+  { id: 'retro_reboot', title: 'RETRO REBOOT', command: 'theme.retro()', reward: 'Enabled retro-mode uplink protocol.' },
+  { id: 'blackwall_relic', title: 'BLACKWALL RELIC', command: 'summon.relic()', reward: 'Recovered encrypted relic fragment.' },
+  { id: 'ghost_signal', title: 'GHOST SIGNAL', command: 'trace.ghost()', reward: 'Detected hidden Night City transmission.' },
+];
+
+const ACHIEVEMENT_COMMANDS = new Set(TERMINAL_ACHIEVEMENTS.map((item) => item.command));
 
 const ContactSection = () => {
-  const [terminalText, setTerminalText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [terminalHistory, setTerminalHistory] = useState<string[]>([]);
   const [terminalInput, setTerminalInput] = useState('');
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [contactStatus, setContactStatus] = useState<ContactStatus | null>(null);
+  const [isSendingMessage, setIsSendingMessage] = useState(false);
+  const [unlockedAchievements, setUnlockedAchievements] = useState<string[]>([]);
   const terminalRef = useRef<HTMLDivElement>(null);
 
   const contacts = [
@@ -44,11 +76,63 @@ const ContactSection = () => {
     }
   ];
 
-  const availableCommands = contacts.map((c) => c.command);
+  const availableCommands = [...contacts.map((c) => c.command), 'message.send()', 'achievements.show()', 'clear', 'help'];
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(ACHIEVEMENTS_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored) as string[];
+        if (Array.isArray(parsed)) {
+          setUnlockedAchievements(parsed);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to restore achievements:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(ACHIEVEMENTS_STORAGE_KEY, JSON.stringify(unlockedAchievements));
+    } catch (error) {
+      console.error('Failed to persist achievements:', error);
+    }
+  }, [unlockedAchievements]);
+
+  const appendToTerminal = (lines: string[]) => {
+    setTerminalHistory((prev) => [...prev, ...lines]);
+  };
+
+  const unlockAchievement = (command: string) => {
+    const achievement = TERMINAL_ACHIEVEMENTS.find((item) => item.command === command);
+    if (!achievement) return null;
+
+    const alreadyUnlocked = unlockedAchievements.includes(achievement.id);
+
+    if (!alreadyUnlocked) {
+      setUnlockedAchievements((prev) => [...prev, achievement.id]);
+    }
+
+    return {
+      achievement,
+      alreadyUnlocked,
+    };
+  };
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [terminalHistory, isTyping]);
 
   const executeCommand = (command: string, handle: string, url?: string) => {
     setIsTyping(true);
-    setTerminalText(`> ${command}\nConnecting to ${handle}...\nConnection established!\n`);
+    appendToTerminal([
+      `> ${command}`,
+      `Connecting to ${handle}...`,
+      'Connection established!'
+    ]);
     
     // Open the URL if provided
     if (url) {
@@ -58,6 +142,64 @@ const ContactSection = () => {
     setTimeout(() => {
       setIsTyping(false);
     }, 2000);
+  };
+
+  const handleMessageSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSendingMessage) return;
+
+    const payload = {
+      name: contactForm.name.trim(),
+      email: contactForm.email.trim(),
+      subject: contactForm.subject.trim(),
+      message: contactForm.message.trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.subject || !payload.message) {
+      setContactStatus({
+        type: 'error',
+        text: 'All fields are required before transmission.',
+      });
+      appendToTerminal([
+        '> message.send()',
+        'Payload validation failed.',
+        'Fill all required fields and retransmit.',
+      ]);
+      return;
+    }
+
+    setIsSendingMessage(true);
+    setContactStatus(null);
+    appendToTerminal([
+      '> message.send()',
+      'Encrypting payload...',
+      'Routing to transmission gateway...'
+    ]);
+
+    const result = await sendContactMessage(payload);
+
+    if (result.ok) {
+      appendToTerminal([
+        'Transmission successful.',
+        'Message delivered to inbox.',
+      ]);
+      setContactStatus({
+        type: 'success',
+        text: result.message || 'Message transmitted successfully.',
+      });
+      setContactForm({ name: '', email: '', subject: '', message: '' });
+    } else {
+      appendToTerminal([
+        'Transmission failed.',
+        `Error: ${result.error || 'Unknown gateway failure.'}`,
+      ]);
+      setContactStatus({
+        type: 'error',
+        text: result.error || 'Failed to transmit message.',
+      });
+    }
+
+    setIsSendingMessage(false);
   };
 
   const handleTerminalInput = (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,8 +213,7 @@ const ContactSection = () => {
     const matchedContact = contacts.find(c => c.command === input);
 
     if (matchedContact) {
-      setTerminalHistory((prev) => [
-        ...prev,
+      appendToTerminal([
         `> ${input}`,
         `Connecting to ${matchedContact.handle}...`,
         'Connection established!'
@@ -83,16 +224,45 @@ const ContactSection = () => {
         }
         setIsTyping(false);
       }, 1200);
+    } else if (input === 'achievements.show()') {
+      const unlockedCount = unlockedAchievements.length;
+      appendToTerminal([
+        '> achievements.show()',
+        `Unlocked ${unlockedCount}/${TERMINAL_ACHIEVEMENTS.length} achievements.`,
+        ...TERMINAL_ACHIEVEMENTS.map((item) => {
+          const unlocked = unlockedAchievements.includes(item.id);
+          return `${unlocked ? '[UNLOCKED]' : '[LOCKED]'} ${item.title}`;
+        }),
+      ]);
+      setIsTyping(false);
+    } else if (input === 'clear') {
+      setTerminalHistory([]);
+      setIsTyping(false);
+    } else if (ACHIEVEMENT_COMMANDS.has(input)) {
+      const unlockedResult = unlockAchievement(input);
+      if (unlockedResult) {
+        appendToTerminal([
+          `> ${input}`,
+          unlockedResult.alreadyUnlocked ? 'Achievement already unlocked.' : `Achievement unlocked: ${unlockedResult.achievement.title}`,
+          unlockedResult.achievement.reward,
+        ]);
+      }
+      setIsTyping(false);
+    } else if (input === 'message.send()') {
+      appendToTerminal([
+        '> message.send()',
+        'Use QUICK.MESSAGE panel to submit secure payload.',
+      ]);
+      setContactStatus(null);
+      setIsTyping(false);
     } else if (input === 'help') {
-      setTerminalHistory((prev) => [
-        ...prev,
+      appendToTerminal([
         'Available commands:',
         ...availableCommands
       ]);
       setIsTyping(false);
     } else {
-      setTerminalHistory((prev) => [
-        ...prev,
+      appendToTerminal([
         `> ${input}`,
         'connecting...',
         "Command not recognized. Type 'help' for available commands."
@@ -139,11 +309,6 @@ const ContactSection = () => {
               {terminalHistory.map((line, idx) => (
                 <div key={idx} className="whitespace-pre-line text-cyber-blue mb-1">{line}</div>
               ))}
-              {terminalText && (
-                <div className="text-cyber-blue whitespace-pre-line mb-2">
-                  {terminalText}
-                </div>
-              )}
               <form onSubmit={handleTerminalInput} className="flex items-center text-cyber-green mt-2">
                 <span className="mr-2">root@nightcity:~$</span>
                 <input
@@ -174,6 +339,18 @@ const ContactSection = () => {
                   {contact.command}
                 </button>
               ))}
+              <button
+                onClick={() => {
+                  appendToTerminal([
+                    '> achievements.show()',
+                    `Unlocked ${unlockedAchievements.length}/${TERMINAL_ACHIEVEMENTS.length} achievements.`,
+                  ]);
+                }}
+                className="block w-full text-left text-sm font-mono text-cyber-purple hover:text-cyber-pink transition-colors"
+                disabled={isTyping}
+              >
+                achievements.show()
+              </button>
             </div>
           </div>
 
@@ -241,25 +418,94 @@ const ContactSection = () => {
               </div>
             </div>
 
+            <div className="pixel-button border-cyber-green text-white p-6">
+              <GlitchText className="text-lg text-cyber-green mb-4">
+                ACHIEVEMENTS.LOG
+              </GlitchText>
+
+              <div className="text-xs text-gray-400 mb-3">
+                UNLOCKED: {unlockedAchievements.length}/{TERMINAL_ACHIEVEMENTS.length}
+              </div>
+
+              <div className="space-y-2">
+                {TERMINAL_ACHIEVEMENTS.map((item) => {
+                  const unlocked = unlockedAchievements.includes(item.id);
+
+                  return (
+                    <div
+                      key={item.id}
+                      className={`border px-3 py-2 text-xs ${
+                        unlocked
+                          ? 'border-cyber-green text-cyber-green bg-cyber-green/10'
+                          : 'border-gray-600 text-gray-400 bg-cyber-dark/40'
+                      }`}
+                    >
+                      <div className="font-bold">{item.title}</div>
+                      <div className="text-[11px] opacity-80 mt-1">{unlocked ? item.reward : 'Hidden command required...'}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Quick Message */}
             <div className="pixel-button border-cyber-pink text-white p-6">
               <GlitchText className="text-lg text-cyber-pink mb-4">
                 QUICK.MESSAGE
               </GlitchText>
               
-              <div className="space-y-3">
+              <form className="space-y-3" onSubmit={handleMessageSubmit}>
                 <input 
                   type="text"
-                  placeholder="Enter your message..."
+                  placeholder="Your name"
+                  value={contactForm.name}
+                  onChange={(e) => setContactForm((prev) => ({ ...prev, name: e.target.value }))}
                   className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
                 />
-                <PixelButton variant="accent" className="w-full" disabled>
-                  TRANSMIT MESSAGE
+                <input 
+                  type="email"
+                  placeholder="your@email.com"
+                  value={contactForm.email}
+                  onChange={(e) => setContactForm((prev) => ({ ...prev, email: e.target.value }))}
+                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
+                />
+                <input 
+                  type="text"
+                  placeholder="Subject"
+                  value={contactForm.subject}
+                  onChange={(e) => setContactForm((prev) => ({ ...prev, subject: e.target.value }))}
+                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
+                />
+                <textarea
+                  placeholder="Enter your message..."
+                  value={contactForm.message}
+                  onChange={(e) => setContactForm((prev) => ({ ...prev, message: e.target.value }))}
+                  rows={4}
+                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none resize-none"
+                />
+                <input 
+                  type="hidden"
+                  value="message.send()"
+                  aria-hidden="true"
+                />
+                <PixelButton variant="accent" className="w-full" disabled={isSendingMessage}>
+                  {isSendingMessage ? 'TRANSMITTING...' : 'TRANSMIT MESSAGE'}
                 </PixelButton>
+
+                {contactStatus && (
+                  <div
+                    className={`text-xs text-center ${
+                      contactStatus.type === 'success' ? 'text-cyber-green' : 'text-red-400'
+                    }`}
+                  >
+                    {contactStatus.text}
+                  </div>
+                )}
+
                 <div className="text-xs text-gray-400 text-center">
-                  * Backend integration required for email delivery
+                  * Messages are transmitted through secure serverless gateway
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -269,18 +515,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
-/* Add this to the bottom of the file or in your CSS:
-.terminal-cursor-block {
-  display: inline-block;
-  width: 1ch;
-  height: 1.2em;
-  background: #00FF41;
-  animation: blink-cursor 1s steps(1) infinite;
-  vertical-align: bottom;
-}
-@keyframes blink-cursor {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-*/

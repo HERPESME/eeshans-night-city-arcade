@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -126,8 +127,8 @@ export default {
 					'100%': { transform: 'translateX(calc(100vw + 50px))' }
 				},
 				'flicker': {
-					'0%, 100%': { opacity: 1 },
-					'50%': { opacity: 0.5 }
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
 				}
 			},
 			animation: {
@@ -142,5 +143,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

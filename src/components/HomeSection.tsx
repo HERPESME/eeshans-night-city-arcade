@@ -1,6 +1,5 @@
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 import { useState, useRef } from 'react';
 
 interface HomeSectionProps {
@@ -10,7 +9,6 @@ interface HomeSectionProps {
 }
 
 const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMusic }: HomeSectionProps) => {
-  const [open, setOpen] = useState(false);
   const [showGif, setShowGif] = useState(false);
   const [playHover, setPlayHover] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -215,6 +213,9 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
             <img
               src="/media/6fbb634a2a22545d2fe04cd21b3077ba.gif"
               alt="Retro Video"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
               style={{
                 display: 'block',
                 width: 'auto',
@@ -228,7 +229,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
             <audio
               ref={audioRef}
               src="/media/Cyberpunk Edgerunners Ep 4 I LL TAKE YOU TO THE MOON I PROMISE Dub.mp3"
-              autoPlay
+              preload="none"
               style={{ display: 'none' }}
               onEnded={handleCloseModal}
             />

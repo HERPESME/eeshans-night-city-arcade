@@ -9,8 +9,27 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [loadingText, setLoadingText] = useState('LOADING');
   const [crash, setCrash] = useState(false);
   const [flash, setFlash] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const applyPreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    applyPreference();
+
+    mediaQuery.addEventListener('change', applyPreference);
+    return () => mediaQuery.removeEventListener('change', applyPreference);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      const quickTimeout = setTimeout(() => {
+        onComplete();
+      }, 250);
+
+      return () => clearTimeout(quickTimeout);
+    }
+
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -33,13 +52,13 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     // Flicker loading text
     const textInterval = setInterval(() => {
       setLoadingText(prev => prev === 'LOADING' ? 'LOADING...' : 'LOADING');
-    }, 500);
+    }, 700);
 
     return () => {
       clearInterval(interval);
       clearInterval(textInterval);
     };
-  }, [onComplete]);
+  }, [onComplete, prefersReducedMotion]);
 
   return (
     <div className="fixed inset-0 bg-dark-bg flex flex-col items-center justify-center scanlines z-50">
@@ -134,6 +153,8 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             src="/media/qaFq+R.gif"
             alt="Walking Man"
             className="absolute"
+            decoding="async"
+            fetchPriority="high"
             style={{
               left: `calc(${progress}% - 3.5rem)`,
               bottom: '-1.2rem',

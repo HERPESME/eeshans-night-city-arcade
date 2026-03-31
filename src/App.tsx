@@ -5,49 +5,56 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 const queryClient = new QueryClient();
+
+const PLAYLIST = [
+  {
+    src: "/media/05. I Really Want to Stay at Your House.mp3",
+    title: "I Really Wanna Stay At Your House"
+  },
+  {
+    src: "/media/03. Who's Ready for Tomorrow.mp3",
+    title: "Who's Ready for Tomorrow"
+  },
+  {
+    src: "/media/47. Let You Down.mp3",
+    title: "Let You Down"
+  },
+  {
+    src: "/media/17. Little Stranger.mp3",
+    title: "Little Stranger"
+  }
+] as const;
 
 const App = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(true);
   const [musicStarted, setMusicStarted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [backgroundMusicPaused, setBackgroundMusicPaused] = useState(false);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [marqueeDuration, setMarqueeDuration] = useState(12); // seconds
   const [showSongList, setShowSongList] = useState(false);
 
-  const playlist = [
-    {
-      src: "/media/05. I Really Want to Stay at Your House.mp3",
-      title: "I Really Wanna Stay At Your House"
-    },
-    {
-      src: "/media/03. Who's Ready for Tomorrow.mp3", 
-      title: "Who's Ready for Tomorrow"
-    },
-    {
-      src: "/media/47. Let You Down.mp3",
-      title: "Let You Down"
-    },
-    {
-      src: "/media/17. Little Stranger.mp3",
-      title: "Little Stranger"
+  const skipToNextSong = useCallback(() => {
+    const nextIndex = (currentSongIndex + 1) % PLAYLIST.length;
+    setCurrentSongIndex(nextIndex);
+    if (audioRef.current) {
+      audioRef.current.src = PLAYLIST[nextIndex].src;
+      audioRef.current.currentTime = 0;
+      if (!muted && musicStarted) {
+        audioRef.current.play();
+      }
     }
-  ];
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  }, [currentSongIndex, muted, musicStarted]);
 
   useEffect(() => {
     // Set up media session for better media key support
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: playlist[currentSongIndex].title,
+        title: PLAYLIST[currentSongIndex].title,
         artist: 'Cyberpunk 2077',
         album: 'Night City Arcade',
         artwork: [
@@ -56,10 +63,10 @@ const App = () => {
       });
 
       navigator.mediaSession.setActionHandler('previoustrack', () => {
-        const prevIndex = currentSongIndex === 0 ? playlist.length - 1 : currentSongIndex - 1;
+        const prevIndex = currentSongIndex === 0 ? PLAYLIST.length - 1 : currentSongIndex - 1;
         setCurrentSongIndex(prevIndex);
         if (audioRef.current) {
-          audioRef.current.src = playlist[prevIndex].src;
+          audioRef.current.src = PLAYLIST[prevIndex].src;
           audioRef.current.currentTime = 0;
           if (!muted && musicStarted) {
             audioRef.current.play();
@@ -88,10 +95,10 @@ const App = () => {
         if (event.code === 'MediaTrackNext') {
           skipToNextSong();
         } else {
-          const prevIndex = currentSongIndex === 0 ? playlist.length - 1 : currentSongIndex - 1;
+          const prevIndex = currentSongIndex === 0 ? PLAYLIST.length - 1 : currentSongIndex - 1;
           setCurrentSongIndex(prevIndex);
           if (audioRef.current) {
-            audioRef.current.src = playlist[prevIndex].src;
+            audioRef.current.src = PLAYLIST[prevIndex].src;
             audioRef.current.currentTime = 0;
             if (!muted && musicStarted) {
               audioRef.current.play();
@@ -106,13 +113,13 @@ const App = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [currentSongIndex, muted, musicStarted]);
+  }, [currentSongIndex, muted, musicStarted, skipToNextSong]);
 
   useEffect(() => {
     // Update media session metadata when song changes
     if ('mediaSession' in navigator && musicStarted) {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: playlist[currentSongIndex].title,
+        title: PLAYLIST[currentSongIndex].title,
         artist: 'Cyberpunk 2077',
         album: 'Night City Arcade',
         artwork: [
@@ -130,7 +137,7 @@ const App = () => {
       const duration = Math.max(6, marqueeWidth / 80);
       setMarqueeDuration(duration);
     }
-  }, [currentSongIndex, playlist[currentSongIndex].title, musicStarted]);
+  }, [currentSongIndex, musicStarted]);
 
   const pauseBackgroundMusic = () => {
     if (audioRef.current && !muted && musicStarted) {
@@ -163,18 +170,6 @@ const App = () => {
     });
   };
 
-  const skipToNextSong = () => {
-    const nextIndex = (currentSongIndex + 1) % playlist.length;
-    setCurrentSongIndex(nextIndex);
-    if (audioRef.current) {
-      audioRef.current.src = playlist[nextIndex].src;
-      audioRef.current.currentTime = 0;
-      if (!muted && musicStarted) {
-        audioRef.current.play();
-      }
-    }
-  };
-
   const handleSongEnd = () => {
     skipToNextSong();
   };
@@ -186,8 +181,9 @@ const App = () => {
         <Sonner />
         <audio
           ref={audioRef}
-          src={playlist[currentSongIndex].src}
+          src={PLAYLIST[currentSongIndex].src}
           autoPlay={musicStarted}
+          preload="none"
           loop={false}
           muted={muted || !musicStarted}
           onEnded={handleSongEnd}
@@ -200,7 +196,7 @@ const App = () => {
           >
             <div className="mb-2 text-cyber-pink text-lg">Select a Song</div>
             <ul className="w-full">
-              {playlist.map((song, idx) => (
+              {PLAYLIST.map((song, idx) => (
                 <li key={song.title}>
                   <button
                     className={`w-full text-left px-2 py-2 rounded transition-colors ${idx === currentSongIndex ? 'bg-cyber-blue/20 text-cyber-pink' : 'hover:bg-cyber-blue/10 text-cyber-blue'}`}
@@ -208,7 +204,7 @@ const App = () => {
                       setCurrentSongIndex(idx);
                       setShowSongList(false);
                       if (audioRef.current) {
-                        audioRef.current.src = playlist[idx].src;
+                        audioRef.current.src = PLAYLIST[idx].src;
                         audioRef.current.currentTime = 0;
                         if (!muted && musicStarted) {
                           audioRef.current.play();
@@ -232,7 +228,7 @@ const App = () => {
         {/* Now Playing Marquee Banner (laptop/desktop only) */}
         {musicStarted && !muted && (
           <div
-            className="fixed bottom-6 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 flex items-center hidden sm:flex cursor-pointer"
+            className="fixed bottom-6 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 hidden sm:flex sm:items-center cursor-pointer"
             style={{
               right: '96px',
               minWidth: 180,
@@ -256,10 +252,10 @@ const App = () => {
               }}
             >
               <span style={{ paddingRight: '2rem' }}>
-                Now Playing: "{playlist[currentSongIndex].title}"
+                Now Playing: "{PLAYLIST[currentSongIndex].title}"
               </span>
               <span style={{ paddingRight: '2rem' }}>
-                Now Playing: "{playlist[currentSongIndex].title}"
+                Now Playing: "{PLAYLIST[currentSongIndex].title}"
               </span>
             </div>
             <style>{`

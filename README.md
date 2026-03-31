@@ -1,64 +1,105 @@
-**Night City Arcade Portfolio**
-# Eeshan - Cyberpunk Portfolio
+# Eeshan — Night City Arcade Portfolio
 
-A visually striking, cyberpunk-inspired developer portfolio for myself, Eeshan Singh. This project showcases my Full-stack and AI/ML skills with a retro-futuristic, interactive design.
+A cyberpunk-retro portfolio showcasing full-stack and AI/ML work with interactive terminal UI, themed animations, and live developer stats.
 
 ## 🚀 Features
-- **Pixel-art & glitch effects** for a unique cyberpunk vibe
-- **Animated loading screen** with cinematic sci-fi crash intro
-- **Dynamic music bar** with selectable playlist
-- **Section-based navigation**: Home, About, Projects, Terminal/Contact
-- **Terminal-style contact page** for interactive communication
-- **LeetCode & GitHub stats** integration
-- **Responsive design** and custom UI components
+
+- Pixel-art + glitch visual system
+- Interactive loading sequence and music controls
+- Command palette quick navigation (`Cmd/Ctrl + K`)
+- Project database with filters, inspect mode, and featured repos
+- Terminal contact center with serverless message delivery
+- Hidden terminal achievements / easter-egg commands
+- Live LeetCode and GitHub stats integrations
 
 ## 🛠️ Tech Stack
-- React + TypeScript
-- Tailwind CSS
-- Custom pixel-art and glitch UI
-- Netlify Functions (for LeetCode stats proxy)
+
+- React + TypeScript + Vite
+- Tailwind CSS + shadcn/ui primitives
+- Netlify Functions (`leetcode`, `contact`, `github`)
 
 ## 📦 Getting Started
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/night-city-arcade-portfolio.git
-   cd night-city-arcade-portfolio
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-3. **Run locally:**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-4. **Build for production:**
-   ```bash
-   npm run build
-   # or
-   yarn build
-   ```
+
+1. Clone and install:
+   - `git clone https://github.com/YOUR_USERNAME/night-city-arcade-portfolio.git`
+   - `cd night-city-arcade-portfolio`
+   - `npm install`
+2. Run locally:
+   - `npm run dev`
+3. Build production bundle:
+   - `npm run build`
+
+## 📮 Contact Function Setup (Netlify)
+
+`QUICK.MESSAGE` sends data to `/.netlify/functions/contact`.
+
+Required environment variables:
+
+- `RESEND_API_KEY`
+- `CONTACT_TO_EMAIL`
+
+Optional:
+
+- `CONTACT_FROM_EMAIL` (defaults to `onboarding@resend.dev`)
+
+## 🛰️ Live GitHub Stats Setup (Netlify)
+
+`PROJECTS.DATABASE` fetches live stats from `/.netlify/functions/github`.
+
+Optional environment variable:
+
+- `GITHUB_TOKEN` (recommended to improve rate limits)
+
+## 🕹️ Terminal Achievements Commands
+
+Try these in `CONTACT.TERMINAL`:
+
+- `achievements.show()`
+- `unlock.david()`
+- `theme.retro()`
+- `summon.relic()`
+- `trace.ghost()`
+- `clear`
+
+Unlock state is persisted in browser local storage.
+
+## ⚙️ Performance Notes
+
+Optimizations currently applied:
+
+- Deferred background music loading (`preload="none"`)
+- Lazy/async loading for heavy project and modal visuals
+- Reduced-motion support for animation-heavy experiences
+- Stabilized playlist references to avoid unnecessary re-renders
+
+For future media updates:
+
+- Prefer compressed `.webp` / `.avif` for large images
+- Replace heavy GIF loops with short videos where possible
+- Trim and normalize audio before upload
+
+## � SEO / Social Metadata Note
+
+Canonical + OG + sitemap currently use:
+
+- `https://eeshans-night-city-arcade.netlify.app/`
+
+If your production URL changes, update:
+
+- `index.html`
+- `public/robots.txt`
+- `public/sitemap.xml`
 
 ## 🖼️ Assets & Media
-- All included images, gifs, and music are for demo purposes. **Replace or remove any media you do not have rights to redistribute before making your fork public.**
-- The pixel-art and glitch effects are custom and open for reuse.
 
-## 📝 License
-This project is open-source under the MIT License. See [LICENSE](LICENSE) for details.
-
-## 🤝 Forking & Contributions
-- Forks and pull requests are welcome!
-- Please credit the original author if you use significant portions of the design or code.
+Included media is demo-oriented. Replace or remove any asset you don’t have redistribution rights for before publishing forks.
 
 ## 📬 Contact
-- [LinkedIn](https://www.linkedin.com/in/eeshan-singh-926790285)
-- [GitHub](https://github.com/HERPESME)
-- Email: eeshan.singh53@gmail.com
 
----
+- LinkedIn: [eeshan-singh-926790285](https://www.linkedin.com/in/eeshan-singh-926790285)
+- GitHub: [HERPESME](https://github.com/HERPESME)
+- Email: `eeshan.singh53@gmail.com`
 
-**Night City Arcade Portfolio** — Stand out with Style, Code, and a little bit of Cyberpunk-NightCity magic.
+## 📝 License
+
+MIT — see `LICENSE`.

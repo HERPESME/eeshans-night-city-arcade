@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import CyberpunkNav from '@/components/CyberpunkNav';
+import CyberpunkCommandPalette from '@/components/CyberpunkCommandPalette';
 import HomeSection from '@/components/HomeSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
@@ -14,6 +15,7 @@ interface IndexProps {
 const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   useEffect(() => {
     // Add scanlines effect to body
@@ -59,7 +61,15 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     <div className="min-h-screen bg-dark-bg text-white font-pixel pixel-perfect">
       <CyberpunkNav 
         activeSection={activeSection} 
-        onSectionChange={setActiveSection} 
+        onSectionChange={setActiveSection}
+        onOpenCommandPalette={() => setPaletteOpen(true)}
+      />
+
+      <CyberpunkCommandPalette
+        activeSection={activeSection}
+        onSectionChange={setActiveSection}
+        open={paletteOpen}
+        onOpenChange={setPaletteOpen}
       />
       
       <main className="pt-16">
