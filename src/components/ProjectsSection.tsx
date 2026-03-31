@@ -237,6 +237,11 @@ const ProjectsSection = () => {
                     </div>
                   )}
                 </div>
+                {/* Subtle dim overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.12)' }}
+                />
                 {/* Pixelated overlay effect */}
                 <div className="absolute inset-0 opacity-20 pixel-perfect"
                      style={{
@@ -395,8 +400,8 @@ const ProjectsSection = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-2xl text-cyber-green font-bold">{loading ? '...' : stats?.totalPublicCommits ?? 0}</div>
-                <div className="text-xs text-gray-400">PUBLIC COMMITS</div>
+                <div className="text-2xl text-cyber-green font-bold">{loading ? '...' : stats?.totalCommits ?? 0}</div>
+                <div className="text-xs text-gray-400">TOTAL COMMITS</div>
               </div>
               <div>
                 <div className="text-2xl text-cyber-blue font-bold">{loading ? '...' : stats?.publicRepos ?? 0}</div>

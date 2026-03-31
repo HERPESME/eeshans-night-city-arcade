@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 const DEFAULT_USERNAME = 'HERPESME';
 
-const PINNED_REPOS_QUERY = `
+const DASHBOARD_QUERY = `
   query($username: String!) {
     user(login: $username) {
       pinnedItems(first: 6, types: REPOSITORY) {
@@ -20,6 +20,9 @@ const PINNED_REPOS_QUERY = `
             updatedAt
           }
         }
+      }
+      contributionsCollection {
+        totalCommitContributions
       }
     }
   }
@@ -59,7 +62,7 @@ exports.handler = async function handler(event) {
   };
 
   try {
-    const [profileRes, reposRes, commitsRes, pinnedRes] = await Promise.all([
+    const [profileRes, reposRes, commitsRes, dashboardRes] = await Promise.all([
       fetch(`https://api.github.com/users/${username}`, { headers }),
       fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers }),
       fetch(`https://api.github.com/search/commits?q=author:${encodeURIComponent(username)}+is:public&per_page=1`, {
@@ -76,7 +79,7 @@ exports.handler = async function handler(event) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              query: PINNED_REPOS_QUERY,
+              query: DASHBOARD_QUERY,
               variables: { username },
             }),
           })
@@ -99,8 +102,8 @@ exports.handler = async function handler(event) {
 
     const profile = await profileRes.json();
     const repos = await reposRes.json();
-  const commitsSearch = commitsRes.ok ? await commitsRes.json() : null;
-  const pinnedData = pinnedRes && pinnedRes.ok ? await pinnedRes.json() : null;
+    const commitsSearch = commitsRes.ok ? await commitsRes.json() : null;
+    const dashboardData = dashboardRes && dashboardRes.ok ? await dashboardRes.json() : null;
 
     const publicRepos = Array.isArray(repos) ? repos : [];
 
@@ -108,8 +111,15 @@ exports.handler = async function handler(event) {
     const totalForks = publicRepos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
     const languages = Array.from(new Set(publicRepos.map((repo) => repo.language).filter(Boolean)));
 
-    const totalPublicCommits =
+    const fallbackCommitCount =
       commitsSearch && typeof commitsSearch.total_count === 'number' ? commitsSearch.total_count : 0;
+
+    const profileCommitCount =
+      typeof dashboardData?.data?.user?.contributionsCollection?.totalCommitContributions === 'number'
+        ? dashboardData.data.user.contributionsCollection.totalCommitContributions
+        : null;
+
+    const totalCommits = profileCommitCount ?? fallbackCommitCount;
 
     const fallbackFeaturedRepos = publicRepos
       .filter((repo) => !repo.fork)
@@ -131,8 +141,8 @@ exports.handler = async function handler(event) {
         updatedAt: repo.updated_at,
       }));
 
-    const pinnedRepos = Array.isArray(pinnedData?.data?.user?.pinnedItems?.nodes)
-      ? pinnedData.data.user.pinnedItems.nodes
+    const pinnedRepos = Array.isArray(dashboardData?.data?.user?.pinnedItems?.nodes)
+      ? dashboardData.data.user.pinnedItems.nodes
           .filter(Boolean)
           .map((repo) => ({
             id: parseInt(repo.id.replace(/\D/g, '').slice(-9), 10) || Date.now(),
@@ -158,7 +168,7 @@ exports.handler = async function handler(event) {
         totalStars,
         totalForks,
         languageCount: languages.length,
-        totalPublicCommits,
+        totalCommits,
       },
       featuredRepos,
       lastUpdated: new Date().toISOString(),

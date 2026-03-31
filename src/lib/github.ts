@@ -16,7 +16,7 @@ export interface GitHubStats {
   totalStars: number;
   totalForks: number;
   languageCount: number;
-  totalPublicCommits: number;
+  totalCommits: number;
 }
 
 export interface GitHubStatsResponse {
@@ -41,7 +41,7 @@ const fallbackResponse: GitHubStatsResponse = {
     totalStars: 0,
     totalForks: 0,
     languageCount: 0,
-    totalPublicCommits: 0,
+    totalCommits: 0,
   },
   featuredRepos: [],
   lastUpdated: new Date().toISOString(),
