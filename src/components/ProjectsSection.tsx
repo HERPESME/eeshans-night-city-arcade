@@ -14,6 +14,8 @@ interface Project {
   color: string;
   codeUrl?: string;
   demoUrl?: string;
+  websiteUrl?: string;
+  appUrl?: string;
   image?: string;
   architecture: string[];
   keyChallenges: string[];
@@ -31,22 +33,25 @@ const projects: Project[] = [
     color: 'border-cyber-blue',
     codeUrl: 'https://github.com/HERPESME/prompt-career-boost.git',
     demoUrl: 'https://careerboostaiweb.netlify.app/#',
-    image: '/media/Screenshot 2025-07-15 at 6.08.41 PM.png',
+  image: '/media/pngtree-arcade-retro-cyberpunk-generate-ai-image_15729768.jpg',
     architecture: ['React + TypeScript frontend', 'Supabase auth/data layer', 'Prompt orchestration for OpenAI workflows'],
     keyChallenges: ['Reducing latency for AI responses', 'Maintaining resume output quality', 'Balancing UX polish with API usage limits'],
     impact: 'Streamlined resume + interview prep workflows into one AI-assisted platform.',
   },
   {
     id: 2,
-    title: 'E-COMMERCE PLATFORM',
+    title: 'UltraFit360',
     type: 'FULL-STACK',
-    status: 'DEPLOYED',
-    description: 'Scalable marketplace with real-time analytics',
-    tech: ['Next.js', 'MongoDB', 'Stripe', 'AWS'],
+    status: 'ACTIVE',
+    description: 'Free AI fitness app for smart calorie and macro tracking, structured workout programs with automatic PR detection, and weekly AI coaching reports.',
+    tech: ['AI Coach', 'Meal Photo Logging', 'PR Tracking', 'Apple Health Sync', 'Health Connect', 'Recovery Analytics'],
     color: 'border-cyber-green',
-    architecture: ['Next.js storefront and admin interfaces', 'MongoDB product/order persistence', 'Stripe checkout and payment webhooks'],
-    keyChallenges: ['Inventory consistency under concurrent checkouts', 'Secure payment event processing', 'Dashboard analytics data freshness'],
-    impact: 'Built a production-style commerce flow with payments, tracking, and analytics visibility.',
+  image: '/media/420982.jpg',
+    websiteUrl: 'https://ultrafit360.com',
+    appUrl: undefined,
+    architecture: ['AI coach chat with weekly multi-agent progress reports', 'Meal logging via photo, text, and saved food entries', 'Workout program tracking with auto personal-record detection'],
+    keyChallenges: ['Unifying nutrition, training, and recovery into one daily flow', 'Keeping AI insights personalized across diverse user goals', 'Balancing depth of analytics with simple, fast user interactions'],
+    impact: 'Delivers an all-in-one fitness experience that combines nutrition, workout execution, and adaptive AI coaching in a single app.',
   },
   {
     id: 3,
@@ -56,7 +61,7 @@ const projects: Project[] = [
     description: 'Deep RL agent for autonomous stock trading with real-time and historical data. Modular, Gym-compatible, and Docker-ready.',
     tech: ['Python', 'PyTorch', 'Ray RLlib', 'OpenAI Gym', 'Yahoo Finance', 'Pandas', 'NumPy'],
     color: 'border-cyber-pink',
-    image: '/media/6fbb634a2a22545d2fe04cd21b3077ba.gif',
+  image: '/media/wp11289734.jpg',
     codeUrl: 'https://github.com/HERPESME/QuantTrader_Project.git',
     architecture: ['Gym-compatible environment and market data pipeline', 'RL training loop with policy optimization', 'Modular strategy/evaluation components'],
     keyChallenges: ['Avoiding overfitting in non-stationary markets', 'Reward design for risk-aware behavior', 'Reproducibility of backtests and evaluations'],
@@ -70,6 +75,7 @@ const projects: Project[] = [
     description: 'Secure cryptocurrency wallet with DeFi integration',
     tech: ['Web3.js', 'Solidity', 'React', 'MetaMask'],
     color: 'border-cyber-orange',
+  image: '/media/98ec1f2cfd04d83edeee07f244e062a9.jpg',
     architecture: ['React wallet UI + transaction history', 'MetaMask signing and account access', 'Solidity smart contract interactions'],
     keyChallenges: ['Managing transaction confirmation states', 'Gas-fee-aware UX decisions', 'Safer contract interaction patterns'],
     impact: 'Enabled secure wallet actions and DeFi interaction flows with strong user feedback states.',
@@ -82,6 +88,7 @@ const projects: Project[] = [
     description: 'Advanced predictive analytics using deep learning',
     tech: ['PyTorch', 'FastAPI', 'Docker', 'Redis'],
     color: 'border-cyber-purple',
+  image: '/media/wp8802100.jpg',
     architecture: ['PyTorch model training/inference stack', 'FastAPI serving endpoints', 'Redis caching + Dockerized deployment'],
     keyChallenges: ['Model drift and retraining cadence', 'Low-latency inference under load', 'Feature pipeline consistency'],
     impact: 'Delivered a repeatable ML serving workflow from experiment to containerized API.',
@@ -94,6 +101,7 @@ const projects: Project[] = [
     description: 'End-to-end encrypted messaging platform',
     tech: ['Socket.io', 'Express', 'React', 'MongoDB'],
     color: 'border-neon-blue',
+  image: '/media/pngtree-arcade-retro-cyberpunk-generate-ai-image_15729770.jpg',
     architecture: ['Socket.io real-time transport layer', 'Express auth and conversation APIs', 'MongoDB message and user persistence'],
     keyChallenges: ['Reliable delivery and reconnect handling', 'Room-level access control', 'Message state synchronization between clients'],
     impact: 'Implemented real-time chat behavior with strong responsiveness and secure communication patterns.',
@@ -287,7 +295,18 @@ const ProjectsSection = () => {
                 </PixelButton>
 
                 <div className="flex gap-2">
-                {project.codeUrl ? (
+                {project.websiteUrl ? (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <PixelButton variant="success" size="sm" className="w-full">
+                      WEBSITE
+                    </PixelButton>
+                  </a>
+                ) : project.codeUrl ? (
                   <a
                     href={project.codeUrl}
                     target="_blank"
@@ -300,11 +319,26 @@ const ProjectsSection = () => {
                   </a>
                 ) : (
                   <PixelButton variant="primary" size="sm" className="w-full flex-1" disabled>
-                    VIEW CODE
+                    {project.websiteUrl ? 'WEBSITE' : 'VIEW CODE'}
                   </PixelButton>
                 )}
 
-                {project.demoUrl ? (
+                {project.websiteUrl ? project.appUrl ? (
+                  <a
+                    href={project.appUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <PixelButton variant="accent" size="sm" className="w-full">
+                      APP
+                    </PixelButton>
+                  </a>
+                ) : (
+                  <PixelButton variant="accent" size="sm" className="w-full flex-1" disabled>
+                    APP
+                  </PixelButton>
+                ) : project.demoUrl ? (
                   <a
                     href={project.demoUrl}
                     target="_blank"
@@ -317,7 +351,7 @@ const ProjectsSection = () => {
                   </a>
                 ) : (
                   <PixelButton variant="accent" size="sm" className="w-full flex-1" disabled>
-                    DEMO
+                    {project.websiteUrl ? 'APP' : 'DEMO'}
                   </PixelButton>
                 )}
                 </div>
@@ -361,8 +395,8 @@ const ProjectsSection = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-2xl text-cyber-green font-bold">{loading ? '...' : stats?.recentPushCommits ?? 0}</div>
-                <div className="text-xs text-gray-400">RECENT COMMITS</div>
+                <div className="text-2xl text-cyber-green font-bold">{loading ? '...' : stats?.totalPublicCommits ?? 0}</div>
+                <div className="text-xs text-gray-400">PUBLIC COMMITS</div>
               </div>
               <div>
                 <div className="text-2xl text-cyber-blue font-bold">{loading ? '...' : stats?.publicRepos ?? 0}</div>
@@ -476,7 +510,11 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  {inspectProject.codeUrl ? (
+                  {inspectProject.websiteUrl ? (
+                    <a href={inspectProject.websiteUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                      <PixelButton variant="success" className="w-full">OPEN WEBSITE</PixelButton>
+                    </a>
+                  ) : inspectProject.codeUrl ? (
                     <a href={inspectProject.codeUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
                       <PixelButton variant="primary" className="w-full">OPEN SOURCE</PixelButton>
                     </a>
@@ -484,7 +522,13 @@ const ProjectsSection = () => {
                     <PixelButton variant="primary" className="w-full flex-1" disabled>OPEN SOURCE</PixelButton>
                   )}
 
-                  {inspectProject.demoUrl ? (
+                  {inspectProject.websiteUrl ? inspectProject.appUrl ? (
+                    <a href={inspectProject.appUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                      <PixelButton variant="accent" className="w-full">OPEN APP</PixelButton>
+                    </a>
+                  ) : (
+                    <PixelButton variant="accent" className="w-full flex-1" disabled>OPEN APP</PixelButton>
+                  ) : inspectProject.demoUrl ? (
                     <a href={inspectProject.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
                       <PixelButton variant="accent" className="w-full">OPEN DEMO</PixelButton>
                     </a>

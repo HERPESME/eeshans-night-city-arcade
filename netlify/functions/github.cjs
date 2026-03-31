@@ -2,6 +2,29 @@ const fetch = require('node-fetch');
 
 const DEFAULT_USERNAME = 'HERPESME';
 
+const PINNED_REPOS_QUERY = `
+  query($username: String!) {
+    user(login: $username) {
+      pinnedItems(first: 6, types: REPOSITORY) {
+        nodes {
+          ... on Repository {
+            id
+            name
+            description
+            url
+            stargazerCount
+            forkCount
+            primaryLanguage {
+              name
+            }
+            updatedAt
+          }
+        }
+      }
+    }
+  }
+`;
+
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
@@ -36,10 +59,28 @@ exports.handler = async function handler(event) {
   };
 
   try {
-    const [profileRes, reposRes, eventsRes] = await Promise.all([
+    const [profileRes, reposRes, commitsRes, pinnedRes] = await Promise.all([
       fetch(`https://api.github.com/users/${username}`, { headers }),
       fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers }),
-      fetch(`https://api.github.com/users/${username}/events/public?per_page=100`, { headers }),
+      fetch(`https://api.github.com/search/commits?q=author:${encodeURIComponent(username)}+is:public&per_page=1`, {
+        headers: {
+          ...headers,
+          Accept: 'application/vnd.github+json',
+        },
+      }),
+      token
+        ? fetch('https://api.github.com/graphql', {
+            method: 'POST',
+            headers: {
+              ...headers,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              query: PINNED_REPOS_QUERY,
+              variables: { username },
+            }),
+          })
+        : Promise.resolve(null),
     ]);
 
     if (!profileRes.ok) {
@@ -58,7 +99,8 @@ exports.handler = async function handler(event) {
 
     const profile = await profileRes.json();
     const repos = await reposRes.json();
-    const events = eventsRes.ok ? await eventsRes.json() : [];
+  const commitsSearch = commitsRes.ok ? await commitsRes.json() : null;
+  const pinnedData = pinnedRes && pinnedRes.ok ? await pinnedRes.json() : null;
 
     const publicRepos = Array.isArray(repos) ? repos : [];
 
@@ -66,13 +108,10 @@ exports.handler = async function handler(event) {
     const totalForks = publicRepos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
     const languages = Array.from(new Set(publicRepos.map((repo) => repo.language).filter(Boolean)));
 
-    const recentPushCommits = Array.isArray(events)
-      ? events
-          .filter((item) => item && item.type === 'PushEvent')
-          .reduce((sum, item) => sum + ((item.payload && Array.isArray(item.payload.commits) ? item.payload.commits.length : 0)), 0)
-      : 0;
+    const totalPublicCommits =
+      commitsSearch && typeof commitsSearch.total_count === 'number' ? commitsSearch.total_count : 0;
 
-    const featuredRepos = publicRepos
+    const fallbackFeaturedRepos = publicRepos
       .filter((repo) => !repo.fork)
       .sort((a, b) => {
         if ((b.stargazers_count || 0) !== (a.stargazers_count || 0)) {
@@ -92,6 +131,23 @@ exports.handler = async function handler(event) {
         updatedAt: repo.updated_at,
       }));
 
+    const pinnedRepos = Array.isArray(pinnedData?.data?.user?.pinnedItems?.nodes)
+      ? pinnedData.data.user.pinnedItems.nodes
+          .filter(Boolean)
+          .map((repo) => ({
+            id: parseInt(repo.id.replace(/\D/g, '').slice(-9), 10) || Date.now(),
+            name: repo.name,
+            description: repo.description || 'No description available.',
+            url: repo.url,
+            stars: repo.stargazerCount || 0,
+            forks: repo.forkCount || 0,
+            language: repo.primaryLanguage?.name || 'N/A',
+            updatedAt: repo.updatedAt,
+          }))
+      : [];
+
+    const featuredRepos = pinnedRepos.length > 0 ? pinnedRepos : fallbackFeaturedRepos;
+
     return respond(200, {
       ok: true,
       username,
@@ -102,7 +158,7 @@ exports.handler = async function handler(event) {
         totalStars,
         totalForks,
         languageCount: languages.length,
-        recentPushCommits,
+        totalPublicCommits,
       },
       featuredRepos,
       lastUpdated: new Date().toISOString(),
