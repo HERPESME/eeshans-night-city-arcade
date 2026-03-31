@@ -50,8 +50,24 @@ export const useGitHubStats = (): UseGitHubStatsReturn => {
   }, [fetchStats]);
 
   const refresh = useCallback(async () => {
-    await fetchStats();
-  }, [fetchStats]);
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await getGitHubStats(true);
+
+      setStats(data.stats);
+      setFeaturedRepos(data.featuredRepos || []);
+      setLastUpdated(data.lastUpdated);
+
+      if (!data.ok) {
+        setError(data.error || 'Failed to fetch GitHub stats');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch GitHub stats');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   return {
     stats,

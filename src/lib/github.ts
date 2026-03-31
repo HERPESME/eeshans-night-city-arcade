@@ -77,10 +77,10 @@ let cachedStats: GitHubStatsResponse | null = null;
 let lastFetchTime = 0;
 const CACHE_DURATION = 30 * 60 * 1000;
 
-export const getGitHubStats = async (): Promise<GitHubStatsResponse> => {
+export const getGitHubStats = async (forceRefresh = false): Promise<GitHubStatsResponse> => {
   const now = Date.now();
 
-  if (cachedStats && now - lastFetchTime < CACHE_DURATION) {
+  if (!forceRefresh && cachedStats && now - lastFetchTime < CACHE_DURATION) {
     return cachedStats;
   }
 
