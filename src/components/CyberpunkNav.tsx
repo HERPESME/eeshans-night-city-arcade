@@ -5,10 +5,9 @@ import GlitchText from './GlitchText';
 interface CyberpunkNavProps {
   activeSection: string;
   onSectionChange: (section: string) => void;
-  onOpenCommandPalette: () => void;
 }
 
-const CyberpunkNav = ({ activeSection, onSectionChange, onOpenCommandPalette }: CyberpunkNavProps) => {
+const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -40,18 +39,6 @@ const CyberpunkNav = ({ activeSection, onSectionChange, onOpenCommandPalette }: 
 
           {/* Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <PixelButton
-              variant="secondary"
-              size="sm"
-              onClick={onOpenCommandPalette}
-              className="relative"
-            >
-              <span className="flex items-center space-x-2">
-                <span>⌘K</span>
-                <span>NAV</span>
-              </span>
-            </PixelButton>
-
             {navItems.map((item) => (
               <PixelButton
                 key={item.id}
@@ -83,17 +70,6 @@ const CyberpunkNav = ({ activeSection, onSectionChange, onOpenCommandPalette }: 
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 mt-4 bg-dark-bg border-2 border-cyber-purple rounded-lg shadow-lg z-50 flex flex-col items-stretch px-4 py-2 space-y-2 pixel-perfect">
-            <button
-              className="text-left px-4 py-3 font-pixel text-lg border-b border-cyber-purple flex items-center space-x-2 text-cyber-green"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenCommandPalette();
-              }}
-            >
-              <span>⌘</span>
-              <span>QUICK NAV</span>
-            </button>
-
             {navItems.map((item) => (
               <button
                 key={item.id}

@@ -226,7 +226,7 @@ const ProjectsSection = () => {
                       loading="lazy"
                       decoding="async"
                       fetchPriority="low"
-                      style={{ opacity: 1 }}
+                      style={{ opacity: 1, filter: 'brightness(1.08)' }}
                     />
                   ) : (
                     <div className="text-4xl opacity-60">
@@ -240,10 +240,10 @@ const ProjectsSection = () => {
                 {/* Subtle dim overlay */}
                 <div
                   className="absolute inset-0 pointer-events-none"
-                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.12)' }}
+                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.08)' }}
                 />
                 {/* Pixelated overlay effect */}
-                <div className="absolute inset-0 opacity-20 pixel-perfect"
+                <div className="absolute inset-0 opacity-10 pixel-perfect"
                      style={{
                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23${project.color.includes('blue') ? '06B6D4' : project.color.includes('green') ? '10B981' : project.color.includes('pink') ? 'EC4899' : project.color.includes('orange') ? 'F97316' : '8B5CF6'}'%3E%3Cpath d='M0 0h2v2H0V0zm2 2h2v2H2V2z'/%3E%3C/g%3E%3C/svg%3E")`,
                        backgroundSize: '8px 8px'

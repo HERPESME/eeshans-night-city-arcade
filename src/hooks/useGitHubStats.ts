@@ -17,6 +17,20 @@ export const useGitHubStats = (): UseGitHubStatsReturn => {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
+  const dedupeFeaturedRepos = (repos: GitHubFeaturedRepo[]) => {
+    const seen = new Set<string>();
+
+    return repos.filter((repo) => {
+      const key = `${repo.url}::${repo.name}`;
+      if (seen.has(key)) {
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+  };
+
   const fetchStats = useCallback(async () => {
     try {
       setLoading(true);
@@ -24,7 +38,7 @@ export const useGitHubStats = (): UseGitHubStatsReturn => {
       const data = await getGitHubStats();
 
       setStats(data.stats);
-      setFeaturedRepos(data.featuredRepos || []);
+  setFeaturedRepos(dedupeFeaturedRepos(data.featuredRepos || []));
       setLastUpdated(data.lastUpdated);
 
       if (!data.ok) {
@@ -56,7 +70,7 @@ export const useGitHubStats = (): UseGitHubStatsReturn => {
       const data = await getGitHubStats(true);
 
       setStats(data.stats);
-      setFeaturedRepos(data.featuredRepos || []);
+  setFeaturedRepos(dedupeFeaturedRepos(data.featuredRepos || []));
       setLastUpdated(data.lastUpdated);
 
       if (!data.ok) {

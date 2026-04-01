@@ -96,7 +96,7 @@ Included media is demo-oriented. Replace or remove any asset you don’t have re
 
 ## 📬 Contact
 
-- LinkedIn: [eeshan-singh-926790285](https://www.linkedin.com/in/eeshan-singh-926790285)
+- LinkedIn: [eeshan-singh-pokharia-926790285](https://www.linkedin.com/in/eeshan-singh-pokharia-926790285)
 - GitHub: [HERPESME](https://github.com/HERPESME)
 - Email: `eeshan.singh53@gmail.com`
 

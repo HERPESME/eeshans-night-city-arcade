@@ -12,10 +12,14 @@ interface IndexProps {
   resumeBackgroundMusic: () => void;
 }
 
+const QUICK_ACCESS_HINT_KEY = 'nightcityarcade.quick-access-hint.seen';
+
 const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [showQuickAccessHint, setShowQuickAccessHint] = useState(false);
+  const [shortcutLabel, setShortcutLabel] = useState('Ctrl + K');
 
   useEffect(() => {
     // Add scanlines effect to body
@@ -24,6 +28,30 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     return () => {
       document.body.classList.remove('scanlines');
     };
+  }, []);
+
+  useEffect(() => {
+    const isAppleDevice = /Mac|iPhone|iPad|iPod/.test(window.navigator.platform);
+    setShortcutLabel(isAppleDevice ? '⌘ + K' : 'Ctrl + K');
+
+    try {
+      const hintSeen = window.localStorage.getItem(QUICK_ACCESS_HINT_KEY) === '1';
+
+      if (!hintSeen) {
+        setShowQuickAccessHint(true);
+        window.localStorage.setItem(QUICK_ACCESS_HINT_KEY, '1');
+
+        const timeoutId = window.setTimeout(() => {
+          setShowQuickAccessHint(false);
+        }, 7000);
+
+        return () => window.clearTimeout(timeoutId);
+      }
+    } catch {
+      setShowQuickAccessHint(true);
+    }
+
+    return undefined;
   }, []);
 
   const handleLoadingComplete = () => {
@@ -62,7 +90,6 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
       <CyberpunkNav 
         activeSection={activeSection} 
         onSectionChange={setActiveSection}
-        onOpenCommandPalette={() => setPaletteOpen(true)}
       />
 
       <CyberpunkCommandPalette
@@ -71,6 +98,26 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
         open={paletteOpen}
         onOpenChange={setPaletteOpen}
       />
+
+      {showQuickAccessHint && (
+        <div className="fixed bottom-4 right-4 z-50 max-w-xs border-2 border-cyber-purple bg-dark-bg/95 px-4 py-3 text-xs md:text-sm text-cyber-blue shadow-[0_0_24px_rgba(139,92,246,0.35)] pixel-perfect">
+          <div className="flex items-start gap-3">
+            <span className="text-cyber-pink">⌨</span>
+            <div className="flex-1">
+              <p className="text-cyber-pink">Quick Access</p>
+              <p className="mt-1 text-cyber-blue/90">Press {shortcutLabel} to open command navigation.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowQuickAccessHint(false)}
+              className="text-cyber-green hover:text-cyber-pink transition-colors"
+              aria-label="Dismiss quick access hint"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
       
       <main className="pt-16">
         {renderActiveSection()}

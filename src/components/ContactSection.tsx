@@ -22,9 +22,22 @@ const TERMINAL_ACHIEVEMENTS: Achievement[] = [
   { id: 'retro_reboot', title: 'RETRO REBOOT', command: 'theme.retro()', reward: 'Enabled retro-mode uplink protocol.' },
   { id: 'blackwall_relic', title: 'BLACKWALL RELIC', command: 'summon.relic()', reward: 'Recovered encrypted relic fragment.' },
   { id: 'ghost_signal', title: 'GHOST SIGNAL', command: 'trace.ghost()', reward: 'Detected hidden Night City transmission.' },
+  { id: 'afterlife_oath', title: 'AFTERLIFE OATH', command: 'afterlife.toast()', reward: 'Gained street cred in the Afterlife netrunner circle.' },
+  { id: 'sandevistan_sync', title: 'SANDEVISTAN SYNC', command: 'sandevistan.sync()', reward: 'Neural reflexes overclocked for rapid command execution.' },
 ];
 
 const ACHIEVEMENT_COMMANDS = new Set(TERMINAL_ACHIEVEMENTS.map((item) => item.command));
+
+const TERMINAL_EASTER_EGG_LINES: Record<string, string[]> = {
+  'afterlife.toast()': [
+    'Connecting to Afterlife private node...',
+    'Johnny Silverhand: "To legends that never flatline."',
+  ],
+  'sandevistan.sync()': [
+    'Injecting Sandevistan firmware patch...',
+    'Time dilation engaged. Perception running at 200%.',
+  ],
+};
 
 const ContactSection = () => {
   const [isTyping, setIsTyping] = useState(false);
@@ -52,11 +65,11 @@ const ContactSection = () => {
     },
     { 
       name: 'LINKEDIN', 
-      handle: 'eeshan-singh-926790285',
+      handle: 'eeshan-singh-pokharia-926790285',
       command: 'linkedin.connect()',
       icon: '🔗',
       color: 'text-cyber-blue',
-      url: 'https://www.linkedin.com/in/eeshan-singh-926790285'
+      url: 'https://www.linkedin.com/in/eeshan-singh-pokharia-926790285'
     },
     { 
       name: 'EMAIL', 
@@ -241,8 +254,10 @@ const ContactSection = () => {
     } else if (ACHIEVEMENT_COMMANDS.has(input)) {
       const unlockedResult = unlockAchievement(input);
       if (unlockedResult) {
+        const easterEggLines = TERMINAL_EASTER_EGG_LINES[input] || [];
         appendToTerminal([
           `> ${input}`,
+          ...easterEggLines,
           unlockedResult.alreadyUnlocked ? 'Achievement already unlocked.' : `Achievement unlocked: ${unlockedResult.achievement.title}`,
           unlockedResult.achievement.reward,
         ]);
@@ -284,77 +299,110 @@ const ContactSection = () => {
           <div className="text-cyber-blue text-lg">ESTABLISHING CONNECTION...</div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Terminal Interface */}
-          <div className="pixel-button border-cyber-green p-6 bg-black/50">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-cyber-green">
-              <GlitchText className="text-cyber-green">
-                NEURAL_INTERFACE_v2.77
-              </GlitchText>
-              <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-cyber-green rounded-full animate-pulse" />
-                <div className="w-3 h-3 bg-cyber-orange rounded-full" />
-                <div className="w-3 h-3 bg-cyber-pink rounded-full" />
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Column */}
+          <div className="space-y-6">
+            {/* Terminal Interface */}
+            <div className="pixel-button border-cyber-green p-6 bg-black/50 flex flex-col lg:min-h-[42rem]">
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-cyber-green">
+                <GlitchText className="text-cyber-green">
+                  NEURAL_INTERFACE_v2.77
+                </GlitchText>
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 bg-cyber-green rounded-full animate-pulse" />
+                  <div className="w-3 h-3 bg-cyber-orange rounded-full" />
+                  <div className="w-3 h-3 bg-cyber-pink rounded-full" />
+                </div>
               </div>
-            </div>
 
-            {/* Terminal Output */}
-            <div className="h-64 overflow-y-auto font-mono text-sm mb-4" ref={terminalRef}>
-              <div className="text-cyber-green mb-2">
-                Welcome to Eeshan's Neural Interface
+              {/* Terminal Output */}
+              <div className="flex-1 min-h-[12rem] overflow-y-auto font-mono text-sm mb-4" ref={terminalRef}>
+                <div className="text-cyber-green mb-2">
+                  Welcome to Eeshan's Neural Interface
+                </div>
+                <div className="text-gray-400 mb-4">
+                  Type 'help' for available commands
+                </div>
+                {terminalHistory.map((line, idx) => (
+                  <div key={idx} className="whitespace-pre-line text-cyber-blue mb-1">{line}</div>
+                ))}
+                <form onSubmit={handleTerminalInput} className="flex items-center text-cyber-green mt-2">
+                  <span className="mr-2">root@nightcity:~$</span>
+                  <input
+                    type="text"
+                    className="bg-transparent border-none outline-none text-cyber-green font-mono w-full"
+                    value={terminalInput}
+                    onChange={e => setTerminalInput(e.target.value)}
+                    disabled={isTyping}
+                    autoFocus
+                    spellCheck={false}
+                    autoComplete="off"
+                    style={{caretColor: '#00FF41'}}
+                  />
+                  <span className="terminal-cursor-block ml-1">&nbsp;</span>
+                </form>
               </div>
-              <div className="text-gray-400 mb-4">
-                Type 'help' for available commands
-              </div>
-              {terminalHistory.map((line, idx) => (
-                <div key={idx} className="whitespace-pre-line text-cyber-blue mb-1">{line}</div>
-              ))}
-              <form onSubmit={handleTerminalInput} className="flex items-center text-cyber-green mt-2">
-                <span className="mr-2">root@nightcity:~$</span>
-                <input
-                  type="text"
-                  className="bg-transparent border-none outline-none text-cyber-green font-mono w-full"
-                  value={terminalInput}
-                  onChange={e => setTerminalInput(e.target.value)}
-                  disabled={isTyping}
-                  autoFocus
-                  spellCheck={false}
-                  autoComplete="off"
-                  style={{caretColor: '#00FF41'}}
-                />
-                <span className="terminal-cursor-block ml-1">&nbsp;</span>
-              </form>
-            </div>
 
-            {/* Terminal Commands */}
-            <div className="space-y-2">
-              <div className="text-xs text-gray-400 mb-3">AVAILABLE COMMANDS:</div>
-              {contacts.map((contact) => (
+              {/* Terminal Commands */}
+              <div className="space-y-2">
+                <div className="text-xs text-gray-400 mb-3">AVAILABLE COMMANDS:</div>
+                {contacts.map((contact) => (
+                  <button
+                    key={contact.name}
+                    onClick={() => executeCommand(contact.command, contact.handle, contact.url)}
+                    className="block w-full text-left text-sm font-mono text-cyber-blue hover:text-cyber-pink transition-colors"
+                    disabled={isTyping}
+                  >
+                    {contact.command}
+                  </button>
+                ))}
                 <button
-                  key={contact.name}
-                  onClick={() => executeCommand(contact.command, contact.handle, contact.url)}
-                  className="block w-full text-left text-sm font-mono text-cyber-blue hover:text-cyber-pink transition-colors"
+                  onClick={() => {
+                    appendToTerminal([
+                      '> achievements.show()',
+                      `Unlocked ${unlockedAchievements.length}/${TERMINAL_ACHIEVEMENTS.length} achievements.`,
+                    ]);
+                  }}
+                  className="block w-full text-left text-sm font-mono text-cyber-purple hover:text-cyber-pink transition-colors"
                   disabled={isTyping}
                 >
-                  {contact.command}
+                  achievements.show()
                 </button>
-              ))}
-              <button
-                onClick={() => {
-                  appendToTerminal([
-                    '> achievements.show()',
-                    `Unlocked ${unlockedAchievements.length}/${TERMINAL_ACHIEVEMENTS.length} achievements.`,
-                  ]);
-                }}
-                className="block w-full text-left text-sm font-mono text-cyber-purple hover:text-cyber-pink transition-colors"
-                disabled={isTyping}
-              >
-                achievements.show()
-              </button>
+              </div>
+            </div>
+
+            <div className="pixel-button border-cyber-green text-white p-6">
+              <GlitchText className="text-lg text-cyber-green mb-4">
+                ACHIEVEMENTS.LOG
+              </GlitchText>
+
+              <div className="text-xs text-gray-400 mb-3">
+                UNLOCKED: {unlockedAchievements.length}/{TERMINAL_ACHIEVEMENTS.length}
+              </div>
+
+              <div className="space-y-2">
+                {TERMINAL_ACHIEVEMENTS.map((item) => {
+                  const unlocked = unlockedAchievements.includes(item.id);
+
+                  return (
+                    <div
+                      key={item.id}
+                      className={`border px-3 py-2 text-xs ${
+                        unlocked
+                          ? 'border-cyber-green text-cyber-green bg-cyber-green/10'
+                          : 'border-gray-600 text-gray-400 bg-cyber-dark/40'
+                      }`}
+                    >
+                      <div className="font-bold">{item.title}</div>
+                      <div className="text-[11px] opacity-80 mt-1">{unlocked ? item.reward : 'Hidden command required...'}</div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Contact Cards */}
+          {/* Right Column */}
           <div className="space-y-6">
             <div className="pixel-button border-cyber-purple text-white p-6">
               <GlitchText className="text-xl text-cyber-purple mb-6">
@@ -415,36 +463,6 @@ const ContactSection = () => {
                   <span className="text-gray-400">COLLABORATION:</span>
                   <span className="text-cyber-orange">OPEN</span>
                 </div>
-              </div>
-            </div>
-
-            <div className="pixel-button border-cyber-green text-white p-6">
-              <GlitchText className="text-lg text-cyber-green mb-4">
-                ACHIEVEMENTS.LOG
-              </GlitchText>
-
-              <div className="text-xs text-gray-400 mb-3">
-                UNLOCKED: {unlockedAchievements.length}/{TERMINAL_ACHIEVEMENTS.length}
-              </div>
-
-              <div className="space-y-2">
-                {TERMINAL_ACHIEVEMENTS.map((item) => {
-                  const unlocked = unlockedAchievements.includes(item.id);
-
-                  return (
-                    <div
-                      key={item.id}
-                      className={`border px-3 py-2 text-xs ${
-                        unlocked
-                          ? 'border-cyber-green text-cyber-green bg-cyber-green/10'
-                          : 'border-gray-600 text-gray-400 bg-cyber-dark/40'
-                      }`}
-                    >
-                      <div className="font-bold">{item.title}</div>
-                      <div className="text-[11px] opacity-80 mt-1">{unlocked ? item.reward : 'Hidden command required...'}</div>
-                    </div>
-                  );
-                })}
               </div>
             </div>
 

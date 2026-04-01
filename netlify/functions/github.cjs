@@ -43,6 +43,20 @@ const respond = (statusCode, body) => ({
   body: JSON.stringify(body),
 });
 
+const dedupeFeaturedRepos = (repos) => {
+  const seen = new Set();
+
+  return repos.filter((repo) => {
+    const key = `${repo.url}::${repo.name}`;
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+};
+
 exports.handler = async function handler(event) {
   if (event.httpMethod === 'OPTIONS') {
     return respond(200, { ok: true });
@@ -131,7 +145,7 @@ exports.handler = async function handler(event) {
       })
       .slice(0, 4)
       .map((repo) => ({
-        id: repo.id,
+        id: String(repo.id),
         name: repo.name,
         description: repo.description || 'No description available.',
         url: repo.html_url,
@@ -145,7 +159,7 @@ exports.handler = async function handler(event) {
       ? dashboardData.data.user.pinnedItems.nodes
           .filter(Boolean)
           .map((repo) => ({
-            id: parseInt(repo.id.replace(/\D/g, '').slice(-9), 10) || Date.now(),
+            id: repo.id || repo.url,
             name: repo.name,
             description: repo.description || 'No description available.',
             url: repo.url,
@@ -156,7 +170,7 @@ exports.handler = async function handler(event) {
           }))
       : [];
 
-    const featuredRepos = pinnedRepos.length > 0 ? pinnedRepos : fallbackFeaturedRepos;
+    const featuredRepos = dedupeFeaturedRepos(pinnedRepos.length > 0 ? pinnedRepos : fallbackFeaturedRepos);
 
     return respond(200, {
       ok: true,

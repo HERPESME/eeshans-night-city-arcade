@@ -1,5 +1,5 @@
 export interface GitHubFeaturedRepo {
-  id: number;
+  id: string | number;
   name: string;
   description: string;
   url: string;
