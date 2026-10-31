@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://eeshans-night-city-arcade.netlify.app/sitemap.xml
+Sitemap: https://technightcity.com/sitemap.xml

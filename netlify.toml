@@ -1,0 +1,9 @@
+# Send visitors (and search engines) from the default Netlify subdomain to the
+# custom domain so only one URL gets indexed.
+# Uncomment ONLY after https://technightcity.com loads correctly with HTTPS,
+# otherwise the netlify.app URL would redirect to a domain that isn't live yet.
+# [[redirects]]
+#   from = "https://eeshanportfolio.netlify.app/*"
+#   to = "https://technightcity.com/:splat"
+#   status = 301
+#   force = true
