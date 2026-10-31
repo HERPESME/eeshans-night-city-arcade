@@ -37,13 +37,13 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-dark-bg to-cyber-dark relative overflow-hidden">
       {/* Minimal cyberpunk GIF overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
+      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <GlitchText className="text-3xl md:text-5xl text-cyber-pink mb-4">
+          <h1 className="font-normal"><GlitchText className="text-3xl md:text-5xl text-cyber-pink mb-4">
             PROFILE.EXE
-          </GlitchText>
+          </GlitchText></h1>
           <div className="text-cyber-blue text-lg">ACCESSING PERSONAL DATA...</div>
         </div>
 
@@ -245,14 +245,10 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
             {/* Action Buttons */}
             <div className="flex gap-4">
               {/* Ensure the file exists at public/files/Res-3.pdf. If not downloading on Netlify, redeploy and check the file path/case. */}
-              <a href="/files/Res-3.pdf" download="Eeshan_Singh_CV.pdf" target="_blank" rel="noopener noreferrer">
-                <PixelButton variant="accent" size="md">
+              <PixelButton href="/files/Res-3.pdf" download="Eeshan_Singh_CV.pdf" variant="accent" size="md">
                   DOWNLOAD CV
                 </PixelButton>
-              </a>
-              <PixelButton variant="success" size="md" onClick={() => {
-                if (onSectionChange) onSectionChange('contact');
-              }}>
+              <PixelButton variant="success" size="md" to="/terminal">
                 CONTACT
               </PixelButton>
             </div>

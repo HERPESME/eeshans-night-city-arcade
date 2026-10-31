@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/press-start-2p-latin-400-normal.woff2') format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -236,4 +244,9 @@
   .scanlines::before {
     display: none;
   }
+}
+
+/* Preserve the animated scene while reducing mobile transfer size. */
+@media (max-width: 767px) {
+  .night-city-background { background-image: url('/media/night-city-mobile.gif') !important; }
 }

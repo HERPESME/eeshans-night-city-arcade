@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
 
 import { ReactNode, MouseEvent } from 'react';
 import { cn } from '@/lib/utils';
 
 interface PixelButtonProps {
   children: ReactNode;
-  onClick?: () => void;
+  to?: string;
+  href?: string;
+  download?: string;
+  onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   variant?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning';
@@ -14,7 +18,7 @@ interface PixelButtonProps {
 }
 
 const PixelButton = ({ 
-  children, 
+  children, to, href, download,
   onClick, 
   onMouseEnter,
   onMouseLeave,
@@ -37,8 +41,12 @@ const PixelButton = ({
     lg: 'px-8 py-4 text-base'
   };
 
+  const Tag = to ? Link : href ? 'a' : 'button';
   return (
-    <button
+    <Tag
+      to={to || ''}
+      href={href}
+      download={download}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -70,7 +78,7 @@ const PixelButton = ({
       <div className="absolute top-0 right-0 w-2 h-2 bg-current opacity-40" />
       <div className="absolute bottom-0 left-0 w-2 h-2 bg-current opacity-40" />
       <div className="absolute bottom-0 right-0 w-2 h-2 bg-current opacity-40" />
-    </button>
+    </Tag>
   );
 };
 

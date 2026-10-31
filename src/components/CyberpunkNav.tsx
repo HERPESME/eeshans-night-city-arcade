@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { sectionPaths } from '@/lib/seo';
 import { useState } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
@@ -44,7 +46,7 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
                 key={item.id}
                 variant={activeSection === item.id ? 'accent' : 'primary'}
                 size="sm"
-                onClick={() => onSectionChange(item.id)}
+                to={sectionPaths[item.id]}
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className="relative"
@@ -71,14 +73,15 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
         {mobileMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 mt-4 bg-dark-bg border-2 border-cyber-purple rounded-lg shadow-lg z-50 flex flex-col items-stretch px-4 py-2 space-y-2 pixel-perfect">
             {navItems.map((item) => (
-              <button
+              <Link
+                to={sectionPaths[item.id]}
                 key={item.id}
                 className={`text-left px-4 py-3 font-pixel text-lg border-b border-cyber-purple last:border-b-0 flex items-center space-x-2 ${activeSection === item.id ? 'text-cyber-pink' : 'text-cyber-blue'}`}
-                onClick={() => handleMobileNav(item.id)}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 <span>{item.icon}</span>
                 <span>{item.label}</span>
-              </button>
+              </Link>
             ))}
           </div>
         )}

@@ -289,13 +289,13 @@ const ContactSection = () => {
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-dark-bg to-cyber-dark relative overflow-hidden">
       {/* Minimal cyberpunk GIF overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
+      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <GlitchText className="text-3xl md:text-5xl text-cyber-orange mb-4">
+          <h1 className="font-normal"><GlitchText className="text-3xl md:text-5xl text-cyber-orange mb-4">
             CONTACT.TERMINAL
-          </GlitchText>
+          </GlitchText></h1>
           <div className="text-cyber-blue text-lg">ESTABLISHING CONNECTION...</div>
         </div>
 
@@ -431,7 +431,12 @@ const ContactSection = () => {
                       variant="primary" 
                       size="sm"
                       className="w-32"
-                      onClick={() => executeCommand(contact.command, contact.handle, contact.url)}
+                      href={contact.url}
+                      onClick={(event) => {
+                        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+                        event.preventDefault();
+                        executeCommand(contact.command, contact.handle, contact.url);
+                      }}
                     >
                       CONNECT
                     </PixelButton>

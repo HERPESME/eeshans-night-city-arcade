@@ -2,6 +2,10 @@
 
 A cyberpunk-retro portfolio showcasing full-stack and AI/ML work with interactive terminal UI, themed animations, and live developer stats.
 
+Live portfolio: [Eeshan Singh — Night City Arcade](https://technightcity.com/)
+
+[Profile and résumé](https://technightcity.com/profile) · [Projects](https://technightcity.com/projects) · [Contact](https://technightcity.com/terminal)
+
 ## 🚀 Features
 
 - Pixel-art + glitch visual system
@@ -21,8 +25,8 @@ A cyberpunk-retro portfolio showcasing full-stack and AI/ML work with interactiv
 ## 📦 Getting Started
 
 1. Clone and install:
-   - `git clone https://github.com/YOUR_USERNAME/night-city-arcade-portfolio.git`
-   - `cd night-city-arcade-portfolio`
+   - `git clone https://github.com/HERPESME/eeshans-night-city-arcade.git`
+   - `cd eeshans-night-city-arcade`
    - `npm install`
 2. Run locally:
    - `npm run dev`

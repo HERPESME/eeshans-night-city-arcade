@@ -5,6 +5,9 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Page not found | Night City Arcade";
+    document.querySelector('link[rel="canonical"]')?.remove();
+    document.querySelector('meta[name="robots"]')?.setAttribute("content", "noindex");
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname
