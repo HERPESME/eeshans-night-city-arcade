@@ -17,13 +17,14 @@ interface CyberpunkCommandPaletteProps {
   onOpenChange: (open: boolean) => void;
 }
 
-type SectionId = 'home' | 'about' | 'projects' | 'contact';
+type SectionId = 'home' | 'about' | 'projects' | 'contact' | 'blogs';
 
 const sectionItems: Array<{ id: SectionId; label: string; icon: string; shortcut: string }> = [
   { id: 'home', label: 'PLAY', icon: '▶', shortcut: '1' },
   { id: 'about', label: 'PROFILE', icon: '◆', shortcut: '2' },
   { id: 'projects', label: 'PROJECTS', icon: '※', shortcut: '3' },
   { id: 'contact', label: 'TERMINAL', icon: '◊', shortcut: '4' },
+  { id: 'blogs', label: 'BLOGS', icon: '▤', shortcut: '5' },
 ];
 
 const projectQuickLinks = [
@@ -66,7 +67,7 @@ const CyberpunkCommandPalette = ({
         return;
       }
 
-      if (['1', '2', '3', '4'].includes(event.key)) {
+      if (['1', '2', '3', '4', '5'].includes(event.key)) {
         const target = sectionItems[Number(event.key) - 1];
         if (target) {
           onSectionChange(target.id);

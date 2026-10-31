@@ -8,11 +8,11 @@ for (const page of routes) {
  assert.ok(html.includes(`href="${origin}${page.path}"`));
  assert.equal((html.match(/<h1\b/g) || []).length, 1);
  assert.ok(!html.includes('<div id="root"></div>'));
- assert.ok(!html.includes('content="noindex"'));
+ assert.equal(html.includes('content="noindex, follow"'), page.indexable === false);
  assert.ok(html.includes('LUpHn6bus1tMwNleZ6RnWERGtTEbmygMdcyAdggKxGU'));
- for (const target of routes) assert.ok(html.includes(`href="${target.path}"`), `${page.path} links to ${target.path}`);
+ for (const target of routes.filter(route => !route.blogSlug)) assert.ok(html.includes(`href="${target.path}"`), `${page.path} links to ${target.path}`);
  JSON.parse(html.match(/<script id="page-schema" type="application\/ld\+json">(.*?)<\/script>/s)[1]);
- assert.ok(sitemap.includes(`<loc>${origin}${page.path}</loc>`));
+ assert.equal(sitemap.includes(`<loc>${origin}${page.path}</loc>`), page.indexable !== false);
  console.log('PASS', page.path, 'canonical, headings, links, schema, verification, sitemap, static content');
 }
 const profile = await readFile('dist/profile.html','utf8');

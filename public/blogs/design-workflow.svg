@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" fill="none">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#6a507e" stroke-opacity=".15"/></pattern>
+    <linearGradient id="glow" x1="100" y1="100" x2="1000" y2="500"><stop stop-color="#211437"/><stop offset="1" stop-color="#100d1c"/></linearGradient>
+  </defs>
+  <path fill="url(#glow)" d="M0 0h1200v600H0z"/><path fill="url(#grid)" d="M0 0h1200v600H0z"/>
+  <g font-family="monospace" font-size="15" letter-spacing="3">
+    <text x="65" y="66" fill="#83e6e6">01 / THE BUILD PROCESS</text>
+    <text x="1060" y="66" fill="#b7a5ce">SAMPLE</text>
+  </g>
+  <g stroke="#6c4885" stroke-width="2">
+    <rect x="66" y="142" width="300" height="314" rx="4" fill="#161022"/>
+    <rect x="450" y="142" width="300" height="314" rx="4" fill="#161022"/>
+    <rect x="834" y="142" width="300" height="314" rx="4" fill="#161022"/>
+  </g>
+  <g stroke="#6c4885"><path d="M66 181h300M450 181h300M834 181h300"/></g>
+  <g fill="#ad84ce"><circle cx="85" cy="162" r="4"/><circle cx="100" cy="162" r="4"/><circle cx="115" cy="162" r="4"/></g>
+  <text x="475" y="168" font-family="monospace" font-size="14" fill="#b7a5ce">screen.tsx</text>
+  <text x="858" y="168" font-family="monospace" font-size="14" fill="#b7a5ce">APP PREVIEW</text>
+  <rect x="105" y="215" width="222" height="58" fill="#5d345c"/><path d="M120 233h96M120 251h64" stroke="#f09ebd" stroke-width="5"/>
+  <rect x="105" y="290" width="102" height="105" fill="#203747"/><rect x="224" y="290" width="103" height="105" fill="#322541"/>
+  <path d="M119 310h60M119 327h40M238 310h60M238 327h40" stroke="#62c9d0" stroke-width="4"/>
+  <g font-family="monospace" font-size="19"><text x="478" y="239" fill="#e897ba">const Screen = () =&gt; (</text><text x="493" y="276" fill="#6dd5d9">&lt;View&gt;</text><text x="512" y="312" fill="#c9b6e3">&lt;Header /&gt;</text><text x="512" y="348" fill="#c9b6e3">&lt;Content /&gt;</text><text x="493" y="384" fill="#6dd5d9">&lt;/View&gt;</text><text x="478" y="420" fill="#e897ba">);</text></g>
+  <rect x="925" y="202" width="117" height="226" rx="14" stroke="#aa85c0" stroke-width="3" fill="#0f0a1a"/>
+  <rect x="963" y="209" width="40" height="7" rx="3" fill="#aa85c0"/>
+  <rect x="938" y="237" width="91" height="54" rx="3" fill="#5d345c"/><path d="M948 253h62M948 269h43" stroke="#f09ebd" stroke-width="4"/>
+  <rect x="938" y="304" width="91" height="32" rx="3" fill="#203747"/><rect x="938" y="346" width="91" height="32" rx="3" fill="#322541"/>
+  <path d="M947 320h44M947 362h58" stroke="#6dd5d9" stroke-width="4"/>
+  <g stroke="#6dd5d9" stroke-width="2"><path d="M385 299h45m-10-10 10 10-10 10M769 299h45m-10-10 10 10-10 10"/></g>
+  <g font-family="monospace" font-size="18" text-anchor="middle" letter-spacing="3"><text x="216" y="501" fill="#e897ba">DESIGN</text><text x="600" y="501" fill="#6dd5d9">COMPONENTS</text><text x="984" y="501" fill="#bfa0df">REAL SCREENS</text></g>
+  <path d="M66 550h1068" stroke="#42314f"/><text x="66" y="578" font-family="monospace" font-size="12" letter-spacing="2" fill="#8f819f">NIGHT CITY JOURNAL / ILLUSTRATION FOR LAYOUT REVIEW</text>
+</svg>
