@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { routes, origin } from '../.ssr/entry-server.js';
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 for (const page of routes) {
- const html = await readFile(`dist${page.path === '/' ? '' : page.path}/index.html`, 'utf8');
+ const html = await readFile(page.path === '/' ? 'dist/index.html' : `dist${page.path}.html`, 'utf8');
  assert.equal((html.match(/rel="canonical"/g) || []).length, 1);
  assert.ok(html.includes(`href="${origin}${page.path}"`));
  assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -15,9 +15,9 @@ for (const page of routes) {
  assert.ok(sitemap.includes(`<loc>${origin}${page.path}</loc>`));
  console.log('PASS', page.path, 'canonical, headings, links, schema, verification, sitemap, static content');
 }
-const profile = await readFile('dist/profile/index.html','utf8');
+const profile = await readFile('dist/profile.html','utf8');
 assert.ok(profile.includes('href="/files/Res-3.pdf"'));
-const projects = await readFile('dist/projects/index.html','utf8');
+const projects = await readFile('dist/projects.html','utf8');
 for (const title of ['CareerBoostAI','UltraFit360','QuantTrader']) assert.ok(projects.includes(title));
 const missing = await readFile('dist/404.html','utf8');
 assert.ok(missing.includes('content="noindex"'));

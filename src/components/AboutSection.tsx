@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { faqs } from '@/lib/faqs';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
 import { useLeetCodeStats } from '@/hooks/useLeetCodeStats';
@@ -37,7 +39,7 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-dark-bg to-cyber-dark relative overflow-hidden">
       {/* Minimal cyberpunk GIF overlay */}
-      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
+      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/night-city-social.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -226,18 +228,20 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
             {/* Bio Text */}
             <div className="pixel-button border-cyber-green text-white p-6 px-2 md:px-6 w-full">
               <GlitchText className="text-lg text-cyber-green mb-4">
-                ABOUT.TXT
+                AUTHOR.BIO
               </GlitchText>
               <div className="text-sm leading-relaxed space-y-3">
                 <p>
-                  Passionate full-stack developer with 5+ years of experience crafting 
-                  digital solutions in the cyber realm. Specialized in React, Node.js, 
-                  and cutting-edge AI/ML technologies.
+                  I’m Eeshan Singh Pokharia, a Computer and Communication Engineering
+                  student at LNMIIT (2023–2027) and Co-Founder and Full Stack Engineer
+                  at UltraFit360. I work with React, TypeScript, Python, FastAPI,
+                  Node.js, and PostgreSQL.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring the latest in artificial 
-                  intelligence, contributing to open-source projects, or diving deep into 
-                  the neural networks of tomorrow.
+                  My work spans fitness applications, backend APIs, mobile development,
+                  and machine learning research. I completed a project management
+                  internship at King’s College London in June–July 2026. The linked
+                  résumé provides my education, experience, and project details.
                 </p>
               </div>
             </div>
@@ -254,6 +258,14 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
             </div>
           </div>
         </div>
+        <section aria-labelledby="portfolio-team" className="pixel-button border-cyber-purple p-6 mt-10 text-sm leading-relaxed">
+          <h2 id="portfolio-team" className="text-cyber-pink mb-4">PORTFOLIO.TEAM</h2>
+          <p>Eeshan Singh Pokharia — portfolio author and developer. For project questions, <Link to="/terminal" className="text-cyber-blue underline">contact Eeshan</Link> or browse the <Link to="/projects" className="text-cyber-blue underline">project collection</Link>.</p>
+        </section>
+        <section aria-labelledby="portfolio-faq" className="pixel-button border-cyber-blue p-6 mt-10 text-sm leading-relaxed">
+          <h2 id="portfolio-faq" className="text-cyber-green mb-4">FREQUENTLY.ASKED</h2>
+          {faqs.map(faq => <div key={faq.question} className="mb-5"><h3 className="text-cyber-blue mb-2">{faq.question}</h3><p>{faq.answer}</p></div>)}
+        </section>
       </div>
     </section>
   );

@@ -1,8 +1,7 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import NotFound from './NotFound';
 import { routes, sectionPaths, updateHead } from '@/lib/seo';
 import { useState, useEffect, useCallback } from 'react';
-import LoadingScreen from '@/components/LoadingScreen';
 import CyberpunkNav from '@/components/CyberpunkNav';
 import CyberpunkCommandPalette from '@/components/CyberpunkCommandPalette';
 import HomeSection from '@/components/HomeSection';
@@ -18,7 +17,6 @@ interface IndexProps {
 const QUICK_ACCESS_HINT_KEY = 'nightcityarcade.quick-access-hint.seen';
 
 const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
-  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname.replace(/\/$/, '') || '/';
@@ -29,14 +27,6 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     if (page) updateHead(page);
     window.scrollTo(0, 0);
   }, [path, page]);
-  useEffect(() => {
-    try {
-      if (!sessionStorage.getItem('nightcity.intro.seen')) {
-        setIsLoading(true);
-        sessionStorage.setItem('nightcity.intro.seen', '1');
-      }
-    } catch { /* Content remains usable without storage. */ }
-  }, []);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [showQuickAccessHint, setShowQuickAccessHint] = useState(false);
   const [shortcutLabel, setShortcutLabel] = useState('Ctrl + K');
@@ -74,7 +64,6 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     return undefined;
   }, []);
 
-  const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
 
   const renderActiveSection = () => {
     switch (activeSection) {
@@ -103,7 +92,6 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
 
   return (
     <div className="min-h-screen bg-dark-bg text-white font-pixel pixel-perfect">
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <CyberpunkNav 
         activeSection={activeSection} 
         onSectionChange={setActiveSection}
@@ -137,6 +125,7 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
       )}
       
       <main className="pt-16">
+        {page.path !== '/' && <nav aria-label="Breadcrumb" className="relative z-10 px-4 pt-6 text-xs text-cyber-blue"><ol className="flex gap-3"><li><Link to="/">Home</Link></li><li aria-hidden="true">/</li><li aria-current="page">{page.label}</li></ol></nav>}
         {renderActiveSection()}
       </main>
 
