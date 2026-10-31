@@ -248,5 +248,5 @@
 
 /* Preserve the animated scene while reducing mobile transfer size. */
 @media (max-width: 767px) {
-  .night-city-background { background-image: url('/media/night-city-mobile.gif') !important; }
+  .night-city-background { background-image: url('/media/night-city-small.gif') !important; }
 }

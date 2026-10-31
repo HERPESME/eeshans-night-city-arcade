@@ -53,7 +53,7 @@ const ProjectsSection = () => {
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-cyber-dark to-dark-bg relative overflow-hidden">
       {/* Minimal cyberpunk GIF overlay */}
-      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/pixel-jeff-clipa-s.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
+      <div className="night-city-background absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: "url('/media/night-city-social.gif')", backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08}} />
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -67,15 +67,16 @@ const ProjectsSection = () => {
         <div className="pixel-button border-cyber-blue p-6 mb-10 bg-cyber-dark/60 backdrop-blur-sm">
           <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end">
             <div>
-              <div className="text-xs text-cyber-purple uppercase tracking-wider mb-2">
+              <label htmlFor="project-search" className="block text-xs text-cyber-purple uppercase tracking-wider mb-2">
                 SEARCH ARCHIVE
-              </div>
+              </label>
               <input
+                id="project-search"
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by title, tech, or keyword..."
-                className="w-full bg-cyber-dark border-2 border-cyber-purple text-white placeholder-gray-500 px-4 py-3 font-pixel text-xs focus:outline-none focus:border-cyber-pink focus:shadow-[0_0_16px_rgba(236,72,153,0.35)] transition-all"
+                className="w-full bg-cyber-dark border-2 border-cyber-purple text-white placeholder-gray-400 px-4 py-3 font-pixel text-xs focus:outline-none focus:border-cyber-pink focus:shadow-[0_0_16px_rgba(236,72,153,0.35)] transition-all"
               />
             </div>
 
@@ -119,11 +120,12 @@ const ProjectsSection = () => {
                   {project.image ? (
                     <img
                       src={project.image}
-                      alt={project.title + ' screenshot'}
+                      alt={'Cyberpunk artwork illustrating ' + project.title}
+                      width={project.imageWidth}
+                      height={project.imageHeight}
                       className="w-full h-full object-cover"
                       loading="lazy"
                       decoding="async"
-                      fetchPriority="low"
                       style={{ opacity: 1, filter: 'brightness(1.08)' }}
                     />
                   ) : (

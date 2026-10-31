@@ -39,7 +39,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
     <section 
       className="night-city-background min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
-        backgroundImage: `url('/media/pixel-jeff-clipa-s.gif')`,
+        backgroundImage: `url('/media/night-city-social.gif')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -112,7 +112,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
         {/* Quick Stats */}
         <div className="flex justify-center space-x-8 text-xs">
           <div className="text-center flex flex-col items-center">
-            <div className="text-cyber-blue text-lg">15+</div>
+            <div className="text-cyber-blue text-lg">6</div>
             <div className="text-gray-400">PROJECTS</div>
           </div>
           <div className="text-center flex flex-col items-center relative">
@@ -156,8 +156,8 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
             </button>
           </div>
           <div className="text-center flex flex-col items-center">
-            <div className="text-cyber-pink text-lg">100%</div>
-            <div className="text-gray-400">UPTIME</div>
+            <div className="text-cyber-pink text-lg">OPEN</div>
+            <div className="text-gray-400">SOURCE</div>
           </div>
         </div>
       </div>
@@ -212,10 +212,11 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
             </button>
             <img
               src="/media/6fbb634a2a22545d2fe04cd21b3077ba.gif"
-              alt="Retro Video"
+              alt="Animated Cyberpunk Edgerunners moon scene"
+              width={1200}
+              height={1800}
               loading="lazy"
               decoding="async"
-              fetchPriority="low"
               style={{
                 display: 'block',
                 width: 'auto',

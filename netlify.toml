@@ -1,3 +1,39 @@
+[[redirects]]
+  from = "https://eeshanportfolio.netlify.app/profile/"
+  to = "https://technightcity.com/profile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://eeshanportfolio.netlify.app/projects/"
+  to = "https://technightcity.com/projects"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://eeshanportfolio.netlify.app/terminal/"
+  to = "https://technightcity.com/terminal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.technightcity.com/profile/"
+  to = "https://technightcity.com/profile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.technightcity.com/projects/"
+  to = "https://technightcity.com/projects"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.technightcity.com/terminal/"
+  to = "https://technightcity.com/terminal"
+  status = 301
+  force = true
+
 # Send visitors (and search engines) from the default Netlify subdomain to the
 # custom domain so only one URL gets indexed.
 [[redirects]]
@@ -16,20 +52,53 @@
   status = 301
   force = true
 
+[functions]
+  node_bundler = "esbuild"
+
+[functions.render]
+  included_files = [".ssr/template.html"]
+
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/render"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/profile"
-  to = "/profile/index.html"
+  to = "/.netlify/functions/render"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/profile/"
+  to = "/.netlify/functions/render"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/projects"
-  to = "/projects/index.html"
+  to = "/.netlify/functions/render"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/projects/"
+  to = "/.netlify/functions/render"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/terminal"
-  to = "/terminal/index.html"
+  to = "/.netlify/functions/render"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/terminal/"
+  to = "/.netlify/functions/render"
+  status = 200
+  force = true
 
 [[headers]]
   for = "/assets/*"
