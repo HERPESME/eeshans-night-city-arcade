@@ -1,0 +1,76 @@
+{
+  "generator": "GPT image generator (built-in)",
+  "mode": "Text to image; authentic app screens composited as original HTML image layers",
+  "prompts": [
+    {
+      "key": "figma-cover",
+      "prompt": "Create an editorial blog cover, landscape 3:2 composition, premium detailed 16-bit pixel art, crisp visible square pixels everywhere, limited midnight indigo and purple palette with cyan, magenta and warm amber neon light. The setting is a rainy futuristic Night City design studio overlooking dense neon streets, cozy late-night workstation with a three-quarter view of a large monitor showing a generic UI design canvas with low fidelity wireframe panels on the left and polished white and violet website cards on the right, a small phone nearby. Pixelated architecture and desk, hand-crafted retro game environment, sophisticated lighting and environmental storytelling, restrained bloom, no smooth vector look, no photorealism, no gradients that erase pixel texture. The visual story is a person\u2019s manually designed wireframes becoming website and mobile frontends. No people prominent. No readable text, no title, no lettering, no brand logos, no watermark. Keep key subjects safely inside the central 80% so the scene works as a thumbnail. Make this an original designed scene, not a collage."
+    },
+    {
+      "key": "ultrafit-cover",
+      "prompt": "Create an original landscape 3:2 editorial illustration in detailed crisp 16-bit pixel art for a personal mobile app build story. A giant SINGLE smartphone stands perfectly front-facing and upright at the RIGHT THIRD of a rainy cyberpunk Night City rooftop workbench. Night purple, indigo, cyan and pink neon with a few warm orange fitness accents. To the LEFT of the phone are a paper software requirements document with tiny abstract lines, paper wireframes and a laptop with abstract code blocks, connected by subtle illuminated circuit traces. The entire physical phone bezel MUST be chunky stair-stepped pixel art, never photorealistic. IMPORTANT COMPOSITING REQUIREMENT: the phone's display is a totally plain uniform off-white (#fafafa) empty rectangular area with no UI, no reflections, no shading, no graphics, no text; it is reserved for an authentic app screenshot that will be overlaid later. Display aspect ratio 1170:2532 (about 0.462:1), phone display takes about 25% of total image width and 80% total image height. Screen perfectly flat front-facing, zero perspective, vertical edges exactly vertical, horizontal edges exactly horizontal. Plain screen area unobstructed, no fingers, no rain streaks over it, no floating panels in front of it. A very thin black pixel bezel around this blank area, no camera island or notch within it. No readable text anywhere, no logos, no watermark. The city and desk should have rich hand-crafted pixel detail while keeping the phone the clear focal point."
+    },
+    {
+      "key": "mcp-cover",
+      "prompt": "Original high-quality editorial cover in detailed 16-bit pixel art, landscape 3:2, same visual world as a rainy neon cyberpunk Night City arcade. A developer's quiet workstation seen in three-quarter view, TWO large adjacent monitors in the central part of the frame. Left monitor: a generic UI design canvas with clean purple component rectangles and thin wireframe outlines; right monitor: a dark IDE with abstract cyan and pink code lines and a small matching rendered interface. A slender glowing cyan connection made of square pixel nodes bridges the monitors to symbolize a Model Context Protocol design-to-code connection. Rainy window with distant magenta skyscrapers and tiny amber lights, a keyboard and gamepad on the desk. Crisp square pixels, thoughtful lighting, believable retro game environment, not flat vector and not photorealistic. Design decisions still feel human and hand-crafted. Keep monitors unobstructed and everything framed for a cover thumbnail. No readable text, no titles, no alphabet characters, no logos, no watermark."
+    },
+    {
+      "key": "figma-details",
+      "prompt": "Create an original landscape 3:2 detailed 16-bit pixel art editorial illustration, same rainy neon Night City aesthetic: midnight purple with restrained cyan, pink and amber. Close view of a futuristic designer's physical workbench, three small holographic interface cards hovering side by side over a grid mat. One card is a simple flat wireframe, second has layered dimensional soft shadow buttons, third is a transparent frosted-glass card with clear high-contrast controls. Around them are a sketchbook with hand drawn UI rectangles, a mechanical pencil, color chips and component tiles. Background is softly detailed pixel-art workshop with neon window, visible square pixel texture throughout, sophisticated sprite art, NOT smooth vector, NOT photo, no readable text or labels or branding. The three cards should clearly illustrate different UI surface choices without being a technical diagram. All important subjects central and safely within frame. No text, no logos, no watermark."
+    },
+    {
+      "key": "ultrafit-detail",
+      "prompt": "Original landscape 3:2 detailed crisp 16-bit pixel art editorial scene for a React Native iOS and Android app interface article. Night City neon laboratory desk, purple midnight room, cyan and warm orange pixel lighting, a large rainy window behind. TWO matching chunky PIXEL-ART smartphones stand perfectly front-facing upright side-by-side, clear unobstructed view, roughly left and right middle of composition, both fully inside frame. Pixelated phone hardware edges have a stair-step square pixel texture and are dark violet. Each phone DISPLAY is a clean flat uniform off-white BLANK rectangle reserved for authentic screenshot compositing later. No content in the displays at all: no UI, no reflections, no gradients, no text, no camera notches. Each empty screen is tall, aspect ratio 0.46 width to height, about 24% of the total scene width and 78% total height. Phone faces are perfectly flat and parallel to image plane, no perspective tilt, exact horizontal/vertical screen edges. Small translucent square glass-like tiles and tiny illuminated circuit components lie on desk beside phones, but NEVER in front of the blank displays. Crisp square pixels everywhere, hand-crafted retro game environment. No people, no text, no brands, no watermark."
+    },
+    {
+      "key": "mcp-detail",
+      "prompt": "Original landscape 3:2 detailed 16-bit pixel art scene of a Night City developer workbench at night, shown from a slightly overhead three-quarter angle. Three distinct items laid out in a readable row: on left an open sketchbook with hand-drawn mobile wireframes; center a glowing holographic component grid with neatly repeated purple buttons and cyan token swatches; right an open dark laptop IDE with abstract cyan code lines and a small UI preview matching the wireframe. Thin illuminated cyan cable traces visually connect the items. Dense but carefully composed cyberpunk apartment environment, rainy violet window light, amber desk lamp, pixel-art mechanical keyboard, no humans. Emphasize human design leading to structured context leading to code, as a conceptual illustration not a precise technical diagram. Crisp visible square pixels, restrained neon, rich Night City sprite artwork, no smooth vector look, no photorealism. No readable text, no labels, no logo, no watermark."
+    }
+  ],
+  "assets": [
+    {
+      "file": "/blogs/images/figma-cover.webp",
+      "promptKey": "figma-cover"
+    },
+    {
+      "file": "/blogs/images/figma-details.webp",
+      "promptKey": "figma-details"
+    },
+    {
+      "file": "/blogs/images/ultrafit-cover.webp",
+      "promptKey": "ultrafit-cover"
+    },
+    {
+      "file": "/blogs/images/ultrafit-detail.webp",
+      "promptKey": "ultrafit-detail"
+    },
+    {
+      "file": "/blogs/images/mcp-cover.webp",
+      "promptKey": "mcp-cover"
+    },
+    {
+      "file": "/blogs/images/mcp-detail.webp",
+      "promptKey": "mcp-detail"
+    }
+  ],
+  "originalScreens": [
+    {
+      "file": "/blogs/images/ultrafit-dashboard-original.png",
+      "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
+      "sourcePath": "src/assets/Dashboard.png",
+      "sourceCommit": "ae1e5c4f",
+      "sha256": "2e293c1de2b416ac14727f2ca8856b06c4f9eead9bb719af2e741d5df093c7a4",
+      "displayEncoding": "Lossless WebP; decoded RGB pixels verified identical to original",
+      "composition": "HTML image layer; original aspect ratio retained with object-fit: contain"
+    },
+    {
+      "file": "/blogs/images/ultrafit-metrics-original.jpg",
+      "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
+      "sourcePath": "src/assets/Metrics.png",
+      "sourceCommit": "ae1e5c4f",
+      "sha256": "55e74c75fb2bfdfa4beb09d3f744c24a82a983368df4458f5c082a23f321a3d4",
+      "displayEncoding": "Lossless WebP; decoded RGB pixels verified identical to original",
+      "composition": "HTML image layer; original aspect ratio retained with object-fit: contain"
+    }
+  ]
+}
