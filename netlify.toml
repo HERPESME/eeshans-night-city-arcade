@@ -100,6 +100,26 @@
   status = 200
   force = true
 
+# Preserve image links in cached HTML from the original deployment.
+# Static media lives outside the forced /blogs/* page renderer.
+[[redirects]]
+  from = "/blogs/images/ultrafit-dashboard-original.png"
+  to = "/blog-images/ultrafit-dashboard-screen.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blogs/images/ultrafit-metrics-original.jpg"
+  to = "/blog-images/ultrafit-metrics-screen.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blogs/images/*"
+  to = "/blog-images/:splat"
+  status = 301
+  force = true
+
 # Blog pages use the shared renderer; unknown slugs remain real 404s.
 [[redirects]]
   from = "/blogs"
@@ -125,5 +145,10 @@
 
 [[headers]]
   for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/blog-images/*"
   [headers.values]
     Cache-Control = "public, max-age=86400, must-revalidate"

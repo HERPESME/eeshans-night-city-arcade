@@ -29,33 +29,33 @@
   ],
   "assets": [
     {
-      "file": "/blogs/images/figma-cover.webp",
+      "file": "/blog-images/figma-cover.webp",
       "promptKey": "figma-cover"
     },
     {
-      "file": "/blogs/images/figma-details.webp",
+      "file": "/blog-images/figma-details.webp",
       "promptKey": "figma-details"
     },
     {
-      "file": "/blogs/images/ultrafit-cover.webp",
+      "file": "/blog-images/ultrafit-cover.webp",
       "promptKey": "ultrafit-cover"
     },
     {
-      "file": "/blogs/images/ultrafit-detail.webp",
+      "file": "/blog-images/ultrafit-detail.webp",
       "promptKey": "ultrafit-detail"
     },
     {
-      "file": "/blogs/images/mcp-cover.webp",
+      "file": "/blog-images/mcp-cover.webp",
       "promptKey": "mcp-cover"
     },
     {
-      "file": "/blogs/images/mcp-detail.webp",
+      "file": "/blog-images/mcp-detail.webp",
       "promptKey": "mcp-detail"
     }
   ],
   "originalScreens": [
     {
-      "file": "/blogs/images/ultrafit-dashboard-original.png",
+      "file": "docs/source-screens/ultrafit-dashboard-original.png",
       "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
       "sourcePath": "src/assets/Dashboard.png",
       "sourceCommit": "ae1e5c4f",
@@ -64,7 +64,7 @@
       "composition": "HTML image layer; original aspect ratio retained with object-fit: contain"
     },
     {
-      "file": "/blogs/images/ultrafit-metrics-original.jpg",
+      "file": "docs/source-screens/ultrafit-metrics-original.jpg",
       "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
       "sourcePath": "src/assets/Metrics.png",
       "sourceCommit": "ae1e5c4f",
