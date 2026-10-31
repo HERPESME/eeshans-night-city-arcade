@@ -36,7 +36,7 @@ for (const page of blogs) {
   assert.ok(result.body.includes('href="/blogs"'));
   assert.ok(result.body.includes('id="blog-article-body"'));
   assert.ok((result.body.match(/class="blog-art-scene"/g) || []).length >= 2, 'Reading view has cover and supporting generated artwork');
-  const artPaths = [...result.body.matchAll(/src="(\/blogs\/images\/[^"]+)"/g)].map(match => match[1]);
+  const artPaths = [...result.body.matchAll(/src="(\/blog-images\/[^"]+)"/g)].map(match => match[1]);
   for (const path of new Set(artPaths)) {
    const file = await readFile('public' + path);
    assert.ok(file.length > 1000, `Nonempty image asset: ${path}`);
@@ -49,8 +49,8 @@ for (const page of blogs) {
   }
   if (page.blogSlug.startsWith('ultrafit360')) {
    assert.ok((result.body.match(/class="blog-art-screen"/g) || []).length >= 3, 'Original app screen layers appear inside generated phone art');
-   assert.ok(result.body.includes('ultrafit-dashboard-original.png'));
-   assert.ok(result.body.includes('ultrafit-metrics-original.jpg'));
+   assert.ok(result.body.includes('ultrafit-dashboard-screen.webp'));
+   assert.ok(result.body.includes('ultrafit-metrics-screen.webp'));
    assert.ok(result.body.includes('active native iOS TabView'), 'Implementation claims follow the active native-tab path');
    assert.ok(result.body.includes('NativeTabsLayout.tsx') && result.body.includes('renderAndroidTabBar'), 'The platform split is supported by an actual source excerpt');
   }

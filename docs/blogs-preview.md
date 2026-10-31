@@ -78,3 +78,9 @@ npm run test:blogs
 Keep interim commits marked `[skip netlify]` and avoid opening an ordinary PR while the layout/content is under review. Netlify supports this commit marker to skip automatic branch/production deploys. If a review PR becomes necessary, its title also needs the marker to suppress the automatic Deploy Preview.
 
 After the author approves the layout and content is ready, perform one final merge with a merge message/title that does not contain a skip marker, then verify that single production deployment. This frontend preview is not a production release.
+
+## Production image routing fix
+
+The original forced `/blogs/*` rewrite intercepted `/blogs/images/*` and returned HTML 404 responses for valid images. Assets now live at `/blog-images/*`, outside the page renderer. Legacy image URLs redirect before the page catch-all. Every displayed image and full-screen link uses WebP; original source binaries are retained only in `docs/source-screens` for provenance. GIFs are unchanged.
+
+`npm run build` now runs `scripts/check-blog-assets.mjs`: verify the built WebP signatures and lengths, inspect Netlify redirect precedence, reject assets shadowed by forced routing rules, and check cached image links. Deployment completion also requires HTTP image response checks and real-browser decoding on all four blog routes at desktop and mobile widths.

@@ -35,11 +35,11 @@ export interface BlogEntry {
   intro: string; sections: BlogSection[]; references: BlogLink[];
 }
 const art = (name: string, alt: string, caption: string, cover = false): BlogImage => ({
-  src: `/blogs/images/${name}.webp`, width: 1200, height: 800, alt, caption,
-  ...(cover ? { thumbnail: `/blogs/images/${name}-720.webp` } : {}),
+  src: `/blog-images/${name}.webp`, width: 1200, height: 800, alt, caption,
+  ...(cover ? { thumbnail: `/blog-images/${name}-720.webp` } : {}),
 });
-const dashboard = { src: '/blogs/images/ultrafit-dashboard-screen.webp', originalSrc: '/blogs/images/ultrafit-dashboard-original.png', alt: 'Original UltraFit360 dashboard showing nutrition, macro totals, workout summary, and the bottom navigation', width: 1170, height: 2532 };
-const metrics = { src: '/blogs/images/ultrafit-metrics-screen.webp', originalSrc: '/blogs/images/ultrafit-metrics-original.jpg', alt: 'Original UltraFit360 health metrics screen with basal calories, flights climbed, VO2 max, and heart-rate cards', width: 735, height: 1600 };
+const dashboard = { src: '/blog-images/ultrafit-dashboard-screen.webp', originalSrc: '/blog-images/ultrafit-dashboard-screen.webp', alt: 'Original UltraFit360 dashboard showing nutrition, macro totals, workout summary, and the bottom navigation', width: 1170, height: 2532 };
+const metrics = { src: '/blog-images/ultrafit-metrics-screen.webp', originalSrc: '/blog-images/ultrafit-metrics-screen.webp', alt: 'Original UltraFit360 health metrics screen with basal calories, flights climbed, VO2 max, and heart-rate cards', width: 735, height: 1600 };
 const figmaCover = art('figma-cover', 'Night City pixel-art design studio with a wireframe canvas beside website and mobile layouts', 'GPT-generated Night City illustration of the design-to-frontend workflow; the screens are conceptual artwork.', true);
 const appCover: BlogImage = {
   ...art('ultrafit-cover', 'Pixel-art Night City workbench connecting requirements and wireframes to a phone displaying the original UltraFit360 app', 'Original UltraFit360 dashboard inside a GPT-generated pixel-art phone and city setting. The app screenshot is preserved as a separate image layer.', true),
