@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:seo": "node scripts/check-seo.mjs",
-    "test:ssr": "node scripts/check-ssr.mjs"
+    "test:ssr": "node scripts/check-ssr.mjs",
+    "test:blogs": "node scripts/check-blogs.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

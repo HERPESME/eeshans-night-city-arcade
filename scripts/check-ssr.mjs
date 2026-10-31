@@ -7,7 +7,8 @@ for (const page of routes) {
  assert.equal(result.statusCode,200);
  assert.ok(result.body.includes(`<link rel="canonical" href="https://technightcity.com${page.path}"`));
  assert.equal((result.body.match(/<h1\b/g)||[]).length,1);
- assert.ok(!result.body.includes('noindex'));
+ assert.equal(result.body.includes('content="noindex, follow"'), page.indexable === false);
+ assert.equal(result.headers['X-Robots-Tag'], page.indexable === false ? 'noindex' : undefined);
  const json=JSON.parse(result.body.match(/id="page-schema" type="application\/ld\+json">(.*?)<\/script>/s)[1]);
  if(page.path!=='/') assert.ok(json['@graph'].some(entity=>entity['@type']==='BreadcrumbList'));
  if(page.path==='/profile') {

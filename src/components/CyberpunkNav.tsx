@@ -17,13 +17,9 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
     { id: 'home', label: 'PLAY', icon: '▶' },
     { id: 'about', label: 'PROFILE', icon: '◆' },
     { id: 'projects', label: 'PROJECTS', icon: '※' },
-    { id: 'contact', label: 'TERMINAL', icon: '◊' }
+    { id: 'contact', label: 'TERMINAL', icon: '◊' },
+    { id: 'blogs', label: 'BLOGS', icon: '▤' }
   ];
-
-  const handleMobileNav = (id: string) => {
-    onSectionChange(id);
-    setMobileMenuOpen(false);
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-dark-bg/90 backdrop-blur-sm border-b border-cyber-purple">
@@ -40,13 +36,14 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
           </div>
 
           {/* Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {navItems.map((item) => (
               <PixelButton
                 key={item.id}
                 variant={activeSection === item.id ? 'accent' : 'primary'}
                 size="sm"
                 to={sectionPaths[item.id]}
+                aria-current={activeSection === item.id ? 'page' : undefined}
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className="relative"
@@ -63,19 +60,20 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <PixelButton variant="primary" size="sm" onClick={() => setMobileMenuOpen((v) => !v)}>
+          <div className="lg:hidden">
+            <button type="button" aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileMenuOpen} aria-controls="site-mobile-navigation" className="pixel-button border-cyber-blue bg-cyber-blue/10 px-4 py-2 text-xs text-white" onClick={() => setMobileMenuOpen((v) => !v)}>
               ≡
-            </PixelButton>
+            </button>
           </div>
         </div>
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 mt-4 bg-dark-bg border-2 border-cyber-purple rounded-lg shadow-lg z-50 flex flex-col items-stretch px-4 py-2 space-y-2 pixel-perfect">
+          <div id="site-mobile-navigation" className="lg:hidden absolute left-0 right-0 mt-4 bg-dark-bg border-2 border-cyber-purple rounded-lg shadow-lg z-50 flex flex-col items-stretch px-4 py-2 space-y-2 pixel-perfect">
             {navItems.map((item) => (
               <Link
                 to={sectionPaths[item.id]}
                 key={item.id}
+                aria-current={activeSection === item.id ? 'page' : undefined}
                 className={`text-left px-4 py-3 font-pixel text-lg border-b border-cyber-purple last:border-b-0 flex items-center space-x-2 ${activeSection === item.id ? 'text-cyber-pink' : 'text-cyber-blue'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >

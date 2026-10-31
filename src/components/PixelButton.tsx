@@ -8,6 +8,7 @@ interface PixelButtonProps {
   to?: string;
   href?: string;
   download?: string;
+  'aria-current'?: 'page';
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -18,7 +19,7 @@ interface PixelButtonProps {
 }
 
 const PixelButton = ({ 
-  children, to, href, download,
+  children, to, href, download, 'aria-current': ariaCurrent,
   onClick, 
   onMouseEnter,
   onMouseLeave,
@@ -47,6 +48,7 @@ const PixelButton = ({
       to={to || ''}
       href={href}
       download={download}
+      aria-current={ariaCurrent}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

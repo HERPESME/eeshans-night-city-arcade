@@ -2,9 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Music2, Volume2, VolumeX } from 'lucide-react';
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 const queryClient = new QueryClient();
@@ -29,6 +29,8 @@ const PLAYLIST = [
 ] as const;
 
 const App = () => {
+  const location = useLocation();
+  const compactMusic = location.pathname === '/blogs' || location.pathname.startsWith('/blogs/');
   const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(true);
   const [musicStarted, setMusicStarted] = useState(false);
@@ -226,7 +228,7 @@ const App = () => {
           </div>
         )}
         {/* Now Playing Marquee Banner (laptop/desktop only) */}
-        {musicStarted && !muted && (
+        {musicStarted && !muted && !compactMusic && (
           <div
             className="fixed bottom-6 z-50 pixel-button border-cyber-blue bg-cyber-dark text-cyber-blue font-pixel text-base shadow-lg px-4 py-2 hidden sm:flex sm:items-center cursor-pointer"
             style={{
@@ -270,18 +272,20 @@ const App = () => {
         {!musicStarted ? (
           <button
             onClick={startMusic}
-            className="fixed bottom-6 right-6 z-50 pixel-button border-cyber-purple bg-cyber-dark text-cyber-blue px-4 py-2 text-lg font-pixel shadow-lg hover:bg-cyber-purple/20 transition-all"
+            aria-label="Play Music"
+            className={`fixed bottom-6 right-6 z-50 pixel-button border-cyber-purple bg-cyber-dark text-cyber-blue px-4 py-2 text-lg font-pixel shadow-lg hover:bg-cyber-purple/20 transition-all ${compactMusic ? 'blog-music-control' : ''}`}
             style={{ imageRendering: 'pixelated' }}
           >
-            <span role="img" aria-label="Play Music">🎵 PLAY MUSIC</span>
+            {compactMusic ? <Music2 size={18} aria-hidden="true" /> : <span role="img" aria-label="Play Music">🎵 PLAY MUSIC</span>}
           </button>
         ) : (
           <button
             onClick={toggleMute}
-            className="fixed bottom-6 right-6 z-50 pixel-button border-cyber-purple bg-cyber-dark text-cyber-blue px-4 py-2 text-lg font-pixel shadow-lg hover:bg-cyber-purple/20 transition-all"
+            aria-label={muted ? 'Unmute music' : 'Mute music'}
+            className={`fixed bottom-6 right-6 z-50 pixel-button border-cyber-purple bg-cyber-dark text-cyber-blue px-4 py-2 text-lg font-pixel shadow-lg hover:bg-cyber-purple/20 transition-all ${compactMusic ? 'blog-music-control' : ''}`}
             style={{ imageRendering: 'pixelated' }}
           >
-            {muted ? (
+            {compactMusic ? (muted ? <VolumeX size={18} aria-hidden="true" /> : <Volume2 size={18} aria-hidden="true" />) : muted ? (
               <span role="img" aria-label="Unmute">🔇</span>
             ) : (
               <span role="img" aria-label="Mute">🔊</span>
@@ -290,14 +294,12 @@ const App = () => {
         )}
         <>
           <Routes>
-            <Route path="/:section?" element={
+            <Route path="*" element={
               <Index 
                 pauseBackgroundMusic={pauseBackgroundMusic}
                 resumeBackgroundMusic={resumeBackgroundMusic}
               />
             } />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </>
       </TooltipProvider>

@@ -1,0 +1,133 @@
+{
+  "measuredOn": "2026-10-31",
+  "results": [
+    {
+      "path": "/blogs",
+      "formFactor": "mobile",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 0.92,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.9\u00a0s",
+        "largest-contentful-paint": "3.3\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "20\u00a0ms",
+        "total-byte-weight": "Total size was 613\u00a0KiB"
+      },
+      "failedAudits": {
+        "label-content-name-mismatch": {
+          "title": "Elements with visible text labels do not have matching accessible names."
+        }
+      }
+    },
+    {
+      "path": "/blogs/figma-to-frontend-web-mobile-workflow",
+      "formFactor": "mobile",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 0.98,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.9\u00a0s",
+        "largest-contentful-paint": "2.4\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "30\u00a0ms",
+        "total-byte-weight": "Total size was 277\u00a0KiB"
+      },
+      "failedAudits": {}
+    },
+    {
+      "path": "/blogs/ultrafit360-srs-to-react-native-app",
+      "formFactor": "mobile",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 0.85,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.9\u00a0s",
+        "largest-contentful-paint": "3.3\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "320\u00a0ms",
+        "total-byte-weight": "Total size was 452\u00a0KiB"
+      },
+      "failedAudits": {}
+    },
+    {
+      "path": "/blogs/figma-mcp-ide-design-to-code",
+      "formFactor": "mobile",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.9\u00a0s",
+        "largest-contentful-paint": "2.8\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "30\u00a0ms",
+        "total-byte-weight": "Total size was 465\u00a0KiB"
+      },
+      "failedAudits": {}
+    },
+    {
+      "path": "/blogs",
+      "formFactor": "desktop",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.3\u00a0s",
+        "largest-contentful-paint": "0.6\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "0\u00a0ms",
+        "total-byte-weight": "Total size was 613\u00a0KiB"
+      },
+      "failedAudits": {
+        "label-content-name-mismatch": {
+          "title": "Elements with visible text labels do not have matching accessible names."
+        }
+      }
+    },
+    {
+      "path": "/blogs/ultrafit360-srs-to-react-native-app",
+      "formFactor": "desktop",
+      "environment": "Local production renderer; simulated throttling; draft noindex expected",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "seo": 0.69
+      },
+      "metrics": {
+        "first-contentful-paint": "0.2\u00a0s",
+        "largest-contentful-paint": "0.9\u00a0s",
+        "cumulative-layout-shift": "0",
+        "total-blocking-time": "0\u00a0ms",
+        "total-byte-weight": "Total size was 900\u00a0KiB"
+      },
+      "failedAudits": {}
+    }
+  ],
+  "methodology": {
+    "mobile": "Lighthouse default mobile screen and simulated throttling",
+    "desktop": "1440x960, DPR 1, simulated RTT 40 ms, throughput 10240 Kbps, CPU slowdown 1",
+    "environment": "Local production renderer with gzip; not a measurement of the public Netlify deployment",
+    "indexing": "SEO score is intentionally reduced by draft noindex in HTML and X-Robots-Tag. Canonical and crawlable links pass.",
+    "interpretation": "Single laboratory runs vary with host load. Mobile LCP is 2.4\u20133.3 seconds; the 2-second mobile target is not established by these measurements. Desktop LCP is 0.6\u20130.9 seconds. All recorded CLS values are zero."
+  },
+  "followUpAccessibility": {
+    "finding": "label-content-name-mismatch on the featured cover link",
+    "fix": "Use the linked image\u2019s natural accessible name; remove overriding aria-label. Card links also use native content names.",
+    "verification": "Passed against the final production build: Axe label-content-name-mismatch returned no violations on the archive. The article views had no failed accessibility audits in the recorded Lighthouse runs."
+  }
+}

@@ -8,6 +8,8 @@ import HomeSection from '@/components/HomeSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
+import BlogsSection from '@/components/blog/BlogsSection';
+import BlogArticle from '@/components/blog/BlogArticle';
 
 interface IndexProps {
   pauseBackgroundMusic: () => void;
@@ -79,6 +81,8 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
         return <ProjectsSection />;
       case 'contact':
         return <ContactSection />;
+      case 'blogs':
+        return page?.blogSlug ? <BlogArticle slug={page.blogSlug} /> : <BlogsSection />;
       default:
         return <HomeSection 
           onSectionChange={setActiveSection} 
@@ -125,7 +129,7 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
       )}
       
       <main className="pt-16">
-        {page.path !== '/' && <nav aria-label="Breadcrumb" className="relative z-10 px-4 pt-6 text-xs text-cyber-blue"><ol className="flex gap-3"><li><Link to="/">Home</Link></li><li aria-hidden="true">/</li><li aria-current="page">{page.label}</li></ol></nav>}
+        {page.path !== '/' && page.section !== 'blogs' && <nav aria-label="Breadcrumb" className="relative z-10 px-4 pt-6 text-xs text-cyber-blue"><ol className="flex gap-3"><li><Link to="/">Home</Link></li><li aria-hidden="true">/</li><li aria-current="page">{page.label}</li></ol></nav>}
         {renderActiveSection()}
       </main>
 
