@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import NotFound from './NotFound';
+import { routes, sectionPaths, updateHead } from '@/lib/seo';
+import { useState, useEffect, useCallback } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import CyberpunkNav from '@/components/CyberpunkNav';
 import CyberpunkCommandPalette from '@/components/CyberpunkCommandPalette';
@@ -15,8 +18,25 @@ interface IndexProps {
 const QUICK_ACCESS_HINT_KEY = 'nightcityarcade.quick-access-hint.seen';
 
 const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState('home');
+  const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  const page = routes.find(route => route.path === path);
+  const activeSection = page?.section || 'home';
+  const setActiveSection = useCallback((section: string) => navigate(sectionPaths[section] || '/'), [navigate]);
+  useEffect(() => {
+    if (page) updateHead(page);
+    window.scrollTo(0, 0);
+  }, [path, page]);
+  useEffect(() => {
+    try {
+      if (!sessionStorage.getItem('nightcity.intro.seen')) {
+        setIsLoading(true);
+        sessionStorage.setItem('nightcity.intro.seen', '1');
+      }
+    } catch { /* Content remains usable without storage. */ }
+  }, []);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [showQuickAccessHint, setShowQuickAccessHint] = useState(false);
   const [shortcutLabel, setShortcutLabel] = useState('Ctrl + K');
@@ -54,9 +74,7 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     return undefined;
   }, []);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
+  const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
 
   const renderActiveSection = () => {
     switch (activeSection) {
@@ -81,12 +99,11 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
     }
   };
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
+  if (!page) return <NotFound />;
 
   return (
     <div className="min-h-screen bg-dark-bg text-white font-pixel pixel-perfect">
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <CyberpunkNav 
         activeSection={activeSection} 
         onSectionChange={setActiveSection}

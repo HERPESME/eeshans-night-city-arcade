@@ -37,7 +37,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
 
   return (
     <section 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="night-city-background min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
         backgroundImage: `url('/media/pixel-jeff-clipa-s.gif')`,
         backgroundSize: 'cover',
@@ -55,9 +55,9 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
       <div className="relative z-10 text-center space-y-8 px-4">
         {/* Main Title */}
         <div className="space-y-4">
-          <GlitchText className="text-4xl md:text-6xl text-cyber-pink" intensity="high">
+          <h1 className="font-normal"><GlitchText className="text-4xl md:text-6xl text-cyber-pink" intensity="high">
             EESHAN
-          </GlitchText>
+          </GlitchText></h1>
           <div className="text-lg md:text-xl text-cyber-blue neon-glow-sm">
             FULL-STACK DEVELOPER
           </div>
@@ -89,7 +89,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
           <PixelButton 
             variant="accent" 
             size="lg"
-            onClick={() => onSectionChange('about')}
+            to="/profile"
           >
             <span className="flex items-center space-x-2">
               <span>▶</span>
@@ -100,7 +100,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
           <PixelButton 
             variant="success" 
             size="lg"
-            onClick={() => onSectionChange('projects')}
+            to="/projects"
           >
             <span className="flex items-center space-x-2">
               <span>※</span>
@@ -130,7 +130,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
               <svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <filter id="inner-glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feFlood flood-color="#1fc16c" result="flood" flood-opacity="0.7"/>
+                    <feFlood floodColor="#1fc16c" result="flood" floodOpacity="0.7"/>
                     <feComposite in="flood" in2="SourceAlpha" operator="in" result="mask"/>
                     <feMorphology in="mask" operator="dilate" radius="2" result="dilated"/>
                     <feGaussianBlur in="dilated" stdDeviation="4" result="blurred"/>
