@@ -56,7 +56,7 @@
   "originalScreens": [
     {
       "file": "docs/source-screens/ultrafit-dashboard-original.png",
-      "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
+      "source": "Private product source reviewed with permission; not published",
       "sourcePath": "src/assets/Dashboard.png",
       "sourceCommit": "ae1e5c4f",
       "sha256": "2e293c1de2b416ac14727f2ca8856b06c4f9eead9bb719af2e741d5df093c7a4",
@@ -65,7 +65,7 @@
     },
     {
       "file": "docs/source-screens/ultrafit-metrics-original.jpg",
-      "sourceRepository": "https://github.com/UltraFit360/UltraFit360_Website",
+      "source": "Private product source reviewed with permission; not published",
       "sourcePath": "src/assets/Metrics.png",
       "sourceCommit": "ae1e5c4f",
       "sha256": "55e74c75fb2bfdfa4beb09d3f744c24a82a983368df4458f5c082a23f321a3d4",

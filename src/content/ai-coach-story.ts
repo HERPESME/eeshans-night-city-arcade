@@ -11,7 +11,7 @@ export const aiCoachStory: BlogEntry = {
   slug: 'build-ai-coach-prompt-engineering-rag-guardrails', number: '07',
   title: 'Build an AI Coach: Prompt Engineering, RAG & Guardrails',
   excerpt: 'How to build your own API-powered AI assistant with better prompts, retrieval, tools and guardrails—using lessons from UltraFit360’s coach.',
-  category: 'ai', readingTime: '15 min', featured: true, isPreview: false,
+  category: 'ai', readingTime: '15 min', isPreview: false,
   reviewedOn: '2026-11-01', publishedOn: '2026-11-01',
   coverLabel: 'CONTEXT → COACH',
   journalNote: 'This entry connects the AI product work behind UltraFit360 to practical lessons in prompting, retrieval, permissions and evaluating whether an assistant actually did what it said.',

@@ -1,5 +1,6 @@
 import { ultraFitStories } from './ultrafit-stories';
 import { aiCoachStory } from './ai-coach-story';
+import { expoProductionStory } from './expo-production-story';
 export const blogCategories = [
   { id: 'all', label: 'All entries' },
   { id: 'build', label: 'Build logs' },
@@ -212,7 +213,7 @@ export const blogEntries: BlogEntry[] = [
         links: [{ label: 'My Figma-first frontend workflow', href: '/blogs/figma-to-frontend-web-mobile-workflow' }, { label: 'Figma MCP in the IDE', href: '/blogs/figma-mcp-ide-design-to-code' }, { label: 'Explore UltraFit360', href: 'https://ultrafit360.com' }],
       },
     ],
-    references: [{ label: 'UltraFit360 mobile source repository', href: 'https://github.com/rsamant07/UltraFit360' }, { label: 'UltraFit360 website and original screen assets', href: 'https://github.com/UltraFit360/UltraFit360_Website' }, { label: 'React Native Bottom Tabs: introduction', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/getting-started/introduction' }, { label: 'React Native Bottom Tabs: TabView', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/guides/standalone-usage' }, { label: 'Expo: GlassEffect', href: 'https://docs.expo.dev/versions/latest/sdk/glass-effect/' }],
+    references: [{ label: 'UltraFit360: public product overview', href: 'https://ultrafit360.com/' }, { label: 'React Native Bottom Tabs: introduction', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/getting-started/introduction' }, { label: 'React Native Bottom Tabs: TabView', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/guides/standalone-usage' }, { label: 'Expo: GlassEffect', href: 'https://docs.expo.dev/versions/latest/sdk/glass-effect/' }],
   },
   {
     journalNote: "This entry looks at the design-to-code workflow I use with Figma MCP, including the context an IDE needs and the implementation decisions I still review myself.",
@@ -309,6 +310,7 @@ export const blogEntries: BlogEntry[] = [
   },
   ...ultraFitStories,
   aiCoachStory,
+  expoProductionStory,
 ];
 export function categoryLabel(category: BlogCategory) { return blogCategories.find(item => item.id === category)?.label || category; }
 export function blogPath(entry: BlogEntry) { return `/blogs/${entry.slug}`; }
