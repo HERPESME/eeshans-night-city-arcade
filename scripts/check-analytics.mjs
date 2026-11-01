@@ -93,6 +93,14 @@ try {
   assert.equal(received.at(-1)[1].message, undefined);
   api.track('contact_intent', { method: 'private@example.com' });
   assert.equal(received.at(-1)[1].method, undefined, 'Email-like parameter rejected even in a permitted field');
+  api.track('article_engaged', { article_slug: 'example', active_seconds: 30 });
+  assert.equal(received.at(-1)[1].active_seconds, 30, 'Existing dimension parameter remains compatible');
+  assert.equal(received.at(-1)[1].reading_time_seconds, 30, 'Dedicated reading-time metric uses its own parameter');
+  api.track('web_vital', { metric_name: 'LCP', metric_value: 1250 });
+  assert.equal(received.at(-1)[1].metric_value, 1250);
+  assert.equal(received.at(-1)[1].web_vital_value, 1250, 'Numeric Web Vitals metric avoids dimension registration conflicts');
+  api.track('web_vital', { metric_name: 'LCP', metric_value: Number.NaN });
+  assert.equal(received.at(-1)[1].web_vital_value, undefined, 'Invalid values never become numeric metrics');
   api.trackPage('/not-real?email=secret');
   api.track('generate_lead');
   assert.ok(!JSON.stringify(received).includes('secret'));

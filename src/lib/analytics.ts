@@ -63,5 +63,9 @@ export function track(name: string, params: AnalyticsParams = {}) {
   const allowed = fields[name];
   if (!allowed) return;
   const clean = Object.fromEntries(Object.entries(params).filter(([key, value]) => allowed.includes(key) && (typeof value === 'number' ? Number.isFinite(value) : /^[a-zA-Z0-9_. /-]{1,100}$/.test(value))));
+  // GA4 cannot register the same parameter as both a dimension and a metric.
+  // Keep existing dimension parameters and expose distinct numeric metric parameters.
+  if (name === 'article_engaged' && typeof clean.active_seconds === 'number') clean.reading_time_seconds = clean.active_seconds;
+  if (name === 'web_vital' && typeof clean.metric_value === 'number') clean.web_vital_value = clean.metric_value;
   getTracker()?.event(name, clean);
 }
