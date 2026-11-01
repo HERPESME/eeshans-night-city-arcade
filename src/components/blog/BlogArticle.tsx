@@ -6,6 +6,7 @@ import NotFound from '@/pages/NotFound';
 import BlogCover from './BlogCover';
 import BlogCard from './BlogCard';
 import BlogImageView from './BlogImageView';
+import { track } from '@/lib/analytics';
 import './blogs.css';
 
 function ContentLink({ link }: { link: BlogLink }) {
@@ -50,7 +51,7 @@ export default function BlogArticle({ slug }: { slug: string }) {
   if (!entry) return <NotFound />;
   const related = blogEntries.filter(item => item.slug !== entry.slug).sort((a, b) => Number(b.category === entry.category) - Number(a.category === entry.category)).slice(0, 2);
   const copyLink = async () => {
-    try { await navigator.clipboard.writeText(`${window.location.origin}${blogPath(entry)}`); setCopyState('copied'); }
+    try { await navigator.clipboard.writeText(`${window.location.origin}${blogPath(entry)}`); setCopyState('copied'); track('share', { article_slug: entry.slug, method: 'copy_link' }); }
     catch { setCopyState('unavailable'); }
   };
 
