@@ -4,9 +4,9 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 8, 'Hub and seven complete articles are available');
+assert.equal(blogs.length, 9, 'Hub and eight complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 12, 'Core pages, archive and all seven articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 13, 'Core pages, archive and all eight articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
@@ -50,8 +50,14 @@ for (const page of blogs) {
    assert.ok(file.length > 1000, `Nonempty image asset: ${path}`);
    if (path.endsWith('.webp')) assert.equal(file.toString('ascii', 8, 12), 'WEBP');
   }
-  assert.ok(result.body.includes('Sources &amp; project links'));
+  assert.ok(result.body.includes('id="blog-references-title">Sources</h2>'));
   assert.ok(!/api\.ultrafit360|backend-python|confirm_token|client_secret|DATABASE_URL|ghp_[A-Za-z0-9]|github_pat_/.test(result.body), 'Articles must not disclose backend addresses, code paths, token payloads or credentials');
+  assert.ok(!/github\.com\/(?:rsamant07\/UltraFit360|UltraFit360\/(?:UltraFit360_Website|Aptixlabs))/i.test(result.body), 'Private product repository URLs must never appear in articles or metadata');
+  if (page.blogSlug === 'expo-react-native-production-problems-ultrafit360') {
+   assert.ok(article.wordCount >= 2200, 'Production guide contains a detailed discussion');
+   for (const concept of ['fictional editorial fixtures', 'not a device capture', '24 combinations', 'Those are the authors’ experiences', 'native code', 'Flutter', 'Capacitor']) assert.ok(result.body.includes(concept), concept);
+   assert.ok(result.body.includes('expo-dashboard-screen.webp') && result.body.includes('expo-nutrition-screen.webp'));
+  }
   if (page.blogSlug === 'build-ai-coach-prompt-engineering-rag-guardrails') {
    for (const concept of ['model’s weights', 'Retrieval-augmented generation', 'Prompt engineering', 'authorised', 'invented teaching examples', 'not a copy of UltraFit360']) assert.ok(result.body.includes(concept), concept);
    assert.ok(article.wordCount >= 2500, 'The AI coach guide explains the full workflow in detail');
@@ -74,9 +80,9 @@ for (const page of blogs) {
  }
  console.log('PASS blog review route', page.path);
 }
-assert.equal(journalNotes.size, 7, 'Every article has a distinct journal note');
-assert.equal(titles.size, 7, 'Every article has a distinct title');
-assert.equal(descriptions.size, 7, 'Every article has a distinct description');
+assert.equal(journalNotes.size, 8, 'Every article has a distinct journal note');
+assert.equal(titles.size, 8, 'Every article has a distinct title');
+assert.equal(descriptions.size, 8, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
