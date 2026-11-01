@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .ssr/
+
+# Search Console / GA4 exports and generated owner reports must stay private.
+analytics-private/
+__pycache__/
+*.pyc

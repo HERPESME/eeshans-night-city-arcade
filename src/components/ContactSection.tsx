@@ -1,3 +1,4 @@
+import { track } from '@/lib/analytics';
 import { useEffect, useRef, useState } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
@@ -192,6 +193,7 @@ const ContactSection = () => {
     const result = await sendContactMessage(payload);
 
     if (result.ok) {
+      track('generate_lead', { method: 'contact_form' });
       appendToTerminal([
         'Transmission successful.',
         'Message delivered to inbox.',

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Music2, Volume2, VolumeX } from 'lucide-react';
 import Index from "./pages/Index";
+import AnalyticsControls from './components/AnalyticsControls';
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 const queryClient = new QueryClient();
@@ -181,6 +182,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <AnalyticsControls />
         <audio
           ref={audioRef}
           src={PLAYLIST[currentSongIndex].src}
