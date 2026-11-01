@@ -67,7 +67,7 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
                   <GlitchText className="text-xl text-cyber-green mb-2">
                     EESHAN
                   </GlitchText>
-                  <div className="text-cyber-blue">Full-Stack Developer</div>
+                  <div className="text-cyber-blue">AI Full Stack Developer</div>
                   <div className="text-cyber-pink">AI/ML Enthusiast</div>
                 </div>
 

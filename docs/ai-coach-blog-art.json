@@ -1,0 +1,26 @@
+{
+  "generator": "Built-in GPT image generator",
+  "mode": "Original pixel-art scenes with separate lossless application screen layers",
+  "prompts": [
+    {
+      "asset": "public/blog-images/ai-coach-prompts-cover.webp",
+      "prompt": "Use case: stylized-concept. Asset: original 3:2 landscape editorial cover for a developer blog about building a personalized API-powered AI fitness coach with prompts, retrieval and guardrails. Rich detailed crisp 16-bit pixel art, every architectural edge and all physical objects built from visible square pixels, matching a rainy neon Night City arcade: deep midnight purple, magenta skyline, cyan circuit lights, warm amber desk lamp, wet rooftop reflections. A thoughtful futuristic developer workbench with a large single upright front-facing pixel-art smartphone on the RIGHT THIRD. On the LEFT are a laptop showing only abstract code strokes, a small stack of knowledge cards, a few abstract conversation bubbles and a glowing shield-shaped circuit motif, representing instructions, retrieved context and boundaries without being a technical diagram. Important: reserve the phone's entire display as a perfectly flat uniform pure off-white (#fafafa) EMPTY rectangular area, no UI, no marks, no reflections, no text, no notch; real app screenshot will be overlaid in code. Screen ratio about 0.46:1, around 23% of image width and 69% of image height, vertical/horizontal screen edges perfectly axis aligned; slim chunky stepped-pixel bezel. Rich atmospheric Night City environment with small readable silhouettes and realistic pixel-art lighting, original composition, polished editorial quality. No readable writing anywhere, no private prompts, no titles, no logos, no watermark. No human face, no photorealism, no smooth vector art. Compose the empty phone display unobstructed and large enough for an authentic coach conversation to be readable."
+    },
+    {
+      "asset": "public/blog-images/ai-coach-web-mobile.webp",
+      "prompt": "Use case: stylized-concept. Asset: a 3:2 landscape supporting editorial illustration for a developer article about the web and mobile AI coaches in UltraFit360. Original rich crisp 16-bit pixel-art Night City studio, midnight purple and magenta with cyan neon and warm amber lights, rainy skyline behind a cozy futuristic desk. All hardware, architecture and objects are clearly made of stepped square pixels. Two unobstructed devices dominate the composition. LEFT: a large computer monitor perfectly FRONT FACING with a wide, flat, axis-aligned EMPTY display (16:10 landscape ratio), spanning about 56% of the whole image width and 52% of the whole image height, with a visible chunky pixel-art bezel, stand and keyboard below. RIGHT: a tall smartphone perfectly FRONT FACING with a flat EMPTY display (about 0.46:1 portrait ratio), about 18% of image width and 61% of image height, thin stepped-pixel bezel. Both display surfaces MUST be uniform pure off-white #fafafa with absolutely no UI, text, icons, reflections, shading, glare or notches; actual original application screenshots will be layered over these exact areas later. Vertical edges vertical, horizontal edges horizontal; no perspective distortion on either display. Make the display boundaries easy to locate and keep them fully visible without objects or wires crossing in front. Around the devices: a couple of small abstract knowledge cards and glowing shield motifs in the background, suggesting grounded answers and user-reviewed changes. High-quality detailed atmospheric pixel art matching a rainy Night City arcade portfolio; no photorealism, no smooth vectors. No readable letters anywhere, no logos, no watermark. All important subjects inside frame with comfortable margins."
+    }
+  ],
+  "screen_sources": {
+    "mobile": "https://ultrafit360.com/blog/images/app-ai-coach-chat.png — existing public marketing image, public availability checked",
+    "web": "Actual website assistant component, rendered offline with a clearly labelled fictional editorial conversation; no customer account or live AI call"
+  },
+  "exports": [
+    "public/blog-images/ai-coach-prompts-cover.webp",
+    "public/blog-images/ai-coach-prompts-cover-720.webp",
+    "public/blog-images/ai-coach-web-mobile.webp",
+    "public/blog-images/ai-coach-mobile-screen.webp",
+    "public/blog-images/ai-coach-web-screen.webp"
+  ],
+  "existing_gifs": "Unchanged"
+}

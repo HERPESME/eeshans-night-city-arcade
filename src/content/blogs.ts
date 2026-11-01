@@ -1,4 +1,5 @@
 import { ultraFitStories } from './ultrafit-stories';
+import { aiCoachStory } from './ai-coach-story';
 export const blogCategories = [
   { id: 'all', label: 'All entries' },
   { id: 'build', label: 'Build logs' },
@@ -11,7 +12,7 @@ export type BlogCategory = Exclude<typeof blogCategories[number]['id'], 'all'>;
 export interface BlogLink { label: string; href: string }
 export interface BlogScreen {
   src: string; alt: string; width: number; height: number;
-  originalSrc: string;
+  originalSrc: string; originalLabel?: string;
   /** Display position within the 1200 × 800 illustration; screenshot bytes stay unchanged. */
   x: number; y: number; displayWidth: number; displayHeight: number;
   transform?: string;
@@ -34,14 +35,14 @@ export interface BlogEntry {
   /** Written articles remain excluded from indexing until author approval. */
   isPreview: boolean;
   reviewedOn: string; publishedOn?: string; keywords: string[];
-  intro: string; sections: BlogSection[]; references: BlogLink[];
+  intro: string; journalNote: string; sections: BlogSection[]; references: BlogLink[];
 }
 const art = (name: string, alt: string, caption: string, cover = false): BlogImage => ({
   src: `/blog-images/${name}.webp`, width: 1200, height: 800, alt, caption,
   ...(cover ? { thumbnail: `/blog-images/${name}-720.webp` } : {}),
 });
-const dashboard = { src: '/blog-images/ultrafit-dashboard-screen.webp', originalSrc: '/blog-images/ultrafit-dashboard-screen.webp', alt: 'Original UltraFit360 dashboard showing nutrition, macro totals, workout summary, and the bottom navigation', width: 1170, height: 2532 };
-const metrics = { src: '/blog-images/ultrafit-metrics-screen.webp', originalSrc: '/blog-images/ultrafit-metrics-screen.webp', alt: 'Original UltraFit360 health metrics screen with basal calories, flights climbed, VO2 max, and heart-rate cards', width: 735, height: 1600 };
+const dashboard = { originalLabel: 'dashboard', src: '/blog-images/ultrafit-dashboard-screen.webp', originalSrc: '/blog-images/ultrafit-dashboard-screen.webp', alt: 'Original UltraFit360 dashboard showing nutrition, macro totals, workout summary, and the bottom navigation', width: 1170, height: 2532 };
+const metrics = { originalLabel: 'metrics', src: '/blog-images/ultrafit-metrics-screen.webp', originalSrc: '/blog-images/ultrafit-metrics-screen.webp', alt: 'Original UltraFit360 health metrics screen with basal calories, flights climbed, VO2 max, and heart-rate cards', width: 735, height: 1600 };
 const figmaCover = art('figma-cover', 'Night City pixel-art design studio with a wireframe canvas beside website and mobile layouts', 'GPT-generated Night City illustration of the design-to-frontend workflow; the screens are conceptual artwork.', true);
 const appCover: BlogImage = {
   ...art('ultrafit-cover', 'Pixel-art Night City workbench connecting requirements and wireframes to a phone displaying the original UltraFit360 app', 'Original UltraFit360 dashboard inside a GPT-generated pixel-art phone and city setting. The app screenshot is preserved as a separate image layer.', true),
@@ -56,10 +57,11 @@ const appDetail: BlogImage = {
 };
 export const blogEntries: BlogEntry[] = [
   {
+    journalNote: "This entry follows how I turn manually designed Figma interfaces into web and mobile products, and why layout, interaction states and implementation need to inform each other.",
     slug: 'figma-to-frontend-web-mobile-workflow', number: '01',
     title: 'Figma to Frontend: How I Design for Web and Mobile',
     excerpt: 'My Figma-first workflow for React and React Native: wireframes, UI/UX, reusable components, glassmorphism, and where Figma Make fits.',
-    category: 'build', readingTime: '8 min', cover: figmaCover, coverLabel: 'FIGMA → FRONTEND', featured: true, isPreview: false,
+    category: 'build', readingTime: '8 min', cover: figmaCover, coverLabel: 'FIGMA → FRONTEND', isPreview: false,
     reviewedOn: '2026-11-01', publishedOn: '2026-11-01', keywords: ['Figma to React', 'Figma to React Native', 'wireframing', 'UI/UX design', 'Figma Make', 'glassmorphism'],
     intro: 'I designed and built the frontends for the UltraFit360 mobile app, the UltraFit360 website, and Aptixlabs. The work started in Figma and continued in React Native, React, HTML, and animation code, with MCP tools helping carry design context into development. That overlap between drawing the interface and making it behave is the part I enjoy most.',
     sections: [
@@ -137,6 +139,7 @@ export const blogEntries: BlogEntry[] = [
     references: [{ label: 'Figma: Auto Layout', href: 'https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout-in-Figma' }, { label: 'Figma: Figma Make', href: 'https://help.figma.com/hc/en-us/articles/31304412302231-Explore-Figma-Make' }, { label: 'Selected frontend projects', href: '/projects' }],
   },
   {
+    journalNote: "This entry documents the mobile frontend work behind UltraFit360: translating requirements into wireframes, reusable React Native screens and platform-specific navigation.",
     slug: 'ultrafit360-srs-to-react-native-app', number: '02',
     title: 'From SRS to App: Building UltraFit360 in React Native',
     excerpt: 'How I wireframed and coded the UltraFit360 mobile frontend from a requirements document, designing for Android, iOS, and glass-style layouts.',
@@ -212,6 +215,7 @@ export const blogEntries: BlogEntry[] = [
     references: [{ label: 'UltraFit360 mobile source repository', href: 'https://github.com/rsamant07/UltraFit360' }, { label: 'UltraFit360 website and original screen assets', href: 'https://github.com/UltraFit360/UltraFit360_Website' }, { label: 'React Native Bottom Tabs: introduction', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/getting-started/introduction' }, { label: 'React Native Bottom Tabs: TabView', href: 'https://oss.callstack.com/react-native-bottom-tabs/docs/guides/standalone-usage' }, { label: 'Expo: GlassEffect', href: 'https://docs.expo.dev/versions/latest/sdk/glass-effect/' }],
   },
   {
+    journalNote: "This entry looks at the design-to-code workflow I use with Figma MCP, including the context an IDE needs and the implementation decisions I still review myself.",
     slug: 'figma-mcp-ide-design-to-code', number: '03',
     title: 'Figma MCP in the IDE: My Design-to-Code Workflow',
     excerpt: 'From hand-made Figma wireframes to React and React Native: the MCP tools, design context, and review loop that make the IDE workflow useful.',
@@ -304,6 +308,7 @@ export const blogEntries: BlogEntry[] = [
     references: [{ label: 'Figma MCP: tools and prompts', href: 'https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/' }, { label: 'Figma MCP: server and agent responsibilities', href: 'https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/' }, { label: 'Figma MCP: file structure', href: 'https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/' }, { label: 'Figma MCP: target framework', href: 'https://developers.figma.com/docs/figma-mcp-server/server-returning-web-code/' }, { label: 'Figma MCP: Code Connect', href: 'https://developers.figma.com/docs/figma-mcp-server/code-connect-integration/' }, { label: 'Figma MCP: selection size', href: 'https://developers.figma.com/docs/figma-mcp-server/avoid-large-frames/' }, { label: 'Figma MCP: remote setup', href: 'https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/' }],
   },
   ...ultraFitStories,
+  aiCoachStory,
 ];
 export function categoryLabel(category: BlogCategory) { return blogCategories.find(item => item.id === category)?.label || category; }
 export function blogPath(entry: BlogEntry) { return `/blogs/${entry.slug}`; }
