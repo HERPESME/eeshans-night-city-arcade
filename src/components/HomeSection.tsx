@@ -58,11 +58,11 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
           <h1 className="font-normal"><GlitchText className="text-4xl md:text-6xl text-cyber-pink" intensity="high">
             EESHAN
           </GlitchText></h1>
-          <div className="text-lg md:text-xl text-cyber-blue neon-glow-sm">
-            FULL-STACK DEVELOPER
+          <div className="text-xs sm:text-lg md:text-xl text-cyber-blue neon-glow-sm">
+            AI FULL STACK DEVELOPER
           </div>
-          <div className="text-sm md:text-base text-cyber-green">
-            AI/ML ENTHUSIAST
+          <div className="text-[10px] sm:text-sm md:text-base text-cyber-green">
+            CoFounder - UltraFit360
           </div>
         </div>
 
@@ -112,7 +112,7 @@ const HomeSection = ({ onSectionChange, pauseBackgroundMusic, resumeBackgroundMu
         {/* Quick Stats */}
         <div className="flex justify-center space-x-8 text-xs">
           <div className="text-center flex flex-col items-center">
-            <div className="text-cyber-blue text-lg">6</div>
+            <div className="text-cyber-blue text-lg">30+</div>
             <div className="text-gray-400">PROJECTS</div>
           </div>
           <div className="text-center flex flex-col items-center relative">

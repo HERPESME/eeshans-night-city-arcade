@@ -1,6 +1,7 @@
 import { blogEntries, blogPath, blogWordCount, findBlogEntry } from '@/content/blogs';
 import { faqs } from './faqs';
 import { projects } from './projects';
+import { author } from '@/content/author';
 export const origin = 'https://technightcity.com';
 export const sectionPaths: Record<string, string> = { home: '/', about: '/profile', projects: '/projects', contact: '/terminal', blogs: '/blogs' };
 export interface Page {
@@ -14,8 +15,8 @@ export interface Page {
   lastModified?: string;
 }
 export const routes: Page[] = [
-  { path: '/', section: 'home', label: 'Home', title: 'Eeshan Singh | Full-Stack Developer & AI/ML Portfolio', description: 'Explore Eeshan Singh’s Night City Arcade portfolio: full-stack development, AI/ML projects, developer profile, and an interactive contact terminal.' },
-  { path: '/profile', section: 'about', label: 'Profile', title: 'Profile | Eeshan Singh — Night City Arcade', description: 'Meet Eeshan Singh, a full-stack developer and AI/ML enthusiast. Explore his skills, background, coding profiles, and download his résumé.' },
+  { path: '/', section: 'home', label: 'Home', title: 'Eeshan Singh | AI Full Stack Developer & UltraFit360 CoFounder', description: 'Eeshan Singh Pokharia, AI Full Stack Developer and CoFounder of UltraFit360. Explore AI projects, web and mobile builds, and practical product stories.' },
+  { path: '/profile', section: 'about', label: 'Profile', title: 'Profile | Eeshan Singh — Night City Arcade', description: 'Meet Eeshan Singh Pokharia, AI Full Stack Developer and CoFounder of UltraFit360. Explore his background, projects, coding profiles and résumé.' },
   { path: '/projects', section: 'projects', label: 'Projects', title: 'Projects | Eeshan Singh — Full-Stack & AI/ML', description: 'Explore CareerBoostAI, UltraFit360, QuantTrader, and Eeshan Singh’s development projects, with technologies, source code, and live demos.' },
   { path: '/terminal', section: 'contact', label: 'Contact', title: 'Contact Eeshan Singh | Night City Terminal', description: 'Connect with Eeshan Singh through his interactive contact terminal, email, GitHub, LinkedIn, and LeetCode profiles.' },
   { path: '/blogs', section: 'blogs', label: 'Blogs', title: 'Blogs | Eeshan Singh — Night City Journal', description: 'Design, startup credits, fitness coaching apps and connected AI: practical guides and personal build stories by Eeshan Singh at Night City Arcade.', indexable: blogEntries.some(entry => !entry.isPreview) },
@@ -29,7 +30,7 @@ export function metadata(page: Page) {
 export function schema(page: Page) {
   const entry = page.blogSlug ? findBlogEntry(page.blogSlug) : undefined;
   const articleId = origin + page.path + '#article';
-  const person = { '@type': 'Person', '@id': origin + '/#person', name: 'Eeshan Singh Pokharia', alternateName: 'Eeshan Singh', url: origin + '/profile', jobTitle: 'Full-Stack Developer', knowsAbout: ['React', 'TypeScript', 'Node.js', 'Python', 'AI/ML'], sameAs: ['https://github.com/HERPESME', 'https://www.linkedin.com/in/eeshan-singh-pokharia-926790285', 'https://leetcode.com/u/EeshanSingh/'] };
+  const person = { '@type': 'Person', '@id': origin + '/#person', name: 'Eeshan Singh Pokharia', alternateName: 'Eeshan Singh', url: origin + '/profile', jobTitle: author.role, description: author.bio, affiliation: { '@type': 'Organization', name: 'UltraFit360', url: 'https://ultrafit360.com' }, knowsAbout: ['React', 'TypeScript', 'Node.js', 'Python', 'AI/ML'], sameAs: ['https://github.com/HERPESME', 'https://www.linkedin.com/in/eeshan-singh-pokharia-926790285', 'https://leetcode.com/u/EeshanSingh/'] };
   const mainEntity = page.section === 'projects' ? { '@type': 'ItemList', itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': p.codeUrl ? 'SoftwareSourceCode' : 'CreativeWork', name: p.title, description: p.description, creativeWorkStatus: p.status, ...(p.codeUrl ? { codeRepository: p.codeUrl } : {}), ...(p.websiteUrl || p.demoUrl ? { url: p.websiteUrl || p.demoUrl } : {}), creator: { '@id': person['@id'] } } })) } : { '@id': person['@id'] };
   return { '@context': 'https://schema.org', '@graph': [
     ...(entry ? [{ '@type': 'BlogPosting', '@id': articleId, headline: entry.title, description: entry.excerpt, url: origin + page.path, mainEntityOfPage: { '@id': origin + page.path + '#webpage' }, author: { '@id': person['@id'] }, publisher: { '@id': person['@id'] }, image: { '@type': 'ImageObject', url: origin + entry.cover.src, width: entry.cover.width, height: entry.cover.height, caption: entry.cover.caption }, inLanguage: 'en', keywords: entry.keywords, wordCount: blogWordCount(entry), dateModified: entry.reviewedOn, creativeWorkStatus: entry.isPreview ? 'Draft' : 'Published', ...(!entry.isPreview && entry.publishedOn ? { datePublished: entry.publishedOn } : {}), citation: entry.references.map(link => link.href.startsWith('/') ? origin + link.href : link.href) }] : []),

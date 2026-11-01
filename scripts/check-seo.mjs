@@ -15,6 +15,8 @@ for (const page of routes) {
  assert.equal(sitemap.includes(`<loc>${origin}${page.path}</loc>`), page.indexable !== false);
  console.log('PASS', page.path, 'canonical, headings, links, schema, verification, sitemap, static content');
 }
+const home = await readFile('dist/index.html', 'utf8');
+assert.ok(home.includes('AI FULL STACK DEVELOPER') && home.includes('CoFounder - UltraFit360') && home.includes('30+'));
 const profile = await readFile('dist/profile.html','utf8');
 assert.ok(profile.includes('href="/files/Res-3.pdf"'));
 const projects = await readFile('dist/projects.html','utf8');

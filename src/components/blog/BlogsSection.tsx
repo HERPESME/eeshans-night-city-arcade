@@ -34,7 +34,7 @@ export default function BlogsSection() {
             <div className="blog-entry-meta"><span>{categoryLabel(featured.category)}</span><span>{featured.readingTime} read</span></div>
             <h2 id="featured-entry-title"><Link to={blogPath(featured)}>{featured.title}</Link></h2>
             <p>{featured.excerpt}</p>
-            <Link to="/profile" className="blog-author-inline"><span className="blog-author-avatar" aria-hidden="true">ES</span><span><strong>Eeshan Singh</strong><span>Designing. Building. Learning.</span></span></Link>
+            <Link to="/profile" className="blog-author-inline"><span className="blog-author-avatar" aria-hidden="true">ES</span><span><strong>Eeshan Singh</strong><span>AI Full Stack Developer · CoFounder, UltraFit360</span></span></Link>
             <Link to={blogPath(featured)} className="blog-read-button">Read the entry <ArrowUpRight size={17} aria-hidden="true" /></Link>
           </div>
         </section>}
@@ -44,7 +44,7 @@ export default function BlogsSection() {
           <div className="blog-filter-bar"><div className="blog-filters" role="group" aria-label="Filter entries by category">{blogCategories.map(item => <button key={item.id} type="button" aria-pressed={category === item.id} className={category === item.id ? 'is-active' : ''} onClick={() => { setCategory(item.id); track('blog_filter', { category: item.id }); }}>{item.label}</button>)}</div><span className="blog-result-count" role="status" aria-live="polite">{visibleEntries.length} {showFeatured ? 'more ' : ''}{visibleEntries.length === 1 ? 'entry' : 'entries'}</span></div>
           {visibleEntries.length ? <div className={`blog-grid${visibleEntries.length === 2 ? ' blog-grid--pair' : ''}`}>{visibleEntries.map(entry => <BlogCard key={entry.slug} entry={entry} />)}</div> : <div className="blog-empty"><span className="blog-empty-code">NO SIGNAL / 000</span><h3>No entries found.</h3><p>Try a different word or open the full archive.</p><button type="button" className="blog-text-button" onClick={reset}>Reset filters <ArrowRight size={16} aria-hidden="true" /></button></div>}
         </section>
-        <footer className="blog-hub-footer"><div><span className="blog-status-dot" /><span>Made by hand. Built in code.</span><small>{allDrafts ? 'Three complete drafts, ready for a closer look.' : 'Design, development, and the stories behind the screens.'}</small></div><Link to="/terminal">Say hello <ArrowUpRight size={16} aria-hidden="true" /></Link></footer>
+        <footer className="blog-hub-footer"><div><span className="blog-status-dot" /><span>Made by hand. Built in code.</span><small>{allDrafts ? 'Three complete drafts, ready for a closer look.' : 'AI, full-stack products, startup lessons, and the stories behind the builds.'}</small></div><Link to="/terminal">Say hello <ArrowUpRight size={16} aria-hidden="true" /></Link></footer>
       </div>
     </div>
   );
