@@ -11,14 +11,15 @@ export interface Page {
   description: string;
   indexable?: boolean;
   blogSlug?: string;
+  lastModified?: string;
 }
 export const routes: Page[] = [
   { path: '/', section: 'home', label: 'Home', title: 'Eeshan Singh | Full-Stack Developer & AI/ML Portfolio', description: 'Explore Eeshan Singh’s Night City Arcade portfolio: full-stack development, AI/ML projects, developer profile, and an interactive contact terminal.' },
   { path: '/profile', section: 'about', label: 'Profile', title: 'Profile | Eeshan Singh — Night City Arcade', description: 'Meet Eeshan Singh, a full-stack developer and AI/ML enthusiast. Explore his skills, background, coding profiles, and download his résumé.' },
   { path: '/projects', section: 'projects', label: 'Projects', title: 'Projects | Eeshan Singh — Full-Stack & AI/ML', description: 'Explore CareerBoostAI, UltraFit360, QuantTrader, and Eeshan Singh’s development projects, with technologies, source code, and live demos.' },
   { path: '/terminal', section: 'contact', label: 'Contact', title: 'Contact Eeshan Singh | Night City Terminal', description: 'Connect with Eeshan Singh through his interactive contact terminal, email, GitHub, LinkedIn, and LeetCode profiles.' },
-  { path: '/blogs', section: 'blogs', label: 'Blogs', title: 'Blogs | Eeshan Singh — Night City Journal', description: 'Figma-to-frontend workflows, building UltraFit360 in React Native, and using Figma MCP in the IDE. Personal build stories by Eeshan Singh.', indexable: blogEntries.some(entry => !entry.isPreview) },
-  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: `${entry.title} | Night City Journal`, description: entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug })),
+  { path: '/blogs', section: 'blogs', label: 'Blogs', title: 'Blogs | Eeshan Singh — Night City Journal', description: 'Design, startup credits, fitness coaching apps and connected AI: practical guides and personal build stories by Eeshan Singh at Night City Arcade.', indexable: blogEntries.some(entry => !entry.isPreview) },
+  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: `${entry.title} | Night City Journal`, description: entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug, lastModified: entry.reviewedOn })),
 ];
 export const socialImage = origin + '/media/night-city-social.gif';
 export function metadata(page: Page) {

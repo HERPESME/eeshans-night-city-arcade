@@ -1,0 +1,32 @@
+{
+  "generator": "Built-in GPT image generator",
+  "mode": "Text to image",
+  "savedDirectory": "public/blog-images",
+  "format": "WebP",
+  "prompts": [
+    {
+      "key": "startup-credits-cover",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. A tiny founder workshop on a neon rooftop, a small launch rocket built from circuit boards sits on a desk beside a laptop and a modest seedling in a pot; luminous cloud-shaped holograms overhead connect to the workshop with cyan light trails, amber square credit tokens flow toward the small rocket. The feeling is a founder discovering an achievable runway, hopeful and grounded rather than piles of money. Wide composition with rich city detail and a clear central subject."
+    },
+    {
+      "key": "startup-credits-detail",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. Close view of a founder's planning desk under a warm lamp: an open notebook with abstract budget columns, a small hourglass, a few square neon credit tokens, and several cloud-computing cubes connected to a little server tower. A calendar with abstract squares reminds of expiry. Rainy cyberpunk window behind. Tell the story of careful planning and finite credit runway without numerical labels or cash stacks."
+    },
+    {
+      "key": "fitness-platforms-cover",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. A welcoming Night City fitness coaching studio: a large pixel-art monitor on a workbench shows a conceptual dashboard with a workout grid, simple nutrition ring, and small progress cards, beside a pixel-art phone displaying a matching abstract orange and white interface. A dumbbell, apple and water bottle sit on the desk. Two silhouettes sit together reviewing the display, collaborative rather than surveillance. Keep all interfaces generic, no real product logos, no text, no medical claim imagery."
+    },
+    {
+      "key": "fitness-platforms-detail",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. Cozy futuristic apartment fitness corner, a person and an adult family member sit side by side willingly reviewing a pixel-art tablet with abstract activity and nutrition cards; two fitness bands and a water bottle on table, small dumbbells by the wall. A subtle glowing connection between their devices suggests permission-based sharing and encouragement. Warm human mood with neon city beyond the window. Generic conceptual UI, no identifiable individuals, no medical diagnosis imagery."
+    },
+    {
+      "key": "ultrafit-mcp-cover",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. Night City desk with a large monitor showing a generic dark conversational assistant interface with empty abstract chat bars, a small nutrition ring and workout cards; a thin glowing cyan cable made of square nodes connects it to a chunky pixel-art smartphone with a generic white and orange fitness UI. A keyboard, meal bowl and gamepad add human context. The story is controlling a connected fitness app through conversation. No ChatGPT or Claude logos, no real-looking user names or readable messages."
+    },
+    {
+      "key": "ultrafit-mcp-detail",
+      "prompt": "Original detailed 16-bit pixel art editorial illustration, landscape 3:2, crisp visible square pixels, rainy neon Night City environment, midnight indigo and purple with cyan, magenta and warm amber lights, hand-crafted retro game scene, sophisticated environmental lighting. No readable text, no brand logos, no watermark, no photorealism or smooth vector style. Screens are conceptual, never imply real customer data. All phone hardware must be chunky pixel art. Close view of a futuristic workstation with three abstract holographic panels: on left a meal bowl icon and nutrition cards; centre a conversational panel with a prominent square confirmation control; on right a tidy workout schedule. A pixel-art human hand hovers near the confirmation button to suggest user approval before changes. Cyan circuit traces connect the panels, rainy city reflections, warm amber desk lighting. Conceptual interface only, no words or medical advice."
+    }
+  ]
+}

@@ -329,3 +329,9 @@
   .blog-card, .blog-cover > .blog-art, .blog-reading-progress > span, .blog-card h3 svg { transition: none; }
   .blog-card:hover, .blog-card:hover .blog-cover > .blog-art, .blog-card:hover h3 svg { transform: none; }
 }
+
+.blog-table-hint { display: none; }
+@media (max-width: 540px) {
+  .blog-table-scroll--wide table { min-width: 600px; }
+  .blog-prose p.blog-table-hint { display: block; color: var(--blog-cyan); font: 11px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 20px 0 -15px; }
+}

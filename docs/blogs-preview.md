@@ -1,3 +1,5 @@
+> Historical layout-preview notes. The six-article publication and indexing state is documented in [the 1 November release](blogs-release-2026-11-01.md). Preview flags described below no longer represent production.
+
 # Blogs frontend preview
 
 ## Review scope
