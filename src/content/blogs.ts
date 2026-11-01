@@ -1,3 +1,4 @@
+import { ultraFitStories } from './ultrafit-stories';
 export const blogCategories = [
   { id: 'all', label: 'All entries' },
   { id: 'build', label: 'Build logs' },
@@ -13,6 +14,7 @@ export interface BlogScreen {
   originalSrc: string;
   /** Display position within the 1200 × 800 illustration; screenshot bytes stay unchanged. */
   x: number; y: number; displayWidth: number; displayHeight: number;
+  transform?: string;
 }
 export interface BlogImage {
   src: string; alt: string; width: number; height: number;
@@ -57,8 +59,8 @@ export const blogEntries: BlogEntry[] = [
     slug: 'figma-to-frontend-web-mobile-workflow', number: '01',
     title: 'Figma to Frontend: How I Design for Web and Mobile',
     excerpt: 'My Figma-first workflow for React and React Native: wireframes, UI/UX, reusable components, glassmorphism, and where Figma Make fits.',
-    category: 'build', readingTime: '8 min', cover: figmaCover, coverLabel: 'FIGMA → FRONTEND', featured: true, isPreview: true,
-    reviewedOn: '2026-10-31', keywords: ['Figma to React', 'Figma to React Native', 'wireframing', 'UI/UX design', 'Figma Make', 'glassmorphism'],
+    category: 'build', readingTime: '8 min', cover: figmaCover, coverLabel: 'FIGMA → FRONTEND', featured: true, isPreview: false,
+    reviewedOn: '2026-11-01', publishedOn: '2026-11-01', keywords: ['Figma to React', 'Figma to React Native', 'wireframing', 'UI/UX design', 'Figma Make', 'glassmorphism'],
     intro: 'I designed and built the frontends for the UltraFit360 mobile app, the UltraFit360 website, and Aptixlabs. The work started in Figma and continued in React Native, React, HTML, and animation code, with MCP tools helping carry design context into development. That overlap between drawing the interface and making it behave is the part I enjoy most.',
     sections: [
       {
@@ -138,8 +140,8 @@ export const blogEntries: BlogEntry[] = [
     slug: 'ultrafit360-srs-to-react-native-app', number: '02',
     title: 'From SRS to App: Building UltraFit360 in React Native',
     excerpt: 'How I wireframed and coded the UltraFit360 mobile frontend from a requirements document, designing for Android, iOS, and glass-style layouts.',
-    category: 'build', readingTime: '8 min', cover: appCover, coverLabel: 'SRS → FIGMA → APP', isPreview: true,
-    reviewedOn: '2026-10-31', keywords: ['React Native app development', 'SRS to app', 'Figma wireframe', 'UltraFit360', 'iOS glass UI', 'Android UI'],
+    category: 'build', readingTime: '8 min', cover: appCover, coverLabel: 'SRS → FIGMA → APP', isPreview: false,
+    reviewedOn: '2026-11-01', publishedOn: '2026-11-01', keywords: ['React Native app development', 'SRS to app', 'Figma wireframe', 'UltraFit360', 'iOS glass UI', 'Android UI'],
     intro: 'UltraFit360 started for me with an SRS: a software requirements specification. I took that starting point, wireframed the mobile experience in Figma, and built the React Native frontend for Android and iOS. This is the frontend side of that story: turning requirements into screens, reusable components, navigation, and layouts that have to work on a real phone.',
     sections: [
       {
@@ -215,7 +217,7 @@ export const blogEntries: BlogEntry[] = [
     excerpt: 'From hand-made Figma wireframes to React and React Native: the MCP tools, design context, and review loop that make the IDE workflow useful.',
     category: 'ai', readingTime: '8 min',
     cover: art('mcp-cover', 'Two pixel-art monitors in a Night City apartment linking a design canvas to an IDE with a matching interface', 'GPT-generated illustration of a Figma-to-IDE connection. The design canvas and code are conceptual, not recorded tool output.', true),
-    coverLabel: 'DESIGN CONTEXT → CODE', isPreview: true, reviewedOn: '2026-10-31',
+    coverLabel: 'DESIGN CONTEXT → CODE', isPreview: false, reviewedOn: '2026-11-01', publishedOn: '2026-11-01',
     keywords: ['Figma MCP', 'Figma MCP server', 'Figma to code', 'IDE', 'Cursor', 'Claude Code', 'React Native', 'design context'],
     intro: 'I made the wireframes in Figma by hand. MCP helped bring that design context into the IDE while I coded the frontend. That is the useful part of the workflow for me: the design decisions already exist, and the coding tools have a better way to inspect them than trying to guess everything from a flat screenshot.',
     sections: [
@@ -301,6 +303,7 @@ export const blogEntries: BlogEntry[] = [
     ],
     references: [{ label: 'Figma MCP: tools and prompts', href: 'https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/' }, { label: 'Figma MCP: server and agent responsibilities', href: 'https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/' }, { label: 'Figma MCP: file structure', href: 'https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/' }, { label: 'Figma MCP: target framework', href: 'https://developers.figma.com/docs/figma-mcp-server/server-returning-web-code/' }, { label: 'Figma MCP: Code Connect', href: 'https://developers.figma.com/docs/figma-mcp-server/code-connect-integration/' }, { label: 'Figma MCP: selection size', href: 'https://developers.figma.com/docs/figma-mcp-server/avoid-large-frames/' }, { label: 'Figma MCP: remote setup', href: 'https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/' }],
   },
+  ...ultraFitStories,
 ];
 export function categoryLabel(category: BlogCategory) { return blogCategories.find(item => item.id === category)?.label || category; }
 export function blogPath(entry: BlogEntry) { return `/blogs/${entry.slug}`; }

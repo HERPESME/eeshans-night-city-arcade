@@ -4,7 +4,9 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 4, 'Hub and three complete articles are available');
+assert.equal(blogs.length, 7, 'Hub and six complete articles are available');
+assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 11, 'Core pages, archive and all six articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 for (const page of blogs) {
@@ -30,6 +32,7 @@ for (const page of blogs) {
   assert.equal(article.author['@id'], 'https://technightcity.com/#person');
   assert.equal(article.headline, page.label);
   assert.ok(article.citation.length >= 3);
+  assert.ok(article.dateModified >= article.datePublished, 'Modification date cannot predate initial publication');
   assert.ok(result.body.includes('property="article:author"'));
   assert.equal(result.body.includes('article:published_time'), !draft);
   titles.add(page.title); descriptions.add(page.description);
@@ -43,11 +46,12 @@ for (const page of blogs) {
    if (path.endsWith('.webp')) assert.equal(file.toString('ascii', 8, 12), 'WEBP');
   }
   assert.ok(result.body.includes('Sources &amp; project links'));
+  assert.ok(!/api\.ultrafit360|backend-python|confirm_token|client_secret|DATABASE_URL|ghp_[A-Za-z0-9]|github_pat_/.test(result.body), 'Articles must not disclose backend addresses, code paths, token payloads or credentials');
   if (page.blogSlug.includes('figma-mcp')) {
    for (const tool of ['get_metadata', 'get_design_context', 'get_screenshot', 'get_variable_defs', 'get_code_connect_map', 'add_code_connect_map']) assert.ok(result.body.includes(tool));
    assert.ok(result.body.includes('Example IDE prompt'));
   }
-  if (page.blogSlug.startsWith('ultrafit360')) {
+  if (page.blogSlug === 'ultrafit360-srs-to-react-native-app') {
    assert.ok((result.body.match(/class="blog-art-screen"/g) || []).length >= 3, 'Original app screen layers appear inside generated phone art');
    assert.ok(result.body.includes('ultrafit-dashboard-screen.webp'));
    assert.ok(result.body.includes('ultrafit-metrics-screen.webp'));
@@ -59,8 +63,8 @@ for (const page of blogs) {
  }
  console.log('PASS blog review route', page.path);
 }
-assert.equal(titles.size, 3, 'Every article has a distinct title');
-assert.equal(descriptions.size, 3, 'Every article has a distinct description');
+assert.equal(titles.size, 6, 'Every article has a distinct title');
+assert.equal(descriptions.size, 6, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
