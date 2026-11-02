@@ -29,3 +29,10 @@ dist-ssr
 analytics-private/
 __pycache__/
 *.pyc
+
+# Runtime credentials belong in server-only Netlify environment variables.
+.env
+.env.*
+!.env.example
+*.pem
+*.key

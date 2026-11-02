@@ -7,6 +7,7 @@ import BlogCover from './BlogCover';
 import BlogCard from './BlogCard';
 import BlogImageView from './BlogImageView';
 import BlogDiagram from './BlogDiagram';
+import CoffeeSupport from './CoffeeSupport';
 import { track } from '@/lib/analytics';
 import { author } from '@/content/author';
 import './blogs.css';
@@ -85,7 +86,7 @@ export default function BlogArticle({ slug }: { slug: string }) {
               {section.note && <aside className="blog-pull-note"><span>BUILD NOTE</span><p>{section.note}</p></aside>}
               {section.links && <div className="blog-content-links">{section.links.map(link => <ContentLink key={link.href} link={link} />)}</div>}
             </section>)}
-            <div className="blog-sources-support"><section className="blog-references" aria-labelledby="blog-references-title"><span className="blog-eyebrow">FURTHER READING</span><h2 id="blog-references-title">Sources</h2><ul>{entry.references.map(link => <li key={link.href}><ContentLink link={link} /></li>)}</ul><p>Technical references checked <time dateTime={entry.reviewedOn}>{new Date(`${entry.reviewedOn}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</time>.</p></section><aside className="blog-coffee-card" aria-label="Support TechNightCity"><span aria-hidden="true" className="blog-coffee-icon">☕</span><span className="blog-eyebrow">SUPPORT THE JOURNAL</span><h2>Found it helpful?</h2><p>A small coffee, a little fuel for the next deep dive.</p><button type="button" disabled>Buy me a coffee <span aria-hidden="true">↗</span></button><small>Support link coming soon.</small></aside></div>
+            <div className="blog-sources-support"><section className="blog-references" aria-labelledby="blog-references-title"><span className="blog-eyebrow">FURTHER READING</span><h2 id="blog-references-title">Sources</h2><ul>{entry.references.map(link => <li key={link.href}><ContentLink link={link} /></li>)}</ul><p>Technical references checked <time dateTime={entry.reviewedOn}>{new Date(`${entry.reviewedOn}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</time>.</p></section><CoffeeSupport key={entry.slug} article={entry.slug} /></div>
             <div className="blog-end-mark"><span aria-hidden="true">◆</span> END OF ENTRY / {entry.number}</div>
             <div className="blog-author-card"><img className="blog-author-avatar blog-author-photo" src={author.photo} alt="Eeshan Singh with Big Ben in London" width={400} height={400} loading="lazy" decoding="async" /><div><span className="blog-eyebrow">BEHIND THE JOURNAL</span><h2>Eeshan Singh</h2><p>{author.bio}</p><p className="blog-entry-perspective">{entry.journalNote}</p><Link to="/profile">Meet the author <ArrowUpRight size={14} aria-hidden="true" /></Link></div></div>
           </article>

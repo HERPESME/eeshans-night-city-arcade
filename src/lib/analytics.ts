@@ -57,6 +57,7 @@ const fields: Record<string, string[]> = {
   share: ['article_slug', 'method'], blog_filter: ['category'],
   project_click: ['project_id', 'destination'], file_download: ['file_name', 'file_extension'],
   contact_intent: ['method'], generate_lead: ['method'],
+  support_open: ['article_slug'], support_checkout: ['article_slug', 'mode'],
   web_vital: ['metric_name', 'metric_value', 'metric_rating', 'navigation_type', 'metric_page'],
 };
 export function track(name: string, params: AnalyticsParams = {}) {

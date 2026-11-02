@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+branch=$(git symbolic-ref --quiet --short HEAD || true)
+if [ "$branch" = "Buy-me-coffee-setup" ]; then
+  node scripts/check-public-commit.mjs
+fi
