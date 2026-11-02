@@ -1,3 +1,4 @@
+import { journalStories } from './journal-stories';
 import { ultraFitStories } from './ultrafit-stories';
 import { aiCoachStory } from './ai-coach-story';
 import { expoProductionStory } from './expo-production-story';
@@ -37,6 +38,7 @@ export interface BlogEntry {
   isPreview: boolean;
   reviewedOn: string; publishedOn?: string; keywords: string[];
   intro: string; journalNote: string; sections: BlogSection[]; references: BlogLink[];
+  faqs?: { question: string; answer: string }[];
 }
 const art = (name: string, alt: string, caption: string, cover = false): BlogImage => ({
   src: `/blog-images/${name}.webp`, width: 1200, height: 800, alt, caption,
@@ -57,6 +59,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...journalStories,
   {
     journalNote: "This entry follows how I turn manually designed Figma interfaces into web and mobile products, and why layout, interaction states and implementation need to inform each other.",
     slug: 'figma-to-frontend-web-mobile-workflow', number: '01',

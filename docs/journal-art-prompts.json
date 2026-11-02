@@ -1,0 +1,146 @@
+[
+  {
+    "key": "agent-evaluation",
+    "prompt": "Use case: stylized-concept. Asset type: premium editorial cover for an existing pixel-art cyberpunk developer journal. Create a beautiful wide 3:2 composition, authentic carefully drawn 16-bit Japanese pixel art, crisp intentional pixels, rich restrained indigo and amber palette. Scene: a rainy Japanese technical classroom at night; an adult teacher points to a blackboard with simple branching tool-flow icons (no readable words), adult students with laptops concentrating; beyond windows a luminous night city. Theme: teaching how to test AI agent actions rather than trusting answers. Warm paper lantern classroom light against cool rain. Varied cinematic depth, storytelling detail, sophisticated composition. No logo, watermark, gibberish text, private code or personal data. No UI screenshots, no photorealism. All characters adults. Leave no title typography; webpage supplies text.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-agent-evaluation.webp"
+  },
+  {
+    "key": "memory-context",
+    "prompt": "Use case: stylized-concept. Asset: beautiful 3:2 editorial cover for a cyberpunk developer journal. Authentic hand-crafted 16-bit Japanese pixel art with crisp intentional pixels, cinematic depth and intricate environment detail. A quiet Japanese hillside library at blue hour, a developer selecting a few glowing index cards from vast shelves, small orderly memory drawers and open window onto neon city below. Theme: selecting relevant AI memory rather than sending everything. Warm amber lamps, indigo shadows, reflective contemplative composition. No readable words, letters, numbers, branding or watermark. No private data, screenshots, code. All characters adult. No photorealism. Full-bleed art, no border, no title. Distinct visual storytelling, high-end composition.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-memory-context.webp"
+  },
+  {
+    "key": "honest-actions",
+    "prompt": "Use case: stylized-concept. Asset: beautiful 3:2 editorial cover for a cyberpunk developer journal. Authentic hand-crafted 16-bit Japanese pixel art with crisp intentional pixels, cinematic depth and intricate environment detail. A Japanese railway signal control room at night, two adult operators watching a physical switchboard with distinct waiting and completed lamps, one operator checking an actual switched track through a window before marking a clipboard. Theme: confirmation must follow real action. Emerald signals, copper light, rain-dark cobalt. No readable words, letters, numbers, branding or watermark. No private data, screenshots, code. All characters adult. No photorealism. Full-bleed art, no border, no title. Distinct visual storytelling, high-end composition.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-honest-actions.webp"
+  },
+  {
+    "key": "missing-traces",
+    "prompt": "Use case: stylized-concept. Asset: beautiful 3:2 editorial cover for a cyberpunk developer journal. Authentic hand-crafted 16-bit Japanese pixel art with crisp intentional pixels, cinematic depth and intricate environment detail. A detailed Japanese underground communications observatory, an adult engineer tracing a broken luminous cable route between a city model and instruments, some instruments lit but a connecting channel dark. Theme: missing request traces despite healthy logs. Violet and ice-blue cables, warm workshop light. No readable words, letters, numbers, branding or watermark. No private data, screenshots, code. All characters adult. No photorealism. Full-bleed art, no border, no title. Distinct visual storytelling, high-end composition.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-missing-traces.webp"
+  },
+  {
+    "key": "token-accounting",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A Japanese night-market bookkeeper shop overlooking futuristic skyline, adult maker examining mechanical counting beads, a small meal photograph and differently sized luminous token tiles on a desk. Theme: honest measurement of AI usage, not a magical cost reduction. Amber brass, deep plum and teal. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-token-accounting.webp"
+  },
+  {
+    "key": "mcp-permissions",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A layered Japanese courtyard with distinct paper gates and small bridges, adult guide checking a simple unmarked pass before letting an adult visitor enter the correct private garden; beyond rooftops a luminous city. Theme: identity, relationship and access boundaries for AI tools. Emerald bamboo, midnight blue, vermilion accents. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-mcp-permissions.webp"
+  },
+  {
+    "key": "query-cache",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A Japanese rail station baggage sorting room at night, two clearly different sets of colour-coded boxes moving on separate tracks; an adult engineer inspecting a swapped box at their intersection. Theme: correct data returning to the wrong cache identity. Mint and amber, dynamic diagonals, precise pixel detail. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-query-cache.webp"
+  },
+  {
+    "key": "theme-scope",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A Japanese architecture studio with two miniature buildings on a workbench, a bright public shop and calm private workspace, adult designer adjusting colour swatches independently under focused lamps. Theme: scoped design tokens prevent a redesign spilling into another page. Indigo, terracotta and cream. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-theme-scope.webp"
+  },
+  {
+    "key": "react-seo",
+    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. A Japanese printmaking studio at night, adult craftsperson placing four distinct illustrated page prints on a drying rack, each page with different geometric content, outside a futuristic street and tiny inspection robot. Theme: complete readable pages rather than empty app shells. Warm rice-paper gold, blue ink, red stamps with no letters. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-react-seo.webp"
+  },
+  {
+    "key": "image-publishing",
+    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. An adult Japanese editorial illustrator in a sunlit-to-neon rooftop greenhouse atelier comparing three beautiful miniature illustrations of the same subject in different frames; thoughtful contact sheet and lenses with no readable text. Theme: matching editorial art to the story. Jade, coral, cream and blue twilight. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-image-publishing.webp"
+  },
+  {
+    "key": "notification-race",
+    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. Japanese urban post office in heavy evening rain, two adult delivery workers reaching for one glowing envelope at the same moment while a careful dispatcher checks a single slot in a sorting cabinet. Theme: duplicate notifications and atomic claiming. Tense but warm, scarlet umbrellas, teal rain and amber lamps. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-notification-race.webp"
+  },
+  {
+    "key": "database-migration",
+    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. Two futuristic Japanese harbour districts at night connected by a sturdy illuminated bridge, adult engineers supervising crates carried continuously across while a final small gate is switched; serene technical logistics. Theme: database replication and careful cutover. Cobalt water, jade lights and brass machinery. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-database-migration.webp"
+  },
+  {
+    "key": "photo-permissions",
+    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. A Japanese mobile repair workshop, an adult craftsperson carefully examining a pixel phone through a magnifying lens while different transparent technical layers hover beside it, a single photograph slipping through a narrow opening. Theme: native permission provenance and minimal photo access. Vermilion workbench, teal glass, night skyline. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-photo-permissions.webp"
+  },
+  {
+    "key": "first-schedule",
+    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. An old Japanese clockmaker’s shop in a futuristic city, a row of working mechanical clocks and one missing its first winding key, adult clockmaker gently setting the initial mechanism. Theme: healthy scheduled jobs with uninitialised first event. Amber gears, midnight green, exquisite pixel detail. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-first-schedule.webp"
+  },
+  {
+    "key": "dashboard-states",
+    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. A Japanese design classroom in late afternoon with adult students arranging three large interface study panels of simple blank, loading and failed-state symbols, teacher reviewing quietly, distant neon lights beginning outside. Theme: state-complete dashboard design. Cream walls, coral details, indigo light, no words. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-dashboard-states.webp"
+  },
+  {
+    "key": "activation-metrics",
+    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. An adult founder on a Japanese rooftop garden at dawn, looking at a small seedling that has just taken root beside many unopened seed packets, a laptop with abstract simple charts; city waking up. Theme: meaningful activation rather than counting signups. Sage green, apricot sunrise and deep blue. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-activation-metrics.webp"
+  },
+  {
+    "key": "lifecycle-restraint",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A quiet Japanese apartment balcony at dusk, an adult setting down a silent phone and tending a bonsai, distant city postal drones passing without interruption, warm family room beyond. Theme: restrained useful reminders rather than constant engagement spam. Lavender dusk, amber windows, soothing jade. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-lifecycle-restraint.webp"
+  },
+  {
+    "key": "reversible-startup",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A Japanese modular wooden workshop above a futuristic harbour, adult founders rearranging beautifully fitted wooden joints and interchangeable bridges rather than constructing multiple huge towers. Theme: reversible startup architecture after cloud credits. Warm cedar, sea blue, coral sunrise. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-reversible-startup.webp"
+  },
+  {
+    "key": "read-only-ai",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A Japanese coaching studio overlooking a neon garden, adult coach reviewing an organised lantern-lit roster while a small helpful robot offers a paper summary but does not touch the control panel. Theme: AI assists human judgment without acting automatically. Soft jade, plum, amber. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-read-only-ai.webp"
+  },
+  {
+    "key": "seo-outcomes",
+    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A Japanese street bookshop at night, a series of illuminated stepping stones leading from a distant city directory kiosk to a reader entering the shop and having a real conversation with the owner. Theme: discovery, clicks and genuine enquiries are separate outcomes. Orange lanterns, deep indigo, silver rain. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-seo-outcomes.webp"
+  },
+  {
+    "key": "ocarina-gta",
+    "prompt": "Original Japanese pixel-art game shop: adult players share an old fantasy CRT and modern coastal-city screen; conceptual comparison of game generations, not screenshots.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-ocarina-gta.webp"
+  },
+  {
+    "key": "ai-frames",
+    "prompt": "Use case: stylized-concept. Asset: wide 3:2 editorial artwork for Night City Journal. Exquisite Japanese-inspired 16-bit pixel art, crisp intentional pixels, cinematic environment and rich lighting. A futuristic Japanese arcade laboratory with an adult gamer and developer examining a stream of luminous film frames suspended in air, alternating solid and translucent frames, analog controller and vivid abstract city racing imagery. Theme: AI frame generation smoothness versus input response. Cyan, sunset orange, plum. No readable words or numbers, branding, watermark, logos or UI screenshot. Adults only, conceptual illustration, no photorealism, full bleed no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-ai-frames.webp"
+  },
+  {
+    "key": "gaming-worlds-detail",
+    "prompt": "Use case: stylized-concept. Asset: wide 3:2 editorial artwork for Night City Journal. Exquisite Japanese-inspired 16-bit pixel art, crisp intentional pixels, cinematic environment and rich lighting. A sweeping original fantasy landscape dissolving into a modern coastal night city on the horizon, a quiet path from stone arch and forest to palm-lined urban streets, adult traveller seen from behind. Theme: game-world exploration across generations. Lush green, rose sunset, electric blue. No exact game map or character. No readable words or numbers, branding, watermark, logos or UI screenshot. Adults only, conceptual illustration, no photorealism, full bleed no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-gaming-worlds-detail.webp"
+  },
+  {
+    "key": "gaming-latency-detail",
+    "prompt": "Use case: stylized-concept. Asset: wide 3:2 editorial artwork for Night City Journal. Exquisite Japanese-inspired 16-bit pixel art, crisp intentional pixels, cinematic environment and rich lighting. Close cinematic view of an adult hand on a controller in a refined Japanese arcade, abstract luminous frames travel toward a screen while an independent clockwork path represents responsiveness. Conceptual metaphor for displayed frames versus fresh input. Cobalt, coral and jade. No readable words or numbers, branding, watermark, logos or UI screenshot. Adults only, conceptual illustration, no photorealism, full bleed no border.",
+    "mode": "built-in image generation",
+    "output": "public/blog-images/journal-gaming-latency-detail.webp"
+  }
+]
