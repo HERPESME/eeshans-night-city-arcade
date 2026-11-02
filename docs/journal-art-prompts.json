@@ -7,9 +7,9 @@
   },
   {
     "key": "memory-context",
-    "prompt": "Use case: stylized-concept. Asset: beautiful 3:2 editorial cover for a cyberpunk developer journal. Authentic hand-crafted 16-bit Japanese pixel art with crisp intentional pixels, cinematic depth and intricate environment detail. A quiet Japanese hillside library at blue hour, a developer selecting a few glowing index cards from vast shelves, small orderly memory drawers and open window onto neon city below. Theme: selecting relevant AI memory rather than sending everything. Warm amber lamps, indigo shadows, reflective contemplative composition. No readable words, letters, numbers, branding or watermark. No private data, screenshots, code. All characters adult. No photorealism. Full-bleed art, no border, no title. Distinct visual storytelling, high-end composition.",
+    "prompt": "Use case: stylized-concept. New replacement editorial blog COVER, wide 3:2, high-quality crisp detailed pixel art for cyberpunk Night City developer portfolio. TECHNICAL SUBJECT MUST DOMINATE 75% of composition, city 25% background. Foreground: precise futuristic AI developer workstation with large clear display showing a branching memory pipeline: many small data cards on left, a filtering gate, three selected context cards feeding a compact neural processor on right; physical memory chips and keyboard. Strong visual message of SELECTING RELEVANT CONTEXT. Through glass behind: futuristic London with illuminated Tower Bridge across Thames, modest background. Cyan and amber. International futuristic urban aesthetic. NO traditional Japanese buildings, lanterns, kimono, gardens, classroom, fantasy or stock photography. No title text, no logo, no watermark, no private code or personal data. Screens depict clear conceptual diagrams, not fabricated measured results. Cinematic strong composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-memory-context.webp"
+    "output": "public/blog-images/journal-memory-context-v2.webp"
   },
   {
     "key": "honest-actions",
@@ -25,15 +25,15 @@
   },
   {
     "key": "token-accounting",
-    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A Japanese night-market bookkeeper shop overlooking futuristic skyline, adult maker examining mechanical counting beads, a small meal photograph and differently sized luminous token tiles on a desk. Theme: honest measurement of AI usage, not a magical cost reduction. Amber brass, deep plum and teal. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "prompt": "Use case: stylized-concept. New replacement editorial blog COVER, wide 3:2, high-quality crisp detailed pixel art for cyberpunk Night City developer portfolio. TECHNICAL SUBJECT MUST DOMINATE 75% of composition, city 25% background. Foreground: technical AI accounting laboratory, large wall dashboard with separate incoming and outgoing token streams, text and image input modules, a broken counter being recalibrated by adult engineer; clear graph and tiny abstract data marks, no readable labels needed. Futuristic New York skyline with Empire State silhouette outside. Theme: inaccurate AI usage counters, measurement not money clichés. Emerald, electric blue, amber. International futuristic urban aesthetic. NO traditional Japanese buildings, lanterns, kimono, gardens, classroom, fantasy or stock photography. No title text, no logo, no watermark, no private code or personal data. Screens depict clear conceptual diagrams, not fabricated measured results. Cinematic strong composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-token-accounting.webp"
+    "output": "public/blog-images/journal-token-accounting-v2.webp"
   },
   {
     "key": "mcp-permissions",
-    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A layered Japanese courtyard with distinct paper gates and small bridges, adult guide checking a simple unmarked pass before letting an adult visitor enter the correct private garden; beyond rooftops a luminous city. Theme: identity, relationship and access boundaries for AI tools. Emerald bamboo, midnight blue, vermilion accents. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "prompt": "Use case: stylized-concept. New replacement editorial blog COVER, wide 3:2, high-quality crisp detailed pixel art for cyberpunk Night City developer portfolio. TECHNICAL SUBJECT MUST DOMINATE 75% of composition, city 25% background. Foreground: luminous software access-control console with three distinct user-role badges, protected client-record panels and a visibly denied branch beside an authorised branch, locked boundary around a data vault; adult engineer using keyboard. Recognisable futuristic Paris Eiffel Tower skyline through window. TECHNICAL PERMISSIONS ARCHITECTURE is central, not physical gates or gardens. Indigo, coral, cyan. International futuristic urban aesthetic. NO traditional Japanese buildings, lanterns, kimono, gardens, classroom, fantasy or stock photography. No title text, no logo, no watermark, no private code or personal data. Screens depict clear conceptual diagrams, not fabricated measured results. Cinematic strong composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-mcp-permissions.webp"
+    "output": "public/blog-images/journal-mcp-permissions-v2.webp"
   },
   {
     "key": "query-cache",
@@ -43,27 +43,27 @@
   },
   {
     "key": "theme-scope",
-    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 editorial cover in authentic 16-bit Japanese pixel art for Night City Journal, crisp pixels, rich cinematic depth, detailed carefully composed environment. A Japanese architecture studio with two miniature buildings on a workbench, a bright public shop and calm private workspace, adult designer adjusting colour swatches independently under focused lamps. Theme: scoped design tokens prevent a redesign spilling into another page. Indigo, terracotta and cream. No text or numbers, logos, watermarks, private code, screenshots, photorealism. Characters adults only. Full bleed, no title typography.",
+    "prompt": "Use case: stylized-concept. New replacement editorial blog COVER, wide 3:2, high-quality crisp detailed pixel art for cyberpunk Night City developer portfolio. TECHNICAL SUBJECT MUST DOMINATE 75% of composition, city 25% background. Foreground: huge dual-monitor developer desk; one screen a bright marketing website and another a dark dashboard, colour-token nodes routed separately with a glowing boundary separating themes; adult designer tracing a leaking colour connection now isolated. Background: futuristic London Big Ben silhouette, subtle. Theme: scoped CSS variables and preventing style leakage. Bright cream and violet contrast, teal circuitry. International futuristic urban aesthetic. NO traditional Japanese buildings, lanterns, kimono, gardens, classroom, fantasy or stock photography. No title text, no logo, no watermark, no private code or personal data. Screens depict clear conceptual diagrams, not fabricated measured results. Cinematic strong composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-theme-scope.webp"
+    "output": "public/blog-images/journal-theme-scope-v2.webp"
   },
   {
     "key": "react-seo",
-    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. A Japanese printmaking studio at night, adult craftsperson placing four distinct illustrated page prints on a drying rack, each page with different geometric content, outside a futuristic street and tiny inspection robot. Theme: complete readable pages rather than empty app shells. Warm rice-paper gold, blue ink, red stamps with no letters. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "prompt": "Use case: stylized-concept. New editorial cover wide 3:2 for cyberpunk developer journal. Beautiful detailed crisp pixel art, technical subject foreground 75%, futuristic city backdrop 25%. Futuristic London server engineering room with St Paul’s cathedral silhouette distant through window. Foreground dominates: three large screens showing complete webpage wireframes, linked canonical URL nodes as simple chain symbols, rendered HTML page modules and a clear crossed missing-page tile beside a successful page; adult developer testing. Theme: server-rendered React pages, canonical consistency and true 404s. Cyan, orange, deep violet. No title text, logos, watermark, fake readable source code or personal data. No traditional Japanese architecture, temples, lanterns or costumes. Clear topic-specific engineering imagery, varied sophisticated cinematic composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-react-seo.webp"
+    "output": "public/blog-images/journal-react-seo-v2.webp"
   },
   {
     "key": "image-publishing",
-    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. An adult Japanese editorial illustrator in a sunlit-to-neon rooftop greenhouse atelier comparing three beautiful miniature illustrations of the same subject in different frames; thoughtful contact sheet and lenses with no readable text. Theme: matching editorial art to the story. Jade, coral, cream and blue twilight. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "prompt": "Use case: stylized-concept. New editorial cover wide 3:2 for cyberpunk developer journal. Beautiful detailed crisp pixel art, technical subject foreground 75%, futuristic city backdrop 25%. Futuristic Paris digital publishing studio with Eiffel Tower small in distant skyline. Foreground: editorial workstation showing one technical hero illustration propagated into four clearly distinct website cards and social preview frames; visible asset pipeline and pixel-grid image inspection lens, adult designer checking consistency. Theme: topic-matched images and publishing. Magenta, mint, midnight blue. No title text, logos, watermark, fake readable source code or personal data. No traditional Japanese architecture, temples, lanterns or costumes. Clear topic-specific engineering imagery, varied sophisticated cinematic composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-image-publishing.webp"
+    "output": "public/blog-images/journal-image-publishing-v2.webp"
   },
   {
     "key": "notification-race",
-    "prompt": "Use case: stylized-concept. Asset: premium 3:2 Night City Journal cover. Beautiful intricate Japanese 16-bit pixel art, crisp pixels, cinematic atmosphere, varied composition. Japanese urban post office in heavy evening rain, two adult delivery workers reaching for one glowing envelope at the same moment while a careful dispatcher checks a single slot in a sorting cabinet. Theme: duplicate notifications and atomic claiming. Tense but warm, scarlet umbrellas, teal rain and amber lamps. No words, numbers, code, logos or watermarks. Adults only. No photorealism. No title text, no border.",
+    "prompt": "Use case: stylized-concept. New editorial cover wide 3:2 for cyberpunk developer journal. Beautiful detailed crisp pixel art, technical subject foreground 75%, futuristic city backdrop 25%. Futuristic New York distributed-systems operations lab; two glowing server racks emit identical bell-shaped message packets toward one smartphone, central atomic claim gate passes one packet while second is stopped, adult engineer investigates event timeline. Technical concurrency diagram integrated in huge screen, not metaphorical post office. Empire State Building small outside. Orange message packets, cobalt, aqua. No title text, logos, watermark, fake readable source code or personal data. No traditional Japanese architecture, temples, lanterns or costumes. Clear topic-specific engineering imagery, varied sophisticated cinematic composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-notification-race.webp"
+    "output": "public/blog-images/journal-notification-race-v2.webp"
   },
   {
     "key": "database-migration",
@@ -73,15 +73,15 @@
   },
   {
     "key": "photo-permissions",
-    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. A Japanese mobile repair workshop, an adult craftsperson carefully examining a pixel phone through a magnifying lens while different transparent technical layers hover beside it, a single photograph slipping through a narrow opening. Theme: native permission provenance and minimal photo access. Vermilion workbench, teal glass, night skyline. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "prompt": "Use case: stylized-concept. New editorial cover wide 3:2 for cyberpunk developer journal. Beautiful detailed crisp pixel art, technical subject foreground 75%, futuristic city backdrop 25%. Close-up futuristic mobile developer bench, a large pixel-art smartphone displays a small grid of selected photographs, next to a transparent layered Android-style application manifest diagram with one permitted image path and several blocked broad-access paths, magnifier inspects permission shield. Subtle Tokyo neon skyscrapers beyond window, NO traditional Japan. Strong app-release engineering subject, teal and amber. No title text, logos, watermark, fake readable source code or personal data. No traditional Japanese architecture, temples, lanterns or costumes. Clear topic-specific engineering imagery, varied sophisticated cinematic composition.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-photo-permissions.webp"
+    "output": "public/blog-images/journal-photo-permissions-v2.webp"
   },
   {
     "key": "first-schedule",
-    "prompt": "Use case: stylized-concept. Asset: beautiful premium 3:2 Night City Journal cover, detailed Japanese 16-bit pixel art with crisp intentional pixels and cinematic depth. An old Japanese clockmaker’s shop in a futuristic city, a row of working mechanical clocks and one missing its first winding key, adult clockmaker gently setting the initial mechanism. Theme: healthy scheduled jobs with uninitialised first event. Amber gears, midnight green, exquisite pixel detail. No readable words or numbers, no code, logos, watermarks or screenshots. Adult characters only. Full bleed, no title.",
+    "prompt": "Use case: stylized-concept. New beautiful wide 3:2 pixel-art technical editorial cover for Night City portfolio. Crisp intentional pixels, cinematic futuristic technology, clear engineering subject at 75% of composition, city as restrained background. Futuristic London software operations room overlooking distant Big Ben, foreground giant electronic scheduler timeline with several recurrent task nodes, first node conspicuously empty and a developer connecting its initial trigger, server processors and calendar tiles with no text; clear engineering depiction of uninitialised first scheduled event. No antique clock shop. Electric blue, rose, amber. No title words, logos, watermark, actual private code or personal data. No traditional Japanese architecture, lanterns, temples, costumes or gardens. Illustrative UI and diagrams, not invented measured results.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-first-schedule.webp"
+    "output": "public/blog-images/journal-first-schedule-v2.webp"
   },
   {
     "key": "dashboard-states",
@@ -109,15 +109,15 @@
   },
   {
     "key": "read-only-ai",
-    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A Japanese coaching studio overlooking a neon garden, adult coach reviewing an organised lantern-lit roster while a small helpful robot offers a paper summary but does not touch the control panel. Theme: AI assists human judgment without acting automatically. Soft jade, plum, amber. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "prompt": "Use case: stylized-concept. New beautiful wide 3:2 pixel-art technical editorial cover for Night City portfolio. Crisp intentional pixels, cinematic futuristic technology, clear engineering subject at 75% of composition, city as restrained background. Futuristic New York coaching-software command centre, foreground large desktop showing clear client roster cards, one summarising AI copilot panel offering a proposal, human adult coach hand poised over separate confirm control, AI circuit paths end at preview rather than execute; central theme human judgment and read-only assistant. Distant Chrysler Building through window. Coral, cyan, charcoal. No robot butler or garden. No title words, logos, watermark, actual private code or personal data. No traditional Japanese architecture, lanterns, temples, costumes or gardens. Illustrative UI and diagrams, not invented measured results.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-read-only-ai.webp"
+    "output": "public/blog-images/journal-read-only-ai-v2.webp"
   },
   {
     "key": "seo-outcomes",
-    "prompt": "Use case: stylized-concept. Asset: premium wide 3:2 Night City Journal cover, authentic Japanese 16-bit pixel art, crisp pixels, complex but readable cinematic composition. A Japanese street bookshop at night, a series of illuminated stepping stones leading from a distant city directory kiosk to a reader entering the shop and having a real conversation with the owner. Theme: discovery, clicks and genuine enquiries are separate outcomes. Orange lanterns, deep indigo, silver rain. No readable text or numbers, no code, screenshots, logos, watermarks. Adults only, no photorealism. Full bleed, no typography.",
+    "prompt": "Use case: stylized-concept. New beautiful wide 3:2 pixel-art technical editorial cover for Night City portfolio. Crisp intentional pixels, cinematic futuristic technology, clear engineering subject at 75% of composition, city as restrained background. Futuristic Paris search analytics lab, foreground three distinct dashboard stages joined by arrows: searchable webpage cards, pointer clicking a result, confirmed enquiry form with check mark; metrics represented as simple bars and charts without numerical claims, developer examining funnel on huge screen. Eiffel Tower restrained background. Indigo, emerald and orange. Technical SEO and successful form-save tracking dominate, not a shop. No title words, logos, watermark, actual private code or personal data. No traditional Japanese architecture, lanterns, temples, costumes or gardens. Illustrative UI and diagrams, not invented measured results.",
     "mode": "built-in image generation",
-    "output": "public/blog-images/journal-seo-outcomes.webp"
+    "output": "public/blog-images/journal-seo-outcomes-v2.webp"
   },
   {
     "key": "ocarina-gta",
