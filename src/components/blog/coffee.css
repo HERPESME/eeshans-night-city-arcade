@@ -1,0 +1,25 @@
+.blog-coffee-card button:hover:not(:disabled) { background:#ffe9ba; }
+.blog-coffee-card button:disabled { opacity:.55; cursor:not-allowed; }
+.blog-coffee-card :is(button,input,summary,a):focus-visible { outline:2px solid #9aedeb; outline-offset:4px; }
+.coffee-form { margin-top:20px; display:grid; gap:12px; }
+.coffee-form fieldset { border:0; padding:0; margin:0; min-width:0; }
+.coffee-form :is(label,legend) { color:#f5e6ed; font:500 12px/1.7 system-ui,sans-serif; }
+.coffee-form legend { margin-bottom:8px; }
+.coffee-presets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.blog-coffee-card .coffee-presets button { font-size:11px; padding:8px 2px; background:#171b2e; color:#f4e8ed; border-color:#80627e; overflow-wrap:anywhere; }
+.blog-coffee-card .coffee-presets button[aria-pressed="true"] { background:#ffdc99; color:#28172c; border-color:#ffdc99; }
+.coffee-form input[type="text"] { width:100%; min-width:0; min-height:44px; background:#101421; border:1px solid #80627e; color:#fff0d8; font:500 18px/1.5 system-ui,sans-serif; padding:8px 10px; border-radius:0; }
+.coffee-form .coffee-consent { display:flex; align-items:flex-start; gap:8px; cursor:pointer; }
+.coffee-consent input { margin-top:4px; flex:0 0 16px; width:16px; height:16px; accent-color:#ffdc99; }
+.blog-coffee-card .coffee-form small { margin:0; }
+.coffee-recovery { display:grid; gap:10px; margin-top:16px; }
+.blog-coffee-card button.coffee-secondary { background:transparent; color:#ffdc99; border-color:#8e608b; }
+.blog-prose .blog-coffee-card .coffee-reference { font-size:11px; overflow-wrap:anywhere; line-height:1.8; }
+.blog-coffee-card code { font:11px/1.8 ui-monospace,monospace; word-break:break-all; white-space:normal; }
+.blog-coffee-card .coffee-test-label { display:block; margin:14px 0; color:#a5f3e9; font:600 10px/1.7 system-ui,sans-serif; letter-spacing:.07em; }
+.blog-prose .blog-coffee-card .coffee-confirmation { color:#a5f3ce; font-weight:600; }
+.blog-prose .blog-coffee-card .coffee-message { border-left:2px solid #ffdc99; padding-left:10px; margin-top:18px; font-size:12px; }
+.coffee-terms { margin-top:20px; border-top:1px solid #5d465f; padding-top:14px; font:12px/1.8 system-ui,sans-serif; }
+.coffee-terms summary { cursor:pointer; color:#f4dcae; padding:5px 0; }
+.blog-prose .coffee-terms p { font-size:11px; line-height:1.8; margin:12px 0; }
+.coffee-help { border-top:1px solid #5d465f; padding-top:14px; }

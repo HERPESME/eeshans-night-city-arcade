@@ -91,6 +91,11 @@ try {
   assert.equal(received.at(-1)[1].method, 'contact_form');
   assert.equal(received.at(-1)[1].email, undefined);
   assert.equal(received.at(-1)[1].message, undefined);
+  api.track('support_checkout', { article_slug: 'example', mode: 'test', email: 'private@example.com', payment_id: 'pay_private123', token: 'private-checkout-token', signature: 'private-signature', value: 100 });
+  assert.equal(received.at(-1)[0], 'support_checkout');
+  assert.equal(received.at(-1)[1].article_slug, 'example');
+  assert.equal(received.at(-1)[1].mode, 'test');
+  for (const key of ['email', 'payment_id', 'token', 'signature', 'value']) assert.equal(received.at(-1)[1][key], undefined, `Payment field ${key} never enters analytics`);
   api.track('contact_intent', { method: 'private@example.com' });
   assert.equal(received.at(-1)[1].method, undefined, 'Email-like parameter rejected even in a permitted field');
   api.track('article_engaged', { article_slug: 'example', active_seconds: 30 });

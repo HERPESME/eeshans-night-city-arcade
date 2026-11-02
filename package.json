@@ -17,10 +17,14 @@
     "test:journal-visuals": "node scripts/check-journal-visuals.mjs",
     "test:blog-assets": "node scripts/check-blog-assets.mjs",
     "test:analytics": "node scripts/check-analytics.mjs",
-    "test:seo-report": "python3 scripts/check-seo-report.py"
+    "test:seo-report": "python3 scripts/check-seo-report.py",
+    "test:coffee": "node --test --test-reporter=spec scripts/check-coffee.mjs",
+    "check:public-commit": "node scripts/check-public-commit.mjs",
+    "prebuild": "node scripts/clean-build.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@netlify/blobs": "11.1.7",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
