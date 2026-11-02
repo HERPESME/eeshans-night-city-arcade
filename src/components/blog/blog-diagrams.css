@@ -1,0 +1,39 @@
+.blog-prose .blog-diagram { margin: 30px 0; border: 1px solid #4f4869; background: #101320; color: #e8eaf2; border-radius: 4px; overflow: hidden; }
+.blog-diagram-header { padding: 24px 25px 20px; border-top: 3px solid #67e8e0; background: linear-gradient(115deg, #162b36, #151525); }
+.blog-diagram-kicker { display: flex; gap: 9px; align-items: center; color: #9ef5eb; font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 1.2px; }
+.blog-prose .blog-diagram h3 { color: #fff; font: 600 23px/1.35 ui-sans-serif, system-ui, sans-serif; margin: 13px 0 10px; letter-spacing: -.4px; }
+.blog-prose .blog-diagram-header > p { color: #c3ccdc; font-size: 14px; line-height: 1.7; margin: 0; }
+.blog-diagram-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 22px; padding: 22px 25px; }
+.blog-prose .blog-diagram h4 { color: #98eee7; font: 600 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 0 0 14px; }
+.blog-prose .blog-diagram-steps { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.blog-prose .blog-diagram-step { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 16px 14px; margin: 0; border: 1px solid #414b62; border-left: 3px solid #8b9cb8; background: #1a2131; min-width: 0; overflow-wrap: anywhere; }
+.blog-diagram-index { color: #b8c4dd; font: 10px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace; padding-top: 2px; flex-shrink: 0; }
+.blog-prose .blog-diagram-step strong { color: #f4f6ff; font: 600 14px/1.5 ui-sans-serif, system-ui, sans-serif; display: block; }
+.blog-prose .blog-diagram-step p { color: #c8d0de; font-size: 13px; line-height: 1.7; margin: 7px 0 0; }
+.blog-prose .blog-diagram-step--good { border-left-color: #7fe4b6; }
+.blog-prose .blog-diagram-step--warn { border-left-color: #f2c879; background: #2a2530; }
+.blog-diagram--flow .blog-diagram-steps { gap: 24px; }
+.blog-diagram--flow .blog-diagram-step:not(:last-child)::after { content: '↓'; position: absolute; bottom: -23px; left: 26px; color: #9ae8e0; font: 18px/22px ui-monospace, monospace; }
+.blog-diagram--states .blog-diagram-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.blog-diagram--schema .blog-diagram-group { border: 1px solid #48586f; border-radius: 3px; overflow: hidden; }
+.blog-prose .blog-diagram--schema h4 { background: #213546; padding: 14px 16px; margin: 0; border-bottom: 1px solid #48586f; }
+.blog-prose .blog-diagram--schema .blog-diagram-steps { gap: 0; }
+.blog-prose .blog-diagram--schema .blog-diagram-step { background: #172230; border: 0; border-bottom: 1px solid #384459; }
+.blog-prose .blog-diagram--schema .blog-diagram-step:last-child { border-bottom: 0; }
+.blog-diagram--sequence .blog-diagram-step { border-left-color: #b8a0f5; }
+.blog-diagram--sequence .blog-diagram-index { background: #302744; color: #e3d6ff; padding: 3px 6px; border: 1px solid #74618d; }
+.blog-diagram--funnel .blog-diagram-step { border-left-color: #ed9dcf; }
+.blog-diagram--funnel .blog-diagram-index { color: #fac6e6; }
+.blog-diagram-takeaway { margin: 0 25px 22px; border: 1px solid #536657; background: #192b29; padding: 16px 18px; }
+.blog-diagram-takeaway > span { color: #a9f0d4; font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .7px; }
+.blog-prose .blog-diagram-takeaway p { color: #e1f1e9; font-size: 14px; line-height: 1.75; margin: 7px 0 0; }
+.blog-prose .blog-diagram > figcaption { border-top: 1px solid #3c4054; background: #141722; color: #b8bdce; padding: 14px 25px; font-size: 12px; line-height: 1.75; }
+@media (max-width: 600px) {
+  .blog-diagram-header { padding: 20px 17px 17px; }
+  .blog-prose .blog-diagram h3 { font-size: 21px; }
+  .blog-diagram-groups { grid-template-columns: minmax(0, 1fr); padding: 19px 17px; gap: 24px; }
+  .blog-diagram--states .blog-diagram-steps { grid-template-columns: minmax(0, 1fr); }
+  .blog-diagram-takeaway { margin: 0 17px 19px; padding: 14px; }
+  .blog-prose .blog-diagram > figcaption { padding: 14px 17px; }
+  .blog-prose .blog-diagram-step { padding: 15px 12px; }
+}

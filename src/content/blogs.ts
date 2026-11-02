@@ -23,9 +23,14 @@ export interface BlogImage {
   src: string; alt: string; width: number; height: number;
   caption?: string; thumbnail?: string; screens?: BlogScreen[];
 }
+export interface BlogDiagram {
+  id: string; title: string; kind: 'flow' | 'compare' | 'sequence' | 'schema' | 'states' | 'funnel';
+  summary: string; groups: { label: string; steps: { title: string; detail: string; tone?: 'good' | 'warn' | 'neutral' }[] }[];
+  takeaway: string; caption: string;
+}
 export interface BlogSection {
   id: string; heading: string; paragraphs: string[];
-  image?: BlogImage; note?: string; list?: string[];
+  image?: BlogImage; diagrams?: BlogDiagram[]; note?: string; list?: string[];
   table?: { columns: string[]; rows: string[][] };
   code?: { label: string; text: string };
   links?: BlogLink[];
@@ -319,5 +324,5 @@ export function categoryLabel(category: BlogCategory) { return blogCategories.fi
 export function blogPath(entry: BlogEntry) { return `/blogs/${entry.slug}`; }
 export function findBlogEntry(slug: string) { return blogEntries.find(entry => entry.slug === slug); }
 export function blogWordCount(entry: BlogEntry) {
-  return [entry.intro, ...entry.sections.flatMap(section => [section.heading, ...section.paragraphs, ...(section.list || []), ...(section.table?.rows.flat() || []), section.note || ''])].join(' ').trim().split(/\s+/).length;
+  return [entry.intro, ...entry.sections.flatMap(section => [section.heading, ...section.paragraphs, ...(section.list || []), ...(section.table?.rows.flat() || []), section.note || '', ...(section.diagrams || []).flatMap(d => [d.title, d.summary, d.takeaway, d.caption, ...d.groups.flatMap(g => [g.label, ...g.steps.flatMap(s => [s.title, s.detail])])])])].join(' ').trim().split(/\s+/).length;
 }

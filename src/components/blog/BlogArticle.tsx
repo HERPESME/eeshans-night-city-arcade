@@ -6,6 +6,7 @@ import NotFound from '@/pages/NotFound';
 import BlogCover from './BlogCover';
 import BlogCard from './BlogCard';
 import BlogImageView from './BlogImageView';
+import BlogDiagram from './BlogDiagram';
 import { track } from '@/lib/analytics';
 import { author } from '@/content/author';
 import './blogs.css';
@@ -79,6 +80,7 @@ export default function BlogArticle({ slug }: { slug: string }) {
               {section.list && <ul className="blog-prose-list">{section.list.map(item => <li key={item}>{item}</li>)}</ul>}
               {section.table && <><p className={section.table.columns.length > 2 ? "blog-table-hint" : "sr-only"}>Scroll the table horizontally to see all columns.</p><div className={`blog-table-scroll${section.table.columns.length > 2 ? " blog-table-scroll--wide" : ""}`} role="region" aria-label={`${section.heading} reference table`} tabIndex={0}><table><caption className="sr-only">{section.heading}</caption><thead><tr>{section.table.columns.map(column => <th scope="col" key={column}>{column}</th>)}</tr></thead><tbody>{section.table.rows.map(row => <tr key={row[0]}>{row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row" key={cell}>{/^\w+_\w+$/.test(cell) ? <code>{cell}</code> : cell}</th> : <td key={cell}>{cell}</td>)}</tr>)}</tbody></table></div></>}
               {section.code && <div className="blog-code-block"><span>{section.code.label}</span><pre><code>{section.code.text}</code></pre></div>}
+              {section.diagrams?.map(diagram => <BlogDiagram key={diagram.id} diagram={diagram} prefix={`${entry.slug}-${section.id}`} />)}
               {section.image && <figure className="blog-body-figure"><BlogImageView image={section.image} sizes="(max-width: 800px) calc(100vw - 40px), 740px" /><figcaption>{section.image.caption}</figcaption>{section.image.screens && <div className="blog-screen-links">{section.image.screens.map((screen, screenIndex) => <a key={screen.src} href={screen.originalSrc} target="_blank" rel="noopener noreferrer">Open {screen.originalLabel || 'app'} screen <ArrowUpRight size={12} aria-hidden="true" /><span className="sr-only"> (new tab)</span></a>)}</div>}</figure>}
               {section.note && <aside className="blog-pull-note"><span>BUILD NOTE</span><p>{section.note}</p></aside>}
               {section.links && <div className="blog-content-links">{section.links.map(link => <ContentLink key={link.href} link={link} />)}</div>}
