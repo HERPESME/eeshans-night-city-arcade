@@ -4,9 +4,9 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 9, 'Hub and eight complete articles are available');
+assert.equal(blogs.length, 31, 'Hub and thirty complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 13, 'Core pages, archive and all eight articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 35, 'Core pages, archive and all thirty articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
@@ -36,6 +36,15 @@ for (const page of blogs) {
   assert.ok(article.dateModified >= article.datePublished, 'Modification date cannot predate initial publication');
   assert.ok(result.body.includes('property="article:author"'));
   assert.equal(result.body.includes('article:published_time'), !draft);
+  const faq = schema['@graph'].find(item => item['@type'] === 'FAQPage');
+  if (faq) {
+    assert.equal(faq.mainEntity.length, 3);
+    for (const q of faq.mainEntity) {
+      assert.ok(result.body.includes(q.name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ question is visible');
+      assert.ok(q.acceptedAnswer.text.length > 60, 'FAQ has a useful answer');
+      assert.ok(result.body.includes(q.acceptedAnswer.text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ answer is visible');
+    }
+  }
   titles.add(page.title); descriptions.add(page.description);
   assert.ok(result.body.includes('AI Full Stack Developer') && result.body.includes('CoFounder of UltraFit360'), 'Author bio reflects the stated role and venture');
   const note = result.body.match(/class="blog-entry-perspective">(.*?)<\/p>/s)?.[1];
@@ -80,9 +89,9 @@ for (const page of blogs) {
  }
  console.log('PASS blog review route', page.path);
 }
-assert.equal(journalNotes.size, 8, 'Every article has a distinct journal note');
-assert.equal(titles.size, 8, 'Every article has a distinct title');
-assert.equal(descriptions.size, 8, 'Every article has a distinct description');
+assert.equal(journalNotes.size, 30, 'Every article has a distinct journal note');
+assert.equal(titles.size, 30, 'Every article has a distinct title');
+assert.equal(descriptions.size, 30, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');

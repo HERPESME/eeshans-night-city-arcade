@@ -27,7 +27,11 @@ const Index = ({ pauseBackgroundMusic, resumeBackgroundMusic }: IndexProps) => {
   const setActiveSection = useCallback((section: string) => navigate(sectionPaths[section] || '/'), [navigate]);
   useEffect(() => {
     if (page) updateHead(page);
-    window.scrollTo(0, 0);
+    let fragment = window.location.hash.slice(1);
+    try { fragment = decodeURIComponent(fragment); } catch { /* Keep a malformed fragment literal. */ }
+    const target = fragment ? document.getElementById(fragment) : null;
+    if (target) target.scrollIntoView({ block: 'start' });
+    else window.scrollTo(0, 0);
   }, [path, page]);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [showQuickAccessHint, setShowQuickAccessHint] = useState(false);
