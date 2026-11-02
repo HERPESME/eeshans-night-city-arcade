@@ -48,7 +48,7 @@ export const journalStories: BlogEntry[] = manuscripts.map((draft, index) => {
   const peers = manuscripts.filter(item => item.category === draft.category);
   const related = peers[(peers.findIndex(item => item.slug === draft.slug) + 1) % peers.length];
   const foundations = draft.category === 'gaming' ? { label: 'AI engineering and the meaning of a successful result', href: '/blogs/ai-agent-evaluations-tool-calls' } : draft.category === 'founder' ? { label: 'The startup-credits story', href: '/blogs/startup-credits-app-cost-myth' } : draft.category === 'build' ? { label: 'The frontend design workflow', href: '/blogs/figma-to-frontend-web-mobile-workflow' } : { label: 'The original AI coach and guardrails guide', href: '/blogs/build-ai-coach-prompt-engineering-rag-guardrails' };
-  sections[0].links = [foundations, { label: related.title, href: `/blogs/${related.slug}` }];
+  sections[0].links = [...(draft.category === 'gaming' ? [] : [foundations]), { label: related.title, href: `/blogs/${related.slug}` }];
   const faqs = sections[sections.length - 1].paragraphs.flatMap(paragraph => {
     const match = paragraph.match(/^(.+?\?)\s+([\s\S]+)$/);
     return match ? [{ question: match[1], answer: match[2] }] : [];
