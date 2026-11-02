@@ -90,7 +90,7 @@ export default function CoffeeSupport({ article }: { article: string }) {
           <span aria-hidden="true">₹</span>
           <input ref={amountInput} id={`coffee-amount-${article}`} type="text" inputMode="decimal" autoComplete="off" value={amount} maxLength={7} onChange={event => setAmount(event.target.value)} aria-describedby={`coffee-range-${article}`} required />
         </div>
-        <button className="pixel-button coffee-button" type="submit" disabled={coffeeAmount(amount) === undefined || !accepted}>Pay securely ↗</button>
+        <button className="pixel-button coffee-button" type="submit" disabled={coffeeAmount(amount) === undefined || !accepted}>Buy Me Coffee</button>
       </div>
       <div className="coffee-form-note"><label className="coffee-consent"><input type="checkbox" checked={accepted} onChange={event => setAccepted(event.target.checked)} required /><span>One-time support</span></label><small id={`coffee-range-${article}`}>₹50–₹5,000</small></div>
     </form>}

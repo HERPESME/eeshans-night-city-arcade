@@ -67,3 +67,5 @@
   .blog-coffee-card .coffee-button { font-size:7px; }
 }
 @media (prefers-reduced-motion:reduce) { .blog-coffee-card button { transition:none; } }
+
+.blog-coffee-card .coffee-pay-row .coffee-button { font-size:7px; white-space:nowrap; padding-inline:4px; }
