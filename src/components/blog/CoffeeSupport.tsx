@@ -77,31 +77,40 @@ export default function CoffeeSupport({ article }: { article: string }) {
   const waiting = ['loading', 'working', 'checkout'].includes(stage);
 
   return <aside className="blog-coffee-card" aria-label="Support TechNightCity" aria-busy={waiting}>
-    <span aria-hidden="true" className="blog-coffee-icon">☕</span>
-    <span className="blog-eyebrow">SUPPORT THE JOURNAL</span>
-    <h2>Found it helpful?</h2>
-    <p>A small coffee, a little fuel for the next deep dive.</p>
-    {config?.mode === 'test' && <span className="coffee-test-label">TEST MODE · NO REAL MONEY</span>}
-    {stage === 'idle' && <button type="button" onClick={() => void expand()}>Buy me a coffee <span aria-hidden="true">↗</span></button>}
+    <header className="coffee-heading">
+      <h2>Found it helpful?</h2>
+      {config?.mode === 'test' && <span className="coffee-test-label" title="Test mode · no real money">TEST MODE</span>}
+    </header>
+    {stage === 'idle' && <><button className="pixel-button coffee-button" type="button" onClick={() => void expand()}>Buy me a coffee <span aria-hidden="true">↗</span></button><small className="coffee-idle-note">One-time support. No account needed.</small></>}
     {stage === 'ready' && <form onSubmit={pay} className="coffee-form">
-      <fieldset><legend>Choose your coffee</legend><div className="coffee-presets">{config?.presets.map(preset => <button key={preset} type="button" aria-pressed={coffeeAmount(amount) === preset} onClick={() => setAmount(String(preset / 100))}>{money(preset)}</button>)}</div></fieldset>
-      <label htmlFor={`coffee-amount-${article}`}>Or choose an amount (INR)</label>
-      <input ref={amountInput} id={`coffee-amount-${article}`} type="text" inputMode="decimal" autoComplete="off" value={amount} maxLength={7} onChange={event => setAmount(event.target.value)} aria-describedby={`coffee-range-${article}`} required />
-      <small id={`coffee-range-${article}`}>₹50–₹5,000 · one-time payment</small>
-      <label className="coffee-consent"><input type="checkbox" checked={accepted} onChange={event => setAccepted(event.target.checked)} required /><span>I understand this is voluntary, one-time support.</span></label>
-      <button type="submit" disabled={coffeeAmount(amount) === undefined || !accepted}>Continue to Razorpay ↗</button>
-      <small>Charged in INR. Available methods, including international cards, depend on your location and Razorpay approval. Your bank may charge for currency conversion.</small>
+      <fieldset><legend className="sr-only">Choose your coffee</legend><div className="coffee-presets">{config?.presets.map(preset => <button className="pixel-button coffee-preset" key={preset} type="button" aria-pressed={coffeeAmount(amount) === preset} onClick={() => setAmount(String(preset / 100))}>{money(preset).replace(/\.00$/, '')}</button>)}</div></fieldset>
+      <div className="coffee-pay-row">
+        <div className="coffee-amount-field">
+          <label className="sr-only" htmlFor={`coffee-amount-${article}`}>Amount (INR)</label>
+          <span aria-hidden="true">₹</span>
+          <input ref={amountInput} id={`coffee-amount-${article}`} type="text" inputMode="decimal" autoComplete="off" value={amount} maxLength={7} onChange={event => setAmount(event.target.value)} aria-describedby={`coffee-range-${article}`} required />
+        </div>
+        <button className="pixel-button coffee-button" type="submit" disabled={coffeeAmount(amount) === undefined || !accepted}>Pay securely ↗</button>
+      </div>
+      <div className="coffee-form-note"><label className="coffee-consent"><input type="checkbox" checked={accepted} onChange={event => setAccepted(event.target.checked)} required /><span>One-time support</span></label><small id={`coffee-range-${article}`}>₹50–₹5,000</small></div>
     </form>}
-    {waiting && <p role="status">{stage === 'checkout' ? 'Complete your payment in Razorpay.' : stage === 'loading' ? 'Checking coffee support…' : 'Checking your payment…'}</p>}
+    {waiting && <p role="status">{stage === 'checkout' ? 'Complete payment in Razorpay.' : stage === 'loading' ? 'Loading checkout…' : 'Checking payment…'}</p>}
     {stage === 'review' && <div className="coffee-recovery">
-      {attempt?.orderId && <><p className="coffee-reference">Checkout reference<br /><code>{attempt.orderId}</code></p><button type="button" onClick={() => void check()}>Check payment status</button></>}
-      {config?.enabled && result?.state !== 'pending' && <button type="button" className="coffee-secondary" onClick={() => void pay()}>{attempt?.orderId ? 'Resume same checkout' : 'Retry this checkout'}</button>}
-      {attempt && !attempt.orderId && <button type="button" className="coffee-secondary" onClick={resetUnopened}>Reset unopened checkout</button>}
+      {attempt?.orderId && <><p className="coffee-reference">Order <code>{attempt.orderId}</code></p><button className="pixel-button coffee-button" type="button" onClick={() => void check()}>Check payment status</button></>}
+      {config?.enabled && result?.state !== 'pending' && <button type="button" className="pixel-button coffee-secondary" onClick={() => void pay()}>{attempt?.orderId ? 'Resume checkout' : 'Retry checkout'}</button>}
+      {attempt && !attempt.orderId && <button type="button" className="pixel-button coffee-secondary" onClick={resetUnopened}>Reset checkout</button>}
     </div>}
-    {stage === 'unavailable' && <>{!message && <p>Coffee support is not available yet. Please check back soon.</p>}<button type="button" className="coffee-secondary" onClick={() => void expand()}>Check availability again</button></>}
-    {(stage === 'paid' || stage === 'refunded') && <>{stage === 'paid' && result && <p>{money(result.amount)} · one-time support</p>}<p className="coffee-confirmation">{stage === 'paid' ? 'Coffee received. Thank you! ♡' : 'Refund recorded'}</p>{result?.paymentId && <p className="coffee-reference">Payment reference<br /><code>{result.paymentId}</code></p>}</>}
+    {stage === 'unavailable' && <>{!message && <p>Support opens soon.</p>}<button type="button" className="pixel-button coffee-secondary" onClick={() => void expand()}>Check again</button></>}
+    {(stage === 'paid' || stage === 'refunded') && <>{stage === 'paid' && result && <p>{money(result.amount)} · one-time support</p>}<p className="coffee-confirmation">{stage === 'paid' ? 'Coffee received. Thank you! ♡' : 'Refund recorded'}</p>{result?.paymentId && <p className="coffee-reference">Payment <code>{result.paymentId}</code></p>}</>}
     {message && <p className="coffee-message" role="status" aria-live="polite">{message}</p>}
-    <details className="coffee-terms"><summary>Payment & privacy details</summary><p>This supports Eeshan Singh’s TechNightCity writing. It does not buy a service, sponsorship, link, or priority reply. There is no subscription.</p><p>Razorpay collects and processes payment details. This site keeps payment references, amount, currency, article and status for reconciliation, and a checkout token in this tab for recovery. Card details are never stored by TechNightCity.</p><p>For payment issues or refund requests, <a href="mailto:eeshan@technightcity.com">email Eeshan</a> with your payment reference. Requests are reviewed individually.</p></details>
-    {stage === 'idle' ? <small>One-time support. No account needed.</small> : <small className="coffee-help"><a href="mailto:eeshan@technightcity.com">Payment help ↗</a> · Secured checkout by Razorpay</small>}
+    <footer className="coffee-footer">
+      <details className="coffee-terms"><summary>Payment details</summary>
+        <p>One-time support for Eeshan’s TechNightCity writing. No subscription, service, sponsorship or priority reply.</p>
+        <p>Charged in INR via Razorpay. Available methods and international cards depend on location and account approval; bank conversion fees may apply.</p>
+        <p>Razorpay handles payment details. TechNightCity keeps payment references, amount, currency, article and status, plus a recovery token in this tab. No card details are stored here.</p>
+        <p>For payment or refund help, <a href="mailto:eeshan@technightcity.com">email Eeshan</a> with the payment reference. Refund requests are reviewed individually.</p>
+      </details>
+      <a className="coffee-help" href="mailto:eeshan@technightcity.com">Help ↗</a>
+    </footer>
   </aside>;
 }
