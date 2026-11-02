@@ -20,7 +20,7 @@ assert.ok(home.includes('AI FULL STACK DEVELOPER') && home.includes('CoFounder -
 const profile = await readFile('dist/profile.html','utf8');
 assert.ok(profile.includes('href="/files/Res-3.pdf"'));
 const projects = await readFile('dist/projects.html','utf8');
-for (const title of ['CareerBoostAI','UltraFit360','QuantTrader']) assert.ok(projects.includes(title));
+for (const title of ['ClearFrame','UltraFit360','Amanat','QuantTrader','Manoday','REAL-TIME MESSENGER']) assert.ok(projects.includes(title));
 const missing = await readFile('dist/404.html','utf8');
 assert.ok(missing.includes('content="noindex"'));
 assert.ok(!missing.includes('rel="canonical"'));

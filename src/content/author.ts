@@ -1,5 +1,8 @@
 export const author = {
   name: 'Eeshan Singh',
+  photo: '/blog-images/eeshan-big-ben.webp',
+  photoAlt: 'Eeshan Singh beside the River Thames with Big Ben and the Palace of Westminster visible behind him',
+  email: 'eeshan@technightcity.com',
   fullName: 'Eeshan Singh Pokharia',
   role: 'AI Full Stack Developer',
   ventureRole: 'CoFounder - UltraFit360',

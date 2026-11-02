@@ -1,3 +1,4 @@
+import subjects from '@/content/contact-subjects.json';
 import { track } from '@/lib/analytics';
 import { useEffect, useRef, useState } from 'react';
 import PixelButton from './PixelButton';
@@ -49,6 +50,7 @@ const ContactSection = () => {
     email: '',
     subject: '',
     message: '',
+    website: '',
   });
   const [contactStatus, setContactStatus] = useState<ContactStatus | null>(null);
   const [isSendingMessage, setIsSendingMessage] = useState(false);
@@ -74,11 +76,11 @@ const ContactSection = () => {
     },
     { 
       name: 'EMAIL', 
-      handle: 'eeshan.singh53@gmail.com',
+      handle: 'eeshan@technightcity.com',
       command: 'email.send()',
       icon: '📧',
       color: 'text-cyber-pink',
-      url: 'mailto:eeshan.singh53@gmail.com'
+      url: 'mailto:eeshan@technightcity.com'
     },
     { 
       name: 'LEETCODE', 
@@ -167,6 +169,7 @@ const ContactSection = () => {
       email: contactForm.email.trim(),
       subject: contactForm.subject.trim(),
       message: contactForm.message.trim(),
+      website: contactForm.website,
     };
 
     if (!payload.name || !payload.email || !payload.subject || !payload.message) {
@@ -186,7 +189,7 @@ const ContactSection = () => {
     setContactStatus(null);
     appendToTerminal([
       '> message.send()',
-      'Encrypting payload...',
+      'Preparing your message...',
       'Routing to transmission gateway...'
     ]);
 
@@ -196,13 +199,13 @@ const ContactSection = () => {
       track('generate_lead', { method: 'contact_form' });
       appendToTerminal([
         'Transmission successful.',
-        'Message delivered to inbox.',
+        'Message accepted by the contact service.',
       ]);
       setContactStatus({
         type: 'success',
         text: result.message || 'Message transmitted successfully.',
       });
-      setContactForm({ name: '', email: '', subject: '', message: '' });
+      setContactForm({ name: '', email: '', subject: '', message: '', website: '' });
     } else {
       appendToTerminal([
         'Transmission failed.',
@@ -480,28 +483,17 @@ const ContactSection = () => {
               </GlitchText>
               
               <form className="space-y-3" onSubmit={handleMessageSubmit}>
-                <input 
-                  type="text"
-                  placeholder="Your name"
-                  value={contactForm.name}
-                  onChange={(e) => setContactForm((prev) => ({ ...prev, name: e.target.value }))}
-                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
-                />
-                <input 
-                  type="email"
-                  placeholder="your@email.com"
-                  value={contactForm.email}
-                  onChange={(e) => setContactForm((prev) => ({ ...prev, email: e.target.value }))}
-                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
-                />
-                <input 
-                  type="text"
-                  placeholder="Subject"
-                  value={contactForm.subject}
-                  onChange={(e) => setContactForm((prev) => ({ ...prev, subject: e.target.value }))}
-                  className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white placeholder-gray-500 focus:border-cyber-pink focus:outline-none"
-                />
-                <textarea
+                <label className="block text-xs text-gray-300" htmlFor="contact-name">Your name</label>
+                <input id="contact-name" name="name" autoComplete="name" required maxLength={80} value={contactForm.name} onChange={e => setContactForm(prev => ({...prev,name:e.target.value}))} className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white" />
+                <label className="block text-xs text-gray-300" htmlFor="contact-email">Your email</label>
+                <input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={160} value={contactForm.email} onChange={e => setContactForm(prev => ({...prev,email:e.target.value}))} className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white" />
+                <label className="block text-xs text-gray-300" htmlFor="contact-subject">What can I help with?</label>
+                <select id="contact-subject" name="subject" required value={contactForm.subject} onChange={e => setContactForm(prev => ({...prev,subject:e.target.value}))} className="w-full bg-cyber-dark border border-gray-600 p-3 text-sm font-mono text-white">
+                  <option value="" disabled>Choose a subject</option>{subjects.map(subject => <option key={subject} value={subject}>{subject}</option>)}
+                </select>
+                <div hidden aria-hidden="true"><label htmlFor="contact-website">Leave this empty</label><input id="contact-website" tabIndex={-1} autoComplete="off" value={contactForm.website} onChange={e => setContactForm(prev => ({...prev,website:e.target.value}))} /></div>
+                <label className="block text-xs text-gray-300" htmlFor="contact-message">Your message</label>
+                <textarea id="contact-message" name="message" required maxLength={2000}
                   placeholder="Enter your message..."
                   value={contactForm.message}
                   onChange={(e) => setContactForm((prev) => ({ ...prev, message: e.target.value }))}
@@ -519,7 +511,7 @@ const ContactSection = () => {
 
                 {contactStatus && (
                   <div
-                    className={`text-xs text-center ${
+                    role="status" aria-live="polite" className={`text-xs text-center ${
                       contactStatus.type === 'success' ? 'text-cyber-green' : 'text-red-400'
                     }`}
                   >
@@ -528,7 +520,7 @@ const ContactSection = () => {
                 )}
 
                 <div className="text-xs text-gray-400 text-center">
-                  * Messages are transmitted through secure serverless gateway
+                  Messages go to eeshan@technightcity.com. Your email is used so I can reply.
                 </div>
               </form>
             </div>

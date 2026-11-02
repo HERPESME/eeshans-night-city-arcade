@@ -1,3 +1,4 @@
+import { author } from '@/content/author';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Search, X } from 'lucide-react';
@@ -34,7 +35,7 @@ export default function BlogsSection() {
             <div className="blog-entry-meta"><span>{categoryLabel(featured.category)}</span><span>{featured.readingTime} read</span></div>
             <h2 id="featured-entry-title"><Link to={blogPath(featured)}>{featured.title}</Link></h2>
             <p>{featured.excerpt}</p>
-            <Link to="/profile" className="blog-author-inline"><span className="blog-author-avatar" aria-hidden="true">ES</span><span><strong>Eeshan Singh</strong><span>AI Full Stack Developer · CoFounder, UltraFit360</span></span></Link>
+            <Link to="/profile" className="blog-author-inline"><img className="blog-author-avatar blog-author-photo" src={author.photo} alt="Eeshan Singh with Big Ben in London" width={400} height={400} loading="lazy" decoding="async" /><span><strong>Eeshan Singh</strong><span>AI Full Stack Developer · CoFounder, UltraFit360</span></span></Link>
             <Link to={blogPath(featured)} className="blog-read-button">Read the entry <ArrowUpRight size={17} aria-hidden="true" /></Link>
           </div>
         </section>}
