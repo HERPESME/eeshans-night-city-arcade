@@ -22,7 +22,7 @@ exports.handler = async event => {
   // The site's notification destination is configured to the fixed owner inbox.
   if (!process.env.RESEND_API_KEY || !process.env.CONTACT_FROM_EMAIL) {
     try {
-      const response = await fetch('https://technightcity.com/', {
+      const response = await fetch('https://technightcity.com/__forms.html', {
         method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ 'form-name': 'quick-message', ...payload, website: '' }).toString(),
         signal: AbortSignal.timeout(12000),
