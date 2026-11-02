@@ -52,7 +52,7 @@ for (const page of blogs) {
   journalNotes.add(note);
   assert.ok(result.body.includes('href="/blogs"'));
   assert.ok(result.body.includes('id="blog-article-body"'));
-  assert.ok((result.body.match(/class="blog-art-scene"/g) || []).length >= 2, 'Reading view has cover and supporting generated artwork');
+  assert.ok(result.body.includes('class="blog-art-scene"'), 'Articles retain their cover; supporting visuals are selected for relevance, not an image quota');
   const artPaths = [...result.body.matchAll(/src="(\/blog-images\/[^"]+)"/g)].map(match => match[1]);
   for (const path of new Set(artPaths)) {
    const file = await readFile('public' + path);
