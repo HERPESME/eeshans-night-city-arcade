@@ -1,3 +1,4 @@
+import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 const require=createRequire(import.meta.url);
@@ -15,6 +16,6 @@ assert.equal((await handler({...request(payload),headers:{origin:'https://unrela
 assert.equal(called,1,'Invalid inputs never reach provider');
 global.fetch=async()=>({ok:false});assert.equal((await handler(request(payload))).statusCode,502);
 global.fetch=async()=>{throw new Error('timeout')};assert.equal((await handler(request(payload))).statusCode,502);
-delete process.env.RESEND_API_KEY;global.fetch=async (url,options)=>{assert.equal(url,'https://technightcity.com/');const body=new URLSearchParams(options.body);assert.equal(body.get('form-name'),'quick-message');assert.equal(body.get('email'),payload.email);return {ok:true};};assert.equal((await handler(request(payload))).statusCode,200);global.fetch=async()=>({ok:false});assert.equal((await handler(request(payload))).statusCode,502);
+delete process.env.RESEND_API_KEY;global.fetch=async (url,options)=>{const target=new URL(url);assert.notEqual(target.pathname,'/','SSR root must not intercept form processing');const skeleton=await readFile('public'+target.pathname,'utf8');assert.ok(skeleton.includes('name="quick-message"')&&skeleton.includes('data-netlify="true"')); const body=new URLSearchParams(options.body);assert.equal(body.get('form-name'),'quick-message');assert.equal(body.get('email'),payload.email);return {ok:true};};assert.equal((await handler(request(payload))).statusCode,200);global.fetch=async()=>({ok:false});assert.equal((await handler(request(payload))).statusCode,502);
 global.fetch=original;
 console.log('PASS fixed inbox, reply-to, validation, plain-text safety, bot field, provider failure and unavailable configuration');
