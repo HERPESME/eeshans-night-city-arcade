@@ -1,131 +1,45 @@
-const MAX_NAME_LENGTH = 80;
-const MAX_EMAIL_LENGTH = 160;
-const MAX_SUBJECT_LENGTH = 120;
-const MAX_MESSAGE_LENGTH = 2000;
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
-const jsonResponse = (statusCode, body) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'application/json',
-    ...corsHeaders,
-  },
-  body: JSON.stringify(body),
-});
-
-const sanitize = (value) => String(value || '').trim();
-
-const isValidEmail = (email) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-};
-
-exports.handler = async function handler(event) {
-  if (event.httpMethod === 'OPTIONS') {
-    return jsonResponse(200, { ok: true });
+const subjects = require('../../src/content/contact-subjects.json');
+const recipient = 'eeshan@technightcity.com';
+const reply = (statusCode, body) => ({ statusCode, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }, body: JSON.stringify(body) });
+exports.config = { path: '/.netlify/functions/contact', rateLimit: { windowLimit: 5, windowSize: 180, aggregateBy: ['ip', 'domain'] } };
+exports.handler = async event => {
+  if (event.httpMethod !== 'POST') return reply(405, {ok:false,error:'Use POST to send a message.'});
+  const origin = event.headers?.origin || event.headers?.Origin;
+  if (origin && !['https://technightcity.com','https://www.technightcity.com','https://eeshanportfolio.netlify.app'].includes(origin)) return reply(403,{ok:false,error:'This form can only be submitted from TechNightCity.'});
+  if (Buffer.byteLength(event.body || '') > 16000) return reply(413,{ok:false,error:'Message is too large.'});
+  let data;
+  try { data=JSON.parse(event.body || '{}'); } catch { return reply(400,{ok:false,error:'Invalid message format.'}); }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return reply(400,{ok:false,error:'Invalid message format.'});
+  if (data.website) return reply(400,{ok:false,error:'Message could not be submitted.'});
+  const limits={name:80,email:160,subject:120,message:2000};
+  const payload={};
+  for (const [key,max] of Object.entries(limits)) {
+    if (typeof data[key] !== 'string' || !data[key].trim() || data[key].trim().length > max) return reply(400,{ok:false,error:'Please complete every field within the displayed limits.'});
+    payload[key]=data[key].trim();
   }
-
-  if (event.httpMethod !== 'POST') {
-    return jsonResponse(405, {
-      ok: false,
-      error: 'Method not allowed. Use POST.',
-    });
+  if (!/^[^\s@<>\r\n]+@[^\s@<>\r\n]+\.[^\s@<>\r\n]+$/.test(payload.email) || /[\r\n]/.test(payload.name) || !subjects.includes(payload.subject)) return reply(400,{ok:false,error:'Choose a listed subject and provide a valid name and email.'});
+  // Netlify Forms is included on the existing credit-based hosting plan.
+  // The site's notification destination is configured to the fixed owner inbox.
+  if (!process.env.RESEND_API_KEY || !process.env.CONTACT_FROM_EMAIL) {
+    try {
+      const response = await fetch('https://technightcity.com/', {
+        method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'quick-message', ...payload, website: '' }).toString(),
+        signal: AbortSignal.timeout(12000),
+      });
+      if (!response.ok) return reply(502, {ok:false,error:'The form service could not accept the message. Please email eeshan@technightcity.com.'});
+      return reply(200, {ok:true,message:'Message accepted. Thank you — I’ll reply to your email.'});
+    } catch { return reply(502, {ok:false,error:'The form service is unavailable. Please email eeshan@technightcity.com.'}); }
   }
-
   try {
-    const payload = JSON.parse(event.body || '{}');
-
-    const name = sanitize(payload.name);
-    const email = sanitize(payload.email);
-    const subject = sanitize(payload.subject);
-    const message = sanitize(payload.message);
-
-    if (!name || !email || !subject || !message) {
-      return jsonResponse(400, {
-        ok: false,
-        error: 'All fields are required.',
-      });
-    }
-
-    if (
-      name.length > MAX_NAME_LENGTH ||
-      email.length > MAX_EMAIL_LENGTH ||
-      subject.length > MAX_SUBJECT_LENGTH ||
-      message.length > MAX_MESSAGE_LENGTH
-    ) {
-      return jsonResponse(400, {
-        ok: false,
-        error: 'One or more fields exceed allowed limits.',
-      });
-    }
-
-    if (!isValidEmail(email)) {
-      return jsonResponse(400, {
-        ok: false,
-        error: 'Invalid email format.',
-      });
-    }
-
-    const apiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_TO_EMAIL;
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
-
-    if (!apiKey || !toEmail) {
-      return jsonResponse(500, {
-        ok: false,
-        error: 'Server is not configured for email delivery yet.',
-      });
-    }
-
-    const html = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #111;">
-        <h2>New portfolio message</h2>
-        <p><strong>From:</strong> ${name} &lt;${email}&gt;</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <hr />
-        <p style="white-space: pre-wrap;">${message}</p>
-      </div>
-    `;
-
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [toEmail],
-        reply_to: email,
-        subject: `[Portfolio] ${subject}`,
-        html,
-        text: `From: ${name} <${email}>\nSubject: ${subject}\n\n${message}`,
-      }),
+    const response=await fetch('https://api.resend.com/emails',{
+      method:'POST',headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,'Content-Type':'application/json'},
+      body:JSON.stringify({from:process.env.CONTACT_FROM_EMAIL,to:[recipient],reply_to:payload.email,subject:`[TechNightCity] ${payload.subject}`,text:`From: ${payload.name} <${payload.email}>\nSubject: ${payload.subject}\n\n${payload.message}`}),
+      signal:AbortSignal.timeout(12000),
     });
-
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.text();
-      console.error('Resend API error:', errorData);
-
-      return jsonResponse(502, {
-        ok: false,
-        error: 'Failed to deliver message to inbox.',
-      });
-    }
-
-    return jsonResponse(200, {
-      ok: true,
-      message: 'Transmission successful. Message delivered.',
-    });
-  } catch (error) {
-    console.error('Contact function error:', error);
-    return jsonResponse(500, {
-      ok: false,
-      error: 'Unexpected server error while sending message.',
-    });
-  }
+    if (!response.ok) return reply(502,{ok:false,error:'The email provider could not accept the message. Please try again later or email eeshan@technightcity.com.'});
+    const accepted=await response.json();
+    if (!accepted.id) return reply(502,{ok:false,error:'The provider did not confirm acceptance. Please email eeshan@technightcity.com.'});
+    return reply(200,{ok:true,message:'Message accepted for email delivery. Thank you — I’ll reply to your email.'});
+  } catch { return reply(502,{ok:false,error:'Delivery could not be confirmed. Please email eeshan@technightcity.com if the problem continues.'}); }
 };

@@ -1,3 +1,4 @@
+import { author } from '@/content/author';
 import { Link } from 'react-router-dom';
 import { faqs } from '@/lib/faqs';
 import PixelButton from './PixelButton';
@@ -55,10 +56,8 @@ const AboutSection = ({ onSectionChange }: AboutSectionProps) => {
             {/* Profile Card */}
             <div className="pixel-button border-cyber-purple text-white p-8 px-2 md:px-8 relative w-full">
               {/* Profile Avatar */}
-              <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-cyber-pink to-cyber-blue pixel-perfect relative">
-                <div className="absolute inset-2 bg-dark-bg flex items-center justify-center text-4xl">
-                  👨‍💻
-                </div>
+              <div className="max-w-[340px] mx-auto mb-6 border-2 border-cyber-blue p-1 bg-cyber-dark">
+                <img src={author.photo} alt={author.photoAlt} width={400} height={400} className="w-full h-auto" decoding="async" />
               </div>
 
               {/* Bio */}
