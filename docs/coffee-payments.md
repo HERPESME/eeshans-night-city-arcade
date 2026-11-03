@@ -4,7 +4,7 @@ Branch: `Buy-me-coffee-setup`. The public repository contains implementation and
 
 ## What is implemented
 
-- The existing card beside Sources on all 30 articles expands into a small amount selector. ₹100 / ₹250 / ₹500 presets, or a custom ₹50–₹5,000, charged once in INR. No recurring mandate, user account, paid link, sponsorship fulfilment or automatic refund endpoint.
+- The existing card beside Sources on all 30 articles expands into a small amount selector. ₹100 / ₹250 / ₹500 presets, or a custom ₹1–₹5,000, charged once in INR. No recurring mandate, user account, paid link, sponsorship fulfilment or automatic refund endpoint.
 - Server-created Razorpay Orders; integer paise, fixed currency and published-article allowlist. A random per-tab token is stored only as a hash on the server. This binds recovery and verification to the original order and amount.
 - Duplicate order requests reserve one intent with atomic conditional writes before contacting Razorpay. Retries reuse the same order. An uncertain create request is not blindly repeated; an unopened attempt can be explicitly reset.
 - Checkout callback HMAC uses the server's stored order ID. The server also fetches the payment and order and checks ownership, amount, currency, captured status, paid order and zero balance before showing success. An authorized payment is still pending.

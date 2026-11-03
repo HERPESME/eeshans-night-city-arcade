@@ -138,7 +138,7 @@ export function createCoffeeService({ getStore, articles = new Set(), readEnv = 
     order: wrap(async request => {
       checkMethod(request, 'POST'); const cfg = getConfig(); checkOrigin(request, cfg); ready(cfg);
       const data = parseBody(await readBody(request), ['amount', 'currency', 'article', 'requestId', 'token']);
-      if (!amountValid(data.amount) || data.currency !== policy.currency) fail(400, 'amount', 'Choose an amount between ₹50 and ₹5,000 in INR.');
+      if (!amountValid(data.amount) || data.currency !== policy.currency) fail(400, 'amount', 'Choose an amount between ₹1 and ₹5,000 in INR.');
       if (typeof data.article !== 'string' || !articles.has(data.article)) fail(400, 'article', 'Open support from a published article.');
       if (!UUID.test(data.requestId || '') || !TOKEN.test(data.token || '')) fail(400, 'intent', 'Invalid checkout session.');
       const store = storeFor(cfg); const key = `intents/${data.requestId}`;

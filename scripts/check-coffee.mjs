@@ -89,10 +89,10 @@ test('strict origins, methods, content types, body size and JSON shape', async (
 });
 test('server rejects price/currency tampering and unpublished articles', async () => {
   const f = fixture();
-  for (const amount of [0, -1, 4999, 500001, 5000.1, '10000', null, Number.MAX_SAFE_INTEGER]) assert.equal((await f.invoke('order', { ...f.intent(), amount })).response.status, 400);
+  for (const amount of [0, -1, 99, 500001, 5000.1, '10000', null, Number.MAX_SAFE_INTEGER]) assert.equal((await f.invoke('order', { ...f.intent(), amount })).response.status, 400);
   assert.equal((await f.invoke('order', { ...f.intent(), currency: 'USD' })).response.status, 400);
   assert.equal((await f.invoke('order', { ...f.intent(), article: 'unknown-private-slug' })).response.status, 400);
-  for (const amount of [5000, 500000]) assert.equal((await f.invoke('order', { ...f.intent(), amount })).response.status, 201);
+  for (const amount of [100, 500000]) assert.equal((await f.invoke('order', { ...f.intent(), amount })).response.status, 201);
 });
 test('retry and concurrent create requests create only one Razorpay order', async () => {
   const f = fixture(); const input = f.intent();
@@ -222,8 +222,8 @@ test('previous webhook secret works during rotation, and turning off new orders 
 const bundled = await build({ entryPoints: ['src/lib/coffee.ts'], bundle: true, write: false, platform: 'node', format: 'esm', logLevel: 'silent' });
 const client = await import(`data:text/javascript;base64,${Buffer.from(bundled.outputFiles[0].text).toString('base64')}`);
 test('client money parser accepts exact paise and rejects floats/exponents/bounds', () => {
-  for (const [input, expected] of [['50', 5000], ['50.01', 5001], ['100.1', 10010], ['5000', 500000]]) assert.equal(client.coffeeAmount(input), expected);
-  for (const input of ['49.99', '5000.01', '1e3', 'NaN', '-100', '100.001', '₹100', ' 100', '100 ']) assert.equal(client.coffeeAmount(input), undefined);
+  for (const [input, expected] of [['1', 100], ['49.99', 4999], ['50', 5000], ['50.01', 5001], ['100.1', 10010], ['5000', 500000]]) assert.equal(client.coffeeAmount(input), expected);
+  for (const input of ['0.99', '5000.01', '1e3', 'NaN', '-100', '100.001', '₹100', ' 100', '100 ']) assert.equal(client.coffeeAmount(input), undefined);
 });
 test('browser recovery stores no donor data and rejects malformed saved references', () => {
   const saved = new Map(); globalThis.sessionStorage = { getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value), removeItem: key => saved.delete(key) };

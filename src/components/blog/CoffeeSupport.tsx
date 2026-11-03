@@ -92,7 +92,7 @@ export default function CoffeeSupport({ article }: { article: string }) {
         </div>
         <button className="pixel-button coffee-button" type="submit" disabled={coffeeAmount(amount) === undefined || !accepted}>Buy Me Coffee</button>
       </div>
-      <div className="coffee-form-note"><label className="coffee-consent"><input type="checkbox" checked={accepted} onChange={event => setAccepted(event.target.checked)} required /><span>One-time support</span></label><small id={`coffee-range-${article}`}>₹50–₹5,000</small></div>
+      <div className="coffee-form-note"><label className="coffee-consent"><input type="checkbox" checked={accepted} onChange={event => setAccepted(event.target.checked)} required /><span>One-time support</span></label><small id={`coffee-range-${article}`}>₹1–₹5,000</small></div>
     </form>}
     {waiting && <p role="status">{stage === 'checkout' ? 'Complete payment in Razorpay.' : stage === 'loading' ? 'Loading checkout…' : 'Checking payment…'}</p>}
     {stage === 'review' && <div className="coffee-recovery">

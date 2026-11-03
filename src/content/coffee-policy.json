@@ -1,6 +1,6 @@
 {
   "currency": "INR",
-  "minimum": 5000,
+  "minimum": 100,
   "maximum": 500000,
   "presets": [10000, 25000, 50000],
   "checkoutLifetimeSeconds": 86400
