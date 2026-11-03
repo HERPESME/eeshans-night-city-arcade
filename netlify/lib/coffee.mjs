@@ -22,6 +22,11 @@ function json(data, status = 200, extra = {}) {
     'X-Content-Type-Options': 'nosniff', 'X-Robots-Tag': 'noindex, nofollow', ...extra,
   } });
 }
+// Only trust the platform-provided deploy context, never a request header.
+export function runtimeEnvironment(context) {
+  return { ...process.env, CONTEXT: context?.deploy?.context ?? '' };
+}
+
 function configuration(env) {
   const mode = env.COFFEE_MODE || 'test';
   const key = env.RAZORPAY_KEY_ID || '';

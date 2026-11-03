@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { randomBytes, randomUUID, createHmac } from 'node:crypto';
 import { build } from 'esbuild';
-import { createCoffeeService } from '../netlify/lib/coffee.mjs';
+import { createCoffeeService, runtimeEnvironment } from '../netlify/lib/coffee.mjs';
 
 const SITE = 'https://technightcity.com';
 const ARTICLE = 'figma-to-frontend-web-mobile-workflow';
@@ -60,6 +60,11 @@ function fixture() {
   return { env, store, values, orders, payments, refunds, service, request, invoke, intent, create, pay, verify, status, webhook, setOffline: value => { offline = value; }, setProviderFailure: value => { providerFailure = value; }, setBadOrder: value => { badOrder = value; }, counts: () => ({ orderCalls, providerCalls }) };
 }
 
+test('runtime deploy context comes from Netlify and fails closed when missing', () => {
+  assert.equal(runtimeEnvironment({ deploy: { context: 'production' } }).CONTEXT, 'production');
+  assert.equal(runtimeEnvironment({ deploy: { context: 'deploy-preview' } }).CONTEXT, 'deploy-preview');
+  assert.equal(runtimeEnvironment(undefined).CONTEXT, '');
+});
 test('disabled by default; secrets and key never leak from unavailable config', async () => {
   const f = fixture(); f.env.COFFEE_ENABLED = 'false';
   const c = await f.invoke('config', undefined, {}, 'GET'); assert.equal(c.data.enabled, false); assert.ok(!JSON.stringify(c.data).includes(f.env.RAZORPAY_KEY_SECRET));

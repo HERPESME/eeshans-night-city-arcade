@@ -29,7 +29,7 @@ Branch: `Buy-me-coffee-setup`. The public repository contains implementation and
 | `RAZORPAY_KEY_ID` | Public Razorpay key ID; still sourced from runtime config, paired with the chosen mode. |
 | `RAZORPAY_KEY_SECRET` | Server-only API secret for that key. |
 | `RAZORPAY_WEBHOOK_SECRET` | Separate random secret, at least 32 characters, also entered in Razorpay webhook setup. |
-| `COFFEE_LIVE_APPROVED` | Set `true` only after account/category approval and successful end-to-end test. Live also requires `CONTEXT=production`, supplied by Netlify. |
+| `COFFEE_LIVE_APPROVED` | Set `true` only after account/category approval and successful end-to-end test. Live also requires the function’s Netlify `context.deploy.context` to be `production`. |
 | `RAZORPAY_WEBHOOK_SECRET_PREVIOUS` | Optional prior webhook secret during a rotation/retry window; remove after old retries stop. |
 | `COFFEE_DEV_ORIGIN` | Optional localhost origin for test mode only; never enables live. |
 
