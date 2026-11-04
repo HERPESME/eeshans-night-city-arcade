@@ -110,7 +110,7 @@ export const ultraFitStories: BlogEntry[] = [
           },
           {
             "label": "Microsoft for Startups: eligibility and credit progression",
-            "href": "https://learn.microsoft.com/en-us/startups/benefits/azure-for-startups"
+            "href": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/getting-started-mfs"
           },
           {
             "label": "Google for Startups Cloud Program: current tiers",
@@ -145,7 +145,7 @@ export const ultraFitStories: BlogEntry[] = [
           },
           {
             "label": "Microsoft for Startups: eligibility and credit progression",
-            "href": "https://learn.microsoft.com/en-us/startups/benefits/azure-for-startups"
+            "href": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/getting-started-mfs"
           },
           {
             "label": "Google for Startups Cloud Program: current tiers",
@@ -227,7 +227,7 @@ export const ultraFitStories: BlogEntry[] = [
       },
       {
         "label": "Microsoft for Startups: eligibility and credit progression",
-        "href": "https://learn.microsoft.com/en-us/startups/benefits/azure-for-startups"
+        "href": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/getting-started-mfs"
       },
       {
         "label": "Google for Startups Cloud Program: current tiers",
