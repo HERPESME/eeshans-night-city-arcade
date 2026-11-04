@@ -97,3 +97,21 @@ assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
 assert.ok(missing.body.includes('blog-music-control'), 'Unknown blog URLs render the same route-aware shell as the browser');
 console.log('PASS complete drafts, truthful article metadata, assets, tools, screen layers, links, indexing protection and 404');
+
+const publishedPaths = new Set(blogs.filter(page => page.blogSlug && page.indexable !== false).map(page => page.path));
+const expoSources = new Set();
+for (const page of blogs.filter(page => page.blogSlug && page.indexable !== false)) {
+ const html = await readFile(`dist${page.path}.html`, 'utf8');
+ const relatedSection = html.match(/<section class="blog-related"[\s\S]*?<\/section>/)?.[0];
+ assert.ok(relatedSection, `${page.path} has related reading`);
+ const relatedPaths = [...new Set([...relatedSection.matchAll(/href="(\/blogs\/[^"#]+)"/g)].map(match => match[1]))];
+ assert.equal(relatedPaths.length, 2, `${page.path} has two distinct related articles`);
+ for (const target of relatedPaths) {
+  assert.notEqual(target, page.path, 'Related articles exclude self');
+  assert.ok(publishedPaths.has(target), 'Related articles exclude drafts and unknown destinations');
+  if (target === '/blogs/expo-react-native-production-problems-ultrafit360') expoSources.add(page.path);
+ }
+}
+assert.ok(expoSources.has('/blogs/ultrafit360-srs-to-react-native-app'), 'Mobile case study links to production lessons');
+assert.ok(expoSources.has('/blogs/expo-google-play-photo-permission-rejection'), 'Permissions guide links to production lessons');
+console.log('PASS related article discovery, distinct published destinations and Expo incoming links');

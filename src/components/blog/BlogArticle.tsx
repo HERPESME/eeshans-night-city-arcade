@@ -10,6 +10,7 @@ import BlogDiagram from './BlogDiagram';
 import CoffeeSupport from './CoffeeSupport';
 import { track } from '@/lib/analytics';
 import { author } from '@/content/author';
+import { relatedBlogEntries } from '@/lib/related-blogs';
 import './blogs.css';
 
 function ContentLink({ link }: { link: BlogLink }) {
@@ -52,7 +53,7 @@ export default function BlogArticle({ slug }: { slug: string }) {
     return () => window.clearTimeout(timeout);
   }, [copyState]);
   if (!entry) return <NotFound />;
-  const related = blogEntries.filter(item => item.slug !== entry.slug).sort((a, b) => Number(b.category === entry.category) - Number(a.category === entry.category)).slice(0, 2);
+  const related = relatedBlogEntries(entry, blogEntries);
   const copyLink = async () => {
     try { await navigator.clipboard.writeText(`${window.location.origin}${blogPath(entry)}`); setCopyState('copied'); track('share', { article_slug: entry.slug, method: 'copy_link' }); }
     catch { setCopyState('unavailable'); }
