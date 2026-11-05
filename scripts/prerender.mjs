@@ -11,4 +11,12 @@ for (const page of routes) {
 }
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(page => page.indexable !== false).map(page => `\n  <url><loc>${origin}${page.path}</loc>${page.lastModified ? `<lastmod>${page.lastModified}</lastmod>` : ''}</url>`).join('')}\n</urlset>\n`);
 await writeFile('dist/404.html', renderDocument(template));
+// The IndexNow proof is published only by production builds. Keep the value in Netlify.
+if (process.env.CONTEXT === 'production' && process.env.INDEXNOW_KEY) {
+  const key = process.env.INDEXNOW_KEY;
+  if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
+    throw new Error('INDEXNOW_KEY must contain 8–128 letters, digits, or hyphens.');
+  }
+  await writeFile(`dist/${key}.txt`, key);
+}
 console.log(`Generated ${routes.length} static fallback pages, SSR template, sitemap, and 404.`);
