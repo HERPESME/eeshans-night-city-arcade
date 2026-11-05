@@ -4,12 +4,13 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 31, 'Hub and thirty complete articles are available');
+assert.equal(blogs.length, 91, 'Hub and ninety complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 35, 'Core pages, archive and all thirty articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 95, 'Core pages, archive and all ninety articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
+const educationCovers = new Set();
 for (const page of blogs) {
  const result = await handler({ rawUrl: `https://technightcity.com${page.path}`, httpMethod: 'GET' });
  assert.equal(result.statusCode, 200);
@@ -29,10 +30,15 @@ for (const page of blogs) {
   assert.equal(article.creativeWorkStatus, draft ? 'Draft' : 'Published');
   if (draft) assert.ok(!article.datePublished, 'An editorial draft must not claim a publication date');
   else assert.match(article.datePublished || '', /^\d{4}-\d{2}-\d{2}$/, 'A published article needs its actual publication date');
-  assert.ok(article.wordCount >= 1000, 'Each article contains a substantial original draft');
+  const educationCover = article.image.url.match(/\/blog-images\/education-(\d+)\.webp/);
+  assert.ok(article.wordCount >= (educationCover ? 200 : 1000), 'Long-form articles and concise labs must meet their editorial depth checks');
+  if (educationCover) {
+    educationCovers.add(educationCover[1]);
+    for (const section of ['implementation', 'failure-boundary', 'verification']) assert.ok(result.body.includes(`id="${section}"`));
+  }
   assert.equal(article.author['@id'], 'https://technightcity.com/#person');
   assert.equal(article.headline, page.label);
-  assert.ok(article.citation.length >= 3);
+  assert.ok(article.citation.length >= (educationCover ? 1 : 3));
   assert.ok(article.dateModified >= article.datePublished, 'Modification date cannot predate initial publication');
   assert.ok(result.body.includes('property="article:author"'));
   assert.equal(result.body.includes('article:published_time'), !draft);
@@ -89,9 +95,10 @@ for (const page of blogs) {
  }
  console.log('PASS blog review route', page.path);
 }
-assert.equal(journalNotes.size, 30, 'Every article has a distinct journal note');
-assert.equal(titles.size, 30, 'Every article has a distinct title');
-assert.equal(descriptions.size, 30, 'Every article has a distinct description');
+assert.equal(educationCovers.size, 60, 'Each new lab has its own cover');
+assert.equal(journalNotes.size, 90, 'Every article has a distinct journal note');
+assert.equal(titles.size, 90, 'Every article has a distinct title');
+assert.equal(descriptions.size, 90, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
