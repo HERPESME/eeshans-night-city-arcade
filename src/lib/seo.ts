@@ -16,6 +16,7 @@ export interface Page {
 }
 // Search metadata can be concise without changing article headings or URLs.
 const articleMetadata: Record<string, { title?: string; description?: string }> = {
+  'duplicate-notifications-atomic-claims': { title: 'Debug Duplicate Notifications with Atomic Claims' },
   'opentelemetry-missing-ai-request-spans': { title: 'OpenTelemetry: Debug Missing AI Request Spans', description: 'Debug missing AI traces: distinguish logs from spans, check provider ownership and import order, and verify the path with a synthetic request.' },
   'react-query-wrong-tab-cache-identity': { title: 'React Query Wrong Data: Fix Query-Key Collisions' },
   'expo-google-play-photo-permission-rejection': { title: 'Expo Photo Permissions: Diagnose Google Play Rejections' },
@@ -24,13 +25,18 @@ const articleMetadata: Record<string, { title?: string; description?: string }> 
   'postgres-cloud-migration-logical-replication': { description: 'Plan a PostgreSQL cloud migration with logical replication, sequence checks, rollback criteria and product-level verification.' },
   'startup-signups-versus-activation-metrics': { description: 'Define startup activation around useful customer actions, clean cohorts and reliable events, rather than treating every signup as success.' },
 };
+const journalTitleSuffix = ' | Night City Journal';
+function articleTitle(title: string) {
+  return title.length + journalTitleSuffix.length < 70 ? title + journalTitleSuffix : title;
+}
+
 export const routes: Page[] = [
   { path: '/', section: 'home', label: 'Home', title: 'Eeshan Singh | AI Full Stack Developer & UltraFit360 CoFounder', description: 'Eeshan Singh Pokharia, AI Full Stack Developer and CoFounder of UltraFit360. Explore AI projects, web and mobile builds, and practical product stories.' },
   { path: '/profile', section: 'about', label: 'Profile', title: 'Profile | Eeshan Singh — Night City Arcade', description: 'Meet Eeshan Singh Pokharia, AI Full Stack Developer and CoFounder of UltraFit360. Explore his background, projects, coding profiles and résumé.' },
   { path: '/projects', section: 'projects', label: 'Projects', title: 'Projects | Eeshan Singh — Full-Stack & AI/ML', description: `Explore ${projects.slice(0, 3).map(project => project.title).join(', ')} and Eeshan Singh’s development projects, technologies and available demos.` },
   { path: '/terminal', section: 'contact', label: 'Contact', title: 'Contact Eeshan Singh | Night City Terminal', description: 'Connect with Eeshan Singh through his interactive contact terminal, email, GitHub, LinkedIn, and LeetCode profiles.' },
   { path: '/blogs', section: 'blogs', label: 'Blogs', title: 'Blogs | Eeshan Singh — Night City Journal', description: 'AI engineering, React Native, frontend debugging, startup lessons and gaming: detailed field notes by Eeshan Singh at Night City Journal.', indexable: blogEntries.some(entry => !entry.isPreview) },
-  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: articleMetadata[entry.slug]?.title || `${entry.title} | Night City Journal`, description: articleMetadata[entry.slug]?.description || entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug, lastModified: entry.reviewedOn })),
+  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: articleMetadata[entry.slug]?.title || articleTitle(entry.title), description: articleMetadata[entry.slug]?.description || entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug, lastModified: entry.reviewedOn })),
 ];
 export const socialImage = origin + '/media/night-city-social.gif';
 export function metadata(page: Page) {
