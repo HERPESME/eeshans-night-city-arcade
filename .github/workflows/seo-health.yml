@@ -1,0 +1,52 @@
+name: SEO health
+on:
+  schedule:
+    - cron: '30 3 * * *' # 09:00 Asia/Kolkata
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'public/**'
+      - 'netlify/**'
+      - 'netlify.toml'
+      - 'package*.json'
+      - '.github/workflows/seo-health.yml'
+permissions:
+  contents: read
+concurrency:
+  group: seo-health-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  live-audit:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/live-seo-audit.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-seo-health-${{ github.run_id }}
+          path: seo-audit-results/
+          retention-days: 14
+  regression:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:seo && npm run test:ssr && npm run test:blogs && npm run test:blog-assets && npm run test:analytics && npm run test:seo-report
