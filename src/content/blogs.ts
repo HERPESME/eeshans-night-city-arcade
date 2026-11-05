@@ -1,3 +1,4 @@
+import { educationalStories } from './educational-stories';
 import { journalStories } from './journal-stories';
 import { ultraFitStories } from './ultrafit-stories';
 import { aiCoachStory } from './ai-coach-story';
@@ -64,6 +65,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...educationalStories,
   ...journalStories,
   {
     journalNote: "This entry follows how I turn manually designed Figma interfaces into web and mobile products, and why layout, interaction states and implementation need to inform each other.",
