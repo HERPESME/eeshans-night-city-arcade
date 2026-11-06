@@ -98,6 +98,9 @@ for (const page of blogs) {
    assert.ok(result.body.includes('NativeTabsLayout.tsx') && result.body.includes('renderAndroidTabBar'), 'The platform split is supported by an actual source excerpt');
   }
  } else {
+  assert.equal((result.body.match(/class="blog-card blog-card--/g) || []).length, 6, 'The archive initially renders just six cards');
+  assert.ok(result.body.includes('aria-controls="blog-archive-grid">Show more</button>'));
+  assert.ok(result.body.includes('<details class="blog-title-index">'), 'The full archive keeps a text-only directory');
   for (const article of blogs.filter(item => item.blogSlug)) assert.ok(result.body.includes(`href="${article.path}"`));
  }
  console.log('PASS blog review route', page.path);
