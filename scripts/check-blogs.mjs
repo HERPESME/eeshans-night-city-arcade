@@ -4,13 +4,14 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 91, 'Hub and ninety complete articles are available');
+assert.equal(blogs.length, 101, 'Hub and one hundred complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 95, 'Core pages, archive and all ninety articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 105, 'Core pages, archive and all one hundred articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
 const educationCovers = new Set();
+const trendCovers = new Set();
 for (const page of blogs) {
  const result = await handler({ rawUrl: `https://technightcity.com${page.path}`, httpMethod: 'GET' });
  assert.equal(result.statusCode, 200);
@@ -31,6 +32,12 @@ for (const page of blogs) {
   if (draft) assert.ok(!article.datePublished, 'An editorial draft must not claim a publication date');
   else assert.match(article.datePublished || '', /^\d{4}-\d{2}-\d{2}$/, 'A published article needs its actual publication date');
   const educationCover = article.image.url.match(/\/blog-images\/education-(\d+)\.webp/);
+  const trendCover = article.image.url.match(/\/blog-images\/trend-([a-z0-9-]+)\.webp$/);
+  if (trendCover) {
+    assert.equal(trendCover[1], page.blogSlug, 'The guide has its own topic-specific cover');
+    trendCovers.add(trendCover[1]);
+    assert.ok(result.body.includes(`/blog-images/trend-${page.blogSlug}-720.webp`), 'The responsive cover is rendered');
+  }
   assert.ok(article.wordCount >= (educationCover ? 200 : 1000), 'Long-form articles and concise labs must meet their editorial depth checks');
   if (educationCover) {
     educationCovers.add(educationCover[1]);
@@ -96,9 +103,10 @@ for (const page of blogs) {
  console.log('PASS blog review route', page.path);
 }
 assert.equal(educationCovers.size, 60, 'Each new lab has its own cover');
-assert.equal(journalNotes.size, 90, 'Every article has a distinct journal note');
-assert.equal(titles.size, 90, 'Every article has a distinct title');
-assert.equal(descriptions.size, 90, 'Every article has a distinct description');
+assert.equal(trendCovers.size, 10, 'Each November guide has its own cover');
+assert.equal(journalNotes.size, 100, 'Every article has a distinct journal note');
+assert.equal(titles.size, 100, 'Every article has a distinct title');
+assert.equal(descriptions.size, 100, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
@@ -107,6 +115,7 @@ console.log('PASS complete drafts, truthful article metadata, assets, tools, scr
 
 const publishedPaths = new Set(blogs.filter(page => page.blogSlug && page.indexable !== false).map(page => page.path));
 const expoSources = new Set();
+const linkedTrendPaths = new Set();
 for (const page of blogs.filter(page => page.blogSlug && page.indexable !== false)) {
  const html = await readFile(`dist${page.path}.html`, 'utf8');
  const relatedSection = html.match(/<section class="blog-related"[\s\S]*?<\/section>/)?.[0];
@@ -117,8 +126,10 @@ for (const page of blogs.filter(page => page.blogSlug && page.indexable !== fals
   assert.notEqual(target, page.path, 'Related articles exclude self');
   assert.ok(publishedPaths.has(target), 'Related articles exclude drafts and unknown destinations');
   if (target === '/blogs/expo-react-native-production-problems-ultrafit360') expoSources.add(page.path);
+  if (trendCovers.has(target.slice('/blogs/'.length))) linkedTrendPaths.add(target);
  }
 }
 assert.ok(expoSources.has('/blogs/ultrafit360-srs-to-react-native-app'), 'Mobile case study links to production lessons');
 assert.ok(expoSources.has('/blogs/expo-google-play-photo-permission-rejection'), 'Permissions guide links to production lessons');
+assert.equal(linkedTrendPaths.size, trendCovers.size, 'Every November guide has an incoming article link');
 console.log('PASS related article discovery, distinct published destinations and Expo incoming links');

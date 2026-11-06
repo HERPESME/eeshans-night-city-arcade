@@ -1,3 +1,4 @@
+import { trendStories } from './trend-stories';
 import { educationalStories } from './educational-stories';
 import { journalStories } from './journal-stories';
 import { ultraFitStories } from './ultrafit-stories';
@@ -65,6 +66,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...trendStories,
   ...educationalStories,
   ...journalStories,
   {

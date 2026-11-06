@@ -2,7 +2,7 @@ import { mkdir, writeFile, appendFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const origin = 'https://technightcity.com';
-const maxPages = 100;
+const maxPages = 120;
 const concurrency = 3;
 const timeout = 20000;
 const decode = value => value.replace(/&(?:amp|quot|apos|lt|gt|#39|#x[\da-f]+|#\d+);/gi, entity => {
