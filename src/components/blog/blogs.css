@@ -94,6 +94,13 @@
 .blog-result-count { flex-shrink: 0; padding-top: 10px; font-size: 11px; color: #aa9abb; }
 .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
 .blog-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.blog-show-more { margin-inline: auto; }
+.blog-title-index { margin-top: 24px; color: #b0a4bf; font-size: 13px; }
+.blog-title-index summary { width: fit-content; padding-block: 6px; cursor: pointer; }
+.blog-title-index summary:focus-visible { outline: 2px solid var(--blog-cyan); outline-offset: 5px; }
+.blog-title-index ul { margin-top: 12px; padding-inline-start: 20px; list-style: disc; }
+.blog-title-index li + li { margin-top: 7px; }
+.blog-title-index a:hover { color: var(--blog-cyan); }
 .blog-card { display: block; border: 1px solid #3c2b4b; background: #171020; min-width: 0; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .blog-card > article { display: flex; flex-direction: column; height: 100%; }
 .blog-card .blog-cover { flex-shrink: 0; }

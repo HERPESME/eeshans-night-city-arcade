@@ -1,5 +1,5 @@
 import { author } from '@/content/author';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Search, X } from 'lucide-react';
 import { blogCategories, blogEntries, blogPath, categoryLabel } from '@/content/blogs';
@@ -8,15 +8,28 @@ import BlogCard from './BlogCard';
 import { track } from '@/lib/analytics';
 import './blogs.css';
 
+const batchSize = 6;
+
 export default function BlogsSection() {
   const [category, setCategory] = useState<string>('all');
   const [search, setSearch] = useState('');
+  const [visibleCount, setVisibleCount] = useState(batchSize);
+  const nextEntry = useRef<string | null>(null);
   const featured = blogEntries.find(entry => entry.featured) || blogEntries[0];
   const showFeatured = category === 'all' && !search.trim();
   const query = search.trim().toLowerCase();
-  const visibleEntries = blogEntries.filter(entry => (!showFeatured || entry.slug !== featured.slug) && (category === 'all' || entry.category === category) && (!query || `${entry.title} ${entry.excerpt} ${categoryLabel(entry.category)} ${entry.keywords.join(' ')}`.toLowerCase().includes(query)));
+  const matchingEntries = blogEntries.filter(entry => (!showFeatured || entry.slug !== featured.slug) && (category === 'all' || entry.category === category) && (!query || `${entry.title} ${entry.excerpt} ${categoryLabel(entry.category)} ${entry.keywords.join(' ')}`.toLowerCase().includes(query)));
+  const visibleEntries = matchingEntries.slice(0, visibleCount);
+  const hasMore = visibleCount < matchingEntries.length;
   const allDrafts = blogEntries.every(entry => entry.isPreview);
-  const reset = () => { setCategory('all'); setSearch(''); };
+  const updateSearch = (value: string) => { setSearch(value); setVisibleCount(batchSize); };
+  const reset = () => { setCategory('all'); updateSearch(''); };
+
+  useEffect(() => {
+    if (!nextEntry.current) return;
+    document.getElementById(`entry-${nextEntry.current}`)?.closest('a')?.focus();
+    nextEntry.current = null;
+  }, [visibleCount]);
 
   return (
     <div className="blog-surface blog-hub">
@@ -41,9 +54,17 @@ export default function BlogsSection() {
         </section>}
 
         <section className="blog-archive" aria-labelledby="archive-title">
-          <div className="blog-archive-heading"><div><span className="blog-eyebrow">THE LOGBOOK</span><h2 id="archive-title">Find your next read.</h2></div><form role="search" className="blog-search" onSubmit={event => event.preventDefault()}><Search size={17} aria-hidden="true" /><label htmlFor="blog-search" className="sr-only">Search blog entries</label><input id="blog-search" type="search" placeholder="Search the archive…" value={search} onChange={event => setSearch(event.target.value)} />{search && <button type="button" onClick={() => setSearch('')} aria-label="Clear search"><X size={16} /></button>}</form></div>
-          <div className="blog-filter-bar"><div className="blog-filters" role="group" aria-label="Filter entries by category">{blogCategories.map(item => <button key={item.id} type="button" aria-pressed={category === item.id} className={category === item.id ? 'is-active' : ''} onClick={() => { setCategory(item.id); track('blog_filter', { category: item.id }); }}>{item.label}</button>)}</div><span className="blog-result-count" role="status" aria-live="polite">{visibleEntries.length} {showFeatured ? 'more ' : ''}{visibleEntries.length === 1 ? 'entry' : 'entries'}</span></div>
-          {visibleEntries.length ? <div className={`blog-grid${visibleEntries.length === 2 ? ' blog-grid--pair' : ''}`}>{visibleEntries.map(entry => <BlogCard key={entry.slug} entry={entry} />)}</div> : <div className="blog-empty"><span className="blog-empty-code">NO SIGNAL / 000</span><h3>No entries found.</h3><p>Try a different word or open the full archive.</p><button type="button" className="blog-text-button" onClick={reset}>Reset filters <ArrowRight size={16} aria-hidden="true" /></button></div>}
+          <div className="blog-archive-heading"><div><span className="blog-eyebrow">THE LOGBOOK</span><h2 id="archive-title">Find your next read.</h2></div><form role="search" className="blog-search" onSubmit={event => event.preventDefault()}><Search size={17} aria-hidden="true" /><label htmlFor="blog-search" className="sr-only">Search blog entries</label><input id="blog-search" type="search" placeholder="Search the archive…" value={search} onChange={event => updateSearch(event.target.value)} />{search && <button type="button" onClick={() => updateSearch('')} aria-label="Clear search"><X size={16} /></button>}</form></div>
+          <div className="blog-filter-bar"><div className="blog-filters" role="group" aria-label="Filter entries by category">{blogCategories.map(item => <button key={item.id} type="button" aria-pressed={category === item.id} className={category === item.id ? 'is-active' : ''} onClick={() => { setCategory(item.id); setVisibleCount(batchSize); track('blog_filter', { category: item.id }); }}>{item.label}</button>)}</div><span className="blog-result-count" role="status">Showing {visibleEntries.length} of {matchingEntries.length} {matchingEntries.length === 1 ? 'entry' : 'entries'}</span></div>
+          {visibleEntries.length ? <div id="blog-archive-grid" className={`blog-grid${visibleEntries.length === 2 ? ' blog-grid--pair' : ''}`}>{visibleEntries.map(entry => <BlogCard key={entry.slug} entry={entry} />)}</div> : <div className="blog-empty"><span className="blog-empty-code">NO SIGNAL / 000</span><h3>No entries found.</h3><p>Try a different word or open the full archive.</p><button type="button" className="blog-text-button" onClick={reset}>Reset filters <ArrowRight size={16} aria-hidden="true" /></button></div>}
+          {hasMore && <button type="button" className="blog-read-button blog-show-more" aria-controls="blog-archive-grid" onClick={() => {
+            nextEntry.current = matchingEntries[visibleCount].slug;
+            setVisibleCount(count => count + batchSize);
+          }}>Show more</button>}
+          {showFeatured && <details className="blog-title-index">
+            <summary>Browse all article titles</summary>
+            <ul>{blogEntries.map(entry => <li key={entry.slug}><Link to={blogPath(entry)}>{entry.title}</Link></li>)}</ul>
+          </details>}
         </section>
         <footer className="blog-hub-footer"><div><span className="blog-status-dot" /><span>Made by hand. Built in code.</span><small>{allDrafts ? 'Three complete drafts, ready for a closer look.' : 'AI, full-stack products, startup lessons, and the stories behind the builds.'}</small></div><Link to="/terminal">Say hello <ArrowUpRight size={16} aria-hidden="true" /></Link></footer>
       </div>
