@@ -9,6 +9,7 @@ assert.match(staticHeaders, /X-Frame-Options = "DENY"/);
 for (const page of routes) {
  const result = await handler({rawUrl:'https://technightcity.com'+page.path,httpMethod:'GET'});
  assert.equal(result.statusCode,200);
+ if (page.path === '/') assert.equal(result.body, await readFile('dist/index.html', 'utf8'));
  assert.equal(result.headers['X-Frame-Options'], 'DENY');
  assert.equal(result.headers['Content-Security-Policy-Report-Only'], reportOnlyPolicy);
  assert.equal(result.headers['Content-Security-Policy'], undefined);
