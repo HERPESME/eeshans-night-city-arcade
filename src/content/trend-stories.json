@@ -1,0 +1,1877 @@
+[
+  {
+    "slug": "gta-6-preload-ps5-xbox-storage",
+    "number": "91",
+    "title": "GTA 6 Preload: PS5 and Xbox Times, Size and Fixes",
+    "excerpt": "Check GTA 6 preload times for PS5 and Xbox Series X|S, convert the Xbox start to IST, and troubleshoot storage or automatic downloads.",
+    "category": "gaming",
+    "cover": {
+      "src": "/blog-images/trend-gta-6-preload-ps5-xbox-storage.webp",
+      "alt": "Pixel-art consoles and a solid-state drive on a desk overlooking a neon coastal skyline",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-gta-6-preload-ps5-xbox-storage-720.webp"
+    },
+    "coverLabel": "GTA VI / DOWNLOAD",
+    "intro": "Rockstar lists November 10, 2026 for the GTA 6 digital preload. It starts at midnight local time on PS5 and at 00:00 GMT worldwide on Xbox Series X|S. In India that makes the Xbox start 05:30 IST on November 10. The publisher lists up to 212 GB of required free space depending on device, with the game scheduled to launch November 19. Schedule and space requirements checked November 7, 2026 IST.",
+    "journalNote": "When a big game has separate preload and launch dates, the most useful guide is a checklist you can run on the console. I wanted this one to distinguish account, timing and storage before asking anyone to change settings.",
+    "sections": [
+      {
+        "id": "preload-times",
+        "heading": "GTA 6 preload time by console",
+        "paragraphs": [
+          "The times below are for the digital preload. Check your pre-order on the platform where you intend to download it. A successfully downloaded game can stay locked until the publisher's launch window. The preload time cannot tell you the separate unlock time for your region.",
+          "GMT and IST differ by five hours and thirty minutes. The distinction matters if a countdown made for one console is shared with someone on the other. Use the console store or the official FAQ as the final check if a countdown conflicts with the platform listing. Neither timing row is a promise about physical editions or early access."
+        ],
+        "table": {
+          "columns": [
+            "Platform",
+            "Published preload start",
+            "India example"
+          ],
+          "rows": [
+            [
+              "PlayStation 5",
+              "12:00 a.m. local time, Nov 10",
+              "00:00 IST, Nov 10"
+            ],
+            [
+              "Xbox Series X and Series S",
+              "00:00 GMT, Nov 10 worldwide",
+              "05:30 IST, Nov 10"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "free-space",
+        "heading": "Check the space before you queue the download",
+        "paragraphs": [
+          "Rockstar's “up to 212 GB” describes available space for preloading and varies with the device. It is not a confirmed final installed size for every edition or platform. Check free space on the destination shown by the console, rather than using the advertised capacity printed on the box. Two consoles sold with the same capacity can have very different available storage.",
+          "For planning, a hypothetical 200 GB download at a sustained 100 Mbps would take about four hours and 27 minutes. That estimate uses decimal units, excludes overhead, and is not a Rockstar download-speed figure. Wi-Fi congestion, server load and verification after the download can lengthen it. Use the console's current speed for a more useful estimate."
+        ],
+        "list": [
+          "Open the console's storage settings and identify where games are installed.",
+          "Look for a large game you can safely move or reinstall. Check save sync before deleting anything you care about.",
+          "Check that the destination supports playing games for your console generation. On PS5, supported M.2 expansion is distinct from USB extended storage.",
+          "Check free space again after any other updates have started. A download queue can claim some of the room you just made."
+        ]
+      },
+      {
+        "id": "automatic-download",
+        "heading": "Set up automatic downloads",
+        "paragraphs": [
+          "On PS5, Rockstar directs players to enable automatic downloads and leave the console powered on or in Rest Mode. Confirm that your power-saving settings allow the network access needed in Rest Mode. On Xbox, Rockstar says automatic updates should be enabled and the console should be on or in Sleep mode. A console shut down with network activity disabled can have a correct order and still never start its overnight queue.",
+          "Verify the account that placed the order and find the game in your library. If multiple profiles share a console, check the purchasing account before changing network settings. For manual setup, use your console vendor's pre-order instructions linked below. Menu labels can vary by system version and locale."
+        ]
+      },
+      {
+        "id": "missing-preload",
+        "heading": "What to check if the preload isn't showing",
+        "paragraphs": [
+          "If the store shows the correct order and the published window has opened, restart the console once and follow its download troubleshooting instructions. Preserve the exact error code if there is one. Repeatedly deleting a large partial download can make the recovery slower and removes evidence about the original failure. If multiple accounts or devices are affected, check platform status before making more local changes."
+        ],
+        "table": {
+          "columns": [
+            "What you see",
+            "First check",
+            "What to do next"
+          ],
+          "rows": [
+            [
+              "Game missing from the library",
+              "Purchasing account and order status",
+              "Check the store order record before considering another purchase"
+            ],
+            [
+              "Game present with no download option",
+              "Start time for your platform and region",
+              "Reopen the store listing after the published window starts"
+            ],
+            [
+              "Download queued or paused",
+              "Storage destination and existing queue",
+              "Clear space or resume the queue before changing connectivity"
+            ],
+            [
+              "Download complete but game locked",
+              "Launch schedule for your platform",
+              "Leave the installed files in place and check the unlock time"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "readiness-check",
+        "heading": "Do a five-minute readiness check",
+        "paragraphs": [
+          "Before the preload date, verify the library item, destination free space, power setting and network access. Once the window opens, verify that the correct title has entered the queue and the byte count is progressing. These checks are more useful than one predicted download time because they separate whether a download can begin from how long it will take. This guide uses official schedules and platform instructions. It was prepared before the preload opened."
+        ],
+        "links": [
+          {
+            "label": "Read the Ocarina of Time and GTA VI comparison",
+            "href": "/blogs/ocarina-of-time-gta-6-worlds-generations"
+          }
+        ]
+      },
+      {
+        "id": "preload-vs-install",
+        "heading": "Tell a slow download from a slow install",
+        "paragraphs": [
+          "The console may show different stages for downloading data and installing or verifying it. A transfer that has stopped adding bytes points to a different problem from one that has finished downloading and is preparing local files. Read the visible status first. If the system reports an install error, write it down before restarting. If you see an active but slow transfer, check for other items in the console's queue and heavy traffic on your connection.",
+          "To estimate your own transfer time in hours, multiply the decimal size in GB by 8,000, divide by the sustained speed in Mbps, and divide by 3,600. A hypothetical 200 GB at 50 Mbps would take around eight hours and 53 minutes under those assumptions. Your internet plan's advertised rate is a ceiling to compare with, not a measurement of what the console is receiving. This calculation also leaves out installation time."
+        ]
+      },
+      {
+        "id": "check-the-purchase",
+        "heading": "Use the store as the source of order status",
+        "paragraphs": [
+          "A digital pre-order normally has two useful records: the order in your account history and the title in the console library. If they disagree, capture what each screen shows and use the vendor's order help before buying again. A store page viewed from an unsigned account can look different from the library of the owner. Matching the platform and account is the cheapest check.",
+          "One final distinction: getting enough space for a preload is a local preparation step. The publisher can still change the software, availability or timings. When a friend reports a different size or schedule, ask which console and which store region they are using. That gives you something specific to compare with the platform's current listing."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Rockstar Games: GTA VI preload FAQ",
+        "href": "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq"
+      },
+      {
+        "label": "Rockstar Games: GTA VI launch information",
+        "href": "https://www.rockstargames.com/VI"
+      },
+      {
+        "label": "PlayStation Support: automatic pre-order downloads",
+        "href": "https://www.playstation.com/support/games/pre-order-games-automatic-download-ps-store/"
+      },
+      {
+        "label": "PlayStation Support: M.2 storage installation",
+        "href": "https://www.playstation.com/en-us/support/hardware/ps5-install-m2-ssd/"
+      },
+      {
+        "label": "Xbox Support: digital pre-orders",
+        "href": "https://support.xbox.com/help/subscriptions-billing/buy-games-apps/pre-order-faq"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "When can I preload GTA 6 in India?",
+        "answer": "Rockstar lists November 10, 2026 at 00:00 IST on PS5 and 05:30 IST on Xbox Series X and Series S."
+      },
+      {
+        "question": "Do I need exactly 212 GB for GTA 6?",
+        "answer": "Rockstar lists up to 212 GB of available space for preload depending on device. Check the requirement shown on your own console."
+      },
+      {
+        "question": "Does GTA 6 preload unlock the game early?",
+        "answer": "Preloading downloads files before launch. Check the publisher and platform store for the separate scheduled unlock."
+      }
+    ],
+    "keywords": [
+      "GTA 6 preload",
+      "GTA 6 preload date",
+      "GTA 6 size",
+      "GTA 6 preload India",
+      "PS5 and Xbox storage"
+    ]
+  },
+  {
+    "slug": "xbox-cloud-gaming-phone-controller",
+    "number": "92",
+    "title": "Xbox Cloud Gaming Phone Controller Setup for Smart TVs",
+    "excerpt": "Pair an Android or iPhone as an Xbox Cloud Gaming controller on a supported smart TV, and troubleshoot preview access, QR pairing and input lag.",
+    "category": "gaming",
+    "cover": {
+      "src": "/blog-images/trend-xbox-cloud-gaming-phone-controller.webp",
+      "alt": "Pixel-art smartphone gamepad held in front of a racing game on a smart TV in a rainy apartment",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-xbox-cloud-gaming-phone-controller-720.webp"
+    },
+    "coverLabel": "XBOX CLOUD / INPUT",
+    "intro": "Xbox's November 4 preview lets a supported Android or iOS phone act as a controller in the phone browser for Xbox Cloud Gaming on a supported smart TV. In the latest supported TV experience, turn on Preview Features under Settings, then Account. Launch a cloud game without a physical controller connected and use the TV's pairing option when it appears.",
+    "journalNote": "A good input feature also needs a good recovery path. I wanted the guide to tell someone whether the missing piece is TV eligibility, the session pairing or the way the game responds to touch.",
+    "sections": [
+      {
+        "id": "supported-setup",
+        "heading": "What you need for the phone controller preview",
+        "paragraphs": [
+          "This is an Xbox preview feature, so start by checking the supported TV experience and whether cloud play is available for your account and region. A smart TV having a browser does not establish compatibility. Likewise, an Xbox app visible in a TV store does not guarantee your TV model and software version are on the current preview list.",
+          "Xbox describes Android and iOS support and controls in the phone's browser. The phone sends input for a TV game session. You still play while looking at the TV, and the phone does not replace the screen hosting the cloud game. Certain games can have a touch layout adapted to their controls, so two games may present different buttons."
+        ]
+      },
+      {
+        "id": "pair-your-phone",
+        "heading": "How to pair a phone to the TV session",
+        "paragraphs": [
+          "Think of the process in three parts: the TV starts the session, the phone opens the pairing page, and the game consumes the input. Test each part independently. If the game never starts with ordinary input, troubleshoot the TV cloud session first. If it runs with a controller but the phone option is absent, look at preview eligibility and how the session was launched."
+        ],
+        "list": [
+          "Open the latest supported Xbox experience on the smart TV and sign in.",
+          "In Settings, open Account and enable Preview Features if the option is available.",
+          "Launch a cloud game with no physical controller connected.",
+          "Choose the option to use a phone and scan the QR code on the television with the supported phone.",
+          "Keep the opened control page visible and verify that one button works before starting a match."
+        ]
+      },
+      {
+        "id": "troubleshoot",
+        "heading": "Fix a missing pairing option or unresponsive input",
+        "paragraphs": [
+          "A phone browser can be interrupted by screen sleep, a call or switching apps. A fresh pairing attempt gives you a cleaner test than changing several settings at once. If an option only appeared for one TV profile or game, record which account, game and device version worked. The detail is useful when sending preview feedback."
+        ],
+        "table": {
+          "columns": [
+            "Symptom",
+            "What to verify",
+            "Low-impact next step"
+          ],
+          "rows": [
+            [
+              "Preview Features missing",
+              "TV model, latest supported app and region",
+              "Confirm official support before changing your account"
+            ],
+            [
+              "Game runs but the phone option is missing",
+              "A physical controller may still be connected",
+              "Disconnect it and start a new eligible session"
+            ],
+            [
+              "QR code opens but controls stop responding",
+              "Whether the control tab stayed open and the TV session is still active",
+              "Generate a fresh code in the current session"
+            ],
+            [
+              "Inputs work but feel delayed",
+              "Connection stability and whether the delay also occurs with a regular controller",
+              "Compare with the same game and session conditions"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "touch-versus-nano",
+        "heading": "Phone browser controls and the Xbox Nano preview",
+        "paragraphs": [
+          "Xbox announced the Xbox Nano Controller cloud-connect preview alongside the phone feature. Xbox described Nano cloud connect as a US preview that uses the physical controller's Wi-Fi path to connect to the cloud session. It has a separate setup. The phone browser workflow begins from the TV's pairing option and does not require buying that controller.",
+          "If input feels sluggish, avoid treating every symptom as one latency number. You are experiencing the path from input to the streamed image. A congested connection or processing on the display can make a responsive button feel late. Try a familiar menu and a timing-sensitive action on the same game before concluding that the phone is the bottleneck. This guide describes the documented preview flow and makes no device-specific latency claims."
+        ]
+      },
+      {
+        "id": "feedback",
+        "heading": "What to include when reporting a preview issue",
+        "paragraphs": [
+          "Xbox points to a feedback action in the phone controller interface. A useful report includes the TV model, TV app version if visible, phone operating system and browser, which game was running, and the stage at which the connection failed. Avoid sharing pairing codes, account identifiers, or screenshots with private messages.",
+          "Try one variable at a time. If the phone worked in one game but a touch layout was incomplete in another, include the button or action that was missing. If the preview tile was absent entirely, report that separately from a QR code that opened unsuccessfully. A precise reproduction helps distinguish rollout and eligibility from a broken control session."
+        ],
+        "links": [
+          {
+            "label": "Understand the difference between smoother frames and input latency",
+            "href": "/blogs/ai-frame-generation-fps-input-latency"
+          }
+        ]
+      },
+      {
+        "id": "device-checklist",
+        "heading": "Keep a known-good input path for comparison",
+        "paragraphs": [
+          "Begin with a game you can already launch on the same TV, network and account with a physical controller. Note what happens in the game menu before testing a demanding segment. Then quit the game, disconnect the physical controller, and try a new phone-input session through the preview. A comparison made on the same TV is easier to interpret than one between the phone preview on a TV and a conventional session on a laptop.",
+          "If the controller page opens but you see the wrong layout or a missing action, try an obvious input such as moving between menu options. Note whether the failure is limited to a particular game action or affects every input. Report the on-screen instructions you received without recording a live QR code. A pairing code is specific to a session and has little value in a published guide."
+        ]
+      },
+      {
+        "id": "family-and-shared-tv",
+        "heading": "What to do on a shared TV",
+        "paragraphs": [
+          "On a TV shared by multiple people, check which account is active before changing preview settings. Each test should begin with one known session and one phone. If another person paired earlier, close that session before generating a fresh code. Separate questions about the TV's account from questions about which phone currently controls a game.",
+          "Touch controls are convenient when a conventional controller is unavailable. They can also cover part of a phone screen and lack the physical feedback you rely on in a game. Try a short menu or training sequence before a long competitive session. If you switch back to a physical controller, treat that as a new baseline for troubleshooting, not as proof of what caused the previous failure."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Xbox Wire: Xbox Cloud Gaming input previews",
+        "href": "https://news.xbox.com/en-us/2026/11/04/cloud-gaming-inputs-preview/"
+      },
+      {
+        "label": "Xbox Wire: PC, web and cloud experience update",
+        "href": "https://news.xbox.com/en-us/2026/11/05/a-faster-simpler-xbox-experience-is-coming-to-pc-web-and-cloud/"
+      },
+      {
+        "label": "Xbox: Cloud Gaming platform and supported device information",
+        "href": "https://www.xbox.com/en-US/cloud-gaming"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can I use a phone as a controller on any smart TV?",
+        "answer": "The preview requires a supported TV experience, an eligible cloud gaming session, and a compatible Android or iOS phone."
+      },
+      {
+        "question": "Do I need an Xbox Nano Controller to use my phone?",
+        "answer": "The phone uses its browser after TV pairing. Xbox Nano cloud connect is a separate physical-controller preview."
+      },
+      {
+        "question": "Why is there no pairing code in my game?",
+        "answer": "Check preview availability and whether a physical controller is connected. Try launching a supported cloud game in a fresh TV session."
+      }
+    ],
+    "keywords": [
+      "Xbox Cloud Gaming phone controller",
+      "Xbox Cloud Gaming smart TV",
+      "Xbox phone controller QR code",
+      "Xbox Cloud Gaming beta"
+    ]
+  },
+  {
+    "slug": "ocarina-of-time-switch-2-update",
+    "number": "93",
+    "title": "Ocarina of Time Switch 2 Update: What Changed in 1.1.1",
+    "excerpt": "See what Nintendo changed in Ocarina of Time version 1.1.1 on Switch 2, how to check your installed version, and how to set up Zelda Notes.",
+    "category": "gaming",
+    "cover": {
+      "src": "/blog-images/trend-ocarina-of-time-switch-2-update.webp",
+      "alt": "Pixel-art ceramic ocarina and a handheld console displaying an emerald map at a moonlit forest shrine",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-ocarina-of-time-switch-2-update-720.webp"
+    },
+    "coverLabel": "HYRULE / PATCH NOTES",
+    "intro": "Nintendo lists version 1.1.1 of The Legend of Zelda: Ocarina of Time for Nintendo Switch 2 as a November 4, 2026 software update. The support notes point players to Zelda Notes setup and describe general gameplay fixes. To check your installed version, highlight the Switch 2 game tile and press + or −. Use Software Update and then Over the Internet if the console has an older build.",
+    "journalNote": "A short patch note can be stretched into a lot of rumours. I wanted to separate the practical update and setup steps from the bigger discussion of why Nintendo revisits a classic.",
+    "sections": [
+      {
+        "id": "patch-changes",
+        "heading": "What Nintendo says changed in 1.1.1",
+        "paragraphs": [
+          "The public changelog directs players to follow the instructions at game startup to configure Zelda Notes after updating. Nintendo also says it addressed issues to improve gameplay. The notes do not itemize the individual fixes, so there is no public basis here for a list of resolved quests, visual regressions, or frame-rate targets. Treat the version number and the setup instruction as the concrete changes you can verify.",
+          "The version belongs to the Switch 2 software Nintendo names in the support article. If you have several Zelda games in the library, or play another version through a different service, confirm you have selected the intended tile before comparing version numbers."
+        ],
+        "table": {
+          "columns": [
+            "Reader question",
+            "Confirmed detail"
+          ],
+          "rows": [
+            [
+              "What is the patch version?",
+              "1.1.1"
+            ],
+            [
+              "When did it release?",
+              "November 4, 2026"
+            ],
+            [
+              "Is there a Zelda Notes setup step?",
+              "Follow the on-screen setup instructions after updating"
+            ],
+            [
+              "What about saves?",
+              "Nintendo says existing save data remains available after the software update"
+            ],
+            [
+              "Does it affect online features?",
+              "Nintendo says the update is required to use the game's internet features"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "install-switch-2",
+        "heading": "How to check the version and install the update",
+        "paragraphs": [
+          "If you have automatic updates on, the new build may already be there. Check the version before reinstalling or changing storage. If the console cannot download, confirm the network connection and available space. Record any error code rather than deleting the game or its save files to see whether that helps."
+        ],
+        "list": [
+          "Connect your Switch 2 to the internet.",
+          "From the Home menu, highlight the Ocarina of Time software icon without opening it.",
+          "Press + or − and read the version displayed under the software title.",
+          "Select Software Update and then Over the Internet.",
+          "When the download finishes, reopen the same options screen to confirm the installed version."
+        ]
+      },
+      {
+        "id": "zelda-notes",
+        "heading": "Set up Zelda Notes after checking the version",
+        "paragraphs": [
+          "Launch the game after the update and follow the in-game instructions Nintendo references. Version, setup and network access are separate checkpoints. If you are already on 1.1.1 and the companion feature is absent, return to the game startup flow and the publisher's current support information. This is a cleaner next test than repeatedly downloading the same build.",
+          "If a startup notice disappears before you can read it, record what the game displays when reopened. Nintendo's public patch entry is useful for establishing that the feature has a setup step, but it does not answer every account or regional question. Use the instructions presented by your own game and console for the details that depend on your setup."
+        ]
+      },
+      {
+        "id": "before-and-after",
+        "heading": "Read the update as a product change",
+        "paragraphs": [
+          "Remaster conversations often bundle visual fidelity, the input feel, interface changes and companion features into the same story. For this release note, give each change its own evidence. A companion feature that you configure once affects onboarding. A performance improvement would need footage from comparable builds or an explicit publisher note. Nintendo's changelog here supports the former and describes general fixes without numerical performance claims.",
+          "A useful hands-on check has three observations: the installed version, the startup prompt or enabled feature, and whether an existing save opens. Use the same account and software tile before and after. Those are reproducible checks you can share without drawing conclusions about undocumented fixes. This guide is based on Nintendo's support notes, not a side-by-side device benchmark."
+        ]
+      },
+      {
+        "id": "if-update-fails",
+        "heading": "Troubleshooting without risking save data",
+        "paragraphs": [
+          "If the screen says the game is current, read the installed version instead of assuming the console fetched 1.1.1. Nintendo can publish newer patches after this guide. If the game is older and won't update, check internet access and whether the console can update other software. A device-wide failure and a single software problem call for different support paths.",
+          "When contacting support, distinguish a failed download, a successful install with a missing startup prompt, and an online feature that fails after setup. Include the version, relevant error code and what you already tried. Keep screenshots clear of account information. The existing design comparison goes deeper into why the original game and newer console releases appeal to different players."
+        ],
+        "links": [
+          {
+            "label": "Read the Ocarina of Time and GTA VI design comparison",
+            "href": "/blogs/ocarina-of-time-gta-6-worlds-generations"
+          }
+        ]
+      },
+      {
+        "id": "version-check-matrix",
+        "heading": "Three checks before calling the patch broken",
+        "paragraphs": [
+          "If the options screen shows a version higher than 1.1.1, go back to Nintendo's update history. A later patch can include other changes, and its version is not evidence of a failed November install. If the version is lower, the console's update check is the next step. Keep these observations separate when talking to other players. “I installed it” and “I reached the new feature” describe different results.",
+          "A version-specific screenshot should show the software name and number with personal account details removed. A launch image shared by Nintendo can illustrate a release, but it cannot verify your own software state. That is why the diagnostic starts with the game's options screen."
+        ],
+        "table": {
+          "columns": [
+            "Checkpoint",
+            "What to record",
+            "What it establishes"
+          ],
+          "rows": [
+            [
+              "Game options screen",
+              "Installed version number",
+              "Whether the console installed the update you are looking for"
+            ],
+            [
+              "First launch after update",
+              "Any setup message and what it asks for",
+              "Whether the feature needs onboarding on this console"
+            ],
+            [
+              "Loading an existing save",
+              "Whether the selected save opens",
+              "Whether your ordinary play can resume after the update"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "companion-features",
+        "heading": "Why a companion feature needs a clear first-run step",
+        "paragraphs": [
+          "Adding a companion feature changes more than the patch size. It adds an onboarding task after installation. A good setup message tells a returning player what the feature is, whether any action is required, and how to return to the instructions. If you are reviewing the remaster as a design project, assess the setup separately from the game itself.",
+          "The original game's reputation does not tell you whether a returning player can discover a new feature. A stronger comparison would observe a player starting from an older install, checking the version, and finding the companion setup without help. Use the publisher's listed behavior as the expected result and clearly identify any observations that come from your own device."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Nintendo Support: Ocarina of Time update history and installation",
+        "href": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/71859/~/how-to-update-the-legend-of-zelda%3A-ocarina-of-time"
+      },
+      {
+        "label": "Nintendo: Ocarina of Time for Nintendo Switch 2",
+        "href": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-125697/"
+      },
+      {
+        "label": "Nintendo Support: Switch 2 product help",
+        "href": "https://en-americas-support.nintendo.com/app/products/detail/p/1104"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What version is the November 4 Ocarina of Time update?",
+        "answer": "Nintendo's November 4, 2026 update for the Switch 2 software is version 1.1.1."
+      },
+      {
+        "question": "Will updating Ocarina of Time erase my save?",
+        "answer": "Nintendo states that existing save data remains available after downloading the software update."
+      },
+      {
+        "question": "Where can I check the Ocarina of Time version on Switch 2?",
+        "answer": "Highlight the game in the Home menu and press + or −. The installed version appears beneath the title."
+      }
+    ],
+    "keywords": [
+      "Ocarina of Time Switch 2 update",
+      "Ocarina of Time 1.1.1",
+      "Zelda Notes",
+      "Ocarina of Time patch notes"
+    ]
+  },
+  {
+    "slug": "expo-sdk-58-upgrade-checklist",
+    "number": "94",
+    "title": "Expo SDK 58 Upgrade Checklist for React Native Apps",
+    "excerpt": "Upgrade Expo SDK 57 to 58 with a React Native 0.88 checklist for dependencies, Expo Router, native builds, deep links, and rollback.",
+    "category": "build",
+    "cover": {
+      "src": "/blog-images/trend-expo-sdk-58-upgrade-checklist.webp",
+      "alt": "Pixel-art mobile workbench with two phones and circuit boards on a New York rooftop",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-expo-sdk-58-upgrade-checklist-720.webp"
+    },
+    "coverLabel": "EXPO / RELEASE GATES",
+    "intro": "Expo SDK 58 includes React Native 0.88 and is built for iOS 27. Upgrade on a branch, align dependencies with Expo's installer, run diagnostics, then build and install new iOS and Android binaries. A working Metro session only verifies the bundle in that session. Before shipping, exercise production routes and native permissions on a build that matches what users will install.",
+    "journalNote": "The production Expo lessons on this site came from building a real app. This guide turns those release boundaries into a migration checklist. The example app is deliberately fictional, so the checks can be repeated without sharing production configuration.",
+    "sections": [
+      {
+        "id": "baseline",
+        "heading": "Make a baseline that survives the upgrade",
+        "paragraphs": [
+          "From a clean SDK 57 branch, record the commit, lockfile, package manager, Node version, build profile and native toolchain. Save one successful installable build for each platform where possible. Write down how the app opens from its icon, how an authenticated link resolves, and what happens to a protected route when you are signed out. Record behavior before touching dependencies, especially if a flaky test is already known.",
+          "For the worked example, imagine a training planner with a sign-in screen, tabs, a session detail route and a permission-gated photo upload. A user opens a session link from outside the app, then switches to a tab and returns. That one journey tests cold start, route identity and retained state. Use throwaway accounts and a non-production backend for the baseline."
+        ]
+      },
+      {
+        "id": "update-dependencies",
+        "heading": "Align dependency versions before changing features",
+        "paragraphs": [
+          "Expo's SDK 58 release gives the installer and diagnostic commands below. Run them from the app directory with a clean working tree. Review the manifest and lockfile together. The installer aligns compatible package versions, while diagnostics can highlight mismatches and configuration issues. Resolve a flagged native module before changing navigation or adding new features, otherwise two unrelated changes can produce the same crash.",
+          "For projects using Continuous Native Generation, follow Expo's instructions for regenerating SDK 57 native directories. For projects maintaining native folders by hand, review the migration and native project differences, including custom Swift or Gradle changes. Don't remove maintained files just because a generated example can recreate its own directories."
+        ],
+        "code": {
+          "label": "Expo's documented SDK 58 upgrade commands",
+          "text": "npx expo install expo@^58.0.0 --fix\nnpx expo-doctor@latest"
+        }
+      },
+      {
+        "id": "router-and-platforms",
+        "heading": "Review Router and native platform changes",
+        "paragraphs": [
+          "Open the SDK 57-to-58 Router migration guide next to the routes your app actually uses. The SDK 58 changelog covers stable data loaders and native tabs, among other changes. A migration is easier to debug when moving to a new navigation pattern is a separate change. Verify an initial route, a deep link, back navigation and tab state before opting into more features.",
+          "On iOS, review the scene-based lifecycle and any AppDelegate customizations. Test safe areas with long text and a narrower or resizable window when your target supports it. On Android, verify permission prompts on a fresh install and when updating an existing install. A clean install and an upgrade from a previous binary have different local state and should both appear on the test plan."
+        ]
+      },
+      {
+        "id": "device-matrix",
+        "heading": "A release gate for both platforms",
+        "paragraphs": [
+          "A preview build is a practical place to catch this class of failure, but use a release-equivalent binary for any behavior gated by signing, entitlements or store configuration. Record the exact app build and OS version with each result. The fixture illustrates what to verify rather than claiming the suite ran against UltraFit360 or a particular release."
+        ],
+        "table": {
+          "columns": [
+            "Check",
+            "Expected result",
+            "If it fails"
+          ],
+          "rows": [
+            [
+              "Cold start after fresh install",
+              "Welcome or home appears with the expected safe areas",
+              "Review native launch logs before changing JavaScript"
+            ],
+            [
+              "Upgrade over the SDK 57 test build",
+              "Existing test account and local settings behave as designed",
+              "Inspect persistence migration and update compatibility"
+            ],
+            [
+              "Open a session link signed in and signed out",
+              "Session opens or auth returns the reader to the intended destination",
+              "Check link ownership, Router path and auth guard"
+            ],
+            [
+              "Decline then grant a photo permission",
+              "Fallback appears and the permission flow recovers",
+              "Check the generated native config and real device state"
+            ],
+            [
+              "Launch the installed app without Metro",
+              "The packaged bundle starts in the intended environment",
+              "Check build profile, embedded configuration and binary"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "release-and-rollback",
+        "heading": "Keep native binaries and updates in compatible lanes",
+        "paragraphs": [
+          "If the upgrade changes the native runtime, ship a new compatible binary. An over-the-air update can deliver compatible JavaScript, but cannot retrofit a missing native module into a binary already on a phone. Confirm the project's runtime policy and channels so old binaries receive updates that they can actually load.",
+          "Before a wider rollout, document the last known-good build and any server compatibility constraints. An older binary may still run against shared backend changes after a store rollback. Treat a rollback as a recovery operation with its own checks: which users are affected, what binary they have, and which embedded or remote update they can safely load."
+        ],
+        "links": [
+          {
+            "label": "Read the UltraFit360 React Native build case study",
+            "href": "/blogs/ultrafit360-srs-to-react-native-app"
+          },
+          {
+            "label": "Read the wider Expo production lessons",
+            "href": "/blogs/expo-react-native-production-problems-ultrafit360"
+          }
+        ]
+      },
+      {
+        "id": "isolate-one-regression",
+        "heading": "Turn a failed migration check into a minimal reproduction",
+        "paragraphs": [
+          "Suppose the fictional session link opens the planner home screen after upgrading. Start by recording whether the link reached the app at all. If the app never opens, inspect the platform's registration and installed binary. If the app opens but displays the wrong route, capture the link input and the selected Router route. If the correct screen appears before sending a signed-out user away, inspect the auth handoff and the route you store for the return trip.",
+          "Use a minimal fixture that keeps one link, one route and one signed-out condition. Compare the same link on the previous and upgraded build with identical test account state. This gives another developer a check that can fail for one specific reason. It also reduces the temptation to replace a navigation pattern simply because the upgrade changed several packages at once."
+        ]
+      },
+      {
+        "id": "release-notes",
+        "heading": "Record what the build actually proved",
+        "paragraphs": [
+          "A useful release record names the commit, platform, OS, build profile and result. Keep emulator observations separate from physical-device observations. If the test used a simulator and never showed a native permission prompt, record that case as unverified. A single green checkbox called mobile usually hides which of those two paths you exercised.",
+          "Run at least one route test against the release-equivalent app with network access that matches the environment it will use. An embedded staging endpoint and a production build using a different configuration can both look correct while pointing to different data. Check configuration with safe, non-secret indicators and leave test account details out of screenshots and published notes. Keep the same table for rollback, when someone will need to identify exactly what was last known to work."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Expo SDK 58 release notes",
+        "href": "https://expo.dev/changelog/sdk-58"
+      },
+      {
+        "label": "Expo Router: SDK 57 to 58 migration",
+        "href": "https://docs.expo.dev/router/migrate/sdk-57-to-58/"
+      },
+      {
+        "label": "Expo: upgrade an SDK version",
+        "href": "https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/"
+      },
+      {
+        "label": "Expo: EAS Update runtime versions",
+        "href": "https://docs.expo.dev/eas-update/runtime-versions/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Which React Native version ships in Expo SDK 58?",
+        "answer": "Expo's release notes list React Native 0.88 and say the SDK is built for iOS 27."
+      },
+      {
+        "question": "Should I run Expo Doctor after upgrading to SDK 58?",
+        "answer": "Run the diagnostic after aligning dependencies, then investigate reported issues and verify the installed app separately."
+      },
+      {
+        "question": "Can an over-the-air update replace the native SDK upgrade?",
+        "answer": "An update must match the installed runtime. Ship a new compatible binary if the SDK upgrade changes native code or its runtime."
+      }
+    ],
+    "keywords": [
+      "Expo SDK 58 upgrade",
+      "Expo Router SDK 58 migration",
+      "React Native 0.88",
+      "Expo production release checklist"
+    ]
+  },
+  {
+    "slug": "gpt-6-cyber-access-authorized-code-review",
+    "number": "95",
+    "title": "GPT-6 Cyber Access and a Safe Repo Review Workflow",
+    "excerpt": "See how GPT-6 Cyber access works through Daybreak Red, then use a scoped review checklist with evidence, regression tests, and human approval.",
+    "category": "ai",
+    "cover": {
+      "src": "/blog-images/trend-gpt-6-cyber-access-authorized-code-review.webp",
+      "alt": "Pixel-art security workbench with a key-shaped permission token and a synthetic code terminal",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-gpt-6-cyber-access-authorized-code-review-720.webp"
+    },
+    "coverLabel": "AI SECURITY / REVIEW",
+    "intro": "OpenAI describes GPT-6 Cyber as a restricted security model available through Daybreak Red. Its launch announcement distinguishes that access from Daybreak Blue and from general code-review capabilities in mainline models. A useful first review is smaller than the model's capability: read a named repository at a fixed revision, check a specific security invariant, and ask for evidence a maintainer can reproduce.",
+    "journalNote": "The most useful part of an AI review is the evidence a maintainer can check. A constrained repository, an explicit stop condition, and a small failing test give a security finding somewhere concrete to land.",
+    "sections": [
+      {
+        "id": "access",
+        "heading": "Who can use GPT-6 Cyber?",
+        "paragraphs": [
+          "OpenAI says GPT-6 Cyber access is restricted through Daybreak Red, with identity verification, use restrictions and organizational security controls described in the system card. The announcement positions Daybreak Blue as a separate path for verified defenders. Check the official enrollment material for current eligibility and access before planning work around a specific model. A general ChatGPT subscription does not by itself establish access to this restricted model.",
+          "A team can apply the workflow below with a review tool it already has. The walkthrough is an authorized, read-only teaching fixture. It uses no live target and makes no claim about running GPT-6 Cyber, obtaining Daybreak access, or reproducing an OpenAI benchmark."
+        ]
+      },
+      {
+        "id": "rules-of-engagement",
+        "heading": "Define the allowed scope before connecting tools",
+        "paragraphs": [
+          "Choose a repository you own or have explicit permission to review. Name the commit, allowed directories, permitted actions and escalation contact. A public URL, an accessible dependency or a reachable service is not automatically part of the review. Keep production credentials and writable tokens out of the review environment and use synthetic examples for application data.",
+          "Keep permissions aligned with the instructions. If the task only needs local inspection, use a read-only workspace and disable network where practical. Repository files are input data. A comment or instruction embedded in a fixture does not grant the agent access to another directory, environment variable or endpoint."
+        ],
+        "table": {
+          "columns": [
+            "Boundary",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Target",
+              "One local checkout of a fictional documentation app at a pinned commit"
+            ],
+            [
+              "Allowed",
+              "Read source and existing tests, then report evidence in a findings file"
+            ],
+            [
+              "Excluded",
+              "Network requests, third-party systems, production data, dependencies outside the checkout"
+            ],
+            [
+              "Stop condition",
+              "Report any question that needs outside access, rather than expanding scope"
+            ],
+            [
+              "Acceptance",
+              "A maintainer can reproduce the failure with a safe fixture"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "worked-example",
+        "heading": "A synthetic visibility invariant",
+        "paragraphs": [
+          "Imagine a documentation app whose editor can mark a page as private. The public route and search feed should share the same publication rule. Seed two fictional entries, one published and one private. Check whether the feed and route each expose only the allowed content. The expected result is one published entry and no private title or body in any public response. No real users, repositories or data are needed.",
+          "Ask the reviewer to cite the relevant source line, explain why its code path is reachable, and show the smallest fixture that fails. Require separate labels for a suspected inconsistency, a verified failure and a patched failure. A line that looks wrong can be unreachable, while an apparently harmless refactor can move a check out of one entry point. Evidence is what distinguishes the cases."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Verify the report before changing behavior",
+        "paragraphs": [
+          "Use a known-clean sample too. If the assistant reports a fault when the same rule is applied correctly, the evaluation has identified a false positive worth recording. Run the test in a controlled checkout and preserve output that demonstrates the failure without revealing private data. When it takes manual inspection to tell whether a claim was real, record that cost rather than counting the finding as automatic."
+        ],
+        "list": [
+          "Reproduce the failure at the same commit without changing the fixture.",
+          "Confirm the source location and relevant call path.",
+          "Add a narrow regression check and prove it fails before the patch.",
+          "Run the check after the patch, then run adjacent public route and search tests.",
+          "Record any untested assumption and obtain approval before widening access or shipping."
+        ]
+      },
+      {
+        "id": "evaluating-review",
+        "heading": "Read model benchmarks and repo results separately",
+        "paragraphs": [
+          "OpenAI's launch post and system card describe evaluation conditions, task sets and safeguards. Those results are evidence about those tests. They do not establish the quality of a review against an arbitrary app or dependency graph. A team can build a tiny evaluation set with deliberately seeded issues, clean examples and an explicitly excluded file. Score reproducibility, false positives and respect for scope on that set.",
+          "The review report should include what the tool was unable to read and which assertions were never tested. A proposed patch belongs in the normal branch and review workflow, with a separate human decision to approve changes. Permission to inspect a source tree is a different decision from permission to modify or deploy it."
+        ],
+        "links": [
+          {
+            "label": "Build small evaluations for agent tool calls",
+            "href": "/blogs/ai-agent-evaluations-tool-calls"
+          },
+          {
+            "label": "Learn how to define boundaries for AI tools",
+            "href": "/blogs/mcp-coach-tools-authorization-boundaries"
+          }
+        ]
+      },
+      {
+        "id": "evidence-record",
+        "heading": "Write a finding another maintainer can reproduce",
+        "paragraphs": [
+          "In a real report, replace hypothetical outcomes with observed ones. Keep the current revision and the relevant file location so the next person can find the same line. A screenshot of an assistant's summary is weaker evidence than a small test and its output. Preserve logs where appropriate and redact any data that does not belong in the report."
+        ],
+        "table": {
+          "columns": [
+            "Field",
+            "Fictional review example"
+          ],
+          "rows": [
+            [
+              "Invariant",
+              "Only published documentation appears on public routes and feeds"
+            ],
+            [
+              "Evidence",
+              "Two synthetic entries seeded at the same commit, with one missing visibility check in the feed"
+            ],
+            [
+              "Observed result",
+              "The failing fixture returns a private test title in one response"
+            ],
+            [
+              "Expected result",
+              "Only the published test title appears in either response"
+            ],
+            [
+              "Limits",
+              "No production access, network calls or assessment of other endpoints"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "score-the-result",
+        "heading": "Grade a reviewer against three fixtures",
+        "paragraphs": [
+          "Use one failing fixture, one clean fixture and one question that would require leaving the authorized scope. The model should find the seeded problem with a reproducible explanation, leave the clean sample alone, and state the limitation on the last task. Count a plausible narrative with no usable evidence as a review miss. Record how long the human verification takes as well as whether the model identified the intended issue.",
+          "This small evaluation also tests whether the tool is useful with the access you can reasonably grant. If it needs production credentials for a property a local test can demonstrate, narrow the task and use a synthetic dependency. If it claims it ran something unavailable in the environment, inspect the execution record before accepting the result. Separate policy compliance, correct findings and maintainable patches as different outcomes."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "OpenAI: GPT-6 Cyber announcement",
+        "href": "https://openai.com/index/introducing-gpt-6-cyber/"
+      },
+      {
+        "label": "OpenAI: GPT-6 Cyber system card",
+        "href": "https://deploymentsafety.openai.com/gpt-6-cyber"
+      },
+      {
+        "label": "OWASP: Code Review Guide",
+        "href": "https://owasp.org/www-project-code-review-guide/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is GPT-6 Cyber generally available in ChatGPT?",
+        "answer": "OpenAI describes GPT-6 Cyber access as restricted through Daybreak Red. Check the official access and eligibility documentation."
+      },
+      {
+        "question": "What should I give an AI for a first security review?",
+        "answer": "Give it a pinned revision, a narrow permission scope, a testable invariant and a clear definition of the evidence you need back."
+      },
+      {
+        "question": "How do I verify an AI security finding?",
+        "answer": "Reproduce it with a safe fixture at the same commit and check that the regression test fails before the patch and passes afterward."
+      }
+    ],
+    "keywords": [
+      "GPT-6 Cyber access",
+      "Daybreak Red",
+      "authorized repository security review",
+      "AI security review checklist"
+    ]
+  },
+  {
+    "slug": "gemini-omni-1-2-flash-15-second-video",
+    "number": "96",
+    "title": "Gemini Omni 1.2 Flash: 15-Second Video and Pricing",
+    "excerpt": "Plan a 15-second Gemini Omni 1.2 Flash video, budget 720p generation by the second, and review scene continuity before spending on another take.",
+    "category": "ai",
+    "cover": {
+      "src": "/blog-images/trend-gemini-omni-1-2-flash-15-second-video.webp",
+      "alt": "Pixel-art video editing desk with three storyboard frames following a paper lantern along a canal",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-gemini-omni-1-2-flash-15-second-video-720.webp"
+    },
+    "coverLabel": "GEMINI / VIDEO WORKFLOW",
+    "intro": "Google says Gemini Omni 1.2 Flash can generate native 15-second video and lists a launch price of $0.07 per generated second for 720p. At that published rate, one 15-second output costs $1.05 before any other applicable charges. To make the workflow useful, start with one brief, one review rubric and a fixed limit on attempts, then record exactly which surfaces and settings you use.",
+    "journalNote": "A short video is easier to improve when the team can describe what changed between takes. This guide applies the same evidence discipline as our video analysis work to the other side of the process: making the clip.",
+    "sections": [
+      {
+        "id": "availability-and-price",
+        "heading": "Where to check model availability and price",
+        "paragraphs": [
+          "Google's announcement describes availability on the Gemini API and through Google's business offerings. The available controls, billing and model identifiers can differ by surface. Verify the model label on the tool you intend to use. Pricing below uses Google's announced 720p per-second rate checked November 7, 2026 IST. A different resolution, plan, editing method or billing surface can change the calculation.",
+          "These are arithmetic examples using a fixed rate. They do not predict charges for a failed request, an editing turn or an account-specific credit. Treat a full-length revision as another possible output in your planning, then reconcile the actual usage record. If your budget only covers two attempts, agree beforehand which failure justifies the second."
+        ],
+        "table": {
+          "columns": [
+            "Planned output",
+            "Generated seconds",
+            "Example at $0.07 per second"
+          ],
+          "rows": [
+            [
+              "One 15-second take",
+              "15",
+              "$1.05"
+            ],
+            [
+              "Initial take and one full-length regeneration",
+              "30",
+              "$2.10"
+            ],
+            [
+              "Three full-length candidates",
+              "45",
+              "$3.15"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "storyboard",
+        "heading": "A repeatable 15-second storyboard",
+        "paragraphs": [
+          "Use an invented subject: one amber paper lantern drifting along a canal at dusk. The goal is to hold the same object, light and direction across three moments. That gives reviewers something to inspect besides whether the clip feels cinematic. Use references you have permission to use and keep personal or confidential material out of the example.",
+          "The time ranges are creative targets, not claims about precise control. Inspect the actual frames and mark the approximate transition times if exact cut placement matters. If you need frame-accurate cuts, assemble clips in an editor and measure the final timeline instead of relying on a natural-language schedule."
+        ],
+        "table": {
+          "columns": [
+            "Target beat",
+            "Visual direction",
+            "Continuity check"
+          ],
+          "rows": [
+            [
+              "0 to 5 seconds",
+              "Wide shot as the lantern enters from left to right",
+              "One lantern with a warm glow and blue water"
+            ],
+            [
+              "5 to 10 seconds",
+              "Track closer while preserving direction",
+              "Same shape, brightness and overall scale progression"
+            ],
+            [
+              "10 to 15 seconds",
+              "Let the lantern pass under a stone bridge",
+              "No second lantern or sudden reversal at the end"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "prompt-and-edit",
+        "heading": "Keep the first generation and edit request comparable",
+        "paragraphs": [
+          "Google describes improved reference adherence and conversational editing in this model release. Give an edit one visible target. For example, ask for a subtler reflection on the water while keeping the lantern, camera path and duration. Save the original and edited output separately and compare the same moments. Multiple changes at once make it hard to tell which request caused a new discontinuity."
+        ],
+        "code": {
+          "label": "Synthetic first brief",
+          "text": "Create a 15-second dusk canal scene. Follow one amber paper lantern drifting left to right. Open wide, track closer, then let it pass under a stone bridge. Keep the lantern shape and light consistent. No on-screen text."
+        }
+      },
+      {
+        "id": "review-checklist",
+        "heading": "What to check before approving another take",
+        "paragraphs": [
+          "Give each condition a pass, fail or not checked. Review the clip twice, once at normal speed and once paused around transitions. If the first attempt meets the brief and the remaining issue is a crop or trim, a conventional edit may solve it without another generation. This storyboard is a reproducible review fixture. The cover is an illustration, and the article does not present a paid video run as a test."
+        ],
+        "list": [
+          "Check the actual duration, frame dimensions and aspect ratio from the output.",
+          "Compare the first, middle and final views for the same subject and direction.",
+          "Look for extra objects, jump cuts, unwanted text and unexpected changes in lighting.",
+          "If you need audio, check that it belongs to the scene and that edits did not break timing.",
+          "Record the model surface, date, generation settings, output and any measured cost."
+        ]
+      },
+      {
+        "id": "generation-versus-analysis",
+        "heading": "Separate making a clip from verifying its content",
+        "paragraphs": [
+          "A generation request asks the model to produce media. An analysis request asks a model to make claims about media you already have. In a production workflow they can sit next to each other, but the costs and checks are different. Verify actual frames and timestamps before approving a claim, and keep human review for subjective or consequential checks."
+        ],
+        "links": [
+          {
+            "label": "Use Gemini to analyze video with structured timestamped findings",
+            "href": "/blogs/gemini-video-analysis-with-timestamps-and-structured-output"
+          }
+        ]
+      },
+      {
+        "id": "edit-log",
+        "heading": "Set up an edit log before generating anything",
+        "paragraphs": [
+          "For the lantern clip, label the first take A and the first permitted edit B. Put the request, model surface, input references and creation date on a small record for each. Save exports under different names. In review, look at A and B at the start, middle and end and mark the same three attributes: the lantern's position, its shape, and the light on the water. This is easier to compare than a freeform preference about the whole clip.",
+          "A reviewer can fill this out even when the tool is not available by using a fictional A/B record. Label it as a planning exercise. If you publish a real run later, include the settings, whether it was a single generation or a follow-up edit, and a description of how the cost was verified."
+        ],
+        "table": {
+          "columns": [
+            "Review result",
+            "Example decision"
+          ],
+          "rows": [
+            [
+              "Reflection improves and the lantern stays consistent",
+              "Keep the edited output"
+            ],
+            [
+              "Reflection improves but the lantern changes shape",
+              "Keep the original or revise the single change request"
+            ],
+            [
+              "Timing is off by a small amount and continuity holds",
+              "Try trimming in an editor before another generation"
+            ],
+            [
+              "The clip violates the one-lantern brief",
+              "Fix the prompt or source references before spending on variations"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "reference-quality",
+        "heading": "Choose references that can be checked",
+        "paragraphs": [
+          "A reference image should establish one thing a reviewer can identify: the shape of the lantern, the camera view or the water's colour. When references disagree, decide which is authoritative before asking for an output. A clip that faithfully follows the wrong reference can look polished and still fail the brief. Keep the list short and avoid personal faces or protected artwork unless you have permission and a reason to include them.",
+          "Set the final deliverable's requirements before choosing a generation surface. A 720p review preview and a file prepared for a specific campaign can have different aspect, audio or rights needs. Verify that you can export the result you need and record billing assumptions separately from creative choices. If the only requirement is to communicate the scene direction to a colleague, a static storyboard may already answer the question."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Google: Gemini Omni 1.2 Flash announcement",
+        "href": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      },
+      {
+        "label": "Google Cloud: Gemini Omni 1.2 Flash general availability",
+        "href": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available"
+      },
+      {
+        "label": "Google DeepMind: Gemini Omni Flash model card",
+        "href": "https://deepmind.google/models/model-cards/gemini-omni-1-2-flash/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much does a 15-second Gemini Omni 1.2 Flash video cost?",
+        "answer": "At Google's listed $0.07 per second for 720p, 15 generated seconds is $1.05 before other charges or account-specific pricing."
+      },
+      {
+        "question": "Does the model support native 15-second output?",
+        "answer": "Google announced native 15-second video generation. Verify that the surface and model available to your account expose the option."
+      },
+      {
+        "question": "Can I edit the same clip conversationally?",
+        "answer": "Google describes multi-turn conversational editing. Keep the original clip and verify continuity and timing after each edited output."
+      }
+    ],
+    "keywords": [
+      "Gemini Omni 1.2 Flash video",
+      "Gemini Omni 1.2 Flash pricing",
+      "Gemini 15-second video",
+      "AI video continuity"
+    ]
+  },
+  {
+    "slug": "claude-personal-finance-plaid-privacy",
+    "number": "97",
+    "title": "Claude Personal Finance and Plaid: Access and Unlinking",
+    "excerpt": "See what Claude Personal Finance reads through Plaid, how to unlink a US bank, and which chats and artifacts you may still need to remove.",
+    "category": "ai",
+    "cover": {
+      "src": "/blog-images/trend-claude-personal-finance-plaid-privacy.webp",
+      "alt": "Pixel-art evening kitchen table with blank budget slips, a phone with spending bars, and a lock motif",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-claude-personal-finance-plaid-privacy-720.webp"
+    },
+    "coverLabel": "CLAUDE / DATA PERMISSIONS",
+    "intro": "Claude Personal Finance can read balances and transactions from the US bank accounts you choose to connect through Plaid. Anthropic says the feature cannot move or invest your money. Unlinking stops future access to the linked bank. Previous chat text, artifacts and shared links are separate and can remain until you remove them. This walkthrough uses only invented transactions.",
+    "journalNote": "The privacy questions here are familiar from designing tool permissions: who can read a record, when can they read it, and what survives after access ends? Those three questions give the reader something concrete to verify.",
+    "sections": [
+      {
+        "id": "data-access",
+        "heading": "What the Plaid connection shares",
+        "paragraphs": [
+          "Anthropic lists institution names, account names and types, last four digits, balances, credit limits, and up to two years of transactions for selected accounts. Connection is handled through Plaid. Anthropic says Claude does not ask for or see your bank password. When reviewing the consent screen, check the specific accounts you intend to share. If you do not need a joint or business account for your task, leave it outside the scope you approve.",
+          "Read-only access still exposes sensitive information. A spending pattern can reveal more than the total amount, such as where a person goes and which subscriptions they use. Decide whether a task actually needs linked data. A manually prepared fictional or redacted example can be enough for testing a template without connecting a bank."
+        ],
+        "table": {
+          "columns": [
+            "Question",
+            "Documented behavior"
+          ],
+          "rows": [
+            [
+              "Can Claude move money?",
+              "Personal Finance access is read-only"
+            ],
+            [
+              "What data does it get?",
+              "Selected bank account details, balances and transaction history"
+            ],
+            [
+              "What if I unlink?",
+              "Claude stops reading the accounts connected through that bank login"
+            ],
+            [
+              "What about earlier answers?",
+              "Existing chats, artifacts and shared links may remain until removed"
+            ],
+            [
+              "Does training policy depend on where I chat?",
+              "Anthropic distinguishes Personal Finance hub chats from other conversations governed by account settings"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "unlink",
+        "heading": "How to disconnect a bank and check what remains",
+        "paragraphs": [
+          "In Personal Finance, open linked account management. Anthropic's current instructions use the three-dot menu on web and Claude Desktop, or the gear icon on iOS and Android. Choose the bank, select Unlink, then confirm. The documented operation applies to every account connected under that bank login. Unlinking the last linked bank also resets the dashboard, including its widgets and settings.",
+          "Unlinking answers whether new reads can happen. Removing a shared link answers who can still view that previously generated output. Deleting a chat is a separate step governed by the service's retention practices. Check each surface instead of assuming that removing a connection clears every copy of data."
+        ],
+        "list": [
+          "Review the linked accounts list after disconnecting.",
+          "Check Plaid's connection management if you want to verify or disconnect Claude on Plaid's side.",
+          "Review chat history, artifacts and shared links for earlier outputs you want to remove.",
+          "Consult Anthropic's retention guidance and Plaid's policy for their respective handling."
+        ]
+      },
+      {
+        "id": "fictional-example",
+        "heading": "Why an accurate-looking spending total can be wrong",
+        "paragraphs": [
+          "Suppose a fictional summary includes an ₹800 subscription twice because a source was imported twice, plus a ₹300 purchase. The first total is ₹1,900. After verifying the repeated row represents one transaction, the two distinct purchases total ₹1,100. The currency and amounts are illustrative and do not imply that the feature supports Indian banks.",
+          "A pair of identical amounts is not enough to decide whether two transactions are duplicates. Check date, merchant and account identity. Anthropic also notes that balances may be stale and that missing linked accounts can leave the spending view incomplete. Ask which rows support a result and verify important figures in the bank's own records. A useful output gives you the inputs needed to reproduce the arithmetic."
+        ]
+      },
+      {
+        "id": "eligibility",
+        "heading": "Why Personal Finance may be missing",
+        "paragraphs": [
+          "Anthropic currently documents US banks only and lists account, plan, region and rollout eligibility as reasons the feature might not appear. Check the current help article for the app version and account type. If the feature is unavailable, you can still evaluate the ideas in this guide with mock data without signing in to any financial institution.",
+          "For a practical privacy check before enabling any financial integration, write down one task, the smallest data set that answers it, and how you would undo access. Then check whether your proposed workflow creates a reusable artifact or a share link. That extra decision is independent of the connector. The service documentation explains feature behavior. Verify balances and consequential decisions with the appropriate source."
+        ],
+        "links": [
+          {
+            "label": "Read about authorization boundaries for connected tools",
+            "href": "/blogs/mcp-coach-tools-authorization-boundaries"
+          }
+        ]
+      },
+      {
+        "id": "source-table",
+        "heading": "Ask for the source rows behind a total",
+        "paragraphs": [
+          "In a mock test, ask the assistant to list the date window, included accounts and distinct transactions it used. Then calculate the result from the mock statement outside the conversation. If the assistant returns a number for an account that was deliberately missing from the fixture, the right label is unknown. The same principle applies to an app with a temporarily unavailable bank connection. A clean-looking dashboard can reflect an incomplete set of sources.",
+          "Use harmless sample records to try the conversation first. In any real financial workflow, use the bank's own statements for decisions that depend on correctness. If you copy a result into another app or share a generated artifact, that downstream copy has its own access controls and lifecycle."
+        ],
+        "table": {
+          "columns": [
+            "Fictional test",
+            "What the response should make clear"
+          ],
+          "rows": [
+            [
+              "One account is unavailable",
+              "The calculation includes only the accounts it can read"
+            ],
+            [
+              "Two entries share an amount",
+              "Merchant, time and account evidence are needed before merging them"
+            ],
+            [
+              "Balance and statement are from different days",
+              "The answer shows the date associated with each figure"
+            ],
+            [
+              "A user asks where a total came from",
+              "The output points to its inputs rather than inventing precision"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "small-connection-review",
+        "heading": "Review access when the task ends",
+        "paragraphs": [
+          "Make a short record for yourself: which bank login you connected, which account types were visible, where the output was created, and whether you shared it. Do not put account identifiers or raw financial details into the record if a generic label is enough. A review at the end makes it easier to remove the right connection and find old outputs.",
+          "If a paid plan expires, Anthropic's help says banks may stay linked until you unlink them even though access in the product changes. The help article documents a connectors route and Plaid-side controls for some users. Read the current steps before assuming a plan change severed the underlying link. Disconnect and output cleanup remain separate even when they happen on the same day."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Anthropic: Personal Finance launch and privacy",
+        "href": "https://claude.com/resources/articles/introducing-personal-finance-in-claude"
+      },
+      {
+        "label": "Anthropic Help Center: Use Personal Finance",
+        "href": "https://support.claude.com/en/articles/18185620-use-personal-finance-in-claude"
+      },
+      {
+        "label": "Plaid: Manage connections",
+        "href": "https://my.plaid.com/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can Claude Personal Finance transfer money?",
+        "answer": "Anthropic says the feature only reads eligible connected accounts. It cannot move, manage or invest the funds."
+      },
+      {
+        "question": "Does unlinking erase my previous financial chats?",
+        "answer": "Unlinking stops future reads from that bank. Review and remove past chats, artifacts and shared links separately if needed."
+      },
+      {
+        "question": "Can I link an Indian bank to Claude Personal Finance?",
+        "answer": "Anthropic's current support article says only US banks are supported. Check official eligibility for updates."
+      }
+    ],
+    "keywords": [
+      "Claude Personal Finance Plaid",
+      "Claude Personal Finance privacy",
+      "disconnect Plaid from Claude",
+      "read-only bank access"
+    ]
+  },
+  {
+    "slug": "react-native-health-connect-duplicate-steps",
+    "number": "98",
+    "title": "React Native Health Connect: Avoid Double-Counting Steps",
+    "excerpt": "Use Health Connect's aggregate step count in a React Native Android app, then test overlapping sources, permission changes, and day boundaries.",
+    "category": "build",
+    "cover": {
+      "src": "/blog-images/trend-react-native-health-connect-duplicate-steps.webp",
+      "alt": "Pixel-art Mumbai waterfront runners with a watch and phone whose step streams converge",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-react-native-health-connect-duplicate-steps-720.webp"
+    },
+    "coverLabel": "ANDROID / STEP AGGREGATION",
+    "intro": "For a daily step total in a React Native Android app, use Health Connect's aggregation for StepsRecord rather than adding every raw record from a phone and a wearable. Raw records are useful for diagnosis. They can contain overlapping intervals, so adding them can treat two measurements of one walk as two walks. The app also needs a separate state for unavailable data.",
+    "journalNote": "Fitness app screens often make one number look simple. The hard part is deciding what the number means across devices, permissions and date boundaries. These synthetic fixtures make that decision visible without using any user's data.",
+    "sections": [
+      {
+        "id": "overlap",
+        "heading": "A step-count fixture with overlapping records",
+        "paragraphs": [
+          "Imagine a phone and a watch tracking the same morning walk. Later, a different non-overlapping activity is recorded only by the phone. The record counts below are fictional. You can use them to test that your interface calls the aggregate path and displays whatever result Health Connect reports instead of substituting a JavaScript sum.",
+          "The raw sum is 2,730. It is the sum of three stored records, rather than evidence for 2,730 distinct steps. Do not hardcode a universal expected aggregate from this table. The effective result can depend on what the device actually stores and how Health Connect handles data origins and priorities. In an adapter unit test, explicitly choose a fake aggregate and assert that the UI displays that value, not the raw sum."
+        ],
+        "table": {
+          "columns": [
+            "Source",
+            "Local interval",
+            "Raw count"
+          ],
+          "rows": [
+            [
+              "Phone",
+              "08:00–08:20",
+              "1,200"
+            ],
+            [
+              "Watch",
+              "08:00–08:20",
+              "1,180"
+            ],
+            [
+              "Phone",
+              "12:00–12:10",
+              "350"
+            ]
+          ]
+        },
+        "diagrams": [
+          {
+            "id": "step-reading-path",
+            "title": "Use the aggregate result for the daily headline",
+            "kind": "flow",
+            "summary": "Raw step records and the aggregate query answer separate questions about the same fictional time window.",
+            "groups": [
+              {
+                "label": "Device inputs",
+                "steps": [
+                  {
+                    "title": "Phone records",
+                    "detail": "The phone records the morning walk and a later activity.",
+                    "tone": "neutral"
+                  },
+                  {
+                    "title": "Watch records",
+                    "detail": "The watch also measures the morning interval.",
+                    "tone": "warn"
+                  }
+                ]
+              },
+              {
+                "label": "App boundary",
+                "steps": [
+                  {
+                    "title": "Health Connect aggregation",
+                    "detail": "Ask for StepsRecord.COUNT_TOTAL for the selected day.",
+                    "tone": "good"
+                  },
+                  {
+                    "title": "Headline display",
+                    "detail": "Render the returned total and retain distinct permission and unavailable states.",
+                    "tone": "good"
+                  }
+                ]
+              }
+            ],
+            "takeaway": "A record sum is a diagnostic, while the native aggregate supplies the product total.",
+            "caption": "Illustrative flow with synthetic inputs. It does not predict a device-specific aggregate value."
+          }
+        ]
+      },
+      {
+        "id": "aggregate",
+        "heading": "Choose aggregation for the headline number",
+        "paragraphs": [
+          "Android's steps documentation exposes StepsRecord.COUNT_TOTAL for aggregation over a range. In a React Native integration, use an adapter that calls the native Health Connect aggregation path for the metric and time range. Keep diagnostic raw records behind a separate adapter method. That boundary makes it harder for a later UI change to use the wrong source and gives tests a clear dependency to stub.",
+          "Start with one explicitly named range, such as local calendar day, and serialize both start and end consistently. The day starts at local midnight and ends at the next local midnight. Avoid assuming that adding a fixed 24 hours handles every timezone and daylight-saving transition. Document what changing timezone means for previously displayed days."
+        ]
+      },
+      {
+        "id": "states",
+        "heading": "Keep permission and no-data states distinct",
+        "paragraphs": [
+          "Check authorization again on return from the permission flow and when a previously granted permission might have changed. For older dates, review the Android documentation for current history permissions and supported platform versions. An empty query for an out-of-range date should not silently look like a zero-activity day. If the reason is unknown, keep the interface neutral."
+        ],
+        "table": {
+          "columns": [
+            "State",
+            "Reader-facing behavior"
+          ],
+          "rows": [
+            [
+              "Health Connect unavailable",
+              "Explain that step data cannot be read on this setup"
+            ],
+            [
+              "Permission missing or revoked",
+              "Explain how to reconnect, without displaying a made-up zero"
+            ],
+            [
+              "Permission granted with no aggregate result",
+              "Show that no data is available for this window"
+            ],
+            [
+              "Aggregate returns zero",
+              "Display zero for that particular window"
+            ],
+            [
+              "Latest read failed",
+              "Mark a previously cached total as stale, if you keep one"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "regression-tests",
+        "heading": "Test the adapter and an Android device separately",
+        "paragraphs": [
+          "Use only test accounts and synthetic data for the last case. The adapter test verifies your app contract. A device test checks platform behavior under a specific setup. Record the Android version, data origins, dates and permission state with any observation you publish. This example explains an integration pattern and does not describe UltraFit360's internal implementation."
+        ],
+        "list": [
+          "Unit-test that the adapter receives the intended day start and end.",
+          "Stub an aggregate distinct from the raw sum and check the displayed number.",
+          "Revoke permission after a successful read and confirm the screen explains the changed state.",
+          "Cross midnight, change timezone in a controlled test, and check how day labels update.",
+          "Use a supported Android test setup with two data sources to observe actual aggregation and compare it with the same time window."
+        ]
+      },
+      {
+        "id": "debugging",
+        "heading": "Compare the same sources and the same window",
+        "paragraphs": [
+          "When two screens disagree, first write down the metric, the exact time range, the timezone and which origins were included. Check if one screen was refreshed more recently. A local cache can be useful while the native query runs, but its label should show when it was updated. Separate caching failures from permission and aggregation failures so a fix for one issue does not mask another."
+        ],
+        "links": [
+          {
+            "label": "Read the UltraFit360 React Native frontend case study",
+            "href": "/blogs/ultrafit360-srs-to-react-native-app"
+          }
+        ]
+      },
+      {
+        "id": "adapter-fixture",
+        "heading": "Write a contract test with a fake aggregate",
+        "paragraphs": [
+          "The number 1,520 is deliberately arbitrary. Its purpose is to be distinguishable from the sum of the records, rather than to describe the platform's expected data-origin behavior. In this example the adapter supplies the aggregate and the view displays it. A different fake result, such as zero, lets you verify that a measured zero does not accidentally fall through to the missing-data presentation.",
+          "Add a test for a rejected read. The first successful load can be cached with an explicit timestamp, then a second load can return a permission error. Decide whether your product clears the cached number or labels it stale. The important property is that a cached value does not make a permission failure look like a fresh total. If you keep the cache, minimize what is retained and avoid logging raw record content."
+        ],
+        "code": {
+          "label": "Pseudocode for the app boundary",
+          "text": "fakeStore.rawSteps = [1200, 1180, 350]\nfakeStore.aggregateSteps = 1520\nresult = loadDailySteps(fakeStore, calendarDay)\nassert(result.kind === \"measured\")\nassert(result.count === 1520)"
+        }
+      },
+      {
+        "id": "range-boundaries",
+        "heading": "Pin down what today means",
+        "paragraphs": [
+          "A dashboard and a history view can choose different windows without either being broken. A dashboard may mean the user's current local day. A weekly graph may group using the timezone recorded when an activity occurred. Pick a definition and use it consistently across native queries, app cache keys and labels. The cache should not reuse the same entry for a different query range merely because both pages say today.",
+          "For a useful test, open the app before midnight, hold it in the background and return after midnight. Check which day label appears, whether the new query actually ran, and whether the old total is still on screen while loading. On devices where timezone changes are relevant, repeat with a controlled change in system timezone. Keep the date-range observations separate from measurements about how any particular device counts steps."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Android Developers: Track steps in Health Connect",
+        "href": "https://developer.android.com/health-and-fitness/health-connect/features/steps"
+      },
+      {
+        "label": "Android Developers: Aggregate Health Connect data",
+        "href": "https://developer.android.com/health-and-fitness/health-connect/aggregate-data"
+      },
+      {
+        "label": "React Native Health Connect public library: Getting started",
+        "href": "https://matinzd.github.io/react-native-health-connect/docs/get-started/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I sum raw Health Connect step records?",
+        "answer": "Use the native aggregation path for a user-facing total. Keep raw records for diagnostics when you need to inspect source intervals."
+      },
+      {
+        "question": "Does no data mean I walked zero steps?",
+        "answer": "Keep a missing result, a missing permission, and a successfully measured zero as separate application states."
+      },
+      {
+        "question": "Why do my app and my watch show different totals?",
+        "answer": "Compare the selected time range, timezone, data origins and last refresh first. Different inputs can produce different totals."
+      }
+    ],
+    "keywords": [
+      "React Native Health Connect steps",
+      "Health Connect duplicate steps",
+      "Health Connect COUNT_TOTAL",
+      "Android step aggregation"
+    ]
+  },
+  {
+    "slug": "frontend-developer-salary-india-base-vs-ctc",
+    "number": "99",
+    "title": "Frontend Developer Salary in India: Base Pay vs CTC",
+    "excerpt": "Compare frontend developer offers in India using base pay, CTC, variable pay and take-home, with dated salary data and two fictional offers.",
+    "category": "founder",
+    "cover": {
+      "src": "/blog-images/trend-frontend-developer-salary-india-base-vs-ctc.webp",
+      "alt": "Pixel-art software developer comparing two fictional offer sheets in a Bengaluru tech café",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-frontend-developer-salary-india-base-vs-ctc-720.webp"
+    },
+    "coverLabel": "INDIA / FRONTEND CAREERS",
+    "intro": "Indeed India reported an average annual frontend developer base salary of ₹5,47,656 from 91 reported salaries, updated October 26, 2026. Use that as one dated national data point. It does not isolate developers with zero to two years of experience. To compare early-career offers, ask for fixed annual gross pay, variable payout conditions and a monthly pay illustration separately.",
+    "journalNote": "The title on an offer rarely tells you how to compare it. Frontend roles can span product UI, design systems and performance work. I wanted a comparison that keeps role scope and guaranteed pay visible alongside the headline number.",
+    "sections": [
+      {
+        "id": "benchmark",
+        "heading": "What the India salary benchmark measures",
+        "paragraphs": [
+          "Indeed labels its figure average base salary. Check the page's date, sample size and role title before you use it. A national average can move when the mix of cities, employers or experience levels changes, even if pay for one particular role stays the same. One source's national average cannot substitute for a recent group of comparable openings.",
+          "Levels.fyi provides a separate frontend software engineer compensation view. Compare component labels, geography and seniority before quoting any number. Total compensation may combine salary, bonus and equity, while the Indeed figure is for base pay. Use a comparable cohort if you can find one. If the source has no reliable cohort for your location and level, report that limitation rather than averaging figures that mean different things."
+        ]
+      },
+      {
+        "id": "definitions",
+        "heading": "Base pay, CTC and take-home answer different questions",
+        "paragraphs": [
+          "Employers can use the same label for different breakdowns. Confirm how the offer defines fixed pay and whether an employer contribution is already included. Annual fixed gross divided by twelve can give a monthly gross comparison if pay is spread evenly. It is not an estimate of the amount that reaches your bank."
+        ],
+        "table": {
+          "columns": [
+            "Term",
+            "What to verify in writing"
+          ],
+          "rows": [
+            [
+              "Base or fixed annual gross",
+              "Which cash components are fixed, and how they are paid"
+            ],
+            [
+              "Cost to company (CTC)",
+              "Every employer cost or benefit the company includes in its total"
+            ],
+            [
+              "Variable pay",
+              "Target, payout conditions, dates, and whether any portion is guaranteed"
+            ],
+            [
+              "Equity",
+              "Instrument, vesting schedule, liquidity and how any displayed value was calculated"
+            ],
+            [
+              "Take-home pay",
+              "What remains in a pay period after applicable deductions"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "example",
+        "heading": "Compare two fictional ₹10 lakh offers",
+        "paragraphs": [
+          "Both totals add up to the same headline. If neither bonus pays out, Offer A has ₹1.2 lakh more fixed annual gross. If both pay the full target, each reaches ₹9 lakh annual cash gross in this example. A third scenario can reflect what happens when a new employee joins partway through a bonus period. These numbers are made up to show the method and are not a recommendation, market range or tax calculation.",
+          "Ask for a sample monthly payslip breakdown with applicable deductions and separate one-time amounts such as a joining payment. Compare any repayment condition, bonus eligibility and appraisal date. Keep benefits in a separate column so they can be evaluated without counting them as disposable monthly cash."
+        ],
+        "table": {
+          "columns": [
+            "Annual component",
+            "Offer A",
+            "Offer B"
+          ],
+          "rows": [
+            [
+              "Fixed gross cash",
+              "₹8.4 lakh",
+              "₹7.2 lakh"
+            ],
+            [
+              "Target variable pay",
+              "₹0.6 lakh",
+              "₹1.8 lakh"
+            ],
+            [
+              "Other employer costs and benefits",
+              "₹1.0 lakh",
+              "₹1.0 lakh"
+            ],
+            [
+              "Headline CTC",
+              "₹10.0 lakh",
+              "₹10.0 lakh"
+            ],
+            [
+              "Monthly fixed gross, before deductions",
+              "₹70,000",
+              "₹60,000"
+            ]
+          ]
+        },
+        "diagrams": [
+          {
+            "id": "offer-comparison-components",
+            "title": "Equal headline CTC can hide different fixed pay",
+            "kind": "compare",
+            "summary": "These fictional offers have equal cost-to-company totals and different mixes of recurring fixed and contingent pay.",
+            "groups": [
+              {
+                "label": "Offer A",
+                "steps": [
+                  {
+                    "title": "Fixed gross",
+                    "detail": "₹8.4 lakh per year, or ₹70,000 monthly gross before deductions.",
+                    "tone": "good"
+                  },
+                  {
+                    "title": "Variable target",
+                    "detail": "₹0.6 lakh under the example payout terms.",
+                    "tone": "neutral"
+                  }
+                ]
+              },
+              {
+                "label": "Offer B",
+                "steps": [
+                  {
+                    "title": "Fixed gross",
+                    "detail": "₹7.2 lakh per year, or ₹60,000 monthly gross before deductions.",
+                    "tone": "good"
+                  },
+                  {
+                    "title": "Variable target",
+                    "detail": "₹1.8 lakh under the example payout terms.",
+                    "tone": "neutral"
+                  }
+                ]
+              }
+            ],
+            "takeaway": "Compare the guaranteed amount and target payout separately before looking at total company cost.",
+            "caption": "Fictional example. Each offer also includes ₹1 lakh in other employer costs and benefits."
+          }
+        ]
+      },
+      {
+        "id": "early-career",
+        "heading": "Compare the actual job as well as the pay",
+        "paragraphs": [
+          "Build a small reference set of recent vacancies at the same seniority and hiring geography. Mark whether each role expects React only, broader browser ownership, design-system work, React Native or on-call support. A title match without a responsibility match can lead to a misleading comparison. Record remote status and distinguish the company's hiring market from the city where you would personally live.",
+          "The result should fit in a small comparison sheet. Put guaranteed gross, target total cash and benefits into separate columns. Add the source and date to any market figure. Use the same labels and currency throughout. A clear breakdown makes the tradeoffs visible even when the jobs have the same title or salary headline."
+        ],
+        "list": [
+          "Verify the fixed amount and how often it is paid.",
+          "Ask what percentage of variable pay is tied to individual, team or company performance.",
+          "Ask for equity terms and any restrictions, rather than assuming its headline value is cash.",
+          "Compare mentorship, ownership, learning time and commuting costs separately from compensation."
+        ],
+        "links": [
+          {
+            "label": "See the author's frontend and AI engineering profile",
+            "href": "/profile"
+          }
+        ]
+      },
+      {
+        "id": "reading-figures",
+        "heading": "Read each salary number with its denominator",
+        "paragraphs": [
+          "An individual offer belongs beside the matching data, not inside the benchmark sample. When the comparison is early-career, look for postings and reported compensation at similar seniority. A national average across levels can still provide context. Treat it as broad context even if it happens to match an individual offer's CTC."
+        ],
+        "table": {
+          "columns": [
+            "What the source shows",
+            "What to write down"
+          ],
+          "rows": [
+            [
+              "National average base salary",
+              "Role label, source date, sample size and pay component"
+            ],
+            [
+              "City or experience band",
+              "City, seniority definition, sample size if shown and update date"
+            ],
+            [
+              "Total compensation distribution",
+              "Included salary, bonus and equity and any stated valuation rules"
+            ],
+            [
+              "Job posting range",
+              "Employer, role scope, work location, date and whether the range is fixed pay or CTC"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "compare-three-scenarios",
+        "heading": "Compare three payout scenarios before ranking offers",
+        "paragraphs": [
+          "Take the fictional offers above. Record guaranteed gross cash, gross cash at a chosen portion of target bonus, and gross cash at full target. If you illustrate a 50% payout scenario, Offer A is ₹8.7 lakh and Offer B is ₹8.1 lakh. The 50% assumption is for sensitivity testing. It is not an estimate of what either employer pays. Label the scenario so someone can change it in their own comparison.",
+          "Keep first-year one-offs in a separate row from recurring pay. An unusually large joining payment might change first-year cash and disappear in the second year. Some amounts have conditions if you leave early. Ask for the written terms and use the expected pay period to compare cash flow. If you cannot estimate the monthly deductions from the employer's information, leave the take-home cell empty rather than making the comparison look more precise than it is.",
+          "The same sheet can track what the role lets you learn. Note whether a junior engineer gets design feedback, owns a tested component, or spends much of the week doing unrelated support. Record these as job characteristics rather than adding invented monetary value to them."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Indeed India: Front end developer base salary",
+        "href": "https://in.indeed.com/career/front-end-developer/salaries"
+      },
+      {
+        "label": "Levels.fyi: Frontend software engineer compensation in India",
+        "href": "https://www.levels.fyi/en-GB/t/software-engineer/title/frontend-software-engineer/locations/india"
+      },
+      {
+        "label": "Indeed India: Junior front end developer salary",
+        "href": "https://in.indeed.com/career/junior-front-end-developer/salaries"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What is the average frontend developer salary in India?",
+        "answer": "Indeed reported ₹5,47,656 annual average base pay from 91 reported salaries as of October 26, 2026. That sample combines experience levels."
+      },
+      {
+        "question": "Is ₹10 lakh CTC the same as ₹10 lakh fixed pay?",
+        "answer": "CTC can include variable compensation and employer costs. Ask for a breakdown of guaranteed gross cash and other components."
+      },
+      {
+        "question": "Can I divide annual fixed pay by 12 to get take-home?",
+        "answer": "That gives an evenly spread monthly gross figure. Deductions and payroll timing determine what reaches your bank."
+      }
+    ],
+    "keywords": [
+      "frontend developer salary in India",
+      "frontend developer CTC",
+      "React developer salary India",
+      "base pay vs CTC"
+    ]
+  },
+  {
+    "slug": "figma-make-vs-mcp-existing-react-app",
+    "number": "100",
+    "title": "Figma Make vs Figma MCP for an Existing React App",
+    "excerpt": "Choose between Figma Make and Figma MCP with a React component example that tests design tokens, keyboard behavior and reuse in an existing app.",
+    "category": "build",
+    "cover": {
+      "src": "/blog-images/trend-figma-make-vs-mcp-existing-react-app.webp",
+      "alt": "Pixel-art design studio with prototype cards beside a reusable React component on a second screen",
+      "width": 1200,
+      "height": 800,
+      "caption": "AI-generated pixel-art editorial illustration.",
+      "thumbnail": "/blog-images/trend-figma-make-vs-mcp-existing-react-app-720.webp"
+    },
+    "coverLabel": "FIGMA / COMPONENT REUSE",
+    "intro": "Use Figma Make when the interaction is still being explored and you need a prototype people can try. Use Figma MCP when the design context needs to reach an agent working inside an existing React codebase. The workflows can connect. Figma documents how an MCP client can fetch context from a Make project, then implement the behavior with the application's own components.",
+    "journalNote": "My Figma-first work moves between web and mobile implementations. For this comparison I chose a small fictional React component so the tradeoff is visible in the code review, especially which decisions already belong to the application.",
+    "sections": [
+      {
+        "id": "choose-a-starting-point",
+        "heading": "Choose by the decision that is still open",
+        "paragraphs": [
+          "If the team has not decided how an action should feel, prototype the interaction with realistic labels and a few believable states. If the design already exists and the task is to implement it in a mature product, start with a narrow design selection and the repository's components. A clickable prototype can reveal gaps in the design. A production review should also inspect the code that owns validation, semantics and tokens.",
+          "The distinction is about the job, and the same feature can use both. Figma describes Make projects as resources the MCP server can expose to a compatible client. The agent can inspect selected files or more of the project when needed. Verify client support, access to the shared file and which capabilities are available to your plan."
+        ],
+        "table": {
+          "columns": [
+            "Task",
+            "Useful starting point",
+            "Handoff artifact"
+          ],
+          "rows": [
+            [
+              "Explore competing interactions",
+              "Figma Make prototype",
+              "Clickable flow with named states"
+            ],
+            [
+              "Implement an approved design in a repository",
+              "Design context through Figma MCP",
+              "Small diff reusing existing components"
+            ],
+            [
+              "Preserve behavior from a Make prototype",
+              "Bring Make context into an MCP client",
+              "Targeted implementation brief with acceptance checks"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "worked-component",
+        "heading": "Compare both paths with one save button",
+        "paragraphs": [
+          "The fictional settings page has a primary Save button, an existing Button component and a status region. Define four states: unchanged, ready, saving and saved. Add a recoverable failure that leaves the user's changes intact. Before you touch the prototype, write down how keyboard users submit, how the success is announced, and what happens when a network response is slow.",
+          "In Make, explore the sequence with local mock data. Try delayed success and a failed save, then show the result to someone unfamiliar with the page. Ask when they think the change became durable. Use their answer to refine the status copy and transitions. The prototype's value is that you can change behavior cheaply while the interaction is still unsettled.",
+          "For an existing React app, give the agent the relevant frame or Make URL, the location of the existing Button, and a clear requirement to preserve current data contracts. The design context can specify visual intent. The app already owns how form submission works, where errors belong, and which token represents its primary action. Adapt the prototype rather than carrying every prototype dependency into the product."
+        ],
+        "diagrams": [
+          {
+            "id": "make-mcp-handoff",
+            "title": "Carry the behavior into the existing component",
+            "kind": "flow",
+            "summary": "A prototype and a codebase review support different decisions on the same settings screen.",
+            "groups": [
+              {
+                "label": "Prototype",
+                "steps": [
+                  {
+                    "title": "Try the interaction",
+                    "detail": "Use mocked pending, successful and failed saves.",
+                    "tone": "neutral"
+                  }
+                ]
+              },
+              {
+                "label": "Implementation",
+                "steps": [
+                  {
+                    "title": "Bring selected context",
+                    "detail": "Share the frame or Make project with a compatible MCP client.",
+                    "tone": "neutral"
+                  },
+                  {
+                    "title": "Reuse the existing component",
+                    "detail": "Verify the Button import, tokens, form behavior and accessibility in the diff.",
+                    "tone": "good"
+                  }
+                ]
+              }
+            ],
+            "takeaway": "Preserve the tested interaction when it fits the product, with the application retaining ownership of production behavior.",
+            "caption": "Illustrative React handoff. No private design file or live application capture is used."
+          }
+        ]
+      },
+      {
+        "id": "acceptance",
+        "heading": "Check the same outcomes on both paths",
+        "paragraphs": [
+          "If Code Connect mappings exist, Figma says MCP context can include implementation information from the connected component, such as imports and usage details. Check the generated diff to make sure it actually imports the established component. A similar-looking button can still have different focus behavior, sizing rules or disabled semantics."
+        ],
+        "table": {
+          "columns": [
+            "Check",
+            "Prototype review",
+            "React code review"
+          ],
+          "rows": [
+            [
+              "Visual hierarchy",
+              "The primary action is obvious at narrow widths",
+              "Existing button variant and layout tokens are reused"
+            ],
+            [
+              "Keyboard",
+              "The intended sequence is clear",
+              "Focus reaches the control and submission follows existing semantics"
+            ],
+            [
+              "Pending",
+              "A visible state tells the reader work is in progress",
+              "Duplicate writes are prevented by the existing submission flow"
+            ],
+            [
+              "Failure",
+              "The recovery action makes sense to a reader",
+              "The entered value survives and the error is announced"
+            ],
+            [
+              "Success",
+              "The confirmation copy matches the task",
+              "Success comes from the resolved save, and focus remains predictable"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "handoff",
+        "heading": "A short implementation request for the IDE",
+        "paragraphs": [
+          "Start with one component and review its diff before handing the agent a whole page. If the output creates a second visual system, identify which constraint or mapping it missed and rerun only that slice. If the generated prototype answers the design question but cannot meet the app's acceptance checks, retain it as a reference and implement within the app. This comparison is a repeatable fixture, not a timing benchmark of the tools."
+        ],
+        "code": {
+          "label": "Example for the fictional component",
+          "text": "Review the selected design and the existing settings form. Implement its Save states using the existing Button, tokens and status region. Preserve the form contract. Check keyboard submission, a slow save, a failed save and long translated copy. Show the component imports and the tests you ran."
+        },
+        "links": [
+          {
+            "label": "Read the broader Figma-to-frontend workflow",
+            "href": "/blogs/figma-to-frontend-web-mobile-workflow"
+          },
+          {
+            "label": "Learn the Figma MCP tools and setup",
+            "href": "/blogs/figma-mcp-ide-design-to-code"
+          }
+        ]
+      },
+      {
+        "id": "review-diff",
+        "heading": "Review the React diff as well as the design",
+        "paragraphs": [
+          "Start with the files changed. A small save interaction can often reuse the form, button, status region and query code the app already has. If the diff creates a second form submission path, check which code now owns validation and side effects. If it copies hex values and raw spacing into the feature, trace each one back to the design token or ask what decision requires a new token.",
+          "A strong code review also tests the timing. Start a slow save and activate the control twice, then check whether one write or two were dispatched. Simulate a failure and confirm the input survives. Check that the message reaches a keyboard and screen-reader user without moving focus unexpectedly. These are expected acceptance checks for the example, not results from a real Figma session."
+        ]
+      },
+      {
+        "id": "case-selection",
+        "heading": "Decide whether to preserve behavior or explore again",
+        "paragraphs": [
+          "If the Make prototype already answers an interaction question, save a link and a short account of the decision. For example: a save stays pending until the server answers, and a failed save preserves changes. These rules are easier for a developer to carry into the app than an entire prototype codebase. If you discover a missing state while reading the code, update the brief before asking the agent to implement it.",
+          "If you already have a Figma component and a mapped React component, inspect which prop variations the mapping covers. A relationship can help the agent choose the correct import, but the application still owns the behavior of its button. Confirm the live design selection and code version before comparing screenshots. A stale mapping and a current mock can produce a misleadingly confident result.",
+          "Keep one artifact for each decision: the prototype for a behavioral exploration, the implementation diff for how the behavior was shipped, and the acceptance notes for the review. That makes it possible to revisit a choice without repeating the whole workflow."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Figma: Bring Make context to your agent",
+        "href": "https://developers.figma.com/docs/figma-mcp-server/bringing-make-context-to-your-agent/"
+      },
+      {
+        "label": "Figma: Code Connect integration",
+        "href": "https://developers.figma.com/docs/figma-mcp-server/code-connect-integration/"
+      },
+      {
+        "label": "Figma: MCP tools and prompts",
+        "href": "https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can Figma Make and Figma MCP work together?",
+        "answer": "Figma documents how a compatible MCP client can read resources from a Make project and carry selected behavior into an existing codebase."
+      },
+      {
+        "question": "Which path is better for an existing React application?",
+        "answer": "Use design context with repository-aware tooling when you already have components, tokens and interaction rules that the implementation must follow."
+      },
+      {
+        "question": "Is Code Connect required to reuse React components?",
+        "answer": "An agent can reuse a component you point it to in the repository. Code Connect can provide explicit mappings when available and configured."
+      }
+    ],
+    "keywords": [
+      "Figma Make vs Figma MCP",
+      "Figma MCP existing React app",
+      "Figma Code Connect",
+      "design to React component"
+    ]
+  }
+]
