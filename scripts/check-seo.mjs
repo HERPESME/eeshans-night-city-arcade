@@ -4,6 +4,7 @@ import { routes, origin } from '../.ssr/entry-server.js';
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 for (const page of routes) {
  const html = await readFile(page.path === '/' ? 'dist/index.html' : `dist${page.path}.html`, 'utf8');
+ assert.ok(page.description.length >= 100 && page.description.length <= 160, `${page.path} has a useful snippet length`);
  assert.ok(page.title.length < 70, `${page.path} has a concise search title`);
  assert.equal((html.match(/rel="canonical"/g) || []).length, 1);
  assert.ok(html.includes(`href="${origin}${page.path}"`));
@@ -12,7 +13,12 @@ for (const page of routes) {
  assert.equal(html.includes('content="noindex, follow"'), page.indexable === false);
  assert.ok(html.includes('LUpHn6bus1tMwNleZ6RnWERGtTEbmygMdcyAdggKxGU'));
  for (const target of routes.filter(route => !route.blogSlug)) assert.ok(html.includes(`href="${target.path}"`), `${page.path} links to ${target.path}`);
- JSON.parse(html.match(/<script id="page-schema" type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+ const graph = JSON.parse(html.match(/<script id="page-schema" type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
+ if (page.path === '/') {
+  const person = graph.find(item => item['@type'] === 'Person');
+  assert.ok(person?.affiliation.sameAs.includes('https://www.linkedin.com/company/ultrafit360'));
+  assert.equal(graph.find(item => item['@type'] === 'WebSite').author['@id'], person['@id']);
+ }
  assert.equal(sitemap.includes(`<loc>${origin}${page.path}</loc>`), page.indexable !== false);
  console.log('PASS', page.path, 'canonical, headings, links, schema, verification, sitemap, static content');
 }
