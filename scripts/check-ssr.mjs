@@ -2,9 +2,16 @@ import assert from 'node:assert/strict';
 import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 import { readFile } from 'node:fs/promises';
+const staticHeaders = await readFile('netlify.toml', 'utf8');
+const reportOnlyPolicy = staticHeaders.match(/Content-Security-Policy-Report-Only = "([^"]+)"/)?.[1];
+assert.ok(reportOnlyPolicy?.includes("frame-ancestors 'none'"));
+assert.match(staticHeaders, /X-Frame-Options = "DENY"/);
 for (const page of routes) {
  const result = await handler({rawUrl:'https://technightcity.com'+page.path,httpMethod:'GET'});
  assert.equal(result.statusCode,200);
+ assert.equal(result.headers['X-Frame-Options'], 'DENY');
+ assert.equal(result.headers['Content-Security-Policy-Report-Only'], reportOnlyPolicy);
+ assert.equal(result.headers['Content-Security-Policy'], undefined);
  assert.ok(result.body.includes(`<link rel="canonical" href="https://technightcity.com${page.path}"`));
  assert.equal((result.body.match(/<h1\b/g)||[]).length,1);
  assert.equal(result.body.includes('content="noindex, follow"'), page.indexable === false);

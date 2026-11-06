@@ -20,7 +20,8 @@
     "test:seo-report": "python3 scripts/check-seo-report.py",
     "test:coffee": "node --test --test-reporter=spec scripts/check-coffee.mjs",
     "check:public-commit": "node scripts/check-public-commit.mjs",
-    "prebuild": "node scripts/clean-build.mjs"
+    "prebuild": "node scripts/clean-build.mjs",
+    "test:github": "node --test scripts/check-github-profile.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

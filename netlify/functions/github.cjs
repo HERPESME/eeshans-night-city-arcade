@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 const DEFAULT_USERNAME = 'HERPESME';
 
 const DASHBOARD_QUERY = `
@@ -10,6 +8,7 @@ const DASHBOARD_QUERY = `
           ... on Repository {
             id
             name
+            visibility
             description
             url
             stargazerCount
@@ -66,13 +65,17 @@ exports.handler = async function handler(event) {
     return respond(405, { ok: false, error: 'Method not allowed. Use GET.' });
   }
 
-  const username = (event.queryStringParameters && event.queryStringParameters.username) || DEFAULT_USERNAME;
-  const token = process.env.GITHUB_TOKEN;
+  const requestedUsername = event.queryStringParameters?.username;
+  if (requestedUsername !== undefined && requestedUsername !== DEFAULT_USERNAME) {
+    return respond(400, { ok: false, error: 'Unsupported GitHub username.' });
+  }
+  const username = DEFAULT_USERNAME;
+  // The public REST requests never use a repository credential.
+  const token = process.env.GITHUB_PUBLIC_PROFILE_TOKEN;
 
   const headers = {
     Accept: 'application/vnd.github+json',
     'User-Agent': 'night-city-arcade-portfolio',
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
   };
 
   try {
@@ -91,12 +94,13 @@ exports.handler = async function handler(event) {
             headers: {
               ...headers,
               'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
               query: DASHBOARD_QUERY,
               variables: { username },
             }),
-          })
+          }).catch(() => null)
         : Promise.resolve(null),
     ]);
 
@@ -119,7 +123,7 @@ exports.handler = async function handler(event) {
     const commitsSearch = commitsRes.ok ? await commitsRes.json() : null;
     const dashboardData = dashboardRes && dashboardRes.ok ? await dashboardRes.json() : null;
 
-    const publicRepos = Array.isArray(repos) ? repos : [];
+    const publicRepos = Array.isArray(repos) ? repos.filter(repo => repo?.private === false && repo.visibility === 'public') : [];
 
     const totalStars = publicRepos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
     const totalForks = publicRepos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
@@ -157,7 +161,7 @@ exports.handler = async function handler(event) {
 
     const pinnedRepos = Array.isArray(dashboardData?.data?.user?.pinnedItems?.nodes)
       ? dashboardData.data.user.pinnedItems.nodes
-          .filter(Boolean)
+          .filter(repo => repo?.visibility === 'PUBLIC')
           .map((repo) => ({
             id: repo.id || repo.url,
             name: repo.name,
@@ -186,7 +190,7 @@ exports.handler = async function handler(event) {
       },
       featuredRepos,
       lastUpdated: new Date().toISOString(),
-      source: token ? 'github-api-authenticated' : 'github-api-public',
+      source: dashboardData?.data?.user ? 'github-api-authenticated' : 'github-api-public',
     });
   } catch (error) {
     console.error('GitHub function error:', error);

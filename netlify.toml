@@ -152,3 +152,10 @@
   for = "/blog-images/*"
   [headers.values]
     Cache-Control = "public, max-age=86400, must-revalidate"
+
+# Function-rendered HTML supplies these headers in render.mjs.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Content-Security-Policy-Report-Only = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://checkout.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googleapis.com https://*.razorpay.com; frame-src https://*.razorpay.com; font-src 'self' data:; media-src 'self' blob:"
