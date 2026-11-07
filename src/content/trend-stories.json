@@ -329,8 +329,8 @@
   {
     "slug": "ocarina-of-time-switch-2-update",
     "number": "93",
-    "title": "Ocarina of Time Switch 2 Update: What Changed in 1.1.1",
-    "excerpt": "See what Nintendo changed in Ocarina of Time version 1.1.1 on Switch 2, how to check your installed version, and how to set up Zelda Notes.",
+    "title": "Ocarina of Time Switch 2 Controls and Update 1.1.1",
+    "excerpt": "Learn Ocarina of Time Switch 2 controls for camera, dash, jump attacks, motion aiming and ocarina input, plus what update 1.1.1 changes.",
     "category": "gaming",
     "cover": {
       "src": "/blog-images/trend-ocarina-of-time-switch-2-update.webp",
@@ -340,15 +340,75 @@
       "caption": "AI-generated pixel-art editorial illustration.",
       "thumbnail": "/blog-images/trend-ocarina-of-time-switch-2-update-720.webp"
     },
-    "coverLabel": "HYRULE / PATCH NOTES",
-    "intro": "Nintendo lists version 1.1.1 of The Legend of Zelda: Ocarina of Time for Nintendo Switch 2 as a November 4, 2026 software update. The support notes point players to Zelda Notes setup and describe general gameplay fixes. To check your installed version, highlight the Switch 2 game tile and press + or −. Use Software Update and then Over the Internet if the console has an older build.",
-    "journalNote": "A short patch note can be stretched into a lot of rumours. I wanted to separate the practical update and setup steps from the bigger discussion of why Nintendo revisits a classic.",
+    "coverLabel": "HYRULE / CONTROLS / UPDATE",
+    "intro": "Ocarina of Time on Switch 2 adds free camera control, a jump command and a dash alongside familiar rolling. Nintendo also supports button or motion aiming for ranged weapons. Change aiming preferences in the in-game Options menu. Below are the published control changes, ocarina input settings, and the separate version 1.1.1 update details, checked November 7, 2026.",
+    "journalNote": "This guide now covers the control questions returning players face as well as the launch patch. The instructions are checked against Nintendo's published documentation. They are useful setup references alongside the separate essay about Zelda, GTA VI and console buying.",
     "sections": [
+      {
+        "id": "switch-2-controls",
+        "heading": "Ocarina of Time Switch 2 controls: what changed?",
+        "paragraphs": [
+          "Nintendo's control changes belong to the Switch 2 remake. The version 1.1.1 changelog separately lists Zelda Notes support and general fixes.",
+          "The developer interview describes a jump command, holding the Roll Attack button to dash, and both a single-press Jump Attack and the newer jump-then-attack sequence. The remake's announcement also confirms Right Stick camera control. Use the on-screen prompts for the current action rather than following an old Nintendo 64 button map."
+        ],
+        "table": {
+          "columns": [
+            "Action",
+            "Published Switch 2 behavior"
+          ],
+          "rows": [
+            [
+              "Move the camera",
+              "Use the Right Stick to look around."
+            ],
+            [
+              "Jump",
+              "A dedicated command replaces the original reliance on automatic jumps at defined edges."
+            ],
+            [
+              "Dash or roll",
+              "Hold the Roll Attack button to dash; rolling remains available."
+            ],
+            [
+              "Jump Attack",
+              "Nintendo describes both the single-press route and jumping before pressing attack."
+            ],
+            [
+              "Aim a ranged weapon",
+              "Button and motion options are available. Adjust them in Options."
+            ]
+          ]
+        },
+        "links": [
+          {
+            "label": "Nintendo: developer interview on movement and controls",
+            "href": "https://www.nintendo.com/us/whatsnew/ask-the-developer-vol-24-the-legend-of-zelda-ocarina-of-time-part-3/"
+          },
+          {
+            "label": "Nintendo: Switch 2 remake features and aiming options",
+            "href": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/"
+          }
+        ]
+      },
+      {
+        "id": "ocarina-input-settings",
+        "heading": "Change ocarina buttons or use the Switch 2 microphone",
+        "paragraphs": [
+          "For button input, follow the notes shown on the ocarina screen. Nintendo documents two layouts, selected with Swap Ocarina-Playing Controls in Options.",
+          "To try microphone input after obtaining an ocarina and learning a song, open the + menu, then System and Options. Set Ocarina Mic Input to Humming or Instruments. Nintendo's setup guide also asks players to check the console's Audio settings and use System Microphone. On the performance screen, the − Button opens Practice Mode so you can check recognized pitch and note duration."
+        ],
+        "links": [
+          {
+            "label": "Nintendo Support: microphone setup, practice and button layouts",
+            "href": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/71860/p/1095/c/210"
+          }
+        ]
+      },
       {
         "id": "patch-changes",
         "heading": "What Nintendo says changed in 1.1.1",
         "paragraphs": [
-          "The public changelog directs players to follow the instructions at game startup to configure Zelda Notes after updating. Nintendo also says it addressed issues to improve gameplay. The notes do not itemize the individual fixes, so there is no public basis here for a list of resolved quests, visual regressions, or frame-rate targets. Treat the version number and the setup instruction as the concrete changes you can verify.",
+          "Nintendo lists version 1.1.1 as a November 4, 2026 update. It enables Zelda Notes and directs players to its setup at game startup. The remaining fixes are described in general terms, so the notes do not establish specific frame-rate changes or resolved quests.",
           "The version belongs to the Switch 2 software Nintendo names in the support article. If you have several Zelda games in the library, or play another version through a different service, confirm you have selected the intended tile before comparing version numbers."
         ],
         "table": {
@@ -398,7 +458,7 @@
         "id": "zelda-notes",
         "heading": "Set up Zelda Notes after checking the version",
         "paragraphs": [
-          "Launch the game after the update and follow the in-game instructions Nintendo references. Version, setup and network access are separate checkpoints. If you are already on 1.1.1 and the companion feature is absent, return to the game startup flow and the publisher's current support information. This is a cleaner next test than repeatedly downloading the same build.",
+          "Launch the game after the update and follow the startup instructions Nintendo references to configure Zelda Notes. If you are already on 1.1.1 but cannot reach the feature, check the current support page and the setup shown by your game.",
           "If a startup notice disappears before you can read it, record what the game displays when reopened. Nintendo's public patch entry is useful for establishing that the feature has a setup step, but it does not answer every account or regional question. Use the instructions presented by your own game and console for the details that depend on your setup."
         ]
       },
@@ -477,28 +537,43 @@
       {
         "label": "Nintendo Support: Switch 2 product help",
         "href": "https://en-americas-support.nintendo.com/app/products/detail/p/1104"
+      },
+      {
+        "label": "Nintendo: remake controls and aiming options",
+        "href": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/"
+      },
+      {
+        "label": "Nintendo: developer interview on movement",
+        "href": "https://www.nintendo.com/us/whatsnew/ask-the-developer-vol-24-the-legend-of-zelda-ocarina-of-time-part-3/"
+      },
+      {
+        "label": "Nintendo Support: ocarina input settings",
+        "href": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/71860/p/1095/c/210"
       }
     ],
     "faqs": [
       {
-        "question": "What version is the November 4 Ocarina of Time update?",
-        "answer": "Nintendo's November 4, 2026 update for the Switch 2 software is version 1.1.1."
+        "question": "How do I change motion aiming in Ocarina of Time on Switch 2?",
+        "answer": "Nintendo says ranged weapons support button or motion aiming. Open the in-game Options menu to adjust the aiming preference."
       },
       {
-        "question": "Will updating Ocarina of Time erase my save?",
-        "answer": "Nintendo states that existing save data remains available after downloading the software update."
+        "question": "How do I dash in the Ocarina of Time Switch 2 remake?",
+        "answer": "Nintendo's developer interview says to hold the Roll Attack button to dash. Rolling remains available as another movement action."
       },
       {
-        "question": "Where can I check the Ocarina of Time version on Switch 2?",
-        "answer": "Highlight the game in the Home menu and press + or −. The installed version appears beneath the title."
+        "question": "What changed in Ocarina of Time update 1.1.1?",
+        "answer": "Nintendo's November 4, 2026 notes list Zelda Notes support and general gameplay fixes. Follow the startup instructions to configure Zelda Notes."
       }
     ],
     "keywords": [
+      "Ocarina of Time Switch 2 controls",
+      "Ocarina of Time remake controls",
+      "Ocarina of Time motion controls",
       "Ocarina of Time Switch 2 update",
       "Ocarina of Time 1.1.1",
-      "Zelda Notes",
-      "Ocarina of Time patch notes"
-    ]
+      "Zelda Notes"
+    ],
+    "reviewedOn": "2026-11-07"
   },
   {
     "slug": "expo-sdk-58-upgrade-checklist",

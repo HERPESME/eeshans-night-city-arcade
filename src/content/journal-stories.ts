@@ -59,7 +59,7 @@ export const journalStories: BlogEntry[] = manuscripts.map((draft, index) => {
     intro: draft.intro, journalNote: draft.journalNote, keywords: draft.keywords,
     cover: generatedArt(draft.key, true), coverLabel: draft.category === 'gaming' ? 'GAMES / DESIGN / TECHNOLOGY' : draft.category === 'founder' ? 'FOUNDER FIELD NOTES' : 'PRODUCTION FIELD NOTES',
     readingTime: `${Math.ceil(wordCount(draft.intro, sections) / 200)} min`,
-    featured: index === 0, isPreview: false, reviewedOn: '2026-11-02', publishedOn: '2026-11-02',
+    featured: index === 0, isPreview: false, reviewedOn: draft.reviewedOn || '2026-11-02', publishedOn: '2026-11-02',
     sections, references: draft.references, faqs,
   };
 });

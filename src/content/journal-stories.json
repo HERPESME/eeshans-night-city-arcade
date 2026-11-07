@@ -2529,9 +2529,9 @@
     "slug": "ocarina-of-time-gta-6-worlds-generations",
     "title": "Ocarina of Time on Switch 2 vs GTA 6: Two Reasons to Buy a Console",
     "category": "gaming",
-    "excerpt": "A blast from the past meets the next big launch: how the Ocarina of Time Switch 2 remake and GTA VI turn nostalgia and anticipation into hardware desire.",
-    "intro": "One player looks at a new console and sees a way back to Hyrule. Another sees the machine that will finally take them into GTA VI. Both are thinking about hardware, but neither conversation really begins with a specification sheet. This is the comparison I wanted to explore: a blast from the past rebuilt for the present, alongside a new release that people want to experience with everyone else. The Zelda side is the upcoming Ocarina of Time remake for Nintendo Switch 2, not simply the original Nintendo 64 game running again. Checked on 2 November 2026, Nintendo lists the remake for 5 November; Rockstar lists GTA VI for 19 November on PS5 and Xbox Series X|S. Both are still upcoming at the time of writing.",
-    "journalNote": "This is a gaming and culture essay about the games that make a console feel worth owning. I am interested in nostalgia, anticipation and the design of a return—not in pretending to have reviewed unreleased games or turning every gaming story into a frontend lesson.",
+    "excerpt": "Ocarina of Time is out on Switch 2 and GTA VI is due November 19. Explore how remake controls, nostalgia and new worlds shape console buying.",
+    "intro": "Ocarina of Time arrived on Nintendo Switch 2 on November 5, 2026. GTA VI is scheduled for November 19 on PS5 and Xbox Series X|S. Checked November 7, those dates put the two games at different points in the same console conversation: one invites players back to a familiar Hyrule, while the other promises a new world to discover. This essay looks at why each can make a console feel worth owning.",
+    "journalNote": "I am interested in what makes a remake feel familiar and a new game feel worth a console purchase. This essay now reflects Zelda's November launch and Nintendo's published control decisions. Its discussion of buying motivations is interpretation, with hands-on performance judgments left to testing.",
     "keywords": [
       "Ocarina of Time Switch 2 remake",
       "Ocarina of Time remake vs GTA 6",
@@ -2556,12 +2556,20 @@
         "paragraphs": [
           "An emulated classic and a remake make different offers. The former preserves an existing experience on another device. The latter asks whether a familiar journey can feel newly worth entering. Nintendo describes this Ocarina of Time as a remake with rebuilt visuals, voiced cutscenes, expanded dialogue, orchestral music, and revised camera and movement controls.",
           "That combination matters because nostalgia does not necessarily mean wanting every old limitation back. A returning player may want the emotional identity of the adventure while welcoming a more comfortable way to move through it. Conversely, changing too much can weaken the recognisable character that made the return attractive. The interesting design challenge sits between preservation and reinvention.",
-          "Before release, I can discuss that promise and the announced changes. I cannot honestly say which change succeeds in practice, how the complete game performs or whether every returning player will prefer it. Those judgments need the finished game and a stated version, not a confident reading of a trailer."
+          "Nintendo's developer interview gives that balance a concrete example. The remake supports a free camera, a jump command, dashing and familiar rolling. Its team retained both single-press and jump-then-attack approaches to Jump Attack. That is a documented accommodation for different habits, rather than evidence that every player will prefer the result."
         ],
         "links": [
           {
             "label": "Nintendo: remake announcement and anniversary hardware",
             "href": "https://www.nintendo.com/en-ca/whatsnew/the-legend-of-zelda-40th-anniversary-celebration-revealed-in-new-nintendo-direct-presentation/"
+          },
+          {
+            "label": "Nintendo: why the remake supports different control habits",
+            "href": "https://www.nintendo.com/us/whatsnew/ask-the-developer-vol-24-the-legend-of-zelda-ocarina-of-time-part-3/"
+          },
+          {
+            "label": "Ocarina of Time Switch 2 controls and update settings",
+            "href": "/blogs/ocarina-of-time-switch-2-update"
           }
         ]
       },
@@ -2570,7 +2578,7 @@
         "heading": "A remake has to be recognisable before it is impressive",
         "paragraphs": [
           "Better-looking environments are an obvious reason to revisit a classic, but fidelity alone is a thin explanation of attachment. A silhouette, a musical phrase, an entrance or a familiar route can carry more recognition than a technically elaborate material. A remake needs to decide what the audience should identify immediately and what should reward a closer look.",
-          "My reading is that the strongest remake pitch offers continuity without asking the player to deny the passage of time. You recognise the adventure, yet you have a reason to stop and look again. That is a design interpretation, not a statement about Nintendo’s internal research or a verdict on the unreleased result.",
+          "My reading is that the strongest remake pitch offers continuity without asking the player to deny the passage of time. You recognise the adventure, yet you have a reason to stop and look again. That is a design interpretation, not a statement about Nintendo’s internal research or a verdict from hands-on testing.",
           "The same distinction applies to presentation and controls. Familiarity does not require preserving friction just because it existed before. The important question is whether an improvement helps the player inhabit the world or changes its character in a way that needs justification. A remake should earn its changes through the experience rather than through the assumption that newer automatically means better."
         ]
       },
@@ -2578,7 +2586,7 @@
         "id": "hardware-as-keepsake",
         "heading": "The anniversary Switch 2 turns the hardware into a keepsake",
         "paragraphs": [
-          "Nintendo announced a Zelda 40th Anniversary Edition Switch 2 for 29 October, with matching accessories featuring a Triforce design. The remake itself is listed for 5 November. These are separate products and dates; an anniversary system should not be described as including the game unless the specific listing says so.",
+          "Nintendo announced the Zelda 40th Anniversary Edition Switch 2 for October 29, followed by the remake on November 5. Matching accessories use the Triforce design. The hardware and game are separate products, so check the specific listing before assuming a console includes the software.",
           "The product-design appeal is easy to understand without inventing sales numbers. A normal console provides access. A themed console can also express why the person wanted access in the first place. It becomes an object associated with a series, a memory or a particular moment in their life.",
           "That is why colour, markings and coordinated accessories deserve more attention than “it is just a different shell.” They can turn a practical object into something a person wants to keep visible. The emotional association is the point. It does not establish better performance, and it will not matter equally to every buyer.",
           "For someone already considering Switch 2, the edition may make the timing feel special. For someone uninterested in collecting, an ordinary system may serve the same gaming purpose. The useful comparison separates the desire to play the remake from the desire to own a commemorative object."
@@ -2636,9 +2644,9 @@
               "A major new world and shared launch moment"
             ],
             [
-              "Announced game release",
-              "5 November 2026",
-              "19 November 2026"
+              "Game release status, checked November 7",
+              "Released November 5, 2026",
+              "Scheduled November 19, 2026"
             ],
             [
               "Hardware appeal",
@@ -2646,7 +2654,7 @@
               "Access on a supported console; PS5 is not the only option"
             ],
             [
-              "Still requires release evidence",
+              "Requires hands-on testing",
               "How the changes feel across the full adventure",
               "How the complete game plays and performs"
             ]
@@ -2659,15 +2667,15 @@
         "paragraphs": [
           "As someone who designs interfaces, I find the preservation problem fascinating: which familiar cues give people confidence, and which old behaviours can be improved? The anniversary hardware adds another question about how a product communicates belonging before anyone switches it on. These are worthwhile observations even without pretending to know a studio’s private process.",
           "But a gaming essay is allowed to stay a gaming essay. It can be about excitement, taste, collecting, childhood associations or the absurd feeling of wanting an expensive machine because one particular game suddenly makes it desirable. It does not need to finish with an analogy to a dashboard or an AI coach.",
-          "The eventual test is whether the games deliver experiences people value beyond the purchase moment. Until then, the comparison is about the appeal of returning and arriving. The pixel-art scenes accompanying this entry are conceptual illustrations, not official remake screenshots, leaked assets or depictions of the anniversary console’s exact industrial design."
+          "The lasting question is whether the games deliver experiences people value beyond the purchase moment. Zelda has launched; GTA VI is still scheduled ahead. This essay considers the appeal of returning and arriving without claiming a hands-on review. The pixel-art scenes are conceptual illustrations, not official game screenshots or depictions of the anniversary console's exact design."
         ]
       },
       {
         "id": "questions-worth-asking",
         "heading": "Questions worth asking",
         "paragraphs": [
-          "Is this the original Ocarina of Time or the Switch 2 remake? This article concerns the upcoming Nintendo Switch 2 remake. The original adventure provides the legacy and nostalgia, but it is not the product being compared with the new GTA launch.",
-          "Is the Ocarina of Time remake releasing on 2 November? Nintendo’s announcement lists 5 November 2026. The Zelda anniversary Switch 2 system was announced for 29 October; the date these details were checked for this article is 2 November.",
+          "Is this the original Ocarina of Time or the Switch 2 remake? This article concerns the Nintendo Switch 2 remake released November 5, 2026. The original adventure supplies the legacy and nostalgia behind that return.",
+          "When did the Ocarina of Time Switch 2 remake release? Nintendo lists November 5, 2026 for the game. The Zelda anniversary Switch 2 system was announced for October 29. These dates were checked again on November 7.",
           "Do I have to buy a PS5 to play GTA VI? Rockstar lists PS5 and Xbox Series X|S. A PS5 is one supported choice, not a requirement shared by every player. This essay examines buying motivations rather than prescribing a console purchase."
         ]
       }
@@ -2688,9 +2696,18 @@
       {
         "label": "Reddit: buying a console for GTA VI (community anecdote, not a survey)",
         "href": "https://www.reddit.com/r/GTAVI/comments/1w5csou/who_else_is_buying_a_console_just_for_gta_6/"
+      },
+      {
+        "label": "Nintendo: Switch 2 remake release and current product information",
+        "href": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/"
+      },
+      {
+        "label": "Nintendo: developer interview on remake controls",
+        "href": "https://www.nintendo.com/us/whatsnew/ask-the-developer-vol-24-the-legend-of-zelda-ocarina-of-time-part-3/"
       }
     ],
-    "support": "gaming-worlds-detail"
+    "support": "gaming-worlds-detail",
+    "reviewedOn": "2026-11-07"
   },
   {
     "key": "ai-frames",
