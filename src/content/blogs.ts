@@ -1,3 +1,4 @@
+import { currentTechStories } from './current-tech-stories';
 import { trendStories } from './trend-stories';
 import { educationalStories } from './educational-stories';
 import { journalStories } from './journal-stories';
@@ -66,6 +67,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...currentTechStories,
   ...trendStories,
   ...educationalStories,
   ...journalStories,
