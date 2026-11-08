@@ -4,14 +4,15 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 101, 'Hub and one hundred complete articles are available');
+assert.equal(blogs.length, 106, 'Hub and one hundred five complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 105, 'Core pages, archive and all one hundred articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 110, 'Core pages, archive and all one hundred five articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
 const educationCovers = new Set();
 const trendCovers = new Set();
+const currentTechCovers = new Set();
 for (const page of blogs) {
  const result = await handler({ rawUrl: `https://technightcity.com${page.path}`, httpMethod: 'GET' });
  assert.equal(result.statusCode, 200);
@@ -33,6 +34,14 @@ for (const page of blogs) {
   else assert.match(article.datePublished || '', /^\d{4}-\d{2}-\d{2}$/, 'A published article needs its actual publication date');
   const educationCover = article.image.url.match(/\/blog-images\/education-(\d+)\.webp/);
   const trendCover = article.image.url.match(/\/blog-images\/trend-([a-z0-9-]+)\.webp$/);
+  const currentTechCover = article.image.url.match(/\/blog-images\/news-([a-z0-9-]+)\.webp$/);
+  if (currentTechCover) {
+    assert.equal(currentTechCover[1], page.blogSlug, 'The current explainer has its own relevant cover');
+    currentTechCovers.add(page.blogSlug);
+    assert.ok(result.body.includes(`/blog-images/news-${page.blogSlug}-720.webp`), 'The new cover has a responsive variant');
+    assert.ok(result.body.includes('class="blog-diagram '), 'Each current explainer includes a readable explanatory figure');
+    assert.equal(article.datePublished, '2026-11-08', 'New articles retain their actual publication date');
+  }
   if (trendCover) {
     assert.equal(trendCover[1], page.blogSlug, 'The guide has its own topic-specific cover');
     trendCovers.add(trendCover[1]);
@@ -107,9 +116,10 @@ for (const page of blogs) {
 }
 assert.equal(educationCovers.size, 60, 'Each new lab has its own cover');
 assert.equal(trendCovers.size, 10, 'Each November guide has its own cover');
-assert.equal(journalNotes.size, 100, 'Every article has a distinct journal note');
-assert.equal(titles.size, 100, 'Every article has a distinct title');
-assert.equal(descriptions.size, 100, 'Every article has a distinct description');
+assert.equal(currentTechCovers.size, 5, 'Five new explainers have distinct covers and figures');
+assert.equal(journalNotes.size, 105, 'Every article has a distinct journal note');
+assert.equal(titles.size, 105, 'Every article has a distinct title');
+assert.equal(descriptions.size, 105, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
@@ -119,6 +129,7 @@ console.log('PASS complete drafts, truthful article metadata, assets, tools, scr
 const publishedPaths = new Set(blogs.filter(page => page.blogSlug && page.indexable !== false).map(page => page.path));
 const expoSources = new Set();
 const linkedTrendPaths = new Set();
+const linkedCurrentTechPaths = new Set();
 for (const page of blogs.filter(page => page.blogSlug && page.indexable !== false)) {
  const html = await readFile(`dist${page.path}.html`, 'utf8');
  const relatedSection = html.match(/<section class="blog-related"[\s\S]*?<\/section>/)?.[0];
@@ -130,9 +141,11 @@ for (const page of blogs.filter(page => page.blogSlug && page.indexable !== fals
   assert.ok(publishedPaths.has(target), 'Related articles exclude drafts and unknown destinations');
   if (target === '/blogs/expo-react-native-production-problems-ultrafit360') expoSources.add(page.path);
   if (trendCovers.has(target.slice('/blogs/'.length))) linkedTrendPaths.add(target);
+  if (currentTechCovers.has(target.slice('/blogs/'.length))) linkedCurrentTechPaths.add(target);
  }
 }
 assert.ok(expoSources.has('/blogs/ultrafit360-srs-to-react-native-app'), 'Mobile case study links to production lessons');
 assert.ok(expoSources.has('/blogs/expo-google-play-photo-permission-rejection'), 'Permissions guide links to production lessons');
 assert.equal(linkedTrendPaths.size, trendCovers.size, 'Every November guide has an incoming article link');
+assert.equal(linkedCurrentTechPaths.size, currentTechCovers.size, 'Every new explainer has an incoming article link');
 console.log('PASS related article discovery, distinct published destinations and Expo incoming links');

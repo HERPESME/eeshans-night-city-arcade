@@ -1,0 +1,32 @@
+[
+  {
+    "id": "zelda",
+    "prompt": "Wide 3:2 editorial thumbnail for a technical gaming blog. Beautiful detailed pixel art with crisp deliberate pixels, cyberpunk Night City palette emerald green and warm brass. A futuristic European clocktower arcade beside a canal at night, foreground handheld gaming console showing a generic mirrored dungeon map and a locked side passage, a reader studying two evidence cards at the desk. Theme: distinguishing a rumored retro adventure Master Quest mode from an official DLC announcement. No actual gameplay, no corporate logos, no fake announcement, no text or letters, no watermarks. Clear focal subject and legible silhouette at thumbnail size. This is conceptual illustration, not a game screenshot. Distinct scene, no Japanese architecture.",
+    "method": "built-in image generation",
+    "role": "Conceptual editorial cover; technical explanations use accessible HTML diagrams."
+  },
+  {
+    "id": "hinton",
+    "prompt": "Wide 3:2 beautiful high craft pixel-art editorial cover for an AI infrastructure explainer. Futuristic London city power-grid control room at blue hour with Big Ben visible far through a large window. Human engineer at one console, two clearly separate luminous circuits: a network security panel in cyan, electrical capacity panel in amber. The city lights are mostly on, calm analytical mood, no disaster or explosion. Concept is distinguishing AI cyber risk from power-demand pressure, not depicting an actual blackout. Crisp pixel geometry, elegant dark navy, amber and ice blue, strong focused composition, no text, logos, fake charts, watermarks, Japanese motifs, or generic phone mockups.",
+    "method": "built-in image generation",
+    "role": "Conceptual editorial cover; technical explanations use accessible HTML diagrams."
+  },
+  {
+    "id": "weights",
+    "prompt": "Wide 3:2 extraordinary detailed pixel-art editorial illustration for weight-space programming research. A New York loft engineering workbench at twilight with distant Manhattan skyline. Close foreground a luminous tiny neural tensor grid mounted like a precision circuit; one looping violet path becomes a clean green path through a few carefully repaired nodes. A programmer studies the board with a magnifying lens, restrained oscilloscope wave at edge. Technical cause and effect visually central, beautiful deliberate pixel rendering, plum lilac teal mint palette, strong composition readable small. No text, no logos, no fabricated benchmark numbers, no brain-shaped blob, no phone screen, no Japanese motifs. Conceptual artwork, not a screenshot.",
+    "method": "built-in image generation",
+    "role": "Conceptual editorial cover; technical explanations use accessible HTML diagrams."
+  },
+  {
+    "id": "discord",
+    "prompt": "Wide 3:2 beautiful refined pixel-art editorial illustration for a frontend engineering blog about Discord planned Rust/GPUI versus Electron rewrite. Futuristic Paris attic studio at rainy dusk, distant Eiffel Tower through window, foreground two monitors viewed three-quarter angle, left shows a browser-like layered window/process stack with several translucent panels, right shows a clean GPU-rendered vector-like UI pipeline and connected Rust-colored gears. Small generic headset and voice-wave indicator tie to chat apps. Technical stack architecture is focal, no real Discord screen, no logos, no text or benchmark numbers, no claims of measured savings, no watermarks. Burnt orange cream midnight indigo palette, crisp fine pixel art, varied asymmetric composition, not Japan.",
+    "method": "built-in image generation",
+    "role": "Conceptual editorial cover; technical explanations use accessible HTML diagrams."
+  },
+  {
+    "id": "ram",
+    "prompt": "Wide 3:2 premium pixel-art editorial cover for local AI versus cloud memory. A futuristic coastal loft overlooking an illuminated city across water, close tabletop local desktop computer open case with clearly recognizable memory sticks and a small GPU, on the far side of a broad window a distant server campus connected by a thin luminous path. Person choosing thoughtfully between a local machine and remote compute, neutral balanced portrayal. Warm coral sunset with dark cobalt and cyan circuitry. Rich deliberate pixel art, large visual memory hardware focal point, no text or logos, no real person's face, no sensational price chart, no watermark, no generic phone UI, no Japanese motifs. Conceptual editorial illustration.",
+    "method": "built-in image generation",
+    "role": "Conceptual editorial cover; technical explanations use accessible HTML diagrams."
+  }
+]
