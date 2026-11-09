@@ -1,3 +1,4 @@
+import { nvidiaStory } from './nvidia-story';
 import { currentTechStories } from './current-tech-stories';
 import { trendStories } from './trend-stories';
 import { educationalStories } from './educational-stories';
@@ -67,6 +68,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  nvidiaStory,
   ...currentTechStories,
   ...trendStories,
   ...educationalStories,
