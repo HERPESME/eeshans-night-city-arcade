@@ -4,9 +4,9 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 107, 'Hub and one hundred six complete articles are available');
+assert.equal(blogs.length, 108, 'Hub and one hundred seven complete articles are available');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 111, 'Core pages, archive and all one hundred six articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, 112, 'Core pages, archive and all one hundred seven articles enter the sitemap');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
@@ -37,6 +37,13 @@ for (const page of blogs) {
     for (const section of ['confirmed-facts', 'information-risk', 'china-ai-race', 'local-llms', 'privacy-boundary']) assert.ok(result.body.includes(`id="${section}"`));
     assert.ok(result.body.includes('hypothetical'));
     assert.ok(result.body.includes('does not identify a person'));
+    assert.equal(schema['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.length, 3);
+  }
+  if (page.blogSlug === 'claude-fable-5-2-benchmarks-pricing-coding') {
+    assert.equal(article.datePublished, '2026-11-10');
+    assert.ok(article.wordCount >= 1800);
+    for (const id of ['specifications', 'pricing', 'coding-benchmarks', 'independent-evaluations', 'migration-checks']) assert.ok(result.body.includes(`id="${id}"`));
+    for (const phrase of ['49.1%', '32.4%', '16.7 percentage points', '22.4%', '31.4%', 'different reported comparisons', '30-day retention']) assert.ok(result.body.includes(phrase));
     assert.equal(schema['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.length, 3);
   }
   const educationCover = article.image.url.match(/\/blog-images\/education-(\d+)\.webp/);
@@ -124,9 +131,9 @@ for (const page of blogs) {
 assert.equal(educationCovers.size, 60, 'Each new lab has its own cover');
 assert.equal(trendCovers.size, 10, 'Each November guide has its own cover');
 assert.equal(currentTechCovers.size, 5, 'Five new explainers have distinct covers and figures');
-assert.equal(journalNotes.size, 106, 'Every article has a distinct journal note');
-assert.equal(titles.size, 106, 'Every article has a distinct title');
-assert.equal(descriptions.size, 106, 'Every article has a distinct description');
+assert.equal(journalNotes.size, 107, 'Every article has a distinct journal note');
+assert.equal(titles.size, 107, 'Every article has a distinct title');
+assert.equal(descriptions.size, 107, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
@@ -135,6 +142,7 @@ console.log('PASS complete drafts, truthful article metadata, assets, tools, scr
 
 const publishedPaths = new Set(blogs.filter(page => page.blogSlug && page.indexable !== false).map(page => page.path));
 const expoSources = new Set();
+const fableSources = new Set();
 const linkedTrendPaths = new Set();
 const linkedCurrentTechPaths = new Set();
 for (const page of blogs.filter(page => page.blogSlug && page.indexable !== false)) {
@@ -146,11 +154,13 @@ for (const page of blogs.filter(page => page.blogSlug && page.indexable !== fals
  for (const target of relatedPaths) {
   assert.notEqual(target, page.path, 'Related articles exclude self');
   assert.ok(publishedPaths.has(target), 'Related articles exclude drafts and unknown destinations');
+  if (target === '/blogs/claude-fable-5-2-benchmarks-pricing-coding') fableSources.add(page.path);
   if (target === '/blogs/expo-react-native-production-problems-ultrafit360') expoSources.add(page.path);
   if (trendCovers.has(target.slice('/blogs/'.length))) linkedTrendPaths.add(target);
   if (currentTechCovers.has(target.slice('/blogs/'.length))) linkedCurrentTechPaths.add(target);
  }
 }
+assert.ok(fableSources.size >= 2, 'Fable release has contextual incoming related-reading links');
 assert.ok(expoSources.has('/blogs/ultrafit360-srs-to-react-native-app'), 'Mobile case study links to production lessons');
 assert.ok(expoSources.has('/blogs/expo-google-play-photo-permission-rejection'), 'Permissions guide links to production lessons');
 assert.equal(linkedTrendPaths.size, trendCovers.size, 'Every November guide has an incoming article link');
