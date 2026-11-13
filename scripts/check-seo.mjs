@@ -1,7 +1,14 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { routes, origin } from '../.ssr/entry-server.js';
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+// Keep one sitemap source: the publication-aware route manifest at build time.
+// A hand-maintained public copy can silently become an outdated fallback.
+await assert.rejects(access('public/sitemap.xml'), { code: 'ENOENT' });
+const listedURLs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+const expectedURLs = routes.filter(page => page.indexable !== false).map(page => `${origin}${page.path}`);
+assert.equal(new Set(listedURLs).size, listedURLs.length, 'Sitemap URLs must be unique');
+assert.deepEqual([...listedURLs].sort(), [...expectedURLs].sort(), 'Sitemap must exactly match published routes');
 for (const page of routes) {
  const html = await readFile(page.path === '/' ? 'dist/index.html' : `dist${page.path}.html`, 'utf8');
  assert.ok(page.description.length >= 100 && page.description.length <= 160, `${page.path} has a useful snippet length`);
