@@ -2,7 +2,7 @@ import { fableStory } from './fable-story';
 import { nvidiaStory } from './nvidia-story';
 import { currentTechStories } from './current-tech-stories';
 import { trendStories } from './trend-stories';
-import { educationalStories } from './educational-stories';
+import { educationalStories, novemberFieldGuides } from './educational-stories';
 import { journalStories } from './journal-stories';
 import { ultraFitStories } from './ultrafit-stories';
 import { aiCoachStory } from './ai-coach-story';
@@ -69,6 +69,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...novemberFieldGuides,
   fableStory,
   nvidiaStory,
   ...currentTechStories,
