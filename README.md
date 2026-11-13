@@ -84,15 +84,16 @@ For future media updates:
 
 ## � SEO / Social Metadata Note
 
-Canonical + OG + sitemap currently use:
+The production canonical origin is `https://technightcity.com`.
 
-- `https://eeshans-night-city-arcade.netlify.app/`
+The build generates `dist/sitemap.xml` from the same publication-aware route
+manifest used by server rendering. Do not add a separate `public/sitemap.xml`:
+it would be a stale second source. `npm run test:seo` verifies the generated
+sitemap matches all and only indexable routes, without duplicate URLs.
 
-If your production URL changes, update:
-
-- `index.html`
-- `public/robots.txt`
-- `public/sitemap.xml`
+For metadata or origin changes, update `src/lib/seo.ts`, `src/entry-server.tsx`,
+`index.html`, `public/robots.txt` and the hostname redirects in `netlify.toml` as
+appropriate, then run the build and SEO checks before deploying `dist`.
 
 ## 🖼️ Assets & Media
 
