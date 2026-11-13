@@ -1,0 +1,403 @@
+[
+  {
+    "slug": "pikmin-bloom-dandori-academy-demo-rewards",
+    "number": "108",
+    "title": "Which Pikmin Bloom Rewards Can You Get From the Pikmin 4 Demo?",
+    "excerpt": "Compare Pikmin Bloom rewards from the Dandori Academy demo and full game, including the Cave Map, Oatchi-Rider colors and missing linked gifts.",
+    "category": "gaming",
+    "keywords": [
+      "Pikmin Bloom Dandori Academy rewards",
+      "Oatchi-Rider costume demo",
+      "600 Dandori Points Cave Map"
+    ],
+    "coverLabel": "DANDORI ACADEMY",
+    "cover": {
+      "src": "/blog-images/education-61.webp",
+      "thumbnail": "/blog-images/education-61-720.webp",
+      "width": 1200,
+      "height": 800,
+      "alt": "A small explorer opens a cave map beside a rescue pup in a pixel-art garden.",
+      "caption": "Original pixel-art illustration."
+    },
+    "intro": "If you want the Dandori Academy postcard, you can earn it in the Switch 2 demo. If you want the Cave Map or a choice of Oatchi-Rider costume colors, those Academy milestones require the full game. The red costume has its own unlock route. That last detail explains why two players can both say they got a costume and still give you completely different instructions.",
+    "journalNote": "The interesting design decision here is how a reward crosses from a console save into a phone app. A successful exam and a successful transfer are two separate events.",
+    "sections": [
+      {
+        "id": "implementation",
+        "heading": "Pick the reward before you spend the weekend earning points",
+        "paragraphs": [
+          "Nintendo released the Switch 2 upgrade on November 12. The Academy runs on Fridays, Saturdays and Sundays after release. For its first weekend, start by checking which version you are opening. A postcard from a demo exam and a reward based on your total points are different objectives. Check the gift list before grinding another course."
+        ],
+        "table": {
+          "columns": [
+            "Goal in Pikmin Bloom",
+            "Version and requirement"
+          ],
+          "rows": [
+            [
+              "Academy postcard",
+              "Demo: take the Mushroom Mash or Treat Transport exam. Full game: take the Mushroom Mash exam."
+            ],
+            [
+              "Special Cave Map",
+              "Full game: earn 600 Dandori Points. The map can be used once Secret Caves are available."
+            ],
+            [
+              "Choose an Oatchi-Rider color",
+              "Full game: earn 1,400 points. Choose green, orange, blue, purple or pink. The choice is final."
+            ],
+            [
+              "Additional milestone postcard",
+              "Full game: earn 2,500 points."
+            ],
+            [
+              "Red Oatchi-Rider costume",
+              "Separate linked gift for qualifying demo completion or full-game play. Follow the red-costume instructions below."
+            ]
+          ]
+        }
+      },
+      {
+        "id": "failure-boundary",
+        "heading": "The exam finished, but the gift never arrived",
+        "paragraphs": [
+          "Start on the Switch. After the qualifying activity, the game asks whether to send information to Pikmin Bloom. Accept that prompt. If the save-data preference was previously set to decline, check Options, Settings, then Dandori Academy Save Data. Set the Pikmin Bloom Gift option to Send. The help page also explains how to resend if the original transfer was interrupted.",
+          "Next check which Nintendo Account each device uses. Two people can share a console and have separate saves. A successful transfer from one profile does not deliver an item to a phone linked to another account. Compare the linked accounts before changing any login settings. The publisher documents extra precautions for accounts with only one login method."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Check the receipt in the phone app",
+        "paragraphs": [
+          "Update and open Pikmin Bloom while connected to the internet. Under Settings, open Pikmin 4 Linked Gifts and look for the item and date. This distinguishes a gift you already collected from one that never arrived. The same reward can only be received once per account for each requirement.",
+          "If you have the red costume and are looking for a second color, the next step is the full-game 1,400-point milestone. If you only wanted the demo postcard and it already appears in your history, there is nothing else to buy or replay."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Pikmin Bloom Help Center — Academy rewards and transfer settings",
+        "href": "https://scopelyexplore.helpshift.com/hc/en/11-pikmin-bloom/faq/2629-how-to-receive-the-nintendo-switch-2-edition-dandori-academy-linked-gifts-in-pikmin-bloom/"
+      },
+      {
+        "label": "Pikmin Bloom Help Center — the separate red costume",
+        "href": "https://scopelyexplore.helpshift.com/hc/en/11-pikmin-bloom/faq/2632-how-to-receive-the-pikmin-4-oatchi-rider-costume/"
+      },
+      {
+        "label": "Pikmin Bloom — Secret Caves",
+        "href": "https://pikminbloom.com/news/nov26-secretcaves"
+      }
+    ]
+  },
+  {
+    "slug": "dependabot-alerts-inactive-repository",
+    "number": "109",
+    "title": "Will GitHub Pause Dependabot on Your Still-Live Side Project?",
+    "excerpt": "Check whether GitHub’s December 8 inactivity rule affects your repository, what keeps Dependabot alerts active and how to restore archived alerts.",
+    "category": "build",
+    "keywords": [
+      "Dependabot inactive repository",
+      "restore archived Dependabot alerts",
+      "December 8 GitHub alerts"
+    ],
+    "coverLabel": "DEPENDABOT",
+    "cover": {
+      "src": "/blog-images/education-62.webp",
+      "thumbnail": "/blog-images/education-62-720.webp",
+      "width": 1200,
+      "height": 800,
+      "alt": "An amber alert bell on a desk beside servers powering a night-time shop.",
+      "caption": "Original pixel-art illustration."
+    },
+    "intro": "A portfolio can serve visitors every day while its repository sits untouched for a year. Starting December 8, 2026, GitHub plans to turn off Dependabot alerts on most repositories with a year of inactivity. For a maintainer the useful question is when the repository last received one of the events GitHub counts. Traffic to the deployed application cannot answer that question.",
+    "journalNote": "A launch checklist usually ends when a site goes live. This change makes a good case for keeping the production repository and its security settings on the maintenance calendar.",
+    "sections": [
+      {
+        "id": "implementation",
+        "heading": "Check what GitHub counts as activity",
+        "paragraphs": [
+          "GitHub lists three qualifying events: creating the repository, pushing to any branch or tag, and turning on Dependabot alerts. Start with the repository that actually supplies your deployment. A maintained fork and the upstream project can have very different histories. Check for recent work outside the default branch as well.",
+          "Imagine a site whose last main-branch deployment was fourteen months ago. If its maintainer pushed a release tag two months ago, the repository has recent qualifying activity. Conversely, a scheduled build that repeatedly deploys the same commit gives you no evidence of a recent push. Opening the live site tells you even less."
+        ],
+        "table": {
+          "columns": [
+            "What you observed",
+            "What to check next"
+          ],
+          "rows": [
+            [
+              "No recent main commits",
+              "Look for other branch pushes and tags before calling the repository inactive."
+            ],
+            [
+              "Visitors are still using the site",
+              "Inspect repository activity and alert settings separately."
+            ],
+            [
+              "Organization manages security centrally",
+              "Check whether an enforced configuration enables Dependabot alerts."
+            ]
+          ]
+        }
+      },
+      {
+        "id": "failure-boundary",
+        "heading": "Alerts and update pull requests have different switches",
+        "paragraphs": [
+          "Search results for a paused Dependabot often describe a different problem. One feature reports vulnerable dependencies. Another opens pull requests for updates. If your complaint is a silent PR queue, establish whether the alert list is still available before diagnosing it through the December policy. Record which screen shows a warning and which feature is enabled.",
+          "GitHub describes exceptions for repositories with enforced security configurations that enable alerts and for certain enterprise policies that prevent repository administrators from changing alert settings. The announcement covers GitHub.com and Enterprise Cloud with data residency. GitHub Enterprise Server has a separate lifecycle."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Restore the alerts and check the repository",
+        "paragraphs": [
+          "If inactivity has switched the alerts off, GitHub says a push turns them back on. You can also enable them in repository settings. The latter is a straightforward choice when the deployed code needs no edits. GitHub restores the archived alerts and starts the one-year clock again.",
+          "With a maintainer account, confirm the setting is enabled, open the alert list and review the dependency paths for unresolved items. An empty list alone cannot tell you whether alerts were enabled yesterday. For a small team, record the repository, owner and check date alongside the deployment record so the next person can repeat the check."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "GitHub — December 8 inactivity policy and exceptions",
+        "href": "https://github.blog/changelog/2026-11-10-dependabot-alerts-will-pause-on-inactive-repositories/"
+      },
+      {
+        "label": "GitHub Docs — when update pull requests stop",
+        "href": "https://docs.github.com/en/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-updates-stopped"
+      }
+    ]
+  },
+  {
+    "slug": "openshell-local-inference-ollama-verification",
+    "number": "110",
+    "title": "Where Does an OpenShell Prompt Go? Check Your Ollama Route",
+    "excerpt": "Trace an OpenShell inference request from sandbox to Ollama, distinguish older shared routes from provider attachments and verify the receiving server.",
+    "category": "ai",
+    "keywords": [
+      "OpenShell local inference",
+      "inference.local Ollama",
+      "OpenShell sandbox provider"
+    ],
+    "coverLabel": "INFERENCE ROUTING",
+    "cover": {
+      "src": "/blog-images/education-63.webp",
+      "thumbnail": "/blog-images/education-63-720.webp",
+      "width": 1200,
+      "height": 800,
+      "alt": "A message travels from a glass sandbox through a switching junction toward a GPU.",
+      "caption": "Original pixel-art illustration."
+    },
+    "intro": "An application can use the same model name, show the same chat window and still send a prompt to a different machine after a configuration change. In OpenShell, the useful evidence is the endpoint reached by the client and the server that actually handled the request. Start by identifying the routing model your installation uses. Two generations of NVIDIA documentation describe different setups.",
+    "journalNote": "A privacy label in a chat interface needs a concrete backend claim behind it. An operator should be able to point to the machine that answered a synthetic request.",
+    "sections": [
+      {
+        "id": "implementation",
+        "heading": "Identify the route that your version uses",
+        "paragraphs": [
+          "Earlier managed-route instructions used a virtual endpoint called inference.local. The gateway selected an upstream provider. The hostname in an application request therefore did not, on its own, tell a reader where the model ran. A developer auditing that setup should record both the virtual endpoint and the configured upstream.",
+          "The current migration guide describes the removal of the shared inference route. A provider profile declares the endpoint and allowed programs, a provider instance uses that profile, and an attachment grants a particular sandbox access. The client addresses the native endpoint. Inspect the installed version and follow its matching guide before translating an old command into a new deployment."
+        ],
+        "table": {
+          "columns": [
+            "Observation",
+            "Question it answers"
+          ],
+          "rows": [
+            [
+              "Client base URL",
+              "Where does this process try to connect?"
+            ],
+            [
+              "Provider attached to this sandbox",
+              "Which provider has this sandbox been granted access to?"
+            ],
+            [
+              "Effective policy",
+              "Does the intended client have permission to reach that endpoint?"
+            ],
+            [
+              "Matching request on the Ollama host",
+              "Which server saw this particular test?"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "failure-boundary",
+        "heading": "Local to the gateway may mean another computer",
+        "paragraphs": [
+          "NVIDIA’s host-local Ollama example points the client at host.openshell.internal on port 11434. The word host refers to the gateway’s host. If a laptop operates a gateway running on a separate workstation, the model is local to the workstation. Describe that boundary explicitly when explaining where a user’s text is processed.",
+          "After a provider is attached to a running sandbox, launch a new client process as the guide directs. An existing process can retain its initial environment. A mismatch between its configured URL and the intended provider merits investigation before any real user data is sent."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Follow one synthetic request end to end",
+        "paragraphs": [
+          "Use a harmless prompt with a unique test label. Record the test time, active sandbox, intended host and model. Examine the effective policy and attachment list, then make one request from the same application entry point a user would use. Correlate it with server-side request evidence on the machine hosting Ollama. Use timing or a request identifier if your server omits prompt text from its logs.",
+          "A successful reply proves that something answered. A matching server record adds evidence for the selected inference route. Other app features, including analytics or file uploads, can have their own network paths. Keep the conclusion as narrow as the test: identify the client, test time, model and confirmed receiving machine."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "OpenShell — current provider model, Ollama example and migration",
+        "href": "https://docs.nvidia.com/openshell/how-it-works/inference"
+      },
+      {
+        "label": "NVIDIA — earlier managed inference routing",
+        "href": "https://docs.nvidia.com/openshell/latest/sandboxes/inference-routing"
+      },
+      {
+        "label": "OpenShell release history",
+        "href": "https://github.com/NVIDIA/OpenShell/releases"
+      }
+    ]
+  },
+  {
+    "slug": "pandera-parsedfield-derived-columns",
+    "number": "111",
+    "title": "Pandera ParsedField by Example: Derive a Column You Can Check",
+    "excerpt": "Use Pandera 0.36 to derive a workout column from source data, check its range and distinguish a missing source from a dependency cycle.",
+    "category": "build",
+    "keywords": [
+      "Pandera ParsedField example",
+      "Pandera derived columns",
+      "ParserSourceError SchemaInitError"
+    ],
+    "coverLabel": "DATA VALIDATION",
+    "cover": {
+      "src": "/blog-images/education-64.webp",
+      "thumbnail": "/blog-images/education-64-720.webp",
+      "width": 1200,
+      "height": 800,
+      "alt": "A training notebook and dumbbell sit beside columns of colored data tiles.",
+      "caption": "Original pixel-art illustration."
+    },
+    "intro": "A workout export contains duration in seconds. A dashboard wants minutes, and a later summary wants total training time. If minutes are calculated in an unnamed preprocessing step, the dashboard quietly depends on that step running first. Pandera 0.36 lets you put the derivation in the schema so the input, transformation and output check can be reviewed together.",
+    "journalNote": "Fitness interfaces frequently display the same quantity in different units. Naming the source unit in the schema makes it easier to review a chart when a plausible-looking value is wrong.",
+    "sections": [
+      {
+        "id": "implementation",
+        "heading": "Declare one source and one derived field",
+        "paragraphs": [
+          "Here is a small pandas example adapted from the single-source ParsedField interface in the release documentation. The input is synthetic. Two sessions last 90 and 150 seconds. Their expected values in minutes are 1.5 and 2.5, which give a useful independent check on both the direction of conversion and the decision to preserve fractions."
+        ],
+        "code": {
+          "label": "Python · Pandera 0.36 with pandas",
+          "text": "import pandas as pd\nimport pandera.pandas as pa\n\nclass Sessions(pa.DataFrameModel):\n    seconds: int = pa.Field(ge=0)\n    minutes: float = pa.ParsedField(\n        source=\"seconds\", parser=lambda s: s / 60, ge=0\n    )\n\nrows = pd.DataFrame({\"seconds\": [90, 150]})\nchecked = Sessions.validate(rows)\nassert checked[\"minutes\"].tolist() == [1.5, 2.5]\nassert checked[\"minutes\"].sum() == 4.0"
+        }
+      },
+      {
+        "id": "failure-boundary",
+        "heading": "Separate missing data from a bad dependency graph",
+        "paragraphs": [
+          "Consider an old export with a column called duration. A parser declared against seconds has no basis for assuming duration is in seconds. An explicit import adapter should handle that file version after checking the source contract. Guessing the unit can produce a perfectly valid numeric column with a sixtyfold error.",
+          "With derived columns that depend on other derived columns, Pandera orders the parsers by dependency. A missing parser source and a cycle have different meanings. The first calls for checking upstream names and input shape. A cycle, such as deriving minutes from hours while defining hours in terms of minutes, calls for changing the schema. Choose an independently supplied quantity as the root."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Keep one counterexample for each assumption",
+        "paragraphs": [
+          "Start with the two-row example and inspect the validated output. Add a zero-duration row to check the lower boundary. Add a negative duration separately to confirm the range rule rejects it. Finally change one input column name. The expected failure is now about the data contract, even though the raw numbers did not change.",
+          "A nonnegative check by itself cannot distinguish seconds from minutes. Keep at least one fixture with a known physical answer; 90 seconds makes a particularly good example because integer division would silently lose the half minute. In production, aggregate the validated minutes only after deciding which rows belong to one session. Schema validation cannot decide whether duplicate export rows describe separate workouts."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "label": "Union.ai — Pandera 0.36 release and parser dependency order",
+        "href": "https://www.union.ai/blog-post/pandera-0-36-parsed-columns-decisions"
+      },
+      {
+        "label": "Pandera — ParsedField reference",
+        "href": "https://pandera.readthedocs.io/en/stable/reference/generated/pandera.api.dataframe.model_components.ParsedField.html"
+      }
+    ]
+  },
+  {
+    "slug": "github-actions-arm32-raspberry-pi-build",
+    "number": "112",
+    "title": "Will GitHub’s ARM32 Change Break Your Raspberry Pi Build?",
+    "excerpt": "Identify which GitHub Actions jobs rely on native ARM32 execution, which only produce a Raspberry Pi binary and where to verify the resulting build.",
+    "category": "build",
+    "keywords": [
+      "GitHub Actions ARM32 retirement",
+      "Raspberry Pi cross compile",
+      "native ARM32 runner"
+    ],
+    "coverLabel": "ARM BUILDS",
+    "cover": {
+      "src": "/blog-images/education-65.webp",
+      "thumbnail": "/blog-images/education-65-720.webp",
+      "width": 1200,
+      "height": 800,
+      "alt": "A green single-board computer beside processor sockets on a pixel-art workbench.",
+      "caption": "Original pixel-art illustration."
+    },
+    "intro": "Start with the first step in your workflow that actually runs a 32-bit ARM program. GitHub’s November 12 announcement sets December 8 as the deadline for ending native ARM32 job execution on hosted Windows and Linux runners. A release file with armv7 in its name is a reason to inspect the workflow. Its name alone cannot tell you whether the hosted machine executes that file.",
+    "journalNote": "The distinction matters in release engineering because producing an artifact and starting it on a supported device answer different questions. A useful CI report should say which one succeeded.",
+    "sections": [
+      {
+        "id": "implementation",
+        "heading": "Trace the machine, the compiler and the executable",
+        "paragraphs": [
+          "Take a single matrix entry and write down three facts: the runner environment, the compiler target and the environment that starts the built program. Matrix variables named arch or target are conventions chosen by the author. Read how the build command actually consumes them. A filename can say ARM even if the compiler ignored the variable entirely.",
+          "For a concrete example, a Go project without cgo can ask a Linux x64 toolchain to generate a Linux ARMv7 executable. The compiler runs on x64. The command below inspects the output rather than starting it. Adapt the package path to your project and review dependencies before applying the example to a cgo build."
+        ],
+        "code": {
+          "label": "Linux build job · pure Go example",
+          "text": "CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o sensor ./cmd/sensor\nfile sensor\nreadelf -h sensor"
+        }
+      },
+      {
+        "id": "failure-boundary",
+        "heading": "Find the test hidden inside the build",
+        "paragraphs": [
+          "Suppose the next line runs ./sensor --version. That step changes the requirements: a compatible execution environment must now load the ARM binary. A test harness or packaging script can do the same thing indirectly. Inspect post-build smoke tests and install hooks before declaring a job unaffected.",
+          "GitHub explicitly includes native AArch32 userspace on hosted runners in the retirement. ARM64 and ARM32 are distinct targets. Check the actual operating system and userspace of the devices you support. A Raspberry Pi model name by itself does not establish which binary a particular installation needs."
+        ]
+      },
+      {
+        "id": "verification",
+        "heading": "Split build evidence from device evidence",
+        "paragraphs": [
+          "Keep a record of the compiler command, target architecture and artifact digest. Run the existing smoke test in your supported target environment against that exact artifact. A digest avoids a common mistake where a device test accidentally executes yesterday’s installed binary while the pipeline has already uploaded a new one.",
+          "For an application that reads sensors, make the smoke test explicit about scope. Starting the program and printing its version verifies the loader and basic startup path. A separate test with the intended peripherals verifies device behavior. Document which check runs on each push and which check must pass before tagging a release."
+        ],
+        "table": {
+          "columns": [
+            "Job step",
+            "Evidence it produces"
+          ],
+          "rows": [
+            [
+              "Inspect executable headers",
+              "The artifact identifies a particular architecture."
+            ],
+            [
+              "Start that artifact on the target",
+              "The loader accepts it and the startup path runs."
+            ],
+            [
+              "Exercise the device integration",
+              "The application can interact with the supported hardware in that test."
+            ]
+          ]
+        }
+      }
+    ],
+    "references": [
+      {
+        "label": "GitHub — retirement scope and deadline",
+        "href": "https://github.blog/changelog/2026-11-12-actions-for-arm32-linux-windows-retirement/"
+      },
+      {
+        "label": "Go — optional build environment variables",
+        "href": "https://pkg.go.dev/cmd/go#hdr-Environment_variables"
+      }
+    ]
+  }
+]

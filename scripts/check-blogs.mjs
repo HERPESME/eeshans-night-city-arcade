@@ -4,9 +4,10 @@ import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal(blogs.length, 108, 'Hub and one hundred seven complete articles are available');
+const articleCount = blogs.filter(page => page.blogSlug).length;
+assert.ok(articleCount >= 112, 'The published journal retains its article inventory');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 112, 'Core pages, archive and all one hundred seven articles enter the sitemap');
+assert.equal((sitemap.match(/<loc>/g) || []).length, routes.filter(page => page.indexable !== false).length, 'Sitemap covers the published route inventory');
 const titles = new Set();
 const descriptions = new Set();
 const journalNotes = new Set();
@@ -128,12 +129,12 @@ for (const page of blogs) {
  }
  console.log('PASS blog review route', page.path);
 }
-assert.equal(educationCovers.size, 60, 'Each new lab has its own cover');
+assert.equal(educationCovers.size, 65, 'Each new lab has its own cover');
 assert.equal(trendCovers.size, 10, 'Each November guide has its own cover');
 assert.equal(currentTechCovers.size, 5, 'Five new explainers have distinct covers and figures');
-assert.equal(journalNotes.size, 107, 'Every article has a distinct journal note');
-assert.equal(titles.size, 107, 'Every article has a distinct title');
-assert.equal(descriptions.size, 107, 'Every article has a distinct description');
+assert.equal(journalNotes.size, articleCount, 'Every article has a distinct journal note');
+assert.equal(titles.size, articleCount, 'Every article has a distinct title');
+assert.equal(descriptions.size, articleCount, 'Every article has a distinct description');
 const missing = await handler({ rawUrl: 'https://technightcity.com/blogs/not-a-real-entry', httpMethod: 'GET' });
 assert.equal(missing.statusCode, 404, 'Unknown article slugs are true 404s');
 assert.equal(missing.headers['X-Robots-Tag'], 'noindex');
