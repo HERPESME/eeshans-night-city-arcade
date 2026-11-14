@@ -247,7 +247,7 @@
       },
       {
         "label": "NVIDIA — earlier managed inference routing",
-        "href": "https://docs.nvidia.com/openshell/latest/sandboxes/inference-routing"
+        "href": "https://docs.nvidia.com/openshell/v0.0.116/sandboxes/inference-routing"
       },
       {
         "label": "OpenShell release history",
