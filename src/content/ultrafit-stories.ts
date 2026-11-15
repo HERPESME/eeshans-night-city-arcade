@@ -255,7 +255,7 @@ export const ultraFitStories: BlogEntry[] = [
     "slug": "fitness-coaching-apps-ultrafit360-comparison",
     "number": "05",
     "title": "UltraFit360 Alternatives: Comparing Fitness and Coaching Apps",
-    "excerpt": "Compare UltraFit360 with fitness and coaching app alternatives: nutrition, workouts, AI support and coach-client workflows, with clear limits and sources.",
+    "excerpt": "Compare UltraFit360, Trainerize, Everfit and TrueCoach for workout programming, nutrition tracking and client check-ins. See which features depend on your plan.",
     "category": "founder",
     "readingTime": "8 min",
     "cover": {
