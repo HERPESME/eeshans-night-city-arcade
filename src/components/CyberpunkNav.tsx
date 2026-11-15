@@ -3,6 +3,7 @@ import { sectionPaths } from '@/lib/seo';
 import { useState } from 'react';
 import PixelButton from './PixelButton';
 import GlitchText from './GlitchText';
+import AccountControl from './community/AccountControl';
 
 interface CyberpunkNavProps {
   activeSection: string;
@@ -23,14 +24,14 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-dark-bg/90 backdrop-blur-sm border-b border-cyber-purple">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4" style={activeSection === 'blogs' ? { paddingRight: 84 } : undefined}>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-cyber-pink pixel-perfect" style={{
               clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
             }} />
-            <GlitchText className="text-lg text-cyber-pink">
+            <GlitchText className={activeSection === 'blogs' ? 'text-xs sm:text-lg text-cyber-pink' : 'text-lg text-cyber-pink'}>
               EESHAN.EXE
             </GlitchText>
           </div>
@@ -84,6 +85,7 @@ const CyberpunkNav = ({ activeSection, onSectionChange }: CyberpunkNavProps) => 
           </div>
         )}
       </div>
+      {activeSection === 'blogs' && <AccountControl />}
     </nav>
   );
 };

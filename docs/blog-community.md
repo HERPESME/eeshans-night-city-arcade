@@ -2,7 +2,7 @@
 
 Feature branch: ftr/oauth-blog-community. Netlify remains the host. Firebase project technightcity supplies Authentication and Firestore.
 
-The reader icon appears beside the square music control on blog pages. Google and email/password sign-in, email registration, verification, password reset and sign-out use Firebase Authentication. Only verified readers can vote or post. The article's discussion sits before the suggested articles. Replies are one level deep. The 90-second reading prompt counts focused, visible time and appears once per tab session. Readers can dismiss it and continue reading. Article HTML and canonicals remain available to crawlers.
+The reader icon appears at the right of the top navigation, vertically aligned with the square music control on blog pages. Google and email/password sign-in, email registration, verification, password reset and sign-out use Firebase Authentication. Only verified readers can vote or post. The article's discussion sits before the suggested articles. Replies are one level deep. The 90-second reading prompt counts focused, visible time and appears once per tab session. Readers can dismiss it and continue reading. Article HTML and canonicals remain available to crawlers.
 
 ## Before a production release
 

@@ -9,7 +9,6 @@ import AnalyticsControls from './components/AnalyticsControls';
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 import { CommunityProvider } from './components/community/CommunityProvider';
-import AccountControl from './components/community/AccountControl';
 
 const queryClient = new QueryClient();
 
@@ -184,7 +183,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <CommunityProvider>
-        {location.pathname.startsWith('/blogs') && <AccountControl />}
         <Toaster />
         <Sonner />
         <AnalyticsControls />

@@ -1,4 +1,4 @@
-.community-account { position: fixed; bottom: 24px; right: 80px; z-index: 50; width: 44px; height: 44px; display: grid; place-items: center; background: #100b1b; color: #72d9df; border: 2px solid #72439e; box-shadow: 3px 3px 0 #06040a; }
+.community-account { position: absolute; top: 50%; right: 24px; transform: translateY(-50%); z-index: 50; width: 44px; height: 44px; display: grid; place-items: center; background: #100b1b; color: #72d9df; border: 2px solid #72439e; box-shadow: 3px 3px 0 #06040a; }
 .community-account:hover { border-color: #72d9df; background: #241331; }
 .community-account img { width: 28px; height: 28px; object-fit: cover; border-radius: 2px; }
 .community-pixel-avatar { width: 6px; height: 6px; background: #b7a4cd; box-shadow: 6px 0 #b7a4cd, 0 6px #b7a4cd, 6px 6px #b7a4cd, -6px 18px #b7a4cd, 0 18px #b7a4cd, 6px 18px #b7a4cd, 12px 18px #b7a4cd, -6px 24px #b7a4cd, 0 24px #b7a4cd, 6px 24px #b7a4cd, 12px 24px #b7a4cd; transform: translate(-3px, -12px); }

@@ -71,7 +71,7 @@ export default function AccountControl() {
       <DropdownMenuTrigger asChild><button type="button" className="community-account" aria-label={user ? 'Your account' : 'Reader account'}>
         {user?.photoURL && !photoFailed ? <img src={user.photoURL} alt="" width={28} height={28} referrerPolicy="no-referrer" onError={() => setPhotoFailed(true)} /> : <span className="community-pixel-avatar" aria-hidden="true" />}
       </button></DropdownMenuTrigger>
-      <DropdownMenuContent align="end" side="top" sideOffset={12} className="community-menu">
+      <DropdownMenuContent align="end" side="bottom" sideOffset={12} className="community-menu">
         <DropdownMenuLabel>{user ? user.displayName || 'Reader' : 'YOUR READER SPACE'}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {user ? <><DropdownMenuItem onSelect={openLogin}><UserRound size={15} />{user.emailVerified ? 'Account' : 'Verify email'}</DropdownMenuItem><DropdownMenuItem onSelect={() => void run(async () => {
