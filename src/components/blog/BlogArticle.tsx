@@ -12,6 +12,7 @@ import { track } from '@/lib/analytics';
 import { author } from '@/content/author';
 import { relatedBlogEntries } from '@/lib/related-blogs';
 import './blogs.css';
+import ArticleCommunity from '../community/ArticleCommunity';
 
 function ContentLink({ link }: { link: BlogLink }) {
   return link.href.startsWith('/') ? <Link to={link.href}>{link.label}<ArrowUpRight size={13} aria-hidden="true" /></Link> : <a href={link.href}>{link.label}<ArrowUpRight size={13} aria-hidden="true" /></a>;
@@ -93,6 +94,7 @@ export default function BlogArticle({ slug }: { slug: string }) {
           </article>
           <aside className="blog-article-sidebar"><nav aria-label="On this page" className="blog-toc"><div className="blog-toc-label">IN THIS ENTRY <span aria-hidden="true">↓</span></div><ol>{entry.sections.map((section, index) => <li key={section.id}><a href={`#${section.id}`} aria-current={activeSection === section.id ? 'location' : undefined}><span>{String(index + 1).padStart(2, '0')}</span>{section.heading}</a></li>)}</ol><div className="blog-toc-footer"><span className="blog-status-dot" /> {categoryLabel(entry.category)} / notes from the build.</div></nav></aside>
         </div>
+        <ArticleCommunity key={entry.slug} slug={entry.slug} />
         <section className="blog-related" aria-labelledby="related-title"><div className="blog-related-heading"><div><span className="blog-eyebrow">KEEP EXPLORING</span><h2 id="related-title">Another page in the journal.</h2></div><Link to="/blogs">All entries <ArrowUpRight size={15} aria-hidden="true" /></Link></div><div className="blog-related-grid">{related.map(item => <BlogCard key={item.slug} entry={item} />)}</div></section>
         <footer className="blog-article-footer"><Link to="/blogs"><ArrowLeft size={15} aria-hidden="true" /> Back to the archive</Link><span>NIGHT CITY JOURNAL{entry.isPreview ? ' / EDITORIAL DRAFT' : ''}</span></footer>
       </div>

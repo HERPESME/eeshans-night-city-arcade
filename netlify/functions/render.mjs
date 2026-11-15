@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { renderDocument, routes } from '../../.ssr/entry-server.js';
-const reportOnlyPolicy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://checkout.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googleapis.com https://*.razorpay.com; frame-src https://*.razorpay.com; font-src 'self' data:; media-src 'self' blob:";
+const reportOnlyPolicy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://checkout.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googleapis.com https://*.razorpay.com https://securetoken.googleapis.com https://technightcity.firebaseapp.com; frame-src https://*.razorpay.com https://technightcity.firebaseapp.com; font-src 'self' data:; media-src 'self' blob:";
 let templatePromise;
 export async function handler(event) {
   const url = new URL(event.rawUrl || `https://technightcity.com${event.path}`);

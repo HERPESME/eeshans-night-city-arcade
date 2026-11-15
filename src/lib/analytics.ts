@@ -54,6 +54,7 @@ function clearAnalyticsCookies() {
 // An allowlist is intentional: no callers can accidentally send form values, emails or search text.
 const fields: Record<string, string[]> = {
   article_progress: ['article_slug', 'percent_scrolled'], article_engaged: ['article_slug', 'active_seconds'],
+  login: ['method'], sign_up: ['method'], article_vote: ['article_slug', 'direction'], discussion_post: ['article_slug', 'kind'],
   share: ['article_slug', 'method'], blog_filter: ['category'],
   project_click: ['project_id', 'destination'], file_download: ['file_name', 'file_extension'],
   contact_intent: ['method'], generate_lead: ['method'],

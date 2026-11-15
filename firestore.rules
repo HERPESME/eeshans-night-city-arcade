@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function verified() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    function validSlug(slug) {
+      return slug.size() <= 150 && slug.matches('^[a-z0-9]+(-[a-z0-9]+)*$');
+    }
+    match /communityMembers/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if verified() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['lastPostAt', 'lastCommentId'])
+        && request.resource.data.lastCommentId is string
+        && request.resource.data.lastCommentId.size() <= 100
+        && request.resource.data.lastPostAt == request.time
+        && (!exists(/databases/$(database)/documents/communityMembers/$(uid))
+          || resource.data.lastPostAt <= request.time - duration.value(30, 's'));
+    }
+    match /articles/{slug}/votes/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if validSlug(slug) && verified() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['value', 'updatedAt'])
+        && request.resource.data.value in [-1, 1]
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if verified() && request.auth.uid == uid;
+    }
+    match /articles/{slug}/comments/{commentId} {
+      allow get: if validSlug(slug);
+      allow list: if validSlug(slug) && request.query.limit != null && request.query.limit <= 12;
+      allow create: if validSlug(slug) && verified()
+        && request.resource.data.keys().hasAll(['uid', 'name', 'text', 'parent', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['uid', 'name', 'text', 'parent', 'createdAt'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 40
+        && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 2000
+        && request.resource.data.createdAt == request.time
+        && (request.resource.data.parent == null
+          || (request.resource.data.parent is string
+            && exists(/databases/$(database)/documents/articles/$(slug)/comments/$(request.resource.data.parent))
+            && get(/databases/$(database)/documents/articles/$(slug)/comments/$(request.resource.data.parent)).data.parent == null))
+        && getAfter(/databases/$(database)/documents/communityMembers/$(request.auth.uid)).data.lastPostAt == request.time
+        && getAfter(/databases/$(database)/documents/communityMembers/$(request.auth.uid)).data.lastCommentId == commentId
+        && (!exists(/databases/$(database)/documents/communityMembers/$(request.auth.uid))
+          || get(/databases/$(database)/documents/communityMembers/$(request.auth.uid)).data.lastPostAt <= request.time - duration.value(30, 's'));
+      // Keep the root in place so deleting a comment never strands its replies.
+      allow update: if verified() && resource.data.uid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text'])
+        && request.resource.data.text == '';
+    }
+  }
+}
