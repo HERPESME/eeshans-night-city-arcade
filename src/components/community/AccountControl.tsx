@@ -4,6 +4,7 @@ import { useCommunity } from './CommunityProvider';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import './community.css';
+import { track } from '@/lib/analytics';
 
 function message(error: unknown) {
   const code = (error as { code?: string }).code;
@@ -33,7 +34,8 @@ export default function AccountControl() {
   };
   const google = () => run(async () => {
     const [{ communityAuth }, sdk] = await Promise.all([import('@/lib/community-auth'), import('firebase/auth')]);
-    await sdk.signInWithPopup(communityAuth, new sdk.GoogleAuthProvider());
+    const result = await sdk.signInWithPopup(communityAuth, new sdk.GoogleAuthProvider());
+    track(sdk.getAdditionalUserInfo(result)?.isNewUser ? 'sign_up' : 'login', { method: 'google' });
     setLoginOpen(false);
   });
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -49,10 +51,12 @@ export default function AccountControl() {
       } else if (mode === 'signup') {
         const credential = await sdk.createUserWithEmailAndPassword(communityAuth, email, password);
         await sdk.updateProfile(credential.user, { displayName: String(values.get('name') || '').trim().slice(0, 40) || 'Reader' });
+        track('sign_up', { method: 'email' });
         await sdk.sendEmailVerification(credential.user);
         setFeedback('Account created. Check your inbox to verify your email before posting or voting.');
       } else {
         await sdk.signInWithEmailAndPassword(communityAuth, email, password);
+        track('login', { method: 'email' });
         setLoginOpen(false);
       }
     });

@@ -55,3 +55,5 @@
 .community-section :focus-visible, .community-account:focus-visible, :root .community-dialog :focus-visible { outline: 2px solid #72d9df; outline-offset: 3px; }
 @media (max-width: 600px) { .community-section { padding: 20px 16px; margin-top: 36px; } .community-section-heading { align-items: flex-start; flex-direction: column; gap: 14px; } .community-section h2 { font-size: 22px; } :root .community-dialog { padding: 26px 22px; } }
 @media (prefers-reduced-motion: reduce) { :root .community-dialog { animation: none !important; } }
+
+.community-delete-confirm { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; border: 1px solid #744555; padding: 12px; margin-bottom: 12px; color: #e0b4c2; font-size: 12px; }

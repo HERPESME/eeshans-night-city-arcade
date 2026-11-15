@@ -40,3 +40,11 @@ Rules use the local Firebase emulator, with synthetic verified/unverified users:
 FIRESTORE_EMULATOR_HOST=127.0.0.1:8085 npx firebase-tools emulators:exec --project demo-night-city-community --only firestore "npm run test:community-rules"
 
 The demo project does not write to the live database. Rules checks cover denied anonymous/unverified writes, vote ownership, invalid values, comment pagination, reply parents, cooldown, author deletion and unrelated collections.
+
+## Configured project state, 15 November 2026
+
+Authentication was initialized in the existing technightcity project. Google and Email/Password are enabled. Google uses the TechNightCity public name and the owner support email. Production domain technightcity.com is authorized. The exact PR #32 preview hostname was added for release testing and should be removed after the production checks.
+
+The default Standard Firestore database was created in asia-south1 (Mumbai) on Spark. The reviewed rules were published through the console. The comments index uses parent ascending, createdAt descending, collection scope. Email enumeration protection is enabled and the required password length is 8–128 characters.
+
+Consent-controlled GA4 events are login/sign_up (method), article_vote (article_slug, direction) and discussion_post (article_slug, kind). They fire after successful actions and exclude user identifiers and comment text. Preview traffic remains excluded from Analytics.

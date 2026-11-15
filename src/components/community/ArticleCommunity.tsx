@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp, MessageSquare, Reply, Trash2 } from 'lucide-react';
 import { useCommunity } from './CommunityProvider';
 import type { Cursor, Discussion } from '@/lib/community-data';
 import './community.css';
+import { track } from '@/lib/analytics';
 
 function errorText(error: unknown) {
   const code = (error as { code?: string }).code;
@@ -23,6 +24,7 @@ function CommentForm({ slug, parent, onPosted, onCancel }: { slug: string; paren
     try {
       const sdk = await import('@/lib/community-data');
       await sdk.postDiscussion(slug, user.uid, user.displayName || 'Reader', text, parent);
+      track('discussion_post', { article_slug: slug, kind: parent ? 'reply' : 'comment' });
       setText(''); onPosted();
     } catch (error) { setError(errorText(error)); } finally { setBusy(false); }
   };
@@ -44,6 +46,8 @@ function Thread({ slug, parent = null }: { slug: string; parent?: string | null 
   const [reply, setReply] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [replyRevision, setReplyRevision] = useState(0);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const load = async (append = false) => {
     setBusy(true); setError('');
     try {
@@ -55,15 +59,17 @@ function Thread({ slug, parent = null }: { slug: string; parent?: string | null 
   };
   useEffect(() => { void load(); }, [slug, parent]); // Each mounted thread requests only one page.
   const remove = async (item: Discussion) => {
-    if (!window.confirm('Delete your comment? Replies will stay in the discussion.')) return;
-    try { const sdk = await import('@/lib/community-data'); await sdk.removeDiscussion(slug, item.id); void load(); }
+    setDeleting(true);
+    try { const sdk = await import('@/lib/community-data'); await sdk.removeDiscussion(slug, item.id); setConfirmDelete(null); await load(); }
     catch (error) { setError(errorText(error)); }
+    finally { setDeleting(false); }
   };
   return <div className={parent ? 'community-replies' : 'community-thread'}>
     {items.map(item => <div className="community-comment" key={item.id}>
       <div className="community-comment-meta"><span className="community-mini-avatar" aria-hidden="true" /><strong>{item.name}</strong><time>{item.createdAt?.toDate().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) || 'Just now'}</time></div>
       <p>{item.text || 'This comment was deleted.'}</p>
-      <div className="community-comment-actions">{!parent && <><button className="community-text" onClick={() => setReply(reply === item.id ? null : item.id)}><Reply size={13} />Reply</button><button className="community-text" aria-expanded={expanded === item.id} onClick={() => setExpanded(expanded === item.id ? null : item.id)}>{expanded === item.id ? 'Hide replies' : 'View replies'}</button></>}{item.uid === user?.uid && item.text && <button className="community-text" aria-label="Delete your comment" onClick={() => void remove(item)}><Trash2 size={13} /></button>}</div>
+      <div className="community-comment-actions">{!parent && <><button className="community-text" onClick={() => setReply(reply === item.id ? null : item.id)}><Reply size={13} />Reply</button><button className="community-text" aria-expanded={expanded === item.id} onClick={() => setExpanded(expanded === item.id ? null : item.id)}>{expanded === item.id ? 'Hide replies' : 'View replies'}</button></>}{item.uid === user?.uid && item.text && <button className="community-text" aria-label="Delete your comment" onClick={() => setConfirmDelete(item.id)}><Trash2 size={13} /></button>}</div>
+      {confirmDelete === item.id && <div className="community-delete-confirm" role="group" aria-label="Confirm comment deletion"><span>Delete your comment? Replies will stay.</span><button className="community-text" disabled={deleting} onClick={() => setConfirmDelete(null)}>Keep comment</button><button className="community-text" disabled={deleting} onClick={() => void remove(item)}>{deleting ? 'Deleting…' : 'Confirm delete'}</button></div>}
       {reply === item.id && <CommentForm slug={slug} parent={item.id} onCancel={() => setReply(null)} onPosted={() => { setReply(null); setExpanded(item.id); setReplyRevision(value => value + 1); }} />}
       {expanded === item.id && <Thread key={item.id + replyRevision} slug={slug} parent={item.id} />}
     </div>)}
@@ -113,7 +119,7 @@ export default function ArticleCommunity({ slug }: { slug: string }) {
     if (!user?.emailVerified) { openLogin(); return; }
     setBusy(true); setError('');
     const next = selection === value ? 0 : value;
-    try { const sdk = await import('@/lib/community-data'); await sdk.vote(slug, user.uid, next); setSelection(next); }
+    try { const sdk = await import('@/lib/community-data'); await sdk.vote(slug, user.uid, next); setSelection(next); track('article_vote', { article_slug: slug, direction: next === 1 ? 'up' : next === -1 ? 'down' : 'clear' }); }
     catch (error) { setError(errorText(error)); } finally { setBusy(false); }
   };
   return <section ref={area} className="community-section" aria-labelledby="discussion-title">
