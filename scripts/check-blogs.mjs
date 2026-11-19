@@ -3,9 +3,12 @@ import { readFile } from 'node:fs/promises';
 import { handler } from '../netlify/functions/render.mjs';
 import { routes } from '../.ssr/entry-server.js';
 const blogs = routes.filter(page => page.section === 'blogs');
+const practicalGuides = JSON.parse(await readFile('src/content/november-practical-guides.json', 'utf8'));
+const practicalSlugs = new Set(practicalGuides.map(entry => entry.slug));
+assert.equal(practicalSlugs.size, 50, 'The approved batch contains 50 distinct practical guides');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 const articleCount = blogs.filter(page => page.blogSlug).length;
-assert.ok(articleCount >= 112, 'The published journal retains its article inventory');
+assert.ok(articleCount >= 162, 'The published journal retains the previous 112 articles and all 50 new guides');
 assert.ok(blogs.every(page => page.indexable !== false), 'Approved blogs must be indexable');
 assert.equal((sitemap.match(/<loc>/g) || []).length, routes.filter(page => page.indexable !== false).length, 'Sitemap covers the published route inventory');
 const titles = new Set();
@@ -62,7 +65,16 @@ for (const page of blogs) {
     trendCovers.add(trendCover[1]);
     assert.ok(result.body.includes(`/blog-images/trend-${page.blogSlug}-720.webp`), 'The responsive cover is rendered');
   }
-  assert.ok(article.wordCount >= (educationCover ? 200 : 1000), 'Long-form articles and concise labs must meet their editorial depth checks');
+  // Focused practical guides have their own format; retain the existing
+  // long-form and concise-lab checks for every previously published article.
+  const practical = practicalSlugs.has(page.blogSlug);
+  assert.ok(article.wordCount >= (practical ? 700 : educationCover ? 200 : 1000), 'Articles meet their format-specific editorial depth checks');
+  if (practical) {
+    assert.equal(article.datePublished, '2026-11-19');
+    assert.ok(result.body.includes(`/blog-images/field-${page.blogSlug}-720.webp`), 'Each practical guide has a responsive cover');
+    assert.ok(result.body.includes('class="blog-diagram '), 'Each practical guide has readable explanatory evidence');
+    assert.equal(schema['@graph'].find(item => item['@type'] === 'FAQPage')?.mainEntity.length, 3);
+  }
   if (educationCover) {
     educationCovers.add(educationCover[1]);
     for (const section of ['implementation', 'failure-boundary', 'verification']) assert.ok(result.body.includes(`id="${section}"`));
@@ -75,11 +87,12 @@ for (const page of blogs) {
   assert.equal(result.body.includes('article:published_time'), !draft);
   const faq = schema['@graph'].find(item => item['@type'] === 'FAQPage');
   if (faq) {
+    const visibleArticle = result.body.match(/<article\b[^>]*id="blog-article-body"[\s\S]*?<\/article>/)?.[0] || '';
     assert.equal(faq.mainEntity.length, 3);
     for (const q of faq.mainEntity) {
-      assert.ok(result.body.includes(q.name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ question is visible');
+      assert.ok(visibleArticle.includes(q.name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ question is visible in the article body');
       assert.ok(q.acceptedAnswer.text.length > 60, 'FAQ has a useful answer');
-      assert.ok(result.body.includes(q.acceptedAnswer.text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ answer is visible');
+      assert.ok(visibleArticle.includes(q.acceptedAnswer.text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\"', '&quot;').replaceAll("'", '&#x27;')), 'FAQ answer is visible in the article body');
     }
   }
   titles.add(page.title); descriptions.add(page.description);

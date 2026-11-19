@@ -71,7 +71,7 @@ export const routes: Page[] = [
   { path: '/projects', section: 'projects', label: 'Projects', title: 'Projects | Eeshan Singh — Full-Stack & AI/ML', description: `Explore ${projects.slice(0, 3).map(project => project.title).join(', ')} and Eeshan Singh’s development projects, technologies and available demos.` },
   { path: '/terminal', section: 'contact', label: 'Contact', title: 'Contact Eeshan Singh | Night City Terminal', description: 'Connect with Eeshan Singh through his interactive contact terminal, email, GitHub, LinkedIn, and LeetCode profiles.' },
   { path: '/blogs', section: 'blogs', label: 'Blogs', title: 'Blogs | Eeshan Singh — Night City Journal', description: 'AI engineering, React Native, frontend debugging, startup lessons and gaming: detailed field notes by Eeshan Singh at Night City Journal.', indexable: blogEntries.some(entry => !entry.isPreview) },
-  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: articleMetadata[entry.slug]?.title || articleTitle(entry.title), description: articleMetadata[entry.slug]?.description || entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug, lastModified: entry.reviewedOn })),
+  ...blogEntries.map((entry): Page => ({ path: blogPath(entry), section: 'blogs', label: entry.title, title: articleMetadata[entry.slug]?.title || entry.searchTitle || articleTitle(entry.title), description: articleMetadata[entry.slug]?.description || entry.excerpt, indexable: !entry.isPreview, blogSlug: entry.slug, lastModified: entry.reviewedOn })),
 ];
 export const socialImage = origin + '/media/night-city-social.gif';
 export function metadata(page: Page) {

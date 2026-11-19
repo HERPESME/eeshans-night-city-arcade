@@ -1,5 +1,6 @@
 import manuscripts from './educational-stories.json';
 import novemberGuides from './november-field-guides.json';
+import practicalGuides from './november-practical-guides.json';
 import type { BlogEntry } from './blogs';
 
 type Lab = Omit<BlogEntry, 'isPreview' | 'readingTime' | 'reviewedOn' | 'publishedOn'>;
@@ -20,3 +21,12 @@ function publishedLabs(manuscripts: Lab[], publicationDate: string, featureFirst
 
 export const educationalStories = publishedLabs(manuscripts as Lab[], '2026-11-05', true);
 export const novemberFieldGuides = publishedLabs(novemberGuides as Lab[], '2026-11-13');
+const practicalManuscripts = (practicalGuides as Lab[]).map(entry => ({
+  ...entry,
+  sections: [...entry.sections, {
+    id: 'frequently-asked-questions',
+    heading: 'Frequently asked questions',
+    paragraphs: (entry.faqs || []).map(({ question, answer }) => `${question} ${answer}`),
+  }],
+}));
+export const novemberPracticalGuides = publishedLabs(practicalManuscripts, '2026-11-19');

@@ -3,6 +3,18 @@ import type { BlogEntry } from '@/content/blogs';
 // Editorial reading paths connect focused lessons rather than repeatedly
 // selecting the first two articles in a broad category.
 const readingPaths = [
+  // Topic-specific reading paths for the November practical guides.
+  ["gta-6-game-sharing-ps5-xbox-rules", "gta-6-pc-release-fake-download-checklist", "gta-6-offline-disc-digital-licence-checks", "gta-6-xbox-one-cloud-vs-native-port", "gta-6-ps5-pro-graphics-vs-60-fps", "ps5-disc-digital-gta-6-total-cost", "gta-6-downloaded-locked-ps5-licence", "gta-6-remote-play-vs-cloud-gaming", "gta-6-accessibility-first-session-checklist", "psn-down-gta-6-launch-diagnosis"],
+  ["open-webui-tether-local-model-connection", "tether-mcp-local-command-sandbox-boundary", "tether-windows-terminal-startup-diagnostics", "open-webui-tether-model-id-missing"],
+  ["vllm-0-34-upgrade-breaking-changes-checklist", "vllm-extensible-kv-cache-throughput-latency", "vllm-out-of-memory-after-startup-triage", "ttft-tpot-tokens-per-second-local-llm-benchmark", "vllm-rocm-image-migration-reproducible-deploy"],
+  ["ollama-windows-environment-variables-restart", "ollama-local-only-disable-cloud-verify-path", "ollama-cpu-gpu-placement-diagnostics", "ollama-503-overloaded-queue-bounded-retry"],
+  ["deepseek-chat-demo-browser-api-key-production", "deepseek-streaming-citations-block-safe-rendering", "deepseek-file-parsing-upload-ui-lifecycle", "deepseek-responses-api-stateless-migration", "deepseek-safety-checks-application-guardrails"],
+  ["github-copilot-evals-skills-mcp-regression-tests", "github-copilot-evals-vs-copilot-studio", "gemini-4-neon-copilot-missing-plan-rollout-policy", "mai-code-2-vs-flash-copilot-task-selection"],
+  ["copilot-adaptive-code-review-policy-ceiling", "copilot-secret-detection-review-security-boundary", "copilot-team-plugins-child-team-inheritance", "supabase-mcp-copilot-schema-before-migration", "github-cli-event-streams-pr-review-without-polling", "copilot-cross-repository-review-public-private-context", "github-team-security-risk-assessment-remediation"],
+  ["prompt-injection-tool-result-harmless-agent-test", "rag-data-retention-delete-source-derived-copies", "local-mcp-stdio-vs-http-transport-security", "firebase-email-verified-firestore-permission-token-refresh"],
+  ["developer-offer-rsus-first-year-cash-vesting", "software-engineer-salary-median-sample-bias", "joining-bonus-vs-base-two-year-developer-offer", "ai-era-developer-portfolio-bug-fix-evidence", "startup-internship-vs-product-role-questions"],
+  ["measure-google-ai-search-impressions-engagement", "bing-discovered-live-url-pass-not-indexed"],
+
   ['run-a-daily-seo-audit-with-github-actions-and-node-js', 'dependabot-alerts-inactive-repository', 'github-actions-arm32-raspberry-pi-build'],
   ['store-nutrition-quantities-without-unit-conversion-bugs', 'pandera-parsedfield-derived-columns', 'structured-llm-extraction-with-json-schema-and-validation'],
   ['figma-to-frontend-web-mobile-workflow', 'figma-make-vs-mcp-existing-react-app', 'figma-mcp-ide-design-to-code', 'scoped-design-tokens-css-regression', 'react-query-wrong-tab-cache-identity', 'dashboard-empty-loading-error-accessibility', 'react-prerender-seo-canonical-real-404', 'blog-image-workflow-webp-semantic-audit', 'frontend-developer-salary-india-base-vs-ctc'],

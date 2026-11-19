@@ -2,7 +2,7 @@ import { fableStory } from './fable-story';
 import { nvidiaStory } from './nvidia-story';
 import { currentTechStories } from './current-tech-stories';
 import { trendStories } from './trend-stories';
-import { educationalStories, novemberFieldGuides } from './educational-stories';
+import { educationalStories, novemberFieldGuides, novemberPracticalGuides } from './educational-stories';
 import { journalStories } from './journal-stories';
 import { ultraFitStories } from './ultrafit-stories';
 import { aiCoachStory } from './ai-coach-story';
@@ -42,6 +42,8 @@ export interface BlogSection {
 }
 export interface BlogEntry {
   slug: string; number: string; title: string; excerpt: string;
+  /** Optional concise search title; the article heading keeps its full editorial title. */
+  searchTitle?: string;
   category: BlogCategory; readingTime: string; cover: BlogImage; coverLabel: string;
   featured?: boolean;
   /** Written articles remain excluded from indexing until author approval. */
@@ -69,6 +71,7 @@ const appDetail: BlogImage = {
   ],
 };
 export const blogEntries: BlogEntry[] = [
+  ...novemberPracticalGuides,
   ...novemberFieldGuides,
   fableStory,
   nvidiaStory,
