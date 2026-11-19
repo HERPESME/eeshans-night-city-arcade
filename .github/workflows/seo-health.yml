@@ -49,4 +49,4 @@ jobs:
           python-version: '3.12'
       - run: npm ci
       - run: npm run build
-      - run: npm run test:seo && npm run test:ssr && npm run test:blogs && npm run test:guide-examples && npm run test:blog-assets && npm run test:analytics && npm run test:seo-report
+      - run: npm run test:seo && npm run test:ssr && npm run test:blogs && npm run test:guide-examples && npm run test:live-audit && npm run test:blog-assets && npm run test:analytics && npm run test:seo-report

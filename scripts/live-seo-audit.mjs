@@ -2,7 +2,9 @@ import { mkdir, writeFile, appendFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const origin = 'https://technightcity.com';
-const maxPages = 120;
+// Reviewed capacity for the 167-route catalogue, with bounded room for growth.
+// Keep an explicit ceiling so an unexpected sitemap cannot create an unlimited crawl.
+const maxPages = 250;
 const concurrency = 3;
 const timeout = 20000;
 const decode = value => value.replace(/&(?:amp|quot|apos|lt|gt|#39|#x[\da-f]+|#\d+);/gi, entity => {

@@ -15,6 +15,7 @@
     "test:ssr": "node scripts/check-ssr.mjs",
     "test:blogs": "node scripts/check-blogs.mjs",
     "test:guide-examples": "node scripts/check-guide-examples.mjs",
+    "test:live-audit": "node scripts/check-live-audit-capacity.mjs",
     "test:journal-visuals": "node scripts/check-journal-visuals.mjs",
     "test:blog-assets": "node scripts/check-blog-assets.mjs",
     "test:analytics": "node scripts/check-analytics.mjs",
